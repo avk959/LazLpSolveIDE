@@ -7,13 +7,13 @@ interface
 
 uses
   {$IFDEF MSWINDOWS}Windows,{$ELSE}Libc,{$ENDIF}
-  Classes, SysUtils, Variants, LclType, Graphics, Controls, Forms, Dialogs, ExtCtrls, StdCtrls,
+  Classes, SysUtils, Variants, Graphics, Controls, Forms, Dialogs, ExtCtrls, StdCtrls,
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
   ResultArray, lpobject,  lpsolve, VirtualTrees,
 
   SynEdit, SynEditTypes, LPHighlighter, SynEditSearch, SynEditRegexSearch, SynEditHighlighter,
   SynHighlighterXML, SynEditMiscClasses, SynEditExport, SynExportHTML, SynMacroRecorder, LPSynEdit,
-  LCLIntf;
+  LclType, LCLIntf, LazFileUtils;
 
 type
 
@@ -529,7 +529,8 @@ type
     FHighlighter: TLPHighlighter;
     FCurrentFile: TFileName;
     fSearchFromCaret: boolean;
-    FLastOpenFile: string;
+    FLastOpenFile,
+    FSaveFolder: string;
     FlpParamsFile: TFileName;
     FLastLineCount: integer;
     FSolving: boolean;
@@ -1104,7 +1105,8 @@ begin
   Screen.Cursor := crHourGlass;
   try
     if lp.LoadFromStrings(Editor.Lines, LPSolver.Verbose, Mode) then
-      MessageDlg('The script is correct.', mtInformation, [mbOK], 0) else
+      MessageDlg('The script is correct.', mtInformation, [mbOK], 0)
+    else
       MessageDlg('The scripts has syntax error(s).', mtWarning, [mbOK], 0);
   finally
     Screen.Cursor := crDefault;
@@ -1142,7 +1144,7 @@ end;
 procedure TMainForm.acSaveDefaultOptionsExecute(Sender: TObject);
 var stream: TFileStream;
 begin
-  Stream := TFileStream.Create(ExtractFilePath(ParamStr(0)) + 'default.lpo', fmCreate);
+  Stream := TFileStream.Create(FSaveFolder + 'default.lpo', fmCreate);
   try
     LPSolver.SaveProfile(stream);
   finally
@@ -1924,33 +1926,39 @@ procedure TMainForm.Loaded;
 var
   stream: TFileStream;
   lps: TLPSolver;
+  Path: string;
 begin
   inherited;
   DefaultCheckColor := BreackAtFirstOption.Color;
-  if FileExists(ExtractFilePath(ParamStr(0)) + 'default.lpo') then
-  begin
-    stream := TFileStream.Create(ExtractFilePath(ParamStr(0)) + 'default.lpo', fmOpenRead);
-    try
-      lps := TLPSolver.Create(nil);
+  Path := FSaveFolder + 'default.lpo';
+  //if FileExists(ExtractFilePath(ParamStr(0)) + 'default.lpo') then
+  if FileExists(Path) then
+    begin
+      //stream := TFileStream.Create(ExtractFilePath(ParamStr(0)) + 'default.lpo', fmOpenRead);
+      stream := TFileStream.Create(Path, fmOpenRead);
       try
-        lps.LoadProfile(Stream);
-      finally
-        lps.Free;
+        lps := TLPSolver.Create(nil);
+        try
+          lps.LoadProfile(Stream);
+        finally
+          lps.Free;
+        end;
+        Stream.Seek(0, soFromBeginning);
+        LPSolver.LoadProfile(stream);
+      except
+        LPSolver.Reset;
+        stream.Free;
+        stream := nil;
+        //DeleteFile(ExtractFilePath(ParamStr(0)) + 'default.lpo');
+        DeleteFile(Path);
       end;
-      Stream.Seek(0, soFromBeginning);
-      LPSolver.LoadProfile(stream);
-    except
+      if stream <> nil then
+        stream.Free;
+    end
+  else
+    begin
       LPSolver.Reset;
-      stream.Free;
-      stream := nil;
-      DeleteFile(ExtractFilePath(ParamStr(0)) + 'default.lpo');
     end;
-    if stream <> nil then
-      stream.Free;
-  end else
-  begin
-    LPSolver.Reset;
-  end;
   FLockEvents := true;
   try
     ReadOptions;
@@ -1984,6 +1992,9 @@ begin
   FlpParamsFile:= '';
   ReadIniFile;
   acNewLP.Execute;
+  FSaveFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
+  ForceDirectoriesUTF8(FSaveFolder);
+  LpSolver.SaveFolder := FSaveFolder;
 end;
 
 procedure TMainForm.EditorDropFiles(Sender: TObject; X, Y: Integer;
@@ -2011,6 +2022,7 @@ function TMainForm.GetCurrentFile: string;
 begin
   result := FCurrentFile;
 end;
+
 procedure TMainForm.SetCurrentFile(filename: string);
 var
   majorversion, minorversion, release, build: integer;
@@ -2019,16 +2031,17 @@ begin
   lp_solve_version(@majorversion, @minorversion, @release, @build);
   if filename <> '' then
     Caption := format('LPSolve IDE - %d.%d.%d.%d - %s',[majorversion, minorversion,
-      release, build, FCurrentFile]) else
+                       release, build, FCurrentFile])
+  else
     Caption := format('LPSolve IDE - %d.%d.%d.%d',[majorversion, minorversion,
-      release, build]);
+                       release, build]);
 end;
 
 procedure TMainForm.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
 begin
   if Editor.Modified or (FCurrentFile <> FLastOpenFile) then
     case MessageDlg('The current script has been modified, do you want to save it ?',
-       mtConfirmation, [mbYes, mbNo, mbCancel], 0) of
+                     mtConfirmation, [mbYes, mbNo, mbCancel], 0) of
       mrCancel: CanClose := False;
       mrYes: acSave.Execute;
     end;
@@ -2079,15 +2092,15 @@ begin
   else
     {Editor.SearchEngine := SynEditSearch};
   if Editor.SearchReplace(gsSearchText, gsReplaceText, Options) = 0 then
-  begin
-    //MessageBeep(MB_ICONASTERISK);
-    Statusbar.SimpleText := STextNotFound;
-    if ssoBackwards in Options then
-      Editor.BlockEnd := Editor.BlockBegin
-    else
-      Editor.BlockBegin := Editor.BlockEnd;
-    Editor.CaretXY := Editor.BlockBegin;
-  end;
+    begin
+      //MessageBeep(MB_ICONASTERISK);
+      Statusbar.SimpleText := STextNotFound;
+      if ssoBackwards in Options then
+        Editor.BlockEnd := Editor.BlockBegin
+      else
+        Editor.BlockBegin := Editor.BlockEnd;
+      Editor.CaretXY := Editor.BlockBegin;
+    end;
 
   if ConfirmReplaceDialog <> nil then
     ConfirmReplaceDialog.Free;
@@ -2351,7 +2364,7 @@ var
   filter: string;
   filterall: string;
 begin
-  ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'LpSolveIDE.ini');
+  ini := TIniFile.Create(FSaveFolder + 'LpSolveIDE.ini');
   str := TStringList.Create;
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
