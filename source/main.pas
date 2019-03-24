@@ -1990,11 +1990,11 @@ begin
   SetCurrentFile('');
   FLastOpenFile := '';
   FlpParamsFile:= '';
-  ReadIniFile;
-  acNewLP.Execute;
   FSaveFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
   ForceDirectoriesUTF8(FSaveFolder);
   LpSolver.SaveFolder := FSaveFolder;
+  ReadIniFile;
+  acNewLP.Execute;
 end;
 
 procedure TMainForm.EditorDropFiles(Sender: TObject; X, Y: Integer;
@@ -2011,7 +2011,7 @@ end;
 
 procedure TMainForm.SetlpParamsFile(filename: TFileName);
 begin
-   FlpParamsFile := filename ;
+   FlpParamsFile := filename;
 end;
 function  TMainForm.GetlpParamsFile: TFileName;
 begin
@@ -2369,27 +2369,27 @@ begin
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
     ini.ReadSection('XLI', str);
-    for i := 0 to str.Count - 1 do
-    begin
-      try
-        lib := ini.ReadString('XLI', str.Strings[i], 'unknown');
-        ext := ini.ReadString(lib, 'extension', 'txt');
-        lang := FindLanguage(ini.ReadString(lib, 'language', ''));
-        TViewXliExtension.Create(XLIViewActionList, lib, ext, lang);
-        TNewXliExtension.Create(XLINewActionList, lib, ext, lang);
-      except
-        //MessageDlg('Can''t find XLI: ' + lib, mtError, [mbOK], 0);
-        MemoLog.Lines.Add('Can''t find XLI: ' + lib)
-      end;
+    try
+      for i := 0 to str.Count - 1 do
+        begin
+          lib := ini.ReadString('XLI', str.Strings[i], 'unknown');
+          ext := ini.ReadString(lib, 'extension', 'txt');
+          lang := FindLanguage(ini.ReadString(lib, 'language', ''));
+          TViewXliExtension.Create(XLIViewActionList, lib, ext, lang);
+          TNewXliExtension.Create(XLINewActionList, lib, ext, lang);
+        end;
+    except
+      //MessageDlg('Can''t find XLI: ' + lib, mtError, [mbOK], 0);
+      MemoLog.Lines.Add('Can''t find XLI: ' + lib)
     end;
     FilterAll := 'All know files|*.lp; *.mps';
     Filter := 'LP files (*.lp)|*.lp|MPS files (*.mps)|*.mps';
     for i := 0 to XLIViewActionList.ComponentCount - 1 do
-    with TViewXliExtension(XLIViewActionList.Components[i]) do
-    begin
-      filterall := format('%s; *%s', [filterall, extension]);
-      filter := format('%s|%s (*%s)|*%s', [Filter, caption, extension, extension]);
-    end;
+      with TViewXliExtension(XLIViewActionList.Components[i]) do
+        begin
+          filterall := format('%s; *%s', [filterall, extension]);
+          filter := format('%s|%s (*%s)|*%s', [Filter, caption, extension, extension]);
+        end;
     OpenDialogScript.Filter := filterall + '|' + filter;
     SaveDialogScript.Filter := filter;
   finally
