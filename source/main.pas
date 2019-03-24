@@ -363,6 +363,7 @@ type
     N5: TMenuItem;
     CheckBox83: TCheckBox;
     acResetOptions: TAction;
+    procedure acObjCopCSVExecute(Sender: TObject);
     procedure ApplPropsQueryEndSession(var Cancel: Boolean);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
@@ -428,6 +429,7 @@ type
     procedure acObjExpRTFExecute(Sender: TObject);
     procedure acObjExpCSVExecute(Sender: TObject);
     procedure acObjCopHTMLExecute(Sender: TObject);
+    procedure acObjCopRTFExecute(Sender: TObject);
     procedure CopyasRTF1Click(Sender: TObject);
     procedure CopyasCSV1Click(Sender: TObject);
     procedure acLoadScriptExecute(Sender: TObject);
@@ -1256,7 +1258,7 @@ end;
 
 procedure TMainForm.acObjExpRTFExecute(Sender: TObject);
 begin
-  //ResultExportTo(ObjectiveTable, efrRTF, '.rtf', '*.rtf');
+  ResultExportTo(ObjectiveTable, efrRTF, '.rtf', '*.rtf');
 end;
 
 procedure TMainForm.acObjExpCSVExecute(Sender: TObject);
@@ -1267,6 +1269,17 @@ end;
 procedure TMainForm.acObjCopHTMLExecute(Sender: TObject);
 begin
   //Clipboard.SetAsHandle(CF_HTML, ObjectiveTable.ContentToClipboard(CF_HTML, tstAll));
+  Clipboard.AsText := ObjectiveTable.ContentToHTML(tstAll);
+end;
+
+procedure TMainForm.acObjCopRTFExecute(Sender: TObject);
+begin
+  Clipboard.AsText := ObjectiveTable.ContentToRTF(tstAll);
+end;
+
+procedure TMainForm.acObjCopCSVExecute(Sender: TObject);
+begin
+   Clipboard.AsText := ObjectiveTable.ContentToText(tstAll, ',');
 end;
 
 procedure TMainForm.acLoadScriptExecute(Sender: TObject);
@@ -2515,7 +2528,7 @@ end;
 procedure TMainForm.CopyasCSV1Click(Sender: TObject);
 begin
   //Clipboard.SetAsHandle(CF_CSV, ObjectiveTable.ContentToClipboard(CF_CSV, tstAll));
-  Clipboard.AsText := ObjectiveTable.ContentToText(tstAll, ',');
+  Clipboard.AsText := ObjectiveTable.ContentToText(tstAll, ';');
 end;
 
 procedure TMainForm.ConstraintTableBeforeCellPaint(Sender: TBaseVirtualTree; TargetCanvas: TCanvas;
