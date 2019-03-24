@@ -39,9 +39,9 @@ uses
 {$R *.lfm}
 
 procedure TParamForm.FormCreate(Sender: TObject);
-var  FCurrentFile: string;
+var
+  FCurrentFile: string;
 begin        // persist filename to mainform since this form is dynamic
-  //TMainMenu.Create(self);
   FileName.text := Mainform.GetlpParamsFile;
   ProfilName.SetTextBuf('IDElast');
   If (FileName.text = '') then
