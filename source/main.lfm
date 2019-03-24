@@ -1,8 +1,9 @@
-object MainForm: TMainForm
+﻿object MainForm: TMainForm
   Left = 231
   Height = 637
   Top = 251
   Width = 1139
+  ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
   ClientHeight = 590
@@ -2921,10 +2922,22 @@ object MainForm: TMainForm
       Caption = 'to Html ...'
       OnExecute = acExportHTMLExecute
     end
+    object acExportRtf: TAction
+      Caption = 'to Rtf ...'
+      OnExecute = acExportRtfExecute
+    end  
+    object acExportTex: TAction
+      Caption = 'to LaTeX ...'
+      OnExecute = acExportTexExecute
+    end    
     object acConExpHTML: TAction
       Caption = 'Constraints to HTML ...'
       OnExecute = acConExpHTMLExecute
     end
+    object acConExpRTF: TAction
+      Caption = 'Constraints to RTF ...'
+      OnExecute = acConExpRTFExecute
+    end 
     object acConExpCSV: TAction
       Caption = 'Constraints to CSV ...'
       OnExecute = acConExpCSVExecute
@@ -2933,6 +2946,10 @@ object MainForm: TMainForm
       Caption = 'Objective to HTML ...'
       OnExecute = acObjExpHTMLExecute
     end
+    object acObjExpRTF: TAction
+      Caption = 'Objective to RTF ...'
+      OnExecute = acObjExpRTFExecute
+    end  
     object acObjExpCSV: TAction
       Caption = 'Objective to CSV ...'
       OnExecute = acObjExpCSVExecute
@@ -2941,6 +2958,9 @@ object MainForm: TMainForm
       Caption = 'Copy as HTML'
       OnExecute = acObjCopHTMLExecute
     end
+    object acObjCopRTF: TAction
+      Caption = 'Copy as RTF'
+    end   
     object acObjCopCSV: TAction
       Caption = 'Copy as CSV'
     end
@@ -2960,6 +2980,10 @@ object MainForm: TMainForm
       Caption = 'to HTML ...'
       OnExecute = acMatExpHtmlExecute
     end
+    object acMatExpRtf: TAction
+      Caption = 'to RTF ...'
+      OnExecute = acMatExpRtfExecute
+    end  
     object acMatExpCsv: TAction
       Caption = 'to CSV ...'
       OnExecute = acMatExpCsvExecute
@@ -2968,6 +2992,10 @@ object MainForm: TMainForm
       Caption = 'Objective to HTML ...'
       OnExecute = acSensObjExpHtmlExecute
     end
+    object acSensObjExpRtf: TAction
+      Caption = 'Objective to RTF ...'
+      OnExecute = acSensObjExpRtfExecute
+    end  
     object acSensObjExpCsv: TAction
       Caption = 'Objective to CSV ...'
       OnExecute = acSensObjExpCsvExecute
@@ -2976,6 +3004,10 @@ object MainForm: TMainForm
       Caption = 'Dual to HTML ...'
       OnExecute = acSensDualExpHtmlExecute
     end
+    object acSensDualExpRtf: TAction
+      Caption = 'Dual to RTF ...'
+      OnExecute = acSensDualExpRtfExecute
+    end  
     object acSensDualExpCsv: TAction
       Caption = 'Dual to CSV ...'
       OnExecute = acSensDualExpCsvExecute
