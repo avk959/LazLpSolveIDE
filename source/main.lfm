@@ -1,0 +1,4172 @@
+object MainForm: TMainForm
+  Left = 231
+  Height = 637
+  Top = 251
+  Width = 1139
+  BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
+  Caption = 'LPSolve 5 IDE'
+  ClientHeight = 590
+  ClientWidth = 1139
+  Color = clBtnFace
+  DesignTimePPI = 115
+  Menu = MainMenu
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  OnDestroy = FormDestroy
+  Position = poScreenCenter
+  LCLVersion = '2.0.1.0'
+  object Splitter1: TSplitter
+    Cursor = crVSplit
+    Left = 0
+    Height = 6
+    Top = 306
+    Width = 1139
+    Align = alBottom
+    ResizeAnchor = akBottom
+  end
+  object PageControl: TPageControl
+    Left = 0
+    Height = 271
+    Top = 35
+    Width = 1139
+    ActivePage = TabSheetEditor
+    Align = alClient
+    Images = ImageList
+    TabIndex = 0
+    TabOrder = 0
+    object TabSheetEditor: TTabSheet
+      Caption = 'Source'
+      ClientHeight = 239
+      ClientWidth = 1131
+      ImageIndex = 26
+      inline Editor: TLPSynEdit
+        Left = 0
+        Height = 239
+        Top = 0
+        Width = 1131
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        Font.Quality = fqCleartype
+        ParentColor = False
+        ParentFont = False
+        PopupMenu = PopupMenu
+        TabOrder = 0
+        Gutter.LeftOffset = 6
+        Gutter.RightOffset = 5
+        Gutter.Width = 76
+        Gutter.MouseActions = <>
+        RightGutter.Width = 0
+        RightGutter.MouseActions = <>
+        Keystrokes = <>
+        MouseActions = <>
+        MouseTextActions = <>
+        MouseSelActions = <>
+        Options = [eoAutoIndent, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor]
+        MouseOptions = [emDragDropEditing, emRightMouseMovesCursor]
+        VisibleSpecialChars = [vscSpace, vscTabAtLast]
+        RightEdge = 255
+        SelectedColor.BackPriority = 50
+        SelectedColor.ForePriority = 50
+        SelectedColor.FramePriority = 50
+        SelectedColor.BoldPriority = 50
+        SelectedColor.ItalicPriority = 50
+        SelectedColor.UnderlinePriority = 50
+        SelectedColor.StrikeOutPriority = 50
+        BracketHighlightStyle = sbhsBoth
+        BracketMatchColor.Background = clNone
+        BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Style = [fsBold]
+        FoldedCodeColor.Background = clNone
+        FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.FrameColor = clGray
+        MouseLinkColor.Background = clNone
+        MouseLinkColor.Foreground = clBlue
+        LineHighlightColor.Background = clNone
+        LineHighlightColor.Foreground = clNone
+        OnDropFiles = EditorDropFiles
+        OnReplaceText = EditorReplaceText
+        OnStatusChange = EditorStatusChange
+        EnableMPS = True
+        inline SynLeftGutterPartList1: TSynGutterPartList
+          object SynGutterMarks1: TSynGutterMarks
+            Width = 29
+            MouseActions = <>
+          end
+          object SynGutterLineNumber1: TSynGutterLineNumber
+            Width = 17
+            MouseActions = <>
+            MarkupInfo.Background = clBtnFace
+            MarkupInfo.Foreground = clNone
+            DigitCount = 2
+            ShowOnlyLineNumbersMultiplesOf = 1
+            ZeroStart = False
+            LeadingZeros = False
+          end
+          object SynGutterChanges1: TSynGutterChanges
+            Width = 5
+            MouseActions = <>
+            ModifiedColor = 59900
+            SavedColor = clGreen
+          end
+          object SynGutterSeparator1: TSynGutterSeparator
+            Width = 2
+            MouseActions = <>
+            MarkupInfo.Background = clWhite
+            MarkupInfo.Foreground = clGray
+          end
+          object SynGutterCodeFolding1: TSynGutterCodeFolding
+            Width = 12
+            MouseActions = <>
+            MarkupInfo.Background = clNone
+            MarkupInfo.Foreground = clGray
+            MouseActionsExpanded = <>
+            MouseActionsCollapsed = <>
+          end
+        end
+      end
+    end
+    object Matrix: TTabSheet
+      Caption = 'Matrix'
+      ClientHeight = 255
+      ClientWidth = 1131
+      ImageIndex = 27
+      object MatrixTable: TVirtualStringTree
+        Left = 0
+        Height = 255
+        Top = 0
+        Width = 1131
+        Align = alClient
+        Header.AutoSizeIndex = 0
+        Header.Columns = <        
+          item
+            Position = 0
+            Text = '                   '
+            Width = 120
+          end>
+        Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+        Header.ParentFont = True
+        Header.SortDirection = sdDescending
+        Header.Style = hsPlates
+        NodeDataSize = 4
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+        TreeOptions.AnimationOptions = [toAnimatedToggle]
+        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+        TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+        TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+        TreeOptions.SelectionOptions = [toExtendedFocus]
+        OnBeforeCellPaint = MatrixTableBeforeCellPaint
+        OnCompareNodes = MatrixTableCompareNodes
+        OnGetText = MatrixTableGetText
+        OnHeaderClick = MatrixTableHeaderClick
+        OnInitNode = MatrixTableInitNode
+      end
+    end
+    object TabSheetOptions: TTabSheet
+      Caption = 'Options'
+      ClientHeight = 255
+      ClientWidth = 1131
+      ImageIndex = 25
+      object pcOptions: TPageControl
+        Left = 0
+        Height = 255
+        Top = 0
+        Width = 1131
+        ActivePage = tsOptions
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object tsOptions: TTabSheet
+          Caption = 'Options'
+          ClientHeight = 223
+          ClientWidth = 1123
+          ImageIndex = 1
+          object BBRuleModeOptions: TGroupBox
+            Left = 620
+            Height = 563
+            Top = 14
+            Width = 445
+            Caption = 'Branch Bound'
+            ClientHeight = 539
+            ClientWidth = 441
+            TabOrder = 0
+            object Label1: TLabel
+              Left = 220
+              Height = 19
+              Top = 68
+              Width = 85
+              Caption = 'BB Rule Select'
+              ParentColor = False
+            end
+            object Label2: TLabel
+              Left = 12
+              Height = 19
+              Top = 8
+              Width = 81
+              Caption = 'BB Floor First'
+              ParentColor = False
+            end
+            object Label4: TLabel
+              Left = 228
+              Height = 19
+              Top = 124
+              Width = 72
+              Caption = 'Depth Limit'
+              ParentColor = False
+            end
+            object Label15: TLabel
+              Left = 232
+              Height = 19
+              Top = 184
+              Width = 66
+              Caption = 'Obj Bound'
+              ParentColor = False
+            end
+            object CheckBox9: TCheckBox
+              Left = 17
+              Height = 23
+              Top = 72
+              Width = 119
+              Caption = 'Weight Reverse'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 0
+            end
+            object CheckBox10: TCheckBox
+              Tag = 1
+              Left = 17
+              Height = 23
+              Top = 100
+              Width = 117
+              Caption = 'Branch Reverse'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 1
+            end
+            object CheckBox11: TCheckBox
+              Tag = 2
+              Left = 17
+              Height = 23
+              Top = 128
+              Width = 68
+              Caption = 'Greedy'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 2
+            end
+            object CheckBox12: TCheckBox
+              Tag = 3
+              Left = 17
+              Height = 23
+              Top = 156
+              Width = 101
+              Caption = 'Pseudo Cost'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+            object CheckBox13: TCheckBox
+              Tag = 4
+              Left = 16
+              Height = 23
+              Top = 184
+              Width = 92
+              Caption = 'Depth First'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 4
+            end
+            object CheckBox14: TCheckBox
+              Tag = 5
+              Left = 17
+              Height = 23
+              Top = 212
+              Width = 91
+              Caption = 'Randomize'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 5
+            end
+            object CheckBox15: TCheckBox
+              Tag = 6
+              Left = 17
+              Height = 23
+              Top = 240
+              Width = 50
+              Caption = 'Gub'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 6
+            end
+            object CheckBox16: TCheckBox
+              Tag = 7
+              Left = 16
+              Height = 23
+              Top = 268
+              Width = 77
+              Caption = 'Dynamic'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 7
+            end
+            object CheckBox17: TCheckBox
+              Tag = 8
+              Left = 17
+              Height = 23
+              Top = 296
+              Width = 67
+              Caption = 'Restart'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 8
+            end
+            object CheckBox58: TCheckBox
+              Tag = 9
+              Left = 16
+              Height = 23
+              Top = 328
+              Width = 102
+              Caption = 'Breadth First'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 9
+            end
+            object CheckBox60: TCheckBox
+              Tag = 10
+              Left = 18
+              Height = 23
+              Top = 356
+              Width = 90
+              Caption = 'AutoOrder'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 10
+            end
+            object CheckBox68: TCheckBox
+              Tag = 11
+              Left = 17
+              Height = 23
+              Top = 384
+              Width = 95
+              Caption = 'RCostFixing'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 11
+            end
+            object CheckBox69: TCheckBox
+              Tag = 12
+              Left = 17
+              Height = 23
+              Top = 412
+              Width = 85
+              Caption = 'StrongInit'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 12
+            end
+            object BBRuleSelectOption: TComboBox
+              Left = 240
+              Height = 27
+              Hint = 'Select lowest indexed non-integer column'
+              Top = 92
+              Width = 180
+              ItemHeight = 19
+              ItemIndex = 0
+              Items.Strings = (
+                'First'
+                'Gap'
+                'Range'
+                'Fraction'
+                'Pseudo Cost'
+                'Pseudo Non Int'
+                'Pseudo Ratio'
+                'User'
+              )
+              OnChange = BBRuleSelectOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 13
+              Text = 'First'
+            end
+            object BBFloorFirstOption: TComboBox
+              Left = 48
+              Height = 27
+              Hint = 'Take floor branch first'
+              Top = 32
+              Width = 196
+              ItemHeight = 19
+              ItemIndex = 1
+              Items.Strings = (
+                'Ceiling'
+                'Floor'
+                'Automatic'
+                'Default'
+              )
+              OnChange = BBFloorFirstOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 14
+              Text = 'Floor'
+            end
+            object DepthLimitOption: TEdit
+              Left = 240
+              Height = 27
+              Hint = 'Sets the maximum branch-and-bound depth.'
+              Top = 147
+              Width = 179
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 15
+              Text = '-50'
+            end
+            object ObjBoundOption: TEdit
+              Left = 240
+              Height = 27
+              Hint = 'Set initial "at least better than" guess for objective function.'
+              Top = 216
+              Width = 179
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 16
+            end
+          end
+          object ScaleOptions: TGroupBox
+            Left = 14
+            Height = 563
+            Top = 14
+            Width = 297
+            Caption = 'Scale'
+            ClientHeight = 539
+            ClientWidth = 293
+            TabOrder = 1
+            object Label9: TLabel
+              Left = 12
+              Height = 19
+              Top = 8
+              Width = 63
+              Caption = 'Scale Type'
+              ParentColor = False
+            end
+            object Label5: TLabel
+              Left = 12
+              Height = 19
+              Top = 64
+              Width = 70
+              Caption = 'Scale Mode'
+              ParentColor = False
+            end
+            object Label22: TLabel
+              Left = 12
+              Height = 19
+              Top = 312
+              Width = 64
+              Caption = 'Scale Limit'
+              ParentColor = False
+            end
+            object CheckBox51: TCheckBox
+              Tag = 4
+              Left = 44
+              Height = 23
+              Hint = 'also scaling integer variables'
+              Top = 200
+              Width = 74
+              HelpContext = 3
+              Caption = 'Integers'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 4
+            end
+            object CheckBox50: TCheckBox
+              Tag = 3
+              Left = 44
+              Height = 23
+              Hint = 'Make sure that no scaled number is above 1'
+              Top = 172
+              Width = 88
+              HelpContext = 3
+              Caption = 'Equilibrate'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 3
+            end
+            object CheckBox49: TCheckBox
+              Tag = 2
+              Left = 45
+              Height = 23
+              Hint = 'also do Power scaling'
+              Top = 144
+              Width = 70
+              HelpContext = 3
+              Caption = 'Power2'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+            object CheckBox48: TCheckBox
+              Tag = 1
+              Left = 45
+              Height = 23
+              Hint = 'Scale to convergence using logarithmic mean of all values'
+              Top = 116
+              Width = 96
+              HelpContext = 3
+              Caption = 'Logarithmic'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 1
+            end
+            object CheckBox47: TCheckBox
+              Left = 45
+              Height = 23
+              Top = 88
+              Width = 84
+              HelpContext = 3
+              Caption = 'Quadratic'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 0
+            end
+            object ScaleTypeOption: TComboBox
+              Left = 44
+              Height = 27
+              Hint = 'Linear scaling'
+              Top = 32
+              Width = 187
+              HelpContext = 3
+              ItemHeight = 19
+              ItemIndex = 0
+              Items.Strings = (
+                'None (Linear)'
+                'Extreme'
+                'Range'
+                'Mean'
+                'Geometric'
+                'Future1'
+                'Future2'
+                'CurtisreId'
+              )
+              OnChange = ScaleTypeOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 8
+              Text = 'None (Linear)'
+            end
+            object CheckBox59: TCheckBox
+              Tag = 5
+              Left = 44
+              Height = 23
+              Hint = 'also scaling integer variables'
+              Top = 228
+              Width = 94
+              HelpContext = 3
+              Caption = 'DynUpdate'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 5
+            end
+            object CheckBox70: TCheckBox
+              Tag = 6
+              Left = 45
+              Height = 23
+              Top = 256
+              Width = 85
+              HelpContext = 3
+              Caption = 'RowsOnly'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 6
+            end
+            object CheckBox71: TCheckBox
+              Tag = 7
+              Left = 45
+              Height = 23
+              Top = 284
+              Width = 79
+              HelpContext = 3
+              Caption = 'ColsOnly'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 7
+            end
+            object ScaleLimitOption: TEdit
+              Left = 44
+              Height = 27
+              Hint = 'Sets the relative scaling convergence criterion for the active scaling mode; the integer part specifies the maximum number of iterations.'
+              Top = 336
+              Width = 172
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 9
+            end
+          end
+          object PivotModeOption: TGroupBox
+            Left = 324
+            Height = 563
+            Top = 14
+            Width = 288
+            Caption = 'Pivot'
+            ClientHeight = 539
+            ClientWidth = 284
+            TabOrder = 2
+            object Label6: TLabel
+              Left = 16
+              Height = 19
+              Top = 396
+              Width = 61
+              Caption = 'Max Pivot'
+              ParentColor = False
+            end
+            object Label7: TLabel
+              Left = 16
+              Height = 19
+              Top = 8
+              Width = 61
+              Caption = 'Pivot Rule'
+              ParentColor = False
+            end
+            object CheckBox32: TCheckBox
+              Left = 40
+              Height = 23
+              Hint = 'In case of Steepest Edge, fall back to DEVEX in primal'
+              Top = 64
+              Width = 118
+              Caption = 'Primal Fall Back'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+            object CheckBox33: TCheckBox
+              Tag = 1
+              Left = 40
+              Height = 23
+              Hint = 'Enable multiple pricing'
+              Top = 88
+              Width = 74
+              Caption = 'Multiple'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 1
+            end
+            object CheckBox34: TCheckBox
+              Tag = 2
+              Left = 40
+              Height = 23
+              Hint = 'Enable partial pricing'
+              Top = 116
+              Width = 62
+              Caption = 'Partial'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+            object CheckBox35: TCheckBox
+              Tag = 3
+              Left = 40
+              Height = 23
+              Hint = 'Temporarily use First Index if cycling is detected '
+              Top = 144
+              Width = 78
+              Caption = 'Adaptive'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 3
+            end
+            object CheckBox36: TCheckBox
+              Tag = 4
+              Left = 40
+              Height = 23
+              Top = 172
+              Width = 65
+              Caption = 'Hybrid'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 4
+            end
+            object CheckBox37: TCheckBox
+              Tag = 5
+              Left = 40
+              Height = 23
+              Hint = 'Adds a small randomization effect to the selected pricer'
+              Top = 200
+              Width = 91
+              Caption = 'Randomize'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 5
+            end
+            object CheckBox52: TCheckBox
+              Tag = 6
+              Left = 40
+              Height = 23
+              Hint = 'Detect and use data on the block structure of the model'
+              Top = 228
+              Width = 118
+              Caption = 'AutoPartialCols'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 6
+            end
+            object CheckBox53: TCheckBox
+              Tag = 7
+              Left = 40
+              Height = 23
+              Hint = 'Detect and use data on the block structure of the model'
+              Top = 256
+              Width = 124
+              Caption = 'AutoPartialRows'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 7
+            end
+            object CheckBox54: TCheckBox
+              Tag = 8
+              Left = 40
+              Height = 23
+              Hint = 'Scan entering/leaving columns left rather than right'
+              Top = 284
+              Width = 78
+              Caption = 'LoopLeft'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 8
+            end
+            object CheckBox55: TCheckBox
+              Tag = 9
+              Left = 40
+              Height = 23
+              Hint = 'Scan entering/leaving columns alternatingly left/right'
+              Top = 312
+              Width = 111
+              Caption = 'LoopAlternate'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 9
+            end
+            object CheckBox56: TCheckBox
+              Tag = 10
+              Left = 40
+              Height = 23
+              Top = 340
+              Width = 112
+              Caption = 'HarrisTwoPass'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 10
+            end
+            object MaxPivotOption: TEdit
+              Left = 40
+              Height = 27
+              Hint = 'Sets the maximum number of pivots between a re-inversion of the matrix'
+              Top = 420
+              Width = 203
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 11
+              Text = '42'
+            end
+            object PivotRuleOption: TComboBox
+              Left = 40
+              Height = 27
+              Hint = 'Devex pricing from Paula Harris'
+              Top = 32
+              Width = 212
+              ItemHeight = 19
+              ItemIndex = 2
+              Items.Strings = (
+                'First Index'
+                'Dantzig'
+                'Devex'
+                'Steepest Edge'
+              )
+              OnChange = PivotRuleOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 12
+              Text = 'Devex'
+            end
+            object CheckBox83: TCheckBox
+              Tag = 12
+              Left = 40
+              Height = 23
+              Top = 368
+              Width = 114
+              Caption = 'True Norm Init'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 13
+            end
+          end
+        end
+        object tsGeneral: TTabSheet
+          Caption = 'Advanced'
+          ClientHeight = 125
+          ClientWidth = 1123
+          object Label3: TLabel
+            Left = 232
+            Height = 19
+            Top = 368
+            Width = 69
+            Caption = 'Basis Crash'
+            ParentColor = False
+          end
+          object Label10: TLabel
+            Left = 232
+            Height = 19
+            Top = 404
+            Width = 79
+            Caption = 'Simplex Type'
+            ParentColor = False
+          end
+          object Label11: TLabel
+            Left = 564
+            Height = 19
+            Top = 52
+            Width = 84
+            Caption = 'Solution Limit'
+            ParentColor = False
+          end
+          object Label13: TLabel
+            Left = 564
+            Height = 19
+            Top = 84
+            Width = 50
+            Caption = 'Timeout'
+            ParentColor = False
+          end
+          object Label16: TLabel
+            Left = 564
+            Height = 19
+            Top = 116
+            Width = 42
+            Caption = 'Infinite'
+            ParentColor = False
+          end
+          object Label17: TLabel
+            Left = 564
+            Height = 19
+            Top = 148
+            Width = 30
+            Caption = 'EPSB'
+            ParentColor = False
+          end
+          object Label18: TLabel
+            Left = 564
+            Height = 19
+            Top = 180
+            Width = 32
+            Caption = 'EPSD'
+            ParentColor = False
+          end
+          object Label19: TLabel
+            Left = 564
+            Height = 19
+            Top = 212
+            Width = 36
+            Caption = 'EPSEL'
+            ParentColor = False
+          end
+          object Label20: TLabel
+            Left = 564
+            Height = 19
+            Top = 276
+            Width = 72
+            Caption = 'EPS Perturb'
+            ParentColor = False
+          end
+          object Label21: TLabel
+            Left = 564
+            Height = 19
+            Top = 308
+            Width = 57
+            Caption = 'EPS Pivot'
+            ParentColor = False
+          end
+          object Label23: TLabel
+            Left = 808
+            Height = 19
+            Top = 240
+            Width = 88
+            Caption = 'Break at Value'
+            ParentColor = False
+          end
+          object Label24: TLabel
+            Left = 564
+            Height = 19
+            Top = 340
+            Width = 67
+            Caption = 'Neg Range'
+            ParentColor = False
+          end
+          object Label12: TLabel
+            Left = 564
+            Height = 19
+            Top = 244
+            Width = 43
+            Caption = 'EPS Int'
+            ParentColor = False
+          end
+          object AntiDegenOptions: TGroupBox
+            Left = 340
+            Height = 343
+            Top = 14
+            Width = 207
+            Caption = 'Anti Degen'
+            ClientHeight = 319
+            ClientWidth = 203
+            TabOrder = 1
+            object CheckBox1: TCheckBox
+              Left = 11
+              Height = 23
+              Hint = 'Check if there are equality slacks in the basis and try to drive them out in order to reduce chance of degeneracy in Phase 1'
+              Top = 8
+              Width = 84
+              HelpContext = 1
+              Caption = 'Fixed vars'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+            object CheckBox2: TCheckBox
+              Tag = 1
+              Left = 11
+              Height = 23
+              Top = 36
+              Width = 113
+              HelpContext = 1
+              Caption = 'Column Check'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 1
+            end
+            object CheckBox3: TCheckBox
+              Tag = 2
+              Left = 11
+              Height = 23
+              Top = 64
+              Width = 68
+              HelpContext = 1
+              Caption = 'Stalling'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 2
+            end
+            object CheckBox4: TCheckBox
+              Tag = 3
+              Left = 11
+              Height = 23
+              Top = 92
+              Width = 98
+              HelpContext = 1
+              Caption = 'Num Failure'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+            object CheckBox5: TCheckBox
+              Tag = 4
+              Left = 11
+              Height = 23
+              Top = 120
+              Width = 81
+              HelpContext = 1
+              Caption = 'Lost Feas'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 4
+            end
+            object CheckBox6: TCheckBox
+              Tag = 5
+              Left = 11
+              Height = 23
+              Top = 148
+              Width = 81
+              HelpContext = 1
+              Caption = 'Infeasible'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 5
+            end
+            object CheckBox7: TCheckBox
+              Tag = 6
+              Left = 11
+              Height = 23
+              Top = 176
+              Width = 77
+              HelpContext = 1
+              Caption = 'Dynamic'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 6
+            end
+            object CheckBox8: TCheckBox
+              Tag = 7
+              Left = 11
+              Height = 23
+              Top = 204
+              Width = 82
+              HelpContext = 1
+              Caption = 'DuringBB'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 7
+            end
+            object CheckBox57: TCheckBox
+              Tag = 8
+              Left = 11
+              Height = 23
+              Top = 232
+              Width = 92
+              HelpContext = 1
+              Caption = 'RhsPerturb'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 8
+            end
+            object CheckBox61: TCheckBox
+              Tag = 9
+              Left = 11
+              Height = 23
+              Top = 260
+              Width = 85
+              HelpContext = 1
+              Caption = 'BoundFlip'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 9
+            end
+          end
+          object PresolveOptions: TGroupBox
+            Left = 0
+            Height = 343
+            Top = 14
+            Width = 328
+            Caption = 'Presolve'
+            ClientHeight = 319
+            ClientWidth = 324
+            TabOrder = 0
+            object CheckBox38: TCheckBox
+              Left = 12
+              Height = 23
+              Hint = 'Presolve rows'
+              Top = 8
+              Width = 56
+              HelpContext = 2
+              Caption = 'Rows'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+            object CheckBox39: TCheckBox
+              Tag = 1
+              Left = 12
+              Height = 23
+              Hint = 'Presolve columns'
+              Top = 36
+              Width = 50
+              HelpContext = 2
+              Caption = 'Cols'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 1
+            end
+            object CheckBox40: TCheckBox
+              Tag = 2
+              Left = 12
+              Height = 23
+              Hint = 'Eliminate linearly dependent rows'
+              Top = 64
+              Width = 65
+              HelpContext = 2
+              Caption = 'Lindep'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+            object CheckBox41: TCheckBox
+              Tag = 3
+              Left = 12
+              Height = 23
+              Top = 92
+              Width = 88
+              HelpContext = 2
+              Caption = 'Aggregate'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+            object CheckBox42: TCheckBox
+              Tag = 4
+              Left = 12
+              Height = 23
+              Top = 120
+              Width = 69
+              HelpContext = 2
+              Caption = 'Sparser'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 4
+            end
+            object CheckBox43: TCheckBox
+              Tag = 5
+              Left = 12
+              Height = 23
+              Hint = 'Convert constraints to SOSes (only SOS1 handled)'
+              Top = 148
+              Width = 49
+              HelpContext = 2
+              Caption = 'SOS'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 5
+            end
+            object CheckBox44: TCheckBox
+              Tag = 6
+              Left = 12
+              Height = 23
+              Hint = 'If the phase 1 solution process finds that a constraint is redundant then this constraint is deleted'
+              Top = 176
+              Width = 97
+              HelpContext = 2
+              Caption = 'Reduce MIP'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 6
+            end
+            object CheckBox45: TCheckBox
+              Tag = 19
+              Left = 172
+              Height = 23
+              Top = 232
+              Width = 58
+              HelpContext = 2
+              Caption = 'Duals'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 19
+            end
+            object CheckBox46: TCheckBox
+              Tag = 20
+              Left = 172
+              Height = 23
+              Top = 260
+              Width = 90
+              HelpContext = 2
+              Caption = 'Sens Duals'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 20
+            end
+            object CheckBox62: TCheckBox
+              Tag = 7
+              Left = 12
+              Height = 23
+              Top = 204
+              Width = 82
+              HelpContext = 2
+              Caption = 'KnapSack'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 7
+            end
+            object CheckBox63: TCheckBox
+              Tag = 8
+              Left = 12
+              Height = 23
+              Top = 232
+              Width = 72
+              HelpContext = 2
+              Caption = 'Elimeq2'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 8
+            end
+            object CheckBox64: TCheckBox
+              Tag = 9
+              Left = 12
+              Height = 23
+              Top = 260
+              Width = 95
+              HelpContext = 2
+              Caption = 'ImpliedFree'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 9
+            end
+            object CheckBox65: TCheckBox
+              Tag = 10
+              Left = 12
+              Height = 23
+              Top = 288
+              Width = 101
+              HelpContext = 2
+              Caption = 'Reduce GCD'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 10
+            end
+            object CheckBox66: TCheckBox
+              Tag = 11
+              Left = 172
+              Height = 23
+              Top = 8
+              Width = 76
+              HelpContext = 2
+              Caption = 'ProbeFix'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 11
+            end
+            object CheckBox67: TCheckBox
+              Tag = 12
+              Left = 172
+              Height = 23
+              Top = 36
+              Width = 104
+              HelpContext = 2
+              Caption = 'ProbeReduce'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 12
+            end
+            object CheckBox72: TCheckBox
+              Tag = 13
+              Left = 172
+              Height = 23
+              Top = 64
+              Width = 110
+              HelpContext = 2
+              Caption = 'RowDominate'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 13
+            end
+            object CheckBox73: TCheckBox
+              Tag = 14
+              Left = 172
+              Height = 23
+              Top = 92
+              Width = 104
+              HelpContext = 2
+              Caption = 'ColDominate'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 14
+            end
+            object CheckBox74: TCheckBox
+              Tag = 15
+              Left = 172
+              Height = 23
+              Top = 120
+              Width = 96
+              Caption = 'MergeRows'
+              TabOrder = 15
+            end
+            object CheckBox79: TCheckBox
+              Tag = 16
+              Left = 172
+              Height = 23
+              Top = 148
+              Width = 95
+              Caption = 'Implied SLK'
+              TabOrder = 16
+            end
+            object CheckBox80: TCheckBox
+              Tag = 17
+              Left = 172
+              Height = 23
+              Top = 176
+              Width = 88
+              Caption = 'ColFixDual'
+              TabOrder = 17
+            end
+            object CheckBox81: TCheckBox
+              Tag = 18
+              Left = 172
+              Height = 23
+              Top = 204
+              Width = 70
+              Caption = 'Bounds'
+              TabOrder = 18
+            end
+          end
+          object BasisCrashOption: TComboBox
+            Left = 328
+            Height = 27
+            Top = 364
+            Width = 219
+            ItemHeight = 19
+            ItemIndex = 0
+            Items.Strings = (
+              'Nothing'
+              'Non Basic Bounds'
+              'Most Feasible'
+              'Least Degenerate'
+            )
+            OnClick = OptionCheckBoxClick
+            Style = csDropDownList
+            TabOrder = 2
+            Text = 'Nothing'
+          end
+          object IgnoreIntegerOption: TCheckBox
+            Left = 808
+            Height = 23
+            Hint = 'Specifies if Integer restrictions must be ignored.'
+            Top = 148
+            Width = 183
+            Caption = 'Ignore Integer restrictions'
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 19
+          end
+          object BoundsTighterOption: TCheckBox
+            Left = 808
+            Height = 23
+            Hint = 'Specifies if set bounds may only be tighter or also less restrictive.'
+            Top = 176
+            Width = 117
+            Caption = 'Bounds Tighter'
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 15
+          end
+          object BreackAtFirstOption: TCheckBox
+            Left = 808
+            Height = 23
+            Hint = 'Specifies if the branch-and-bound algorithm stops at first found solution'
+            Top = 208
+            Width = 101
+            Caption = 'Break at first'
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 16
+          end
+          object SimplexTypeOption: TComboBox
+            Left = 328
+            Height = 27
+            Hint = 'Phase1 Primal, Phase2 Primal'
+            Top = 400
+            Width = 219
+            ItemHeight = 19
+            ItemIndex = 1
+            Items.Strings = (
+              'Primal Primal'
+              'Dual Primal'
+              'Primal Dual'
+              'Dual Dual'
+            )
+            OnChange = SimplexTypeOptionChange
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            Style = csDropDownList
+            TabOrder = 3
+            Text = 'Dual Primal'
+          end
+          object SolutionLimitOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'The solution number that must be returned.'
+            Top = 48
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 4
+            Text = '1'
+          end
+          object TimeoutOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'The number of seconds after which a timeout occurs'
+            Top = 80
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 5
+            Text = '0'
+          end
+          object InfiniteOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the practical value for "infinite".'
+            Top = 112
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 6
+          end
+          object EpsbOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the value that is used as a tolerance for the Right Hand Side (RHS) to determine whether a value should be considered as 0.'
+            Top = 144
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 7
+          end
+          object EpsdOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the value that is used as a tolerance for reduced costs to determine whether a value should be considered as 0.'
+            Top = 176
+            Width = 113
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 8
+          end
+          object EpselOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the value that is used as a tolerance for rounding values to zero.'
+            Top = 208
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 9
+          end
+          object EpsPerturbOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the value that is used as perturbation scalar for degenerative problems.'
+            Top = 272
+            Width = 113
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 11
+          end
+          object EpsPivotOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Specifies the value that is used as a tolerance pivot element to determine whether a value should be considered as 0.'
+            Top = 304
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 12
+          end
+          object BreakAtValueOption: TEdit
+            Left = 852
+            Height = 27
+            Hint = 'Specifies if the branch-and-bound algorithm stops when the object value is better than a given value.'
+            Top = 272
+            Width = 124
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 17
+          end
+          object NegRangeOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'Set negative value below which variables are split into a negative and a positive part.'
+            Top = 336
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 13
+          end
+          object MPSOptions: TGroupBox
+            Left = 788
+            Height = 120
+            Top = 14
+            Width = 220
+            Caption = 'MPS'
+            ClientHeight = 96
+            ClientWidth = 216
+            TabOrder = 14
+            object freeMPSOption: TCheckBox
+              Left = 16
+              Height = 23
+              Hint = 'Read/write in Free MPS format.'
+              Top = 8
+              Width = 127
+              Caption = 'Free MPS format'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+            end
+            object IBMMPSOption: TCheckBox
+              Left = 16
+              Height = 23
+              Hint = 'Interprete integer variables without bounds as binary variables. That is the original IBM standard.'
+              Top = 36
+              Width = 185
+              Caption = 'IBM Integer interpretation'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 1
+            end
+            object NegateObjConstMPSOption: TCheckBox
+              Left = 16
+              Height = 23
+              Hint = 'Interprete the objective constant with an oposite sign.'
+              Top = 64
+              Width = 183
+              Caption = 'Negate objective constant'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 2
+            end
+          end
+          object EpsIntOption: TEdit
+            Left = 660
+            Height = 27
+            Hint = 'tolerance that is used to determine whether a floating-point number is in fact an integer.'
+            Top = 240
+            Width = 112
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 10
+          end
+          object ImproveOptions: TGroupBox
+            Left = 4
+            Height = 140
+            Top = 360
+            Width = 208
+            Caption = 'Improve'
+            ClientHeight = 116
+            ClientWidth = 204
+            TabOrder = 18
+            object CheckBox75: TCheckBox
+              Left = 8
+              Height = 23
+              Top = 8
+              Width = 74
+              Caption = 'Solution'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 0
+            end
+            object CheckBox76: TCheckBox
+              Tag = 1
+              Left = 8
+              Height = 23
+              Top = 36
+              Width = 79
+              Caption = 'DualFeas'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 1
+            end
+            object CheckBox77: TCheckBox
+              Tag = 2
+              Left = 8
+              Height = 23
+              Top = 64
+              Width = 83
+              Caption = 'ThetaGap'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 2
+            end
+            object CheckBox78: TCheckBox
+              Tag = 3
+              Left = 8
+              Height = 23
+              Top = 92
+              Width = 86
+              Caption = 'BBSimplex'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+          end
+        end
+        object tsMessages: TTabSheet
+          Caption = 'Messages'
+          ClientHeight = 125
+          ClientWidth = 1123
+          ImageIndex = 3
+          object Label8: TLabel
+            Left = 236
+            Height = 19
+            Top = 16
+            Width = 51
+            Caption = 'Print Sol'
+            ParentColor = False
+          end
+          object Label14: TLabel
+            Left = 236
+            Height = 19
+            Top = 59
+            Width = 50
+            Caption = 'Verbose'
+            ParentColor = False
+          end
+          object DebugOption: TCheckBox
+            Left = 339
+            Height = 23
+            Top = 103
+            Width = 65
+            Caption = 'Debug'
+            OnClick = OptionCheckBoxClick
+            TabOrder = 3
+          end
+          object LagTraceOption: TCheckBox
+            Left = 339
+            Height = 23
+            Top = 133
+            Width = 82
+            Caption = 'Lag Trace'
+            OnClick = OptionCheckBoxClick
+            TabOrder = 4
+          end
+          object PrintSolOption: TComboBox
+            Left = 339
+            Height = 27
+            Hint = 'Prints the solution (variables) of the lp.'
+            Top = 14
+            Width = 267
+            ItemHeight = 19
+            ItemIndex = 0
+            Items.Strings = (
+              'False'
+              'True'
+              'Automatic'
+              'Dynamic'
+            )
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            Style = csDropDownList
+            TabOrder = 1
+            Text = 'False'
+          end
+          object TraceOption: TCheckBox
+            Left = 339
+            Height = 23
+            Top = 162
+            Width = 56
+            Caption = 'Trace'
+            OnClick = OptionCheckBoxClick
+            TabOrder = 5
+          end
+          object VerboseOption: TComboBox
+            Left = 339
+            Height = 27
+            Hint = 'Normal messages are reported. This is the default.'
+            Top = 59
+            Width = 267
+            ItemHeight = 19
+            ItemIndex = 4
+            Items.Strings = (
+              'Neutral'
+              'Critical'
+              'Severe'
+              'Important'
+              'Normal'
+              'Detailed'
+              'Full'
+            )
+            OnChange = VerboseOptionChange
+            OnClick = OptionCheckBoxClick
+            ParentShowHint = False
+            ShowHint = True
+            Style = csDropDownList
+            TabOrder = 2
+            Text = 'Normal'
+          end
+          object MessagesOptions: TGroupBox
+            Left = 14
+            Height = 459
+            Top = 14
+            Width = 208
+            Caption = 'Messages'
+            ClientHeight = 435
+            ClientWidth = 204
+            TabOrder = 0
+            object CheckBox18: TCheckBox
+              Left = 14
+              Height = 23
+              Top = 30
+              Width = 75
+              Caption = 'Presolve'
+              Enabled = False
+              OnClick = OptionCheckBoxClick
+              TabOrder = 0
+            end
+            object CheckBox19: TCheckBox
+              Tag = 1
+              Left = 14
+              Height = 23
+              Top = 59
+              Width = 76
+              Caption = 'Iteration'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 1
+            end
+            object CheckBox20: TCheckBox
+              Tag = 2
+              Left = 14
+              Height = 23
+              Top = 89
+              Width = 60
+              Caption = 'Invert'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 2
+            end
+            object CheckBox21: TCheckBox
+              Tag = 3
+              Left = 14
+              Height = 23
+              Top = 117
+              Width = 91
+              Caption = 'Lp Feasible'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+            object CheckBox22: TCheckBox
+              Tag = 4
+              Left = 14
+              Height = 23
+              Top = 147
+              Width = 92
+              Caption = 'Lp Optimal'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 4
+            end
+            object CheckBox23: TCheckBox
+              Tag = 5
+              Left = 14
+              Height = 23
+              Top = 177
+              Width = 76
+              Caption = 'Lp Equal'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 5
+            end
+            object CheckBox24: TCheckBox
+              Tag = 6
+              Left = 14
+              Height = 23
+              Top = 206
+              Width = 80
+              Caption = 'Lp Better'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 6
+            end
+            object CheckBox25: TCheckBox
+              Tag = 7
+              Left = 14
+              Height = 23
+              Top = 236
+              Width = 103
+              Caption = 'Mipl Feasible'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 7
+            end
+            object CheckBox26: TCheckBox
+              Tag = 8
+              Left = 14
+              Height = 23
+              Top = 266
+              Width = 88
+              Caption = 'Mipl Equal'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 8
+            end
+            object CheckBox27: TCheckBox
+              Tag = 9
+              Left = 14
+              Height = 23
+              Top = 295
+              Width = 92
+              Caption = 'Mipl Better'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 9
+            end
+            object CheckBox28: TCheckBox
+              Tag = 10
+              Left = 14
+              Height = 23
+              Top = 325
+              Width = 106
+              Caption = 'Mipl Strategy'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 10
+            end
+            object CheckBox29: TCheckBox
+              Tag = 11
+              Left = 14
+              Height = 23
+              Top = 353
+              Width = 104
+              Caption = 'Mipl Optimal'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 11
+            end
+            object CheckBox30: TCheckBox
+              Tag = 12
+              Left = 14
+              Height = 23
+              Top = 383
+              Width = 101
+              Caption = 'Performance'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 12
+            end
+            object CheckBox31: TCheckBox
+              Tag = 13
+              Left = 14
+              Height = 23
+              Top = 413
+              Width = 125
+              Caption = 'Init Pseudo Cost'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 13
+            end
+          end
+        end
+        object tsPlugin: TTabSheet
+          Caption = 'Plugins'
+          ClientHeight = 223
+          ClientWidth = 1123
+          ImageIndex = 4
+          object Label25: TLabel
+            Left = 14
+            Height = 19
+            Top = 14
+            Width = 23
+            Caption = 'BFP'
+            ParentColor = False
+          end
+          object Label26: TLabel
+            Left = 14
+            Height = 19
+            Top = 56
+            Width = 90
+            Caption = 'XLI Data name'
+            ParentColor = False
+          end
+          object Label27: TLabel
+            Left = 12
+            Height = 19
+            Top = 96
+            Width = 72
+            Caption = 'XLI Options'
+            ParentColor = False
+          end
+          object BFPOption: TComboBox
+            Left = 56
+            Height = 27
+            Top = 12
+            Width = 267
+            ItemHeight = 19
+            Items.Strings = (
+              'bfp_etaPFI'
+              'bfp_LUSOL'
+              'bfp_GLPK'
+            )
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            TabOrder = 0
+          end
+          object XLIDataNameOption: TEdit
+            Left = 136
+            Height = 27
+            Top = 52
+            Width = 577
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            TabOrder = 1
+          end
+          object XLIOption: TEdit
+            Left = 136
+            Height = 27
+            Top = 92
+            Width = 577
+            OnExit = OptionCheckBoxClick
+            OnKeyPress = EditOptionChange
+            TabOrder = 2
+          end
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'Result'
+      ClientHeight = 255
+      ClientWidth = 1131
+      ImageIndex = 28
+      object PageControl1: TPageControl
+        Left = 0
+        Height = 255
+        Top = 0
+        Width = 1131
+        ActivePage = TabSheet3
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object TabSheet3: TTabSheet
+          Caption = 'Objective'
+          ClientHeight = 223
+          ClientWidth = 1123
+          object ObjectiveTable: TVirtualStringTree
+            Left = 0
+            Height = 223
+            Top = 0
+            Width = 1123
+            Align = alClient
+            Header.AutoSizeIndex = 0
+            Header.Columns = <            
+              item
+                Position = 0
+                Text = 'Variables'
+                Width = 150
+              end>
+            Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+            Header.ParentFont = True
+            Header.SortDirection = sdDescending
+            Header.Style = hsPlates
+            NodeDataSize = 4
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            TreeOptions.AnimationOptions = [toAnimatedToggle]
+            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+            TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+            TreeOptions.SelectionOptions = [toExtendedFocus]
+            OnBeforeCellPaint = ObjectiveTableBeforeCellPaint
+            OnCompareNodes = ObjectiveTableCompareNodes
+            OnGetText = ObjectiveTableGetText
+            OnHeaderClick = ObjectiveTableHeaderClick
+            OnInitNode = ObjectiveTableInitNode
+          end
+        end
+        object TabSheet4: TTabSheet
+          Caption = 'Constraints'
+          ClientHeight = 223
+          ClientWidth = 1123
+          ImageIndex = 1
+          object ConstraintTable: TVirtualStringTree
+            Left = 0
+            Height = 223
+            Top = 0
+            Width = 1123
+            Align = alClient
+            Header.AutoSizeIndex = 0
+            Header.Columns = <            
+              item
+                Position = 0
+                Text = 'Constraints'
+                Width = 150
+              end>
+            Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+            Header.ParentFont = True
+            Header.SortDirection = sdDescending
+            Header.Style = hsPlates
+            NodeDataSize = 4
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+            TreeOptions.AnimationOptions = [toAnimatedToggle]
+            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+            TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+            TreeOptions.SelectionOptions = [toExtendedFocus]
+            OnBeforeCellPaint = ConstraintTableBeforeCellPaint
+            OnCompareNodes = ConstraintTableCompareNodes
+            OnGetText = ConstraintTableGetText
+            OnHeaderClick = ConstraintTableHeaderClick
+            OnInitNode = ConstraintTableInitNode
+          end
+        end
+        object TabSheet1: TTabSheet
+          Caption = 'Sensitivity'
+          ClientHeight = 223
+          ClientWidth = 1123
+          ImageIndex = 2
+          object PageControl3: TPageControl
+            Left = 0
+            Height = 223
+            Top = 0
+            Width = 1123
+            ActivePage = TabSheet7
+            Align = alClient
+            TabIndex = 0
+            TabOrder = 0
+            object TabSheet7: TTabSheet
+              Caption = 'Objective'
+              ClientHeight = 191
+              ClientWidth = 1115
+              object ObjectiveSensTable: TVirtualStringTree
+                Left = 0
+                Height = 191
+                Top = 0
+                Width = 1115
+                Align = alClient
+                Header.AutoSizeIndex = 0
+                Header.Columns = <                
+                  item
+                    Position = 0
+                    Text = 'Variables'
+                    Width = 150
+                  end>
+                Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+                Header.ParentFont = True
+                Header.SortDirection = sdDescending
+                Header.Style = hsPlates
+                NodeDataSize = 4
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                TreeOptions.AnimationOptions = [toAnimatedToggle]
+                TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+                TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+                TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+                TreeOptions.SelectionOptions = [toExtendedFocus]
+                OnBeforeCellPaint = ObjectiveSensTableBeforeCellPaint
+                OnCompareNodes = ObjectiveSensTableCompareNodes
+                OnGetText = ObjectiveSensTableGetText
+                OnHeaderClick = ObjectiveSensTableHeaderClick
+                OnInitNode = ObjectiveSensTableInitNode
+              end
+            end
+            object TabSheet8: TTabSheet
+              Caption = 'Duals'
+              ClientHeight = 191
+              ClientWidth = 1115
+              ImageIndex = 1
+              object RHSSensTable: TVirtualStringTree
+                Left = 0
+                Height = 191
+                Top = 0
+                Width = 1115
+                Align = alClient
+                Header.AutoSizeIndex = 0
+                Header.Columns = <                
+                  item
+                    Position = 0
+                    Text = 'Variables'
+                    Width = 150
+                  end>
+                Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+                Header.ParentFont = True
+                Header.SortDirection = sdDescending
+                Header.Style = hsPlates
+                NodeDataSize = 4
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+                TreeOptions.AnimationOptions = [toAnimatedToggle]
+                TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+                TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+                TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+                TreeOptions.SelectionOptions = [toExtendedFocus]
+                OnBeforeCellPaint = RHSSensTableBeforeCellPaint
+                OnCompareNodes = RHSSensTableCompareNodes
+                OnGetText = RHSSensTableGetText
+                OnHeaderClick = RHSSensTableHeaderClick
+                OnInitNode = RHSSensTableInitNode
+              end
+            end
+          end
+        end
+      end
+    end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 28
+    Top = 609
+    Width = 1139
+    Panels = <    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 264
+      end>
+    SimplePanel = False
+  end
+  object PageControl2: TPageControl
+    Left = 0
+    Height = 297
+    Top = 312
+    Width = 1139
+    ActivePage = TabSheet5
+    Align = alBottom
+    TabIndex = 0
+    TabOrder = 1
+    object TabSheet5: TTabSheet
+      Caption = 'Log'
+      ClientHeight = 265
+      ClientWidth = 1131
+      inline MemoLog: TSynEdit
+        Left = 0
+        Height = 265
+        Top = 0
+        Width = 1131
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        Font.Quality = fqCleartype
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 0
+        Gutter.Visible = False
+        Gutter.Width = 65
+        Gutter.MouseActions = <>
+        RightGutter.Width = 0
+        RightGutter.MouseActions = <>
+        Keystrokes = <>
+        MouseActions = <>
+        MouseTextActions = <>
+        MouseSelActions = <>
+        VisibleSpecialChars = [vscSpace, vscTabAtLast]
+        ReadOnly = True
+        RightEdge = 0
+        SelectedColor.BackPriority = 50
+        SelectedColor.ForePriority = 50
+        SelectedColor.FramePriority = 50
+        SelectedColor.BoldPriority = 50
+        SelectedColor.ItalicPriority = 50
+        SelectedColor.UnderlinePriority = 50
+        SelectedColor.StrikeOutPriority = 50
+        BracketHighlightStyle = sbhsBoth
+        BracketMatchColor.Background = clNone
+        BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Style = [fsBold]
+        FoldedCodeColor.Background = clNone
+        FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.FrameColor = clGray
+        MouseLinkColor.Background = clNone
+        MouseLinkColor.Foreground = clBlue
+        LineHighlightColor.Background = clNone
+        LineHighlightColor.Foreground = clNone
+        inline SynLeftGutterPartList1: TSynGutterPartList
+          object SynGutterMarks1: TSynGutterMarks
+            Width = 29
+            MouseActions = <>
+          end
+          object SynGutterLineNumber1: TSynGutterLineNumber
+            Width = 17
+            MouseActions = <>
+            MarkupInfo.Background = clBtnFace
+            MarkupInfo.Foreground = clNone
+            DigitCount = 2
+            ShowOnlyLineNumbersMultiplesOf = 1
+            ZeroStart = False
+            LeadingZeros = False
+          end
+          object SynGutterChanges1: TSynGutterChanges
+            Width = 5
+            MouseActions = <>
+            ModifiedColor = 59900
+            SavedColor = clGreen
+          end
+          object SynGutterSeparator1: TSynGutterSeparator
+            Width = 2
+            MouseActions = <>
+            MarkupInfo.Background = clWhite
+            MarkupInfo.Foreground = clGray
+          end
+          object SynGutterCodeFolding1: TSynGutterCodeFolding
+            Width = 12
+            MouseActions = <>
+            MarkupInfo.Background = clNone
+            MarkupInfo.Foreground = clGray
+            MouseActionsExpanded = <>
+            MouseActionsCollapsed = <>
+          end
+        end
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'Messages'
+      ClientHeight = 347
+      ClientWidth = 1131
+      ImageIndex = 1
+      inline MemoMessages: TSynEdit
+        Left = 0
+        Height = 347
+        Top = 0
+        Width = 1131
+        Align = alClient
+        Font.Color = clWindowText
+        Font.Height = -13
+        Font.Name = 'Courier New'
+        Font.Pitch = fpFixed
+        Font.Quality = fqCleartype
+        ParentColor = False
+        ParentFont = False
+        TabOrder = 0
+        Gutter.Visible = False
+        Gutter.Width = 65
+        Gutter.MouseActions = <>
+        RightGutter.Width = 0
+        RightGutter.MouseActions = <>
+        Keystrokes = <>
+        MouseActions = <>
+        MouseTextActions = <>
+        MouseSelActions = <>
+        VisibleSpecialChars = [vscSpace, vscTabAtLast]
+        ReadOnly = True
+        RightEdge = 0
+        SelectedColor.BackPriority = 50
+        SelectedColor.ForePriority = 50
+        SelectedColor.FramePriority = 50
+        SelectedColor.BoldPriority = 50
+        SelectedColor.ItalicPriority = 50
+        SelectedColor.UnderlinePriority = 50
+        SelectedColor.StrikeOutPriority = 50
+        BracketHighlightStyle = sbhsBoth
+        BracketMatchColor.Background = clNone
+        BracketMatchColor.Foreground = clNone
+        BracketMatchColor.Style = [fsBold]
+        FoldedCodeColor.Background = clNone
+        FoldedCodeColor.Foreground = clGray
+        FoldedCodeColor.FrameColor = clGray
+        MouseLinkColor.Background = clNone
+        MouseLinkColor.Foreground = clBlue
+        LineHighlightColor.Background = clNone
+        LineHighlightColor.Foreground = clNone
+        inline SynLeftGutterPartList1: TSynGutterPartList
+          object SynGutterMarks1: TSynGutterMarks
+            Width = 29
+            MouseActions = <>
+          end
+          object SynGutterLineNumber1: TSynGutterLineNumber
+            Width = 17
+            MouseActions = <>
+            MarkupInfo.Background = clBtnFace
+            MarkupInfo.Foreground = clNone
+            DigitCount = 2
+            ShowOnlyLineNumbersMultiplesOf = 1
+            ZeroStart = False
+            LeadingZeros = False
+          end
+          object SynGutterChanges1: TSynGutterChanges
+            Width = 5
+            MouseActions = <>
+            ModifiedColor = 59900
+            SavedColor = clGreen
+          end
+          object SynGutterSeparator1: TSynGutterSeparator
+            Width = 2
+            MouseActions = <>
+            MarkupInfo.Background = clWhite
+            MarkupInfo.Foreground = clGray
+          end
+          object SynGutterCodeFolding1: TSynGutterCodeFolding
+            Width = 12
+            MouseActions = <>
+            MarkupInfo.Background = clNone
+            MarkupInfo.Foreground = clGray
+            MouseActionsExpanded = <>
+            MouseActionsCollapsed = <>
+          end
+        end
+      end
+    end
+  end
+  object ToolBar1: TToolBar
+    Left = 0
+    Height = 35
+    Top = 0
+    Width = 1139
+    Caption = 'ToolBar1'
+    Color = clBtnFace
+    Images = ImageList
+    ParentColor = False
+    TabOrder = 3
+    object ToolButton11: TToolButton
+      Left = 1
+      Hint = 'New'
+      Top = 2
+      Caption = 'New'
+      ImageIndex = 6
+      MenuItem = NewFile
+      OnClick = acNewExecute
+      ParentShowHint = False
+      ShowHint = True
+      Style = tbsDropDown
+    end
+    object ToolButton1: TToolButton
+      Left = 43
+      Top = 2
+      Action = acOpen
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton2: TToolButton
+      Left = 71
+      Top = 2
+      Action = acSave
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton3: TToolButton
+      Left = 99
+      Top = 2
+      Action = acSolve
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton14: TToolButton
+      Left = 127
+      Top = 2
+      Action = acSolveBasis
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton13: TToolButton
+      Left = 155
+      Top = 2
+      Action = acStop
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton4: TToolButton
+      Left = 183
+      Height = 5
+      Top = 2
+      Caption = 'ToolButton4'
+      ImageIndex = 17
+      Style = tbsDivider
+    end
+    object ToolButton9: TToolButton
+      Left = 188
+      Top = 2
+      Action = acUndo
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton10: TToolButton
+      Left = 216
+      Top = 2
+      Action = acRedo
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton12: TToolButton
+      Left = 244
+      Height = 5
+      Top = 2
+      Caption = 'ToolButton12'
+      ImageIndex = 22
+      Style = tbsDivider
+    end
+    object ToolButton5: TToolButton
+      Left = 249
+      Top = 2
+      Action = acFind
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton6: TToolButton
+      Left = 277
+      Top = 2
+      Action = acFindPrev
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton7: TToolButton
+      Left = 305
+      Top = 2
+      Action = acFindNext
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton8: TToolButton
+      Left = 333
+      Top = 2
+      Action = acReplace
+      ParentShowHint = False
+      ShowHint = True
+    end
+    object ToolButton15: TToolButton
+      Left = 361
+      Height = 8
+      Top = 2
+      Caption = 'ToolButton15'
+      ImageIndex = 21
+      Style = tbsSeparator
+    end
+    object Priority: TTrackBar
+      Left = 369
+      Height = 26
+      Hint = 'Thread priority'
+      Top = 2
+      Width = 180
+      Max = 2
+      Min = -3
+      OnChange = PriorityChange
+      Position = 0
+      Font.Color = clWindowText
+      Font.Height = -20
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+    end
+  end
+  object LPSolver: TLPSolver
+    LagTrace = False
+    BoundsTighter = False
+    SimplexType = stDualPrimal
+    BasisCrash = cNothing
+    OnAbort = LPSolverAbort
+    OnLog = LPSolverLog
+    Messages = [mPresolve, mIteration, mInvert, mLpFeasible, mLpBetter, mMiLpFeasible, mMiLpEqual, mMiLpBetter, mMiLpOptimal]
+    OnMessage = LPSolverMessage
+    Verbose = vNormal
+    TimeOut = 0
+    PrintSol = mbFalse
+    Debug = False
+    Trace = False
+    AntiDegen = [adFixedVars, adStalling, adInfeasible]
+    Presolve = []
+    MaxPivot = 250
+    BBRuleSelect = bbPseudoNonIntSelect
+    BBRuleMode = [bbGreedyMode, bbDynamicMode, bbRCostFixing]
+    ScaleType = sGeometric
+    ScaleMode = [sEquilibrate, sIntegers]
+    Improve = []
+    PivotRule = pDevex
+    PivotMode = [pAdaptive]
+    BreakAtFirst = False
+    BBFloorFirst = bAutomatic
+    BBDepthLimit = -50
+    SolutionLimit = 1
+    ObjBound = 1E30
+    Infinite = 1E30
+    Epsb = 1E-10
+    Epsd = 1E-9
+    Epsel = 1E-12
+    EpsPerturb = 0.00001
+    EpsPivot = 2E-7
+    EpsInt = 1E-7
+    ScaleLimit = 5
+    BreakAtValue = -1E30
+    NegRange = -1000000
+    FreeMPS = False
+    IBMMPS = False
+    NegateObjConstMPS = False
+    IgnoreInteger = False
+    OnLoad = LPSolverLoad
+    Left = 732
+    Top = 8
+  end
+  object MainMenu: TMainMenu
+    Images = ImageList
+    Left = 556
+    Top = 8
+    object mFile: TMenuItem
+      Caption = '&File'
+      object NewFile: TMenuItem
+        Caption = 'New'
+        Hint = 'New'
+        ImageIndex = 6
+        object NewLPscript1: TMenuItem
+          Action = acNewLP
+        end
+        object NewMPSscript1: TMenuItem
+          Action = acNewMPS
+        end
+      end
+      object Open1: TMenuItem
+        Action = acOpen
+      end
+      object Save2: TMenuItem
+        Action = acSave
+      end
+      object Save1: TMenuItem
+        Action = acSaveAs
+      end
+      object Export1: TMenuItem
+        Caption = 'Export Source'
+        object ExporttoHtml1: TMenuItem
+          Action = acExportHTML
+        end
+      end
+      object ExportMatrice1: TMenuItem
+        Caption = 'Export Matrix'
+        object acMatExpCsv1: TMenuItem
+          Action = acMatExpCsv
+        end
+        object acMatExpHtml1: TMenuItem
+          Action = acMatExpHtml
+        end
+        object acMatExpRtf1: TMenuItem
+          Caption = 'to RTF ...'
+        end
+      end
+      object Result1: TMenuItem
+        Caption = 'Export Result'
+        object ExporttoCSV1: TMenuItem
+          Action = acObjExpCSV
+        end
+        object ExporttoHTML2: TMenuItem
+          Action = acObjExpHTML
+        end
+        object ExporttoRTF2: TMenuItem
+          Caption = 'Objective to RTF ...'
+        end
+        object N7: TMenuItem
+          Caption = '-'
+        end
+        object ExporttoCSV2: TMenuItem
+          Action = acConExpCSV
+        end
+        object ExporttoHTML3: TMenuItem
+          Action = acConExpHTML
+        end
+        object ExporttoRTF3: TMenuItem
+          Caption = 'Constraints to RTF ...'
+        end
+      end
+      object Sensitivity1: TMenuItem
+        Caption = 'Export Sensitivity'
+        object ObjectivetoCSV1: TMenuItem
+          Action = acSensObjExpCsv
+        end
+        object ObjectivetoHTML1: TMenuItem
+          Action = acSensObjExpHtml
+        end
+        object ObjectivetoRTF1: TMenuItem
+          Caption = 'Objective to RTF ...'
+        end
+        object N6: TMenuItem
+          Caption = '-'
+        end
+        object ObjectivetoCSV2: TMenuItem
+          Action = acSensDualExpCsv
+        end
+        object ObjectivetoHTML2: TMenuItem
+          Action = acSensDualExpHtml
+        end
+        object ObjectivetoRTF2: TMenuItem
+          Caption = 'Dual to RTF ...'
+        end
+      end
+      object Quit1: TMenuItem
+        Action = acQuit
+      end
+    end
+    object Edit1: TMenuItem
+      Caption = '&Edit'
+      object Cut2: TMenuItem
+        Action = acCut
+      end
+      object Copy2: TMenuItem
+        Action = acCopy
+      end
+      object Paste2: TMenuItem
+        Action = acPaste
+      end
+      object N1: TMenuItem
+        Caption = '-'
+      end
+      object Undo1: TMenuItem
+        Action = acUndo
+      end
+      object Redo1: TMenuItem
+        Action = acRedo
+      end
+    end
+    object Search1: TMenuItem
+      Caption = '&Search'
+      object Search2: TMenuItem
+        Action = acFind
+      end
+      object Searchagain1: TMenuItem
+        Action = acFindNext
+      end
+      object Findprevious1: TMenuItem
+        Action = acFindPrev
+      end
+      object Replace1: TMenuItem
+        Action = acReplace
+      end
+      object N4: TMenuItem
+        Caption = '-'
+      end
+      object Gotolinenumber1: TMenuItem
+        Action = acGotoLine
+      end
+    end
+    object Problem1: TMenuItem
+      Caption = '&Action'
+      object Solve1: TMenuItem
+        Action = acSolve
+      end
+      object Statistics1: TMenuItem
+        Action = acStatistics
+        ShortCut = 119
+      end
+      object Stop1: TMenuItem
+        Action = acStop
+      end
+      object LoadBasis1: TMenuItem
+        Action = acSolveBasis
+      end
+      object Savebasis1: TMenuItem
+        Action = acSaveBasis
+      end
+      object SyntaxCheck1: TMenuItem
+        Action = acSyntaxCheck
+      end
+      object Loadscript1: TMenuItem
+        Action = acLoadScript
+      end
+    end
+    object View: TMenuItem
+      Caption = '&View'
+      object LP1: TMenuItem
+        Tag = 1
+        Action = acViewAsLP
+        RadioItem = True
+      end
+      object MPS1: TMenuItem
+        Action = acViewAsMPS
+        RadioItem = True
+      end
+    end
+    object Options1: TMenuItem
+      Caption = 'Options'
+      object Saveasdefault1: TMenuItem
+        Action = acSaveDefaultOptions
+      end
+      object Saveoptions1: TMenuItem
+        Action = acSaveOptions
+        Caption = 'Save IDE options ...'
+      end
+      object Loadoptions1: TMenuItem
+        Action = acLoadOptions
+        Caption = 'Load IDE options ...'
+      end
+      object MenuItem1: TMenuItem
+        Action = acResetOptions
+      end
+      object N5: TMenuItem
+        Caption = '-'
+      end
+      object SolParams1: TMenuItem
+        Caption = 'Solver params ...'
+        OnClick = SolParams1Click
+      end
+    end
+    object Help1: TMenuItem
+      Caption = 'Help'
+      object About1: TMenuItem
+        Action = acAbout
+      end
+      object Help3: TMenuItem
+        Action = acHelpOnline
+      end
+      object Help2: TMenuItem
+        Action = acHelp
+      end
+    end
+  end
+  object OpenDialogScript: TOpenDialog
+    Filter = 'All know files (*.lp; *.lpt; *.mps)|*.lp; *.lpt; *.mps|LP files (*.lp)|*.lp|CPLEX files (*.lpt)|*.lpt|MPS files (*.mps)|*.mps'
+    Left = 608
+    Top = 80
+  end
+  object OpenDialogOptions: TOpenDialog
+    Filter = 'Options files (*.lpo)|*.lpo'
+    Left = 548
+    Top = 80
+  end
+  object SaveDialogOptions: TSaveDialog
+    DefaultExt = '.lpo'
+    Filter = 'Option file (*.lpo)|*.lpo'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 828
+    Top = 80
+  end
+  object SaveDialogScript: TSaveDialog
+    DefaultExt = '.lp'
+    Filter = 'LP files (*.lp)|*.lp|CPLEX files (*.lpt)|*.lpt|MPS files (*.mps)|*.mps'
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 688
+    Top = 80
+  end
+  object ActionList: TActionList
+    Images = ImageList
+    Left = 776
+    Top = 8
+    object acSolve: TAction
+      Caption = '&Solve'
+      Hint = 'Solve'
+      ImageIndex = 22
+      OnExecute = acSolveExecute
+      OnUpdate = acIsNotSolving
+      ShortCut = 120
+    end
+    object acStop: TAction
+      Caption = 'Stop'
+      Enabled = False
+      Hint = 'Stop'
+      ImageIndex = 21
+      OnExecute = acStopExecute
+      OnUpdate = acIsSolving
+      ShortCut = 121
+    end
+    object acOpen: TAction
+      Caption = '&Open ...'
+      Hint = 'Open file'
+      ImageIndex = 7
+      OnExecute = acOpenExecute
+      ShortCut = 16463
+    end
+    object acSaveAs: TAction
+      Caption = '&Save as ...'
+      Hint = 'Save file as ...'
+      ImageIndex = 8
+      OnExecute = acSaveAsExecute
+    end
+    object acSave: TAction
+      Caption = '&Save'
+      Hint = 'Save file'
+      ImageIndex = 8
+      OnExecute = acSaveExecute
+      ShortCut = 16467
+    end
+    object acCut: TAction
+      Caption = 'C&ut'
+      Hint = 'Cut'
+      ImageIndex = 0
+      OnExecute = acCutExecute
+      ShortCut = 16472
+    end
+    object acCopy: TAction
+      Caption = '&Copy'
+      Hint = 'Copy'
+      ImageIndex = 1
+      OnExecute = acCopyExecute
+      ShortCut = 16451
+    end
+    object acPaste: TAction
+      Caption = '&Paste'
+      Hint = 'Paste'
+      ImageIndex = 2
+      OnExecute = acPasteExecute
+      ShortCut = 16470
+    end
+    object acUndo: TAction
+      Caption = '&Undo'
+      Hint = 'Undo'
+      ImageIndex = 3
+      OnExecute = acUndoExecute
+      ShortCut = 16474
+    end
+    object acRedo: TAction
+      Caption = '&Redo'
+      Hint = 'Redo'
+      ImageIndex = 4
+      OnExecute = acRedoExecute
+      ShortCut = 24666
+    end
+    object acNew: TAction
+      Caption = 'New'
+      Hint = 'New'
+      ImageIndex = 6
+      OnExecute = acNewExecute
+    end
+    object acSyntaxCheck: TAction
+      Caption = 'Syntax Check'
+      Hint = 'Syntax Check'
+      ImageIndex = 23
+      OnExecute = acSyntaxCheckExecute
+    end
+    object acFind: TAction
+      Caption = 'Find ...'
+      Hint = 'Find'
+      ImageIndex = 17
+      OnExecute = acFindExecute
+      ShortCut = 16454
+    end
+    object acReplace: TAction
+      Caption = 'Replace ...'
+      Hint = 'Replace'
+      ImageIndex = 20
+      OnExecute = acReplaceExecute
+      ShortCut = 16466
+    end
+    object acFindNext: TAction
+      Caption = 'Find next'
+      Hint = 'Find next'
+      ImageIndex = 18
+      OnExecute = acFindNextExecute
+      ShortCut = 114
+    end
+    object acFindPrev: TAction
+      Caption = 'Find previous'
+      Hint = 'Find previous'
+      ImageIndex = 19
+      OnExecute = acFindPrevExecute
+      ShortCut = 8306
+    end
+    object acNewLP: TAction
+      Caption = 'New LP script'
+      Hint = 'New LP script'
+      ImageIndex = 6
+      OnExecute = acNewLPExecute
+    end
+    object acNewMPS: TAction
+      Caption = 'New MPS script'
+      Hint = 'New MPS script'
+      ImageIndex = 6
+      OnExecute = acNewMPSExecute
+    end
+    object acViewAsLP: TAction
+      Caption = 'LP format'
+      Checked = True
+      OnExecute = acViewAsLPExecute
+      OnUpdate = acIsNotSolving
+    end
+    object acViewAsMPS: TAction
+      Caption = 'MPS format'
+      OnExecute = acViewAsMPSExecute
+      OnUpdate = acIsNotSolving
+    end
+    object acSaveDefaultOptions: TAction
+      Caption = 'Save as default'
+      OnExecute = acSaveDefaultOptionsExecute
+    end
+    object acSaveOptions: TAction
+      Caption = 'Save options ...'
+      ImageIndex = 8
+      OnExecute = acSaveOptionsExecute
+    end
+    object acLoadOptions: TAction
+      Caption = 'Load options ...'
+      ImageIndex = 7
+      OnExecute = acLoadOptionsExecute
+    end
+    object acGotoLine: TAction
+      Caption = 'Goto line number ...'
+      ImageIndex = 24
+      OnExecute = acGotoLineExecute
+      ShortCut = 32839
+    end
+    object acStatistics: TAction
+      Caption = 'Statistics ...'
+      ImageIndex = 29
+      OnExecute = acStatisticsExecute
+    end
+    object acExportHTML: TAction
+      Caption = 'to Html ...'
+      OnExecute = acExportHTMLExecute
+    end
+    object acConExpHTML: TAction
+      Caption = 'Constraints to HTML ...'
+      OnExecute = acConExpHTMLExecute
+    end
+    object acConExpCSV: TAction
+      Caption = 'Constraints to CSV ...'
+      OnExecute = acConExpCSVExecute
+    end
+    object acObjExpHTML: TAction
+      Caption = 'Objective to HTML ...'
+      OnExecute = acObjExpHTMLExecute
+    end
+    object acObjExpCSV: TAction
+      Caption = 'Objective to CSV ...'
+      OnExecute = acObjExpCSVExecute
+    end
+    object acObjCopHTML: TAction
+      Caption = 'Copy as HTML'
+      OnExecute = acObjCopHTMLExecute
+    end
+    object acObjCopCSV: TAction
+      Caption = 'Copy as CSV'
+    end
+    object acLoadScript: TAction
+      Caption = 'Load script'
+      OnExecute = acLoadScriptExecute
+    end
+    object acAbout: TAction
+      Caption = 'About ...'
+      OnExecute = acAboutExecute
+    end
+    object acQuit: TAction
+      Caption = 'Quit'
+      OnExecute = acQuitExecute
+    end
+    object acMatExpHtml: TAction
+      Caption = 'to HTML ...'
+      OnExecute = acMatExpHtmlExecute
+    end
+    object acMatExpCsv: TAction
+      Caption = 'to CSV ...'
+      OnExecute = acMatExpCsvExecute
+    end
+    object acSensObjExpHtml: TAction
+      Caption = 'Objective to HTML ...'
+      OnExecute = acSensObjExpHtmlExecute
+    end
+    object acSensObjExpCsv: TAction
+      Caption = 'Objective to CSV ...'
+      OnExecute = acSensObjExpCsvExecute
+    end
+    object acSensDualExpHtml: TAction
+      Caption = 'Dual to HTML ...'
+      OnExecute = acSensDualExpHtmlExecute
+    end
+    object acSensDualExpCsv: TAction
+      Caption = 'Dual to CSV ...'
+      OnExecute = acSensDualExpCsvExecute
+    end
+    object acSaveBasis: TAction
+      Caption = 'Save basis ...'
+      OnExecute = acSaveBasisExecute
+    end
+    object acSolveBasis: TAction
+      Caption = 'Solve basis ...'
+      Hint = 'Solve basis'
+      ImageIndex = 31
+      OnExecute = acSolveBasisExecute
+      OnUpdate = acIsNotSolving
+    end
+    object acHelpOnline: TAction
+      Caption = 'Help http://lpsolve.sourceforge.net/5.5/'
+      Hint = 'Help'
+      ImageIndex = 30
+      OnExecute = acHelpOnlineExecute
+      ShortCut = 112
+    end
+    object acHelp: TAction
+      Caption = 'Help local lp_solve55.chm'
+      Hint = 'Help'
+      ImageIndex = 30
+      OnExecute = acHelpExecute
+      ShortCut = 113
+    end
+    object acLoadParams: TAction
+      Caption = 'Load Params ...'
+      ImageIndex = 7
+      OnExecute = acLoadParamsExecute
+    end
+    object acSaveParams: TAction
+      Caption = 'Save Params ...'
+      ImageIndex = 8
+      OnExecute = acSaveParamsExecute
+    end
+    object acResetOptions: TAction
+      Caption = 'Reset to solver defaults'
+      OnExecute = acResetOptionsExecute
+    end
+  end
+  object ImageList: TImageList
+    Left = 972
+    Top = 8
+    Bitmap = {
+      4C69210000001000000010000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000A5A5A5FF00000000000000000000000000000000949494FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000008C8484FF000000000000000000000000BDA5ADFFBDBDB5FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000A58484FFBDBDADFF00000000000000005A4A42FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000BDA5ADFF8C7B84FF0000000000000000393929FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000008C8484FFA5A594FF736352FF212931FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000736352FF5A4A42FF393929FF4A5A52FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000005A524AFF393929FF5A4229FFADADADFF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000FF9473FFF76329FFD68463FFD65A29FFD65A31FFD69473FFE7BD
+      ADFF000000000000000000000000000000000000000000000000000000000000
+      0000FF844AFFF76B31FF8C3918FF7B3910FFBD5218FFD65A29FFBD4210FFAD84
+      73FF00000000000000000000000000000000000000000000000000000000E794
+      63FFF77329FFA54210FF732100FF945A4AFFD65A29FF00000000CEAD94FF7321
+      00FF00000000000000000000000000000000000000000000000000000000F773
+      29FF0000000000000000732100FF00000000D65A29FF00000000AD948CFF3908
+      00FF00000000000000000000000000000000000000000000000000000000F763
+      29FF00000000CEA594FF5A2100FF00000000BD734AFFA53910FF210800FF0000
+      00FF00000000000000000000000000000000000000000000000000000000D673
+      4AFFA53910FF732100FF211800FF00000000CEA594FF210808FF210800FFA58C
+      84FF00000000000000000000000000000000000000000000000000000000BDA5
+      94FF7B4210FF210808FF948484FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000DEB5ADFFDEB5ADFFC6B5ADFFC6B5
+      ADFFC6A5ADFFC69C9CFFCEC6D6FF000000000000000000000000000000000000
+      000000000000000000000000000000000000DEB5ADFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFA59C9CFF735A4AFFC6C6C6FF0000000000000000000000000000
+      000000000000000000000000000000000000C6B5ADFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFA59484FFC6BDBDFF5A424AFFB5C6C6FF00000000000000000000
+      000000000000000000000000000000000000C6A5ADFFF7F7F7FFFFD6BDFFFFC6
+      ADFFF7DED6FF8C8484FFF7BDADFFF7B5ADFFF7B5ADFFF7A59CFFF79C84FFF79C
+      84FFDECEC6FF000000000000000000000000A59C9CFFF7F7F7FFF7F7F7FFF7F7
+      F7FFFFEFF7FFF7E7E7FFF7BDADFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF794
+      73FFA53910FFCEBDB5FF0000000000000000A5949CFFF7F7F7FFFFBD9CFFF7A5
+      84FFDE9C73FFDE845AFFF7B59CFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF77B
+      5AFFF7BDADFF8C2110FFC6B5B5FF00000000A59484FFF7F7F7FFFFFFF7FFF7EF
+      F7FFF7E7E7FFF7DED6FFDEA59CFFF7F7F7FFFF9C84FFFF9C84FFF7D6D6FFDE73
+      4AFF8C2110FF8C2110FF731800FF000000008C8484FFFFFFF7FFDE9C73FFDE84
+      5AFFDE845AFFC67B5AFFDE9484FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7E7
+      E7FFF7C6BDFFC69C9CFF731800FF000000008C8484FFFFEFF7FFF7DED6FFDED6
+      D6FFDEC6BDFFDEBDBDFFDE8473FFF7F7F7FFF79473FFDE7B5AFFDE734AFFC65A
+      39FFC65A39FFC69C9CFF731000FF000000008C8484FF081010FF081010FF0810
+      10FF081010FF081010FFC6735AFFF7F7F7FFF7F7F7FFFFEFF7FFF7DED6FFF7C6
+      BDFFF7B5ADFFA59C9CFF5A1000FF000000000000000000000000000000000000
+      00000000000000000000C6634AFFF7F7F7FFDE734AFFC65A39FFC65A39FFC65A
+      39FFC65A39FFA5949CFF5A1000FF000000000000000000000000000000000000
+      00000000000000000000A55239FFFFFFF7FFC69C9CFFC69C9CFFC69C9CFFA59C
+      9CFFA5949CFFA59484FF5A0800FF000000000000000000000000000000000000
+      00000000000000000000A54221FF8C2110FF8C2110FF731800FF731800FF5A10
+      00FF5A1000FF5A0800FF420800FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000084ADBDFF84ADBDFF849CADFF000000000000000000000000000000000000
+      00000000000000000000000000000000000094A5ADFF94A5ADFF94A5ADFF638C
+      94FFA5EFF7FFA5EFF7FF94DEE7FF425A5AFF738484FF848484FF738484FF0000
+      000000000000000000000000000094A5ADFFB5F7F7FFB5F7FFFFA5F7F7FF7394
+      94FFA5F7F7FF6B7B73FF84CECEFF526B73FF315273FF63C6F7FF21B5F7FF5252
+      5AFF00000000000000000000000094A5ADFFB5F7FFFFB5F7FFFF638484FF94CE
+      CEFF94EFF7FF84DEE7FF63CEE7FF5294ADFF424A4AFF217B94FF008CCEFF524A
+      5AFF000000000000000000000000949CADFFB5F7FFFFA5F7FFFF637B84FF636B
+      73FF526B73FF525A5AFF525A5AFF52525AFF424A5AFF216B84FF008CCEFF4239
+      4AFF000000000000000000000000949C94FFB5F7FFFFA5EFFFFF94E7F7FF73D6
+      F7FF109CCEFF109CCEFF109CCEFF1094CEFF008CCEFF008CCEFF008CCEFF3129
+      21FF000000000000000000000000849494FFA5EFF7FF84E7F7FF73DEF7FF52D6
+      F7FF10ADF7FFB59C84FFB59484FFB58C73FFA58473FFA57B5AFF94734AFF946B
+      4AFF000000000000000000000000849494FF94E7F7FF63DEF7FF52CEF7FF31C6
+      F7FF10ADF7FFB59484FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7EFE7FF845A
+      31FF845231FF0000000000000000848C94FF84DEF7FF42CEF7FF31C6F7FF10B5
+      F7FF009CE7FFB58C73FFF7F7F7FFC6AD94FFC6AD94FFC6A594FFF7E7CEFF8452
+      31FFD6CEBDFF634221FF00000000848484FF73D6F7FF31C6F7FF10B5F7FF00A5
+      F7FF009CE7FFA58473FFF7F7F7FFF7F7F7FFF7EFE7FFF7DECEFFE7D6BDFF734A
+      31FF634221FF523921FF423121FF738484FF73CEF7FF10B5F7FF10ADF7FF00A5
+      E7FF0094CEFFA57B5AFFF7F7F7FFC6AD94FFC6AD94FFC6A594FFB59C84FFD6C6
+      ADFFB59C84FFB59C84FF212121FF737B84FF21B5F7FF008CCEFF008CCEFF008C
+      CEFF008CCEFF94734AFFF7EFE7FFF7DECEFFE7D6BDFFE7CEBDFFD6C6ADFFD6B5
+      ADFFD6B5ADFFB59C84FF212121FF00000000637B84FF52525AFF42424AFF3131
+      31FF212121FF946B4AFFF7E7CEFFB59C84FFB59C84FFB59C84FFB59C84FFB59C
+      84FFB59C84FFB59C84FF212121FF000000000000000000000000000000000000
+      000000000000845A31FF212121FF212121FF212121FF212121FF212121FF2121
+      21FF212121FF212121FF212121FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000840000FF840000FF840000FF840000FF0000
+      00000000000000000000000000000000000000000000840000FF000000000000
+      000000000000840000FF840000FF000000000000000000000000000000008400
+      00FF0000000000000000000000000000000000000000840000FF840000FF0000
+      0000840000FF0000000000000000000000000000000000000000000000000000
+      0000840000FF00000000000000000000000000000000840000FF840000FF8400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000840000FF00000000000000000000000000000000840000FF840000FF8400
+      00FF840000FF0000000000000000000000000000000000000000000000000000
+      0000840000FF00000000000000000000000000000000840000FF840000FF8400
+      00FF840000FF840000FF00000000000000000000000000000000000000008400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000008400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000008400
+      00FF840000FF840000FF840000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000840000FF0000
+      0000000000000000000000000000840000FF840000FF00000000000000000000
+      0000840000FF00000000000000000000000000000000840000FF000000000000
+      00000000000000000000000000000000000000000000840000FF000000008400
+      00FF840000FF00000000000000000000000000000000840000FF000000000000
+      0000000000000000000000000000000000000000000000000000840000FF8400
+      00FF840000FF00000000000000000000000000000000840000FF000000000000
+      00000000000000000000000000000000000000000000840000FF840000FF8400
+      00FF840000FF0000000000000000000000000000000000000000840000FF0000
+      000000000000000000000000000000000000840000FF840000FF840000FF8400
+      00FF840000FF0000000000000000000000000000000000000000840000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000000000000000000000000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      00FF000000FF0000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000FF0000000000000000000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF000000FF000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000FF000000FF000000FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF000000FF000000FF000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000FF0000000000000000000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000FF00000000000000000000000000000000000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      00FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000FF00000000000000000000000000000000000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000DEADA5FFDEAD
+      A5FFDEADA5FFDEADA5FFDEADA5FFBDADA5FFBDA5A5FFBD948CFFCEBDB5FF0000
+      0000000000000000000000000000000000000000000000000000DEADA5FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFA58C8CFF000000FFCEBD
+      B5FF000000000000000000000000000000000000000000000000BDADA5FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFA58C7BFFBDBDB5FF0000
+      00FFCEBDB5FF0000000000000000000000000000000000000000BDA5A5FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF847B7BFF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000BDA58CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF847B7BFF847B
+      7BFF000000FF0000000000000000000000000000000000000000BD948CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FF847B
+      7BFF000000FF0000000000000000000000000000000000000000A5948CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7E7E7FF847B
+      7BFF000000FF0000000000000000000000000000000000000000A58C8CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7E7E7FFF7DEE7FF847B
+      7BFF000000FF0000000000000000000000000000000000000000A58C7BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7E7E7FFF7CECEFF847B
+      7BFF000000FF0000000000000000000000000000000000000000847B7BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFF7F7FFF7E7E7FFF7DEE7FFDECECEFF847B
+      7BFF000000FF0000000000000000000000000000000000000000847B7BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7DEE7FFF7CECEFFDEC6B5FF847B
+      7BFF000000FF0000000000000000000000000000000000000000847B7BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7E7E7FFF7DECEFFDEC6CEFFDEBDB5FF847B
+      7BFF000000FF0000000000000000000000000000000000000000847B7BFFF7F7
+      F7FF847B7BFF847B7BFF847B7BFF847B7BFF847B7BFF847B7BFF847B7BFF847B
+      7BFF000000FF0000000000000000000000000000000000000000847B7BFF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000A58C7BFFA5847BFFB594
+      7BFFC6BDADFF0000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000947352FFCEBDADFF000000000000
+      0000A58C7BFFDECEC6FF947352FF00000000637B84FF637B84FF637B84FF637B
+      84FF637B84FF637B84FF00000000000000000000000000000000000000000000
+      0000DEC6C6FF946342FF946342FF637B84FFA5D6E7FFB5F7F7FFB5F7F7FFA5F7
+      FFFFA5EFFFFF637B84FFB5CECEFF000000000000000000000000000000000000
+      0000946342FF946342FF946342FF637B84FFA5F7F7FFB5F7F7FFA5F7FFFFA5EF
+      FFFFA5EFFFFF73DEFFFF637B84FF637B84FF637B84FF637B84FF637B84FF637B
+      84FF000000000000000000000000637B84FFA5EFF7FFA5F7FFFFA5EFFFFFA5EF
+      FFFF84DEFFFF63DEFFFF63DEFFFF63DEFFFF63DEFFFF63DEFFFF63DEFFFF637B
+      84FF000000000000000000000000637B84FFA5EFF7FFA5EFFFFFA5EFFFFF0063
+      9CFF0073BDFF0073BDFF0073BDFF0073BDFF0073BDFF0073BDFF0073BDFF0073
+      BDFF0073BDFF0073BDFF0073BDFF637B84FF94E7F7FFA5EFFFFF84CEE7FF0073
+      BDFF84E7FFFF84E7FFFF84E7FFFF84E7FFFF84E7FFFF84E7FFFF84E7FFFF73DE
+      FFFF73DEFFFF52ADD6FF4A5A63FF637B84FF94E7F7FF94E7FFFF0073BDFF94BD
+      C6FF73DEFFFF63DEFFFF63DEFFFF63DEFFFF63D6FFFF52D6FFFF52CEFFFF42BD
+      F7FF31A5E7FF4A5A63FF00000000637B84FF84DEF7FF84CEE7FF0073BDFF84E7
+      FFFF73D6FFFF63DEFFFF63D6FFFF63D6FFFF52CEFFFF42C6F7FF42BDF7FF31B5
+      F7FF21637BFF6B8494FF00000000637B84FF84D6F7FF0073BDFF94C6D6FF73DE
+      FFFF63D6FFFF63D6FFFF52CEFFFF52C6FFFF42BDF7FF31B5F7FF31ADF7FF0884
+      D6FF214252FF00000000000000004A5A63FF84C6D6FF0073BDFF84E7FFFF63D6
+      FFFF52CEFFFF52CEFFFF42C6F7FF31B5F7FF31ADF7FF21A5E7FF088CD6FF2163
+      7BFF5A5A52FF00000000000000004A5A63FF4A5A63FF73B5D6FF008CD6FF008C
+      D6FF008CD6FF008CC6FF0884C6FF087BADFF087BADFF21739CFF216B8CFF2142
+      52FF0000000000000000000000004A5A63FF4A5A63FF4A5A63FF4A5A63FF525A
+      63FF425252FF424242FF313131FF212118FF211018FF080808FF080000FF0800
+      08FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000F7B5B5FFF7B5B5FFF7ADB5FFF7AD
+      B5FFF7A5B5FFF79C9CFFE7949CFFE78C8CFFE78C8CFFE7848CFFE7737BFFCE6B
+      7BFFCE6B6BFFCE636BFF0000000000000000F7ADB5FFFFC6C6FFFF8C8CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFBD4A
+      42FFAD4A5AFFAD4A5AFF0000000000000000F7ADB5FFFFC6C6FFF7848CFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFBD39
+      31FF4A1821FFAD4A42FF0000000000000000F7A59CFFFFC6C6FFE7737BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7EFE7FFAD39
+      21FFE76B7BFF943942FF0000000000000000F79C9CFFFFC6C6FFE76B6BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7EFE7FFF7DED6FFAD31
+      21FFCE636BFF943942FF0000000000000000E7949CFFFFC6C6FFCE636BFFF7F7
+      F7FFF7F7F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7EFE7FFF7DED6FFE7D6C6FF9429
+      10FFCE5A5AFF943942FF0000000000000000E78C8CFFFFC6C6FFCE5A5AFFF7F7
+      F7FFF7F7F7FFFFFFF7FFF7F7F7FFF7EFE7FFF7DED6FFE7D6C6FFE7CEC6FF9421
+      00FFBD525AFF843142FF0000000000000000E7848CFFFFB5C6FFFFB5B5FFCE52
+      5AFFBD5242FFBD4A42FFBD3931FFAD3921FFAD3121FF942910FF942100FFBD52
+      5AFFBD4A42FF843131FF0000000000000000E7737BFFFFADB5FFFFADB5FFFF9C
+      9CFFF78C8CFFF7847BFFE7737BFFE76B7BFFCE636BFFCE5A6BFFBD525AFFBD4A
+      42FFAD3942FF843131FF0000000000000000CE6B7BFFFFA5B5FFFF9C9CFFF78C
+      8CFF5A4A42FF5A4A42FF5A4A42FF5A4A42FF5A5242FF735A5AFFBD4A42FFAD39
+      42FFAD3131FF732931FF0000000000000000CE6B6BFFFF9C9CFFF78C8CFFF784
+      7BFF5A4A42FF000000FF212921FFF7DED6FFF7E7D6FF736B5AFFAD3131FFAD31
+      31FF942931FF732931FF0000000000000000CE636BFFFF949CFFF7847BFFE773
+      7BFF5A4A42FF212921FF846B6BFFF7E7E7FFF7EFE7FF84736BFF942921FF9429
+      31FF942921FF732131FF0000000000000000CE5A6BFFF78C8CFFE7737BFFAD31
+      10FF211810FFBDB5B5FFBDB5B5FFCEC6C6FFCECEC6FF313942FF942921FF9429
+      21FF942121FF5A2131FF000000000000000000000000BD5A5AFFAD4A42FF9439
+      42FF943942FF943942FF843142FF843131FF843131FF732931FF732131FF7321
+      31FF5A2131FF5A2121FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000E7BDADFFE7BDADFFE7BDADFFE7BD
+      ADFFE7BDADFFCEBDADFFCEADADFFCEA59CFFD6C6BDFF00000000000000000000
+      000000000000000000000000000000000000E7BDADFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFBD9C9CFF392918FFD6C6BDFF000000000000
+      000000000000000000000000000000000000CEBDADFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFBD9C84FFCEC6BDFF392918FFD6C6BDFF0000
+      000000000000000000000000000000000000CEADADFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFA59484FF392918FF392918FF392918FF0000
+      000000000000000000000000000000000000CEAD9CFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7FFFFFFBDC6BDFF949484FF7B7B73FF7B7B84FF393129FF0000
+      000000000000000000000000000000000000CEA59CFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7FFFFFFBDADADFFBDBDBDFFF7E7E7FFF7E7E7FFA5A59CFF525A52FF0000
+      000000000000000000000000000000000000BDA59CFFF7F7F7FFF7F7F7FFF7F7
+      F7FFBDC6BDFFBDBDBDFF0000000000000000FFFFF7FFFFF7E7FFA59484FF9494
+      9CFF00000000000000000000000000000000BD9C9CFFF7F7F7FFF7F7F7FFF7F7
+      F7FF949484FFF7E7E7FF00000000FFFFF7FFFFF7F7FFFFE7E7FFE7BDADFF4A5A
+      63FF00000000000000000000000000000000BD9C84FFF7F7F7FFF7F7F7FFF7F7
+      F7FF948C84FFF7E7E7FFFFFFF7FFFFF7F7FFFFE7E7FFF7D6D6FFCEA59CFF394A
+      52FF00000000000000000000000000000000A59484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFA5A5ADFFBDADADFFFFF7E7FFFFE7E7FFF7D6BDFFF7CEADFF636363FF7B84
+      94FF94ADB5FF000000000000000000000000A59484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFE7DEE7FF7B7B84FFA59C9CFFCEBDADFFCEA59CFF636363FF293939FF397B
+      ADFF528CADFF94ADB5FF0000000000000000A59484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFCED6D6FF7B8C84FF524A52FF394A52FF293952FF105A84FF1094
+      E7FF39C6FFFF527B9CFFADBDCEFF00000000A59484FFF7F7F7FFA59484FFA594
+      84FFA59484FFA59484FFA59484FFA59484FFA59484FF7B7373FF003163FF006B
+      D6FF108CE7FF29A5F7FF294A63FF00000000A59484FF392918FF392918FF3929
+      18FF392918FF392918FF392918FF392918FF392918FF392918FF292929FF0031
+      52FF1063BDFF002952FF94A5ADFF000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000000000084A5
+      B5FF000829FF8494ADFF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000FF000000FF000000FF000000FF000000FF0000
+      00FF00000000840000FF840000FF000000000000000000000000000000000000
+      000000000000000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FF000000FF840000FF840000FF000000000000000000000000000000000000
+      0000000000FFC6C6C6FF000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FF840000FF840000FF000000FF000000FF000000FF000000FF0000
+      00FFC6C6C6FF000000FFC6C6C6FF000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FF840000FF840000FF000000FFF7F7F7FFF7F7F7FF000000FFC6C6
+      C6FF000000FFC6C6C6FF000000FFC6C6C6FF000000FFC6C6C6FFC6C6C6FFC6C6
+      C6FF000000FF840000FF840000FF000000FFF7F7F7FF000000FFC6C6C6FF0000
+      00FFF7F7F7FF000000FFC6C6C6FF000000FFC6C6C6FF000000FF000000FF0000
+      00FF00000000840000FF840000FF000000FFF7F7F7FF000000FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FF000000FFC6C6C6FF000000FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FFF7F7F7FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FF000000FF000000FFF7F7
+      F7FF000000FF000000FF000000FF000000FF000000FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FF000000FF000000FFF7F7
+      F7FF000000FF000000FF000000FF000000FF000000FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF0000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000000000
+      000000000000000000000000000000000000840000FF840000FF840000FF8400
+      00FF840000FF0000000000000000000000FF000000FF00000000000000000000
+      0000000000000000000000000000840000FF840000FF840000FF840000FF8400
+      00FF840000FF840000FF00000000000000FF000000FF000000FF000000000000
+      00000000000000000000840000FF840000FF840000FF00000000000000000000
+      0000840000FF840000FF840000FF000000FF000000FF000000FF000000FF0000
+      00000000000000000000840000FF840000FF840000FF00000000000000000000
+      0000840000FF840000FF840000FF000000FF000000FF000000FF000000FF0000
+      00FF0000000000000000840000FF840000FF840000FF00000000000000000000
+      0000840000FF840000FF840000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000008400
+      00FF840000FF840000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000840000FF8400
+      00FF840000FF0000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF0000000000000000840000FF840000FF8400
+      00FF000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000840000FF840000FF8400
+      00FF000000000000000000000000000000FF000000FF00000000000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000000000
+      00FF000000FF00000000000000000000000000000000840000FF840000FF8400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF00000000000000000000000000000000840000FF840000FF8400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000FF000000FF000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF000000FF00000000000000000000
+      000000000000000000000000000000000000000000FF848484FF000000000000
+      000000000000C6C6C6FFC6C6C6FFC6C6C6FF848484FF000000FF000000000000
+      000000000000000000000000000000000000000000FF0000000000000000FFFF
+      00FFFFFF00FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF000000000000
+      0000000000000000000000000000000000FFC6C6C6FF00000000FFFF00FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF0000
+      0000000000000000000000000000000000FFC6C6C6FF00000000FFFF00FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF0000
+      0000000000000000000000000000000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF0000
+      0000000000000000000000000000000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FF0000
+      000000000000000000000000000000000000000000FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF00000000000000FF000000000000
+      000000000000000000000000000000000000000000FF848484FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FF00000000848484FF000000FF000000000000
+      00000000000000000000000000000000000000000000000000FF000000FFC6C6
+      C6FFC6C6C6FFC6C6C6FF00000000848484FF840000FF840000FF840000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000FF000000FF840000FFC6C6C6FF840000FF840000FF8400
+      00FF000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000840000FFC6C6C6FF840000FF8400
+      00FF840000FF0000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000840000FFC6C6C6FF8400
+      00FF840000FF840000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000840000FFC6C6
+      C6FF840000FF840000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000008400
+      00FF840000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      84FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      84FF000084FF0000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000084FF000084FF0000
+      84FF000084FF000084FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000084FF00000000000000000000
+      84FF000084FF0000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000084FF00000000000000000000
+      84FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000000000000000000000000084FF00000000000000000000
+      000000000000000000000000000000000000000000FF848484FFC6C6C6FFC6C6
+      C6FF848484FF000000FF00000000000000000000000000000000000000000000
+      00000000000000000000000084FF000000FF848484FF0000000000000000C6C6
+      C6FFC6C6C6FF848484FF000000FF000000000000000000000000000000000000
+      84FF0000000000000000000084FF000000FFC6C6C6FF00000000FFFF00FFC6C6
+      C6FFC6C6C6FFC6C6C6FF000000FF000000000000000000000000000084FF0000
+      84FF0000000000000000000084FF000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FF00000000000000FF0000000000000000000084FF000084FF0000
+      84FF000084FF000084FF00000000000000FF848484FFC6C6C6FFC6C6C6FFC6C6
+      C6FF00000000848484FF000000FF000000000000000000000000000084FF0000
+      84FF00000000000000000000000000000000000000FF848484FFC6C6C6FF0000
+      0000848484FF000000FF840000FF000000000000000000000000000000000000
+      84FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF840000FF840000FF840000FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000840000FF840000FF840000FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000840000FF840000FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000FF0000000000000000000000000000000000000000000000000000
+      00FF00000000000000FF000000FF000000FF000000FF000000FF000000000000
+      00FF000000000000000000000000000000000000000000000000000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000000000000000000000000000000000000000000000000000FF0000
+      0000000000FF000000FF000000FF000000FF000000FF00000000000000FF0000
+      00FF000000FF000000FF000000000000000000000000000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000FFC6C6
+      C6FF000000FFC6C6C6FF000000FF00000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FFC6C6C6FF0000
+      00FFC6C6C6FF000000FF000000FF000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FFC6C6
+      C6FF000000FFC6C6C6FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FFC6C6C6FFC6C6C6FF000000FF000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FF848484FF848484FF848484FFC6C6C6FFC6C6C6FF0000
+      00FFC6C6C6FF000000FF00000000000000FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FF00FFFFFF00FFFFFF00FFFFFFC6C6C6FFC6C6C6FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FFC6C6C6FF000000FF0000000000000000000000FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF000000FFC6C6
+      C6FF000000FF00000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848484FF848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FF8484
+      84FF848484FF000000000000000000000000848484FF000000FF00FFFFFF0000
+      000000FFFFFF0000000000FFFFFF0000000000FFFFFF0000000000FFFFFF0000
+      00FF848484FF000000FF0000000000000000848484FF00FFFFFF000000FF00FF
+      FFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFF000000FF00FF
+      FFFF848484FF000000FF0000000000000000848484FF0000000000FFFFFF0000
+      00FF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFF000000FF00FFFFFFFF00
+      FFFF848484FF000000FF0000000000000000848484FF00FFFFFFFF00FFFF00FF
+      FFFF000000FF00FFFFFFFF00FFFF00FFFFFF000000FF00FFFFFFFF00FFFF00FF
+      FFFF848484FF000000FF0000000000000000848484FF0000000000FFFFFF0000
+      00FF00FFFFFF000000FF00FFFFFF000000FF00FFFFFF000000FF00FFFFFFFF00
+      FFFF848484FF000000FF0000000000000000848484FF00FFFFFF000000FF00FF
+      FFFFFF00FFFF00FFFFFF000000FF00FFFFFFFF00FFFF00FFFFFF000000FF00FF
+      FFFF848484FF000000FF0000000000000000848484FF000000FF00FFFFFFFF00
+      FFFF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFF0000
+      00FF848484FF000000FF0000000000000000848484FF00FFFFFFFF00FFFF00FF
+      FFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FFFFFFFF00FFFF00FF
+      FFFF848484FF000000FF0000000000000000848484FF848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FF8484
+      84FF848484FF000000FF000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000639CFF00639CFF0063
+      9CFF00639CFF0000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000639CFFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF00639CFF00000000000000000000000000000000000000000000
+      000000000000000000000000000000639CFFF7F7F7FF9CFFFFFF9CFFFFFF9CFF
+      FFFF9CFFFFFFF7F7F7FF00639CFF00639CFF00639CFF00639CFF00639CFF0063
+      9CFF00000000000000000000000000639CFF94F7FFFF8CF7FFFF8CF7FFFF8CF7
+      FFFF8CF7FFFF8CF7FFFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF0063
+      9CFF636363FF000000000000000000639CFF84EFFFFF84E7FFFF00639CFF0063
+      9CFF00639CFF00639CFF00639CFF00639CFF00639CFF00639CFF00639CFF0063
+      9CFF00639CFF00639CFF0000000000639CFF7BE7FFFF00639CFFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF84E7
+      FFFFF7F7F7FF0873A5FF636363FF00639CFF6BD6FFFF00639CFF9CFFFFFF9CFF
+      FFFF9CFFFFFF9CFFFFFF9CFFFFFF9CFFFFFF9CFFFFFF9CFFFFFF9CFFFFFF5AC6
+      FFFF9CFFFFFF006BA5FF636363FF00639CFF63CEFFFF00639CFF9CFFFFFF94F7
+      FFFF94F7FFFF94F7FFFF94F7FFFF94F7FFFF94F7FFFF94F7FFFF94F7FFFF52BD
+      EFFF9CFFFFFF006B9CFF636363FF00639CFF63CEFFFF00639CFF9CFFFFFF84EF
+      FFFF84EFFFFF84EFFFFF84EFFFFF84EFFFFF84EFFFFF84EFFFFF84EFFFFF4AB5
+      E7FF9CFFFFFF006B9CFF636363FF00639CFF63CEFFFF00639CFF9CFFFFFF7BE7
+      FFFF7BE7FFFF7BE7FFFF7BE7FFFF7BE7FFFF7BE7FFFF7BE7FFFF7BE7FFFF42AD
+      DEFF9CFFFFFF00639CFF636363FF00639CFF63CEFFFF00639CFF9CFFFFFF6BD6
+      FFFF6BD6FFFF6BD6FFFF6BD6FFFF6BD6FFFF6BD6FFFF6BD6FFFF6BD6FFFF39A5
+      D6FF9CFFFFFF00639CFF636363FF0000000000639CFF00639CFF00639CFF0063
+      9CFF00639CFF00639CFF00639CFF00639CFF00639CFF00639CFF00639CFF0063
+      9CFF00639CFF000000FF636363FF0000000000000000636363FF636363FF6363
+      63FF636363FF636363FF636363FF636363FF636363FF636363FF636363FF6363
+      63FF636363FF636363FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000000000000000000000000000FF000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000FFF7F7
+      F7FF000000FF000000000000000000000000000000FF00000000000000FF0000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000000000000000000000000000FF000000FF000000FF0000
+      00000000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000FF00000000000000FFF7F7F7FF000000FF000000FF0000
+      00FF00000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000FF000000FFF7F7F7FF000000FF0000
+      00FF000000FFC6C6C6FF000000FF000000FFF7F7F7FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FFF7F7F7FF000000FF0000
+      00FF000000FFC6C6C6FF000000FF000000FFF7F7F7FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FFF7F7F7FF000000FF0000
+      00FF000000FF000000FF000000FF000000FFF7F7F7FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000FFF7F7F7FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000FF00000000000000FFF7F7F7FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000FF00000000000000FF000000FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000848484FF840000FF840000FF840000FF840000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000848484FF840000FF000000000000000000000000848484FF840000FF0000
+      000000000000840000FF00000000000000000000000000000000000000000000
+      0000840000FF0000000000000000000000000000000000000000000000008400
+      00FF840000FF840000FF00000000000000000000000000000000000000000000
+      0000840000FF0000000000000000000000000000000000000000000000008400
+      00FF840000FF840000FF00000000000000000000000000000000000000000000
+      0000848484FF840000FF00000000000000000000000000000000840000FF8400
+      00FF840000FF840000FF00000000000000000000000000000000000000000000
+      000000000000848484FF840000FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000000000000000000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000000000000000000000000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      00FF000000FF848484FF00000000848484FF000000FF000000FF000000FF0000
+      00000000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000FF000000FF000000FFF7F7F7FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000FF848484FF000000FFF7F7F7FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000000000000000000000000000FFF7F7F7FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF000000000000000000000000000000FFF7F7F7FF000000FF0000
+      00FF0000000000000000000000000000000000000000000000FF000000FF0000
+      00FF000000FF000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000840000FF840000FF840000FF840000FF848484FF00000000000000000000
+      000000000000000000000000000000000000840000FF00000000000000008400
+      00FF848484FF000000000000000000000000840000FF848484FF000000000000
+      000000000000000000000000000000000000840000FF840000FF840000FF0000
+      00000000000000000000000000000000000000000000840000FF000000000000
+      000000000000000000000000000000000000840000FF840000FF840000FF0000
+      00000000000000000000000000000000000000000000840000FF000000000000
+      000000000000000000000000000000000000840000FF840000FF840000FF8400
+      00FF00000000000000000000000000000000840000FF848484FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000840000FF848484FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000000000000000000000000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF000000000000000000000000000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000FF848484FF00000000848484FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000FFF7F7
+      F7FF000000FF000000FF000000FF000000FF000000FFF7F7F7FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000FFF7F7
+      F7FF000000FF000000FF000000FF848484FF000000FFF7F7F7FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000FFF7F7
+      F7FF000000FF000000FF000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000FFF7F7
+      F7FF000000FF000000FF000000000000000000000000000000FFF7F7F7FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000FF0000
+      00FF000000FF000000FF000000000000000000000000000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000000000
+      00000000000000000000000000000000000000000000000000FF000000FF0000
+      00FF00000000000000000000000000000000848484FF000000FF848484FF0000
+      0000000000000000000000000000000000000000000000000000000000FF0000
+      00FF00000000000000000000000000000000000000FF00000000000000FF0000
+      00000000000000000000000000000000000000000000000000FF000000000000
+      00FF000000000000000000000000848484FF000000FF000000FF000000FF8484
+      84FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000000000
+      00FF00000000000000000000000000000000000000FF00000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000000000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF00000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000FF000000008484
+      84FF848484FF848484FF0000000000000000000000FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000008484
+      84FF0000000000000000848484FF000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000008484
+      84FF0000000000000000848484FF0000000000000000000000FF000000000000
+      0000000000000000000000000000000000FF000000FF00000000000000008484
+      84FF848484FF848484FF00000000000000000000000000000000000000000000
+      00FF00000000000000FF00000000000000FF000000FF000000FF000000008484
+      84FF0000000000000000848484FF000000000000000000000000000000000000
+      0000000000000000000000000000000000FF000000FF00000000000000008484
+      84FF0000000000000000848484FF000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000008484
+      84FF848484FF848484FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000000000000000C6FF0000
+      C6FF0000C6FF0000C6FF0000C6FF0000CEFF0000CEFF0000C6FF0000C6FF0000
+      C6FF0000C6FF000000000000000000000000000000000808C6FF0000C6FF0000
+      C6FF6B6BDEFFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFBDBDF7FF0000
+      C6FF0000C6FF0808C6FF0000000000000000000000000808C6FF0808C6FF0808
+      CEFFADADEFFFADADEFFFADADEFFFADADEFFFADADEFFFADADEFFFADADEFFF0808
+      CEFF0808CEFF0808C6FF0000000000000000000000000808C6FF0808CEFF1008
+      CEFF7B7BE7FF7B7BE7FF7B7BE7FF7B7BE7FF7B7BE7FF7B7BE7FF7B7BE7FF1008
+      CEFF0808CEFF0808C6FF0000000000000000000000000808C6FF1010CEFF1818
+      D6FF4A4ADEFF4A4ADEFF4A4ADEFF4A4ADEFF4A4ADEFF4A4ADEFF4A4ADEFF1818
+      D6FF1010CEFF0808C6FF0000000000000000000000000808C6FF2121D6FF2121
+      D6FF2121D6FF2121D6FF2121DEFF2121DEFF2121DEFF2121D6FF2121D6FF2121
+      D6FF2121D6FF0808C6FF0000000000000000000000000808C6FF2929D6FF2929
+      D6FF3131DEFF3131DEFF3131DEFF3131DEFF3131DEFF3131DEFF3131DEFF2929
+      D6FF2929D6FF0808C6FF0000000000000000000000000808C6FF3931D6FF3939
+      DEFF3939DEFF4242DEFF4242DEFF4242DEFF4242DEFF4242DEFF3939DEFF3939
+      DEFF3931D6FF0808C6FF0000000000000000000000000808C6FF4242DEFF4A42
+      DEFF4A4ADEFF4A4AE7FF4A4AE7FF524AE7FF4A4AE7FF4A4AE7FF4A4ADEFF4A42
+      DEFF4242DEFF0808C6FF0000000000000000000000000808C6FF4A4ADEFF5252
+      DEFF5252E7FF5A52E7FF5A5AE7FF5A5AE7FF5A5AE7FF5A52E7FF5252E7FF5252
+      DEFF4A4ADEFF0808C6FF0000000000000000000000000808C6FF5252DEFF5A5A
+      DEFF5A5AE7FF6363E7FF6363E7FF6363E7FF6363E7FF6363E7FF5A5AE7FF5A5A
+      DEFF5252DEFF0808C6FF0000000000000000000000000808C6FF5A52DEFF5A5A
+      DEFF6363E7FF6363E7FF6B6BE7FF6B6BE7FF6B6BE7FF6363E7FF6363E7FF5A5A
+      DEFF5A52DEFF0808C6FF000000000000000000000000000000000808C6FF0808
+      C6FF0808C6FF0808C6FF0808C6FF0808C6FF0808C6FF0808C6FF0808C6FF0808
+      C6FF0808C6FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000398C39FF0000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006B
+      00FFBDD6BDFFBDD6BDFF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000006B
+      00FF94C694FF94C694FF94C694FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF73AD73FF73AD73FF73AD73FF73AD73FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF4A9C4AFF4A9C4AFF4A9C4AFF4A9C4AFF318431FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF298C29FF318C31FF218421FF087308FF087308FF086B08FF000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF188418FF188418FF187B18FF187B18FF107B10FF107310FF107310FF0000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF218C21FF298C29FF218421FF218421FF217B21FF187B18FF187318FF1073
+      10FF000000000000000000000000000000000000000000000000000000001073
+      10FF318C31FF318C31FF318C31FF318C31FF298429FF217B21FF107310FF0000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF399439FF399439FF399439FF398C39FF318431FF107310FF000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF429442FF429442FF429442FF398C39FF107310FF00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF429442FF429442FF429442FF107310FF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF429442FF429442FF107310FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000001073
+      10FF429442FF107310FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000107310FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848484FF848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF00000000000000000000
+      000000000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF848484FF848484FF000000000000
+      000000000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF848484FF00000000848484FF0000
+      0000000000FF000000FF0000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF848484FF848484FFC6C6C6FF0000
+      00FF000000FF000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF0000
+      00FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF000000FF0000
+      000000000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF000000FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF000000FF0000
+      000000000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF000000FF000000FFF7F7F7FF000000FF000000FFF7F7F7FF8484
+      84FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FF848484FF000000FF000000FF000000FF000000FF000000FFF7F7F7FF0000
+      00FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF848484FF000000FF000000FF000000FFF7F7F7FFF7F7F7FF0000
+      00FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFC6C6C6FF000000FF000000FFF7F7F7FFF7F7F7FF0000
+      00FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF0000
+      00FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF0000
+      00FF00000000000000000000000000000000848484FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF000000FF000000000000
+      00000000000000000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF000000FF0000
+      00000000000000000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF000000000000
+      00FF0000000000000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FF000000FF000000FF0000
+      00FF000000FF00000000000000000000000000000000848484FFF7F7F7FF8484
+      84FF848484FF848484FF848484FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FFF7F7F7FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF00000000000000000000000000000000848484FF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF00000000000000000000000000000000848484FF00FFFFFF00FF
+      FFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FF
+      FFFF000000FF00000000000000000000000000000000848484FFF7F7F7FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FFF7F7F7FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF00000000000000000000000000000000848484FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000000000000000000000C6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FF0000
+      000000000000000000000000000000000000C6C6C6FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFC6C6C6FF8484
+      84FF00000000000000000000000000000000C6C6C6FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFC6C6C6FF0000
+      0000848484FF000000000000000000000000C6C6C6FFF7F7F7FFF7F7F7FFF7F7
+      F7FF848484FF848484FF848484FF848484FF848484FFF7F7F7FF848484FF8484
+      84FF848484FF848484FF0000000000000000C6C6C6FFF7F7F7FFF7F7F7FFF7F7
+      F7FF000000FF000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF000000FFF7F7F7FF0000
+      00FF000000FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF000000FF000000FF0000
+      00FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF00000000000000FF0000
+      0000848484FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF00000000000000000000
+      0000000000FF000000FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF000000FF000000000000
+      00FF000000FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FF000000FF000000FF0000
+      00FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FFF7F7F7FF000000FFF7F7
+      F7FF848484FF848484FF848484FF848484FF848484FF848484FF848484FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFC6C6C6FF848484FF0000000000000000C6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FF848484FF0000000000000000C6C6C6FF848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF848484FF8484
+      84FF848484FF848484FF00000000000000000000000000000000848484FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848484FF848484FF848484FF8484
+      84FF848484FF848484FF848484FF848484FF848484FF848484FF000000000000
+      000000000000000000000000000000000000848484FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFC6C6C6FF848484FF0000
+      000000000000000000000000000000000000848484FFF7F7F7FFC6C6C6FFF7F7
+      F7FFC6C6C6FFF7F7F7FFC6C6C6FFF7F7F7FFC6C6C6FFC6C6C6FF000000008484
+      84FF00000000000000000000000000000000848484FFF7F7F7FFF7F7F7FF8484
+      00FF848400FF848400FF848400FF848400FF00000000000000FF000000FF0000
+      00FF000000FF000000000000000000000000848484FFF7F7F7FFC6C6C6FF0000
+      0000C6C6C6FFF7F7F7FFC6C6C6FFF7F7F7FFC6C6C6FF00000000C6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFF7F7F7FF8484
+      00FF848400FF848400FF848400FF848400FF848400FF848400FF00000000C6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFC6C6C6FF0000
+      0000C6C6C6FF00000000C6C6C6FFF7F7F7FFC6C6C6FF00000000C6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFF7F7F7FF8484
+      00FF848400FF848400FF848400FF848400FF848400FF848400FF00000000C6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFC6C6C6FF0000
+      0000C6C6C6FFF7F7F7FFC6C6C6FFF7F7F7FFC6C6C6FF00000000C6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFF7F7F7FF8484
+      00FF848400FF848400FF848400FF848400FF848400FF848400FF00000000C6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFC6C6C6FF0000
+      0000C6C6C6FFF7F7F7FFC6C6C6FFF7F7F7FFC6C6C6FF00000000C6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFF7F7F7FF8484
+      00FF848400FF848400FF848400FF848400FF848400FF848400FF00000000C6C6
+      C6FF000000FF000000000000000000000000848484FFF7F7F7FFC6C6C6FF0000
+      0000C6C6C6FF00000000C6C6C6FF00000000C6C6C6FF00000000C6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000848484FFC6C6C6FFC6C6C6FFC6C6
+      C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6C6FFC6C6
+      C6FF000000FF000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF0000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF0000000000000000000000FFCED6D6FF000000FFCED6
+      D6FFCED6D6FFCED6D6FFCED6D6FFCED6D6FFF7F7F7FFCED6D6FFCED6D6FFCED6
+      D6FFCED6D6FF000000FF0000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF0000000000000000000000FFCED6D6FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFCED6D6FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF000000FF0000000000000000000000FF00000000000000FF8400
+      00FF840000FF840000FFF7F7F7FFCED6D6FFF7F7F7FF840000FF840000FF8400
+      00FFF7F7F7FF000000FF0000000000000000000000FFCED6D6FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFCED6D6FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF000000FF0000000000000000000000FF00000000000000FF8400
+      00FF840000FF840000FFF7F7F7FFCED6D6FFF7F7F7FF840000FF840000FF8400
+      00FFF7F7F7FF000000FF0000000000000000000000FFCED6D6FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFCED6D6FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF000000FF0000000000000000000000FF00000000000000FF8400
+      00FF840000FF840000FFF7F7F7FFCED6D6FFF7F7F7FF840000FF840000FF8400
+      00FFF7F7F7FF000000FF0000000000000000000000FFCED6D6FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFCED6D6FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF000000FF0000000000000000000000FF00000000000000FF8400
+      00FF840000FF840000FFF7F7F7FFCED6D6FFF7F7F7FF840000FF840000FF8400
+      00FFF7F7F7FF000000FF0000000000000000000000FFCED6D6FF000000FFF7F7
+      F7FFF7F7F7FFF7F7F7FFF7F7F7FFCED6D6FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7
+      F7FFF7F7F7FF000000FF0000000000000000000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000C6C6C6FFADA5ADFF8C848CFF737373FF7B7B7BFF949C94FFB5BDBDFF0000
+      0000000000000000000000000000000000000000000000000000D6D6D6FFA5A5
+      A5FFA5A5A5FFD6CEC6FFE7E7E7FFFFF7E7FFE7DED6FFC6B5B5FF948C84FF8484
+      84FF0000000000000000000000000000000000000000CED6D6FFADA5ADFFC6C6
+      C6FF0000000000000000FFFFF7FFFFF7E7FFFFF7E7FFF7EFD6FFF7DEC6FFB59C
+      94FF736B6BFFBDBDC6FF000000000000000000000000A5A5A5FFC6C6C6FF0000
+      00000000000000000000C6BDB5FF736B73FFC6B5B5FFFFF7E7FFF7E7D6FFF7D6
+      B5FFA58C73FF737373FF0000000000000000C6C6C6FFA5A5A5FFFFFFF7FF0000
+      000000000000A5ADA5FF636B63FFD6D6D6FF313131FFF7EFE7FFFFEFD6FFF7D6
+      B5FFE7C6A5FF846B52FFADADB5FF00000000A5A5ADFFD6CEC6FFFFFFF7FFFFFF
+      F7FFF7FFF7FF737373FF636363FFF7EFE7FFE7D6D6FFF7E7D6FFF7E7D6FFF7D6
+      B5FFF7C6A5FFB58463FF848484FF000000008C848CFFE7E7E7FFFFF7E7FFFFFF
+      F7FF737373FF313131FF423931FF736B63FFF7E7D6FFF7DED6FFF7D6C6FFF7D6
+      B5FFF7C6A5FFD69C73FF6B636BFF00000000737373FFFFF7F7FFFFF7E7FFFFFF
+      F7FFFFFFF7FF211810FFD6CEC6FFF7EFE7FF636363FFD6C6B5FF524A42FFF7CE
+      A5FFF7C694FFE7A584FF525252FF000000007B737BFFE7DED6FFFFEFE7FFF7EF
+      E7FF736B63FF313931FFE7D6C6FFF7DED6FFE7CEC6FF212921FFB5A584FFF7D6
+      A5FFF7BD94FFD68C73FF6B6B6BFF00000000949494FFC6B5B5FFFFE7D6FFC6BD
+      ADFF313131FFB5ADA5FFF7DEC6FFF7D6C6FF313131FFC6B594FF312921FFF7D6
+      B5FFF7B594FFB56B52FF84848CFF00000000ADB5B5FF948C84FFEFD6C6FF635A
+      5AFFB59C94FFF7DEC6FFF7D6B5FFF7D6B5FFF7DEB5FFF7DEB5FFF7DEB5FFF7CE
+      A5FFE79C84FF844A31FFA5ADADFF0000000000000000848484FFB59C84FFF7CE
+      B5FFF7CEA5FFF7CEA5FFF7CEA5FFF7D6A5FFF7D6A5FFF7D6B5FFF7C6A5FFF7A5
+      94FFB55A42FF84847BFF000000000000000000000000B5BDBDFF847363FFA58C
+      73FFE7BD94FFE7BD94FFE7BD94FFF7C694FFF7C694FFF7BD94FFE79C84FFA55A
+      42FF843121FF0000000000000000000000000000000000000000B5B5B5FF7B7B
+      7BFF846352FFA57B52FFC69463FFD69C63FFC68C63FFA56B52FF844231FF8484
+      7BFF000000000000000000000000000000000000000000000000000000000000
+      0000A5A5A5FF7B7B7BFF636363FF4A4A4AFF5A5A5AFF7B7B84FFA5A5A5FF0000
+      00000000000000000000000000000000000000000000D6C6B5FFB5A58CFF634A
+      29FF0000000000000000B5CECEFF528C94FF528C94FF528C94FF528C94FF0000
+      000000000000000000000000000000000000D6CEBDFFB5A584FFD6CEC6FF634A
+      29FF0000000000000000528C94FFF7F7F7FFF7F7F7FFD6FFFFFF528484FF0000
+      000000000000000000000000000000000000634A29FFD6CEC6FFE7DED6FF634A
+      29FF0000000000000000528C94FF739CA5FF84B5B5FFB5CED6FF528484FFC6CE
+      DEFF6373A5FF6373A5FF526394FF00000000634A29FFF7DED6FFF7E7D6FF634A
+      29FF0000000000000000528C84FFD6F7FFFFC6F7FFFF94C6D6FF528484FF7384
+      B5FFE7E7FFFFB5C6FFFF102163FF00000000634A29FFF7E7D6FFF7E7E7FF634A
+      29FF0000000000000000528C84FFB5F7FFFFA5EFFFFF84C6D6FF526394FF637B
+      B5FF738CD6FF7384D6FF001863FF00000000634A29FFF7EFE7FFE7CEB5FFE79C
+      73FFE79473FFE78C63FF428484FF94EFF7FF84E7F7FF63BDD6FF425A94FF849C
+      FFFF8494F7FF6373D6FF001863FF00000000634A29FFF7F7E7FFB56342FFF7F7
+      F7FFFFEFE7FFFFDEC6FF428484FF73E7F7FF63DEF7FF42B5C6FF425294FF738C
+      F7FF7384F7FF526BC6FF001863FF00000000634A29FFFFF7F7FFA55229FFB56B
+      42FFC68463FFD69473FF317B84FF52DEF7FF42D6F7FF31ADC6FF314A84FF637B
+      F7FF5273F7FF425AC6FF001863FF00000000634A29FFFFFFF7FFA55218FFFFB5
+      84FFF7AD84FFC68C63FF317384FF31D6F7FF21CEF7FF10A5C6FF314284FF426B
+      E7FF4263E7FF314AC6FF001863FF00000000634A29FFF7F7F7FF944218FFF7A5
+      73FFF79C63FFC67B52FF217384FF21CEF7FF10C6F7FF00A5C6FF213984FF315A
+      E7FF2152E7FF1039B5FF001863FF00000000634A29FFF7F7F7FF943908FFF78C
+      52FFE78452FFC66329FF216B84FF00C6F7FF00C6F7FF00A5C6FF213984FF214A
+      E7FF1042D6FF1031B5FF001863FF00000000634A29FFF7F7F7FF843108FFE77B
+      42FFB55A29FF523118FF106B84FF00C6F7FF00A5C6FF313129FF103184FF1042
+      D6FF0031B5FF0031B5FF001863FF00000000634A29FFF7F7F7FF843108FF5231
+      18FF523118FFD6C6C6FF106384FF003952FF213142FFB5A5A5FF102984FF0018
+      63FF001863FF001863FFD6BDB5FF00000000634A29FFC6B5A5FFF7F7F7FFF7F7
+      F7FFF7F7F7FFF7F7F7FFFFFFF7FFFFF7F7FFF7F7E7FFF7EFE7FFF7E7D6FFF7DE
+      D6FFE7CEC6FFD6BDB5FF634A29FF00000000634A29FF634A29FF634A29FF634A
+      29FF634A29FF634A29FF634A29FF634A29FF634A29FF634A29FF634A29FF634A
+      29FF634A29FF634A29FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000000000000000000000F7E7
+      DEFFF7DED6FFEFDED6FFEFDED6FFEFDED6FFF7DED6FFE7DED6FF000000000000
+      0000000000000000000000000000000000000000000000000000F7DED6FFF7EF
+      E7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7F7F7FFF7E7E7FFF7DED6FFD6CE
+      CEFF0000000000000000000000000000000000000000F7DED6FFF7F7F7FFF7F7
+      F7FFFFF7C6FFFFDEADFFFFCE9CFFFFCE94FFFFD6ADFFF7F7F7FFF7F7F7FFF7DE
+      D6FFBDBDBDFF000000000000000000000000F7DED6FFF7F7F7FFFFEFCEFFFFB5
+      73FFEFAD84FFEFE7DEFFEFF7F7FFF7E7E7FFF7A57BFFFF8C4AFFFFDECEFFF7F7
+      F7FFF7DED6FFBDBDBDFF0000000000000000F7F7EFFFFFEFDEFFFF8C4AFFDE84
+      5AFFF7F7F7FFF7F7F7FFE7BDA5FFF7F7F7FFF7F7F7FFE77339FFE77331FFFFF7
+      EFFFF7E7E7FFA59C94FF0000000000000000F7F7F7FFF79C6BFFE76329FFCE8C
+      6BFFF7EFE7FFD67B52FFBD3100FFD69C7BFFF7F7F7FFDE8C63FFD65210FFE79C
+      73FFF7F7F7FFDECEBDFFA5A5A5FFF7E7D6FFFFEFE7FFDE6B31FFD66B31FFCE5A
+      29FFCE5A21FFCE5218FFC64A10FFE7D6C6FFF7F7F7FFD67339FFCE5A21FFCE6B
+      39FFF7F7F7FFEFDED6FF636363FFF7E7DEFFF7DECEFFCE5A21FFCE6331FFCE63
+      29FFCE6329FFC65218FFCEB5ADFF00000000E79C7BFFC65218FFCE6329FFC65A
+      29FFF7F7F7FFF7DED6FF4A4A4AFFF7E7DEFFF7DED6FFC65218FFCE6331FFCE63
+      31FFCE5A21FFC6846BFFF7F7F7FFEFAD94FFC64A08FFCE6329FFCE5A29FFC65A
+      29FFF7F7F7FFF7E7D6FF4A4A4AFFF7E7D6FFF7F7F7FFC66331FFCE5A21FFCE63
+      31FFCE5A21FFCE8C6BFFF7E7DEFFD66B39FFCE5A21FFCE6331FFC65218FFC67B
+      52FFF7F7F7FFE7CEC6FF4A4A4AFF00000000F7F7F7FFDEAD94FFBD4A08FFCE63
+      29FFCE6329FFCE6B39FFDE8C6BFFCE5A29FFCE6329FFCE5A29FFBD4210FFE7CE
+      BDFFF7EFEFFFA59494FF5A5A5AFF00000000F7E7D6FFF7F7F7FFC67B5AFFBD42
+      08FFC64A10FFC6A594FFF7F7F7FFDE946BFFC64A08FFBD4208FFCE9C84FFF7F7
+      F7FFF7E7D6FF525252FF949494FF00000000DECEC6FFF7EFE7FFF7F7F7FFCE9C
+      84FFB54A10FFBD6339FFDEAD9CFFC65A21FFBD5221FFD6AD9CFFF7F7F7FFF7E7
+      DEFF736B6BFF6B6B6BFF000000000000000000000000CEBDB5FFF7E7DEFFF7F7
+      F7FFE7E7E7FFCEB5A5FFD6AD94FFDEC6BDFFEFF7F7FFF7F7F7FFF7E7D6FF847B
+      7BFF636363FFADADADFF00000000000000000000000000000000ADA5A5FFE7CE
+      C6FFF7E7D6FFF7E7DEFFF7E7DEFFF7E7DEFFF7E7D6FFCEBDADFF525252FF6B6B
+      6BFFA5A5A5FF000000000000000000000000000000000000000000000000B5B5
+      B5FF636363FF4A4A4AFF424242FF424242FF424242FF4A4A4AFF737373FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000007F5B00FF7F5B00FF7F5B00FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000007F5B00FF000000007F5B00FF0000
+      00007F5B00FF7F5B00FF000000007F5B00FF7F5B00FF000000007F5B00FF7F5B
+      00FF000000007F5B00FF00000000000000007F5B00FF7F5B00FF7F5B00FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000007F5B00FF00000000000000000000000000000000000000000000
+      000000000000007F00FF00000000000000000000000000000000000000000000
+      000000000000000000000000000000000000848484FF7F5B00FF848484FF0000
+      000000000000007F00FF007F00FF000000000000000000000000000000000000
+      0000000000007F5B00FF00000000000000007F5B00FF7F5B00FF7F5B00FF0000
+      000000000000007F00FF00FF00FF007F00FF0000000000000000000000000000
+      0000000000007F5B00FF0000000000000000000000007F5B00FF000000000000
+      000000000000007F00FF007F00FF00DF00FF007F00FF00000000000000000000
+      000000000000000000000000000000000000000000007F5B00FF000000000000
+      000000000000007F00FF007F00FF007F00FF007F00FF007F00FF000000000000
+      0000000000007F5B00FF00000000000000000000000000000000000000000000
+      000000000000007F00FF007F00FF007F00FF007F00FF007F00FF000000000000
+      0000000000007F5B00FF0000000000000000000000007F5B00FF000000000000
+      000000000000007F00FF007F00FF10C210FF007F00FF00000000000000000000
+      00007F5B00FF7F5B00FF7F5B00FF00000000000000007F5B00FF000000000000
+      000000000000007F00FF10C210FF007F00FF0000000000000000000000000000
+      0000848484FF7F5B00FF848484FF00000000000000007F5B00FF000000000000
+      000000000000007F00FF007F00FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000007F00FF00000000000000000000000000000000000000000000
+      00007F5B00FF7F5B00FF7F5B00FF00000000000000007F5B00FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00007F5B00FF000000007F5B00FF00000000000000007F5B00FF000000007F5B
+      00FF7F5B00FF000000007F5B00FF7F5B00FF000000007F5B00FF7F5B00FF0000
+      00007F5B00FF7F5B00FF7F5B00FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000000000000000000000000000000000FF000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000FF0000000000000000000000000000
+      00FF00000000000000FF00000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000FF000000FF0000000000000000000000FF000000FF000000FF0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00FF000000FF000000FF00000000000000FF00FFFFFFFFFFFFFF00FFFFFF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000000000
+      0000000000000000000000000000000000FFFFFFFFFF00FFFFFFFFFFFFFF00FF
+      FFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF000000FF000000000000
+      0000000000000000000000000000000000FF00FFFFFFFFFFFFFF00FFFFFFFFFF
+      FFFF00FFFFFFFFFFFFFF00FFFFFFFFFFFFFF00FFFFFF000000FF000000000000
+      0000000000000000000000000000000000FFFFFFFFFF00FFFFFFFFFFFFFF00FF
+      FFFF000000FF000000FF000000FF000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF00FFFFFFFFFFFFFF00FFFFFF0000
+      00FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+      84FF008484FF000000FF00000000000000FFFFFFFFFF00FFFFFF000000FF0084
+      84FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0084
+      84FF000000FF0000000000000000000000FF00FFFFFF000000FF008484FF0084
+      84FF008484FF008484FF008484FF008484FF008484FF008484FF008484FF0000
+      00FF000000000000000000000000000000FF000000FF008484FF008484FF0084
+      84FF008484FF008484FF008484FF008484FF008484FF008484FF000000FF0000
+      0000000000000000000000000000000000FF000000FF000000FF000000FF0000
+      00FF000000FF000000FF000000FF000000FF000000FF000000FF000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000
+    }
+  end
+  object PopupMenu: TPopupMenu
+    Images = ImageList
+    Left = 920
+    Top = 8
+    object Cut1: TMenuItem
+      Action = acCut
+    end
+    object Copy1: TMenuItem
+      Action = acCopy
+    end
+    object Paste1: TMenuItem
+      Action = acPaste
+    end
+    object N2: TMenuItem
+      Caption = '-'
+    end
+    object Undo2: TMenuItem
+      Action = acUndo
+    end
+    object Redo2: TMenuItem
+      Action = acRedo
+    end
+    object N3: TMenuItem
+      Caption = '-'
+    end
+    object LPformat1: TMenuItem
+      Action = acViewAsLP
+      RadioItem = True
+    end
+    object NewLPscript2: TMenuItem
+      Action = acViewAsMPS
+      RadioItem = True
+    end
+  end
+  object XLIViewActionList: TActionList
+    Left = 872
+    Top = 8
+  end
+  object XLINewActionList: TActionList
+    Left = 820
+    Top = 8
+  end
+  object SynXMLSyn: TSynXMLSyn
+    DefaultFilter = 'Документ XML (*.xml,*.xsd,*.xsl,*.xslt,*.dtd)|*.xml;*.xsd;*.xsl;*.xslt;*.dtd'
+    Enabled = False
+    ElementAttri.Style = []
+    AttributeAttri.Foreground = clRed
+    AttributeValueAttri.Foreground = clBlack
+    AttributeValueAttri.Style = []
+    NamespaceAttributeValueAttri.Style = []
+    TextAttri.Style = []
+    EntityRefAttri.Style = []
+    ProcessingInstructionAttri.Foreground = clTeal
+    CommentAttri.Background = clNone
+    CommentAttri.Style = [fsItalic]
+    WantBracesParsed = False
+    Left = 1024
+    Top = 8
+  end
+  object ExportDialog: TSaveDialog
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 756
+    Top = 80
+  end
+  object SynMacroRecorder: TSynMacroRecorder
+    RecordShortCut = 24658
+    PlaybackShortCut = 24656
+    Editor = Editor
+    Left = 648
+    Top = 8
+  end
+  object OpenDialogBasis: TOpenDialog
+    Filter = 'Basis file (*.bas)|*.bas'
+    Left = 600
+    Top = 8
+  end
+  object SaveDialogBasis: TSaveDialog
+    Filter = 'Basis file (*.bas)|*.bas'
+    Left = 688
+    Top = 8
+  end
+  object ApplProps: TApplicationProperties
+    OnQueryEndSession = ApplPropsQueryEndSession
+    Left = 920
+    Top = 84
+  end
+end

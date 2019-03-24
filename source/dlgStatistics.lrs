@@ -1,0 +1,33 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TStatisticsForm','FORMDATA',[
+  'TPF0'#15'TStatisticsForm'#14'StatisticsForm'#4'Left'#3'7'#1#6'Height'#3#130#1
+  +#3'Top'#3#171#0#5'Width'#3#19#3#11'BorderIcons'#11#12'biSystemMenu'#0#7'Capt'
+  +'ion'#6#10'Statistics'#12'ClientHeight'#3'`'#1#11'ClientWidth'#3#1#2#5'Color'
+  +#7#9'clBtnFace'#13'DesignTimePPI'#2's'#10'Font.Color'#7#12'clWindowText'#11
+  +'Font.Height'#2#243#9'Font.Name'#6#13'MS Sans Serif'#8'OnCreate'#7#10'FormCr'
+  +'eate'#8'Position'#7#16'poMainFormCenter'#10'LCLVersion'#6#7'2.0.1.0'#0#6'TL'
+  +'abel'#6'Label1'#4'Left'#2#10#6'Height'#2#13#3'Top'#3#189#0#5'Width'#2'#'#7
+  +'Caption'#6#7'Scaling'#10'Font.Color'#7#12'clWindowText'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#13'MS Sans Serif'#11'ParentColor'#8#10'ParentFont'#8#0#0
+  +#6'TLabel'#6'Label2'#4'Left'#2#10#6'Height'#2#13#3'Top'#2#0#5'Width'#2'%'#7
+  +'Caption'#6#7'General'#10'Font.Color'#7#12'clWindowText'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#13'MS Sans Serif'#11'ParentColor'#8#10'ParentFont'#8#0#0
+  +#7'TButton'#7'Button1'#4'Left'#3'd'#2#6'Height'#2#30#3'Top'#3'!'#1#5'Width'#2
+  +'Z'#7'Anchors'#11#7'akRight'#8'akBottom'#0#6'Cancel'#9#7'Caption'#6#3'&OK'#10
+  +'Font.Color'#7#12'clWindowText'#11'Font.Height'#2#243#9'Font.Name'#6#13'MS S'
+  +'ans Serif'#11'ModalResult'#2#1#10'ParentFont'#8#8'TabOrder'#2#0#0#0#9'TList'
+  +'View'#5'Stats'#4'Left'#2#10#6'Height'#3#163#0#3'Top'#2#19#5'Width'#3#147#1#7
+  +'Columns'#14#1#8'AutoSize'#9#5'Width'#2'<'#0#1#8'AutoSize'#9#7'Caption'#6#5
+  +'Value'#5'Width'#2'<'#0#0#10'Font.Color'#7#12'clWindowText'#11'Font.Height'#2
+  +#243#9'Font.Name'#6#13'MS Sans Serif'#10'ParentFont'#8#8'ReadOnly'#9#8'TabOr'
+  +'der'#2#1#9'ViewStyle'#7#8'vsReport'#0#0#9'TListView'#6'Stats2'#4'Left'#2#10
+  +#6'Height'#2's'#3'Top'#3#212#0#5'Width'#3#180#2#7'Anchors'#11#5'akTop'#6'akL'
+  +'eft'#7'akRight'#0#7'Columns'#14#1#8'AutoSize'#9#5'Width'#2'<'#0#1#8'AutoSiz'
+  +'e'#9#7'Caption'#6#4'Name'#5'Width'#2'<'#0#1#8'AutoSize'#9#7'Caption'#6#3'Mi'
+  +'n'#5'Width'#2'<'#0#1#8'AutoSize'#9#7'Caption'#6#4'Name'#5'Width'#2'<'#0#1#8
+  +'AutoSize'#9#7'Caption'#6#3'Max'#5'Width'#2'<'#0#1#5'Width'#2#4#0#0#10'Font.'
+  +'Color'#7#12'clWindowText'#11'Font.Height'#2#243#9'Font.Name'#6#13'MS Sans S'
+  +'erif'#10'ParentFont'#8#8'ReadOnly'#9#8'TabOrder'#2#2#9'ViewStyle'#7#8'vsRep'
+  +'ort'#0#0#0
+]);

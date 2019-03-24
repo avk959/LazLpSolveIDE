@@ -1,0 +1,13 @@
+{ This is an automatically generated lazarus resource file }
+
+LazarusResources.Add('TTextReplaceDialog','FORMDATA',[
+  'TPF0'#241#18'TTextReplaceDialog'#17'TextReplaceDialog'#7'Caption'#6#12'Repla'
+  +'ce text'#12'ClientHeight'#3#216#0#11'ClientWidth'#3#142#1#0#241#9'TGroupBox'
+  +#15'gbSearchOptions'#3'Top'#2'l'#8'TabOrder'#2#2#0#0#241#11'TRadioGroup'#17
+  +'rgSearchDirection'#3'Top'#2'l'#8'TabOrder'#2#3#0#0#241#7'TButton'#5'btnOK'#3
+  +'Top'#3#19#1#8'TabOrder'#2#4#0#0#241#7'TButton'#9'btnCancel'#3'Top'#3#19#1#8
+  +'TabOrder'#2#5#0#0#242#2#6#6'TLabel'#6'Label2'#4'Left'#2#12#6'Height'#2#20#3
+  +'Top'#2'?'#5'Width'#2'd'#7'Caption'#6#14'&Replace with:'#11'ParentColor'#8#0
+  +#0#242#2#7#9'TComboBox'#13'cbReplaceText'#4'Left'#3#148#0#6'Height'#2#28#3'T'
+  +'op'#2'9'#5'Width'#3'^'#1#10'ItemHeight'#2#20#8'TabOrder'#2#1#0#0#0
+]);

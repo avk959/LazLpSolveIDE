@@ -1,0 +1,127 @@
+object TextSearchDialog: TTextSearchDialog
+  Left = 628
+  Height = 216
+  Top = 165
+  Width = 398
+  BorderStyle = bsDialog
+  Caption = 'Search Text'
+  ClientHeight = 216
+  ClientWidth = 398
+  Color = clBtnFace
+  DesignTimePPI = 115
+  Font.Color = clWindowText
+  OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
+  object Label1: TLabel
+    Left = 10
+    Height = 19
+    Top = 14
+    Width = 64
+    Caption = '&Search for:'
+    ParentColor = False
+  end
+  object cbSearchText: TComboBox
+    Left = 115
+    Height = 27
+    Top = 10
+    Width = 273
+    ItemHeight = 19
+    TabOrder = 0
+  end
+  object gbSearchOptions: TGroupBox
+    Left = 10
+    Height = 152
+    Top = 48
+    Width = 184
+    Caption = 'Options'
+    ClientHeight = 128
+    ClientWidth = 180
+    TabOrder = 1
+    object cbSearchCaseSensitive: TCheckBox
+      Left = 10
+      Height = 23
+      Top = 20
+      Width = 117
+      Caption = 'C&ase sensitivity'
+      TabOrder = 0
+    end
+    object cbSearchWholeWords: TCheckBox
+      Left = 10
+      Height = 23
+      Top = 47
+      Width = 134
+      Caption = '&Whole words only'
+      TabOrder = 1
+    end
+    object cbSearchFromCursor: TCheckBox
+      Left = 10
+      Height = 23
+      Top = 73
+      Width = 131
+      Caption = 'Search from &caret'
+      TabOrder = 2
+    end
+    object cbSearchSelectedOnly: TCheckBox
+      Left = 10
+      Height = 23
+      Top = 99
+      Width = 131
+      Caption = '&Selected text only'
+      TabOrder = 3
+    end
+    object cbRegularExpression: TCheckBox
+      Left = 10
+      Height = 23
+      Top = 125
+      Width = 141
+      Caption = '&Regular expression'
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'MS Sans Serif'
+      ParentFont = False
+      TabOrder = 4
+    end
+  end
+  object rgSearchDirection: TRadioGroup
+    Left = 204
+    Height = 78
+    Top = 48
+    Width = 184
+    AutoFill = True
+    Caption = 'Direction'
+    ChildSizing.LeftRightSpacing = 6
+    ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+    ChildSizing.EnlargeVertical = crsHomogenousChildResize
+    ChildSizing.ShrinkHorizontal = crsScaleChilds
+    ChildSizing.ShrinkVertical = crsScaleChilds
+    ChildSizing.Layout = cclLeftToRightThenTopToBottom
+    ChildSizing.ControlsPerLine = 1
+    ClientHeight = 54
+    ClientWidth = 180
+    ItemIndex = 0
+    Items.Strings = (
+      '&Forward'
+      '&Backward'
+    )
+    TabOrder = 2
+  end
+  object btnOK: TButton
+    Left = 204
+    Height = 28
+    Top = 178
+    Width = 90
+    Caption = 'OK'
+    ModalResult = 1
+    TabOrder = 3
+  end
+  object btnCancel: TButton
+    Left = 298
+    Height = 28
+    Top = 178
+    Width = 90
+    Cancel = True
+    Caption = 'Cancel'
+    ModalResult = 2
+    TabOrder = 4
+  end
+end

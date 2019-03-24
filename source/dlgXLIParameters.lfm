@@ -1,0 +1,36 @@
+object XLIParametersForm: TXLIParametersForm
+  Left = 253
+  Height = 250
+  Top = 314
+  Width = 531
+  Caption = 'XLI Parameters'
+  ClientHeight = 250
+  ClientWidth = 531
+  Color = clBtnFace
+  DesignTimePPI = 115
+  Font.Color = clWindowText
+  LCLVersion = '2.0.1.0'
+  object Button1: TButton
+    Left = 29
+    Height = 30
+    Top = 182
+    Width = 90
+    Caption = '&OK'
+    Font.Color = clWindowText
+    ModalResult = 1
+    ParentFont = False
+    TabOrder = 0
+  end
+  object Button2: TButton
+    Left = 403
+    Height = 30
+    Top = 182
+    Width = 90
+    Cancel = True
+    Caption = '&Cancel'
+    Font.Color = clWindowText
+    ModalResult = 2
+    ParentFont = False
+    TabOrder = 1
+  end
+end
