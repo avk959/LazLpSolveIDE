@@ -11,7 +11,7 @@ object TextSearchDialog: TTextSearchDialog
   DesignTimePPI = 115
   Font.Color = clWindowText
   OnCloseQuery = FormCloseQuery
-  OnCreate = FormCreate
+  LCLVersion = '2.0.1.0'
   object Label1: TLabel
     Left = 10
     Height = 19
