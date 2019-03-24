@@ -1,4 +1,4 @@
-﻿object MainForm: TMainForm
+object MainForm: TMainForm
   Left = 231
   Height = 637
   Top = 251
@@ -6,7 +6,7 @@
   ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 590
+  ClientHeight = 637
   ClientWidth = 1139
   Color = clBtnFace
   DesignTimePPI = 115
@@ -16,7 +16,6 @@
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poScreenCenter
-  LCLVersion = '2.0.1.0'
   object Splitter1: TSplitter
     Cursor = crVSplit
     Left = 0
@@ -2388,7 +2387,7 @@
     end
     object ToolButton4: TToolButton
       Left = 183
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton4'
       ImageIndex = 17
@@ -2410,7 +2409,7 @@
     end
     object ToolButton12: TToolButton
       Left = 244
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton12'
       ImageIndex = 22
@@ -2446,7 +2445,7 @@
     end
     object ToolButton15: TToolButton
       Left = 361
-      Height = 8
+      Height = 26
       Top = 2
       Caption = 'ToolButton15'
       ImageIndex = 21
@@ -2571,7 +2570,7 @@
           Action = acObjExpHTML
         end
         object ExporttoRTF2: TMenuItem
-          Caption = 'Objective to RTF ...'
+          Action = acObjExpRTF
         end
         object N7: TMenuItem
           Caption = '-'
@@ -2583,7 +2582,7 @@
           Action = acConExpHTML
         end
         object ExporttoRTF3: TMenuItem
-          Caption = 'Constraints to RTF ...'
+          Action = acConExpRTF
         end
       end
       object Sensitivity1: TMenuItem
@@ -2595,7 +2594,7 @@
           Action = acSensObjExpHtml
         end
         object ObjectivetoRTF1: TMenuItem
-          Caption = 'Objective to RTF ...'
+          Action = acSensObjExpRtf
         end
         object N6: TMenuItem
           Caption = '-'
@@ -2607,7 +2606,7 @@
           Action = acSensDualExpHtml
         end
         object ObjectivetoRTF2: TMenuItem
-          Caption = 'Dual to RTF ...'
+          Action = acSensDualExpRtf
         end
       end
       object Quit1: TMenuItem
@@ -2925,11 +2924,11 @@
     object acExportRtf: TAction
       Caption = 'to Rtf ...'
       OnExecute = acExportRtfExecute
-    end  
+    end
     object acExportTex: TAction
       Caption = 'to LaTeX ...'
       OnExecute = acExportTexExecute
-    end    
+    end
     object acConExpHTML: TAction
       Caption = 'Constraints to HTML ...'
       OnExecute = acConExpHTMLExecute
@@ -2937,7 +2936,7 @@
     object acConExpRTF: TAction
       Caption = 'Constraints to RTF ...'
       OnExecute = acConExpRTFExecute
-    end 
+    end
     object acConExpCSV: TAction
       Caption = 'Constraints to CSV ...'
       OnExecute = acConExpCSVExecute
@@ -2949,7 +2948,7 @@
     object acObjExpRTF: TAction
       Caption = 'Objective to RTF ...'
       OnExecute = acObjExpRTFExecute
-    end  
+    end
     object acObjExpCSV: TAction
       Caption = 'Objective to CSV ...'
       OnExecute = acObjExpCSVExecute
@@ -2960,9 +2959,11 @@
     end
     object acObjCopRTF: TAction
       Caption = 'Copy as RTF'
-    end   
+      OnExecute = acObjCopRTFExecute
+    end
     object acObjCopCSV: TAction
       Caption = 'Copy as CSV'
+      OnExecute = acObjCopCSVExecute
     end
     object acLoadScript: TAction
       Caption = 'Load script'
@@ -2983,7 +2984,7 @@
     object acMatExpRtf: TAction
       Caption = 'to RTF ...'
       OnExecute = acMatExpRtfExecute
-    end  
+    end
     object acMatExpCsv: TAction
       Caption = 'to CSV ...'
       OnExecute = acMatExpCsvExecute
@@ -2995,7 +2996,7 @@
     object acSensObjExpRtf: TAction
       Caption = 'Objective to RTF ...'
       OnExecute = acSensObjExpRtfExecute
-    end  
+    end
     object acSensObjExpCsv: TAction
       Caption = 'Objective to CSV ...'
       OnExecute = acSensObjExpCsvExecute
@@ -3007,7 +3008,7 @@
     object acSensDualExpRtf: TAction
       Caption = 'Dual to RTF ...'
       OnExecute = acSensDualExpRtfExecute
-    end  
+    end
     object acSensDualExpCsv: TAction
       Caption = 'Dual to CSV ...'
       OnExecute = acSensDualExpCsvExecute
