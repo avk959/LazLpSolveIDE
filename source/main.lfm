@@ -1,12 +1,12 @@
 object MainForm: TMainForm
   Left = 231
-  Height = 637
+  Height = 616
   Top = 251
   Width = 1139
   ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 637
+  ClientHeight = 616
   ClientWidth = 1139
   Color = clBtnFace
   DesignTimePPI = 115
@@ -20,14 +20,14 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 6
-    Top = 306
+    Top = 285
     Width = 1139
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object PageControl: TPageControl
     Left = 0
-    Height = 271
+    Height = 250
     Top = 35
     Width = 1139
     ActivePage = TabSheetEditor
@@ -37,12 +37,12 @@ object MainForm: TMainForm
     TabOrder = 0
     object TabSheetEditor: TTabSheet
       Caption = 'Source'
-      ClientHeight = 239
+      ClientHeight = 218
       ClientWidth = 1131
       ImageIndex = 26
       inline Editor: TLPSynEdit
         Left = 0
-        Height = 239
+        Height = 218
         Top = 0
         Width = 1131
         Align = alClient
@@ -131,12 +131,12 @@ object MainForm: TMainForm
     end
     object Matrix: TTabSheet
       Caption = 'Matrix'
-      ClientHeight = 255
+      ClientHeight = 218
       ClientWidth = 1131
       ImageIndex = 27
       object MatrixTable: TVirtualStringTree
         Left = 0
-        Height = 255
+        Height = 218
         Top = 0
         Width = 1131
         Align = alClient
@@ -1938,12 +1938,12 @@ object MainForm: TMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'Result'
-      ClientHeight = 255
+      ClientHeight = 218
       ClientWidth = 1131
       ImageIndex = 28
       object PageControl1: TPageControl
         Left = 0
-        Height = 255
+        Height = 218
         Top = 0
         Width = 1131
         ActivePage = TabSheet3
@@ -1952,11 +1952,11 @@ object MainForm: TMainForm
         TabOrder = 0
         object TabSheet3: TTabSheet
           Caption = 'Objective'
-          ClientHeight = 223
+          ClientHeight = 186
           ClientWidth = 1123
           object ObjectiveTable: TVirtualStringTree
             Left = 0
-            Height = 223
+            Height = 186
             Top = 0
             Width = 1123
             Align = alClient
@@ -2122,7 +2122,7 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 0
     Height = 28
-    Top = 609
+    Top = 588
     Width = 1139
     Panels = <    
       item
@@ -2148,7 +2148,7 @@ object MainForm: TMainForm
   object PageControl2: TPageControl
     Left = 0
     Height = 297
-    Top = 312
+    Top = 291
     Width = 1139
     ActivePage = TabSheet5
     Align = alBottom

@@ -95,10 +95,6 @@ object StatisticsForm: TStatisticsForm
       item
         Width = 4
       end>
-    Font.Color = clWindowText
-    Font.Height = -13
-    Font.Name = 'MS Sans Serif'
-    ParentFont = False
     ReadOnly = True
     TabOrder = 2
     ViewStyle = vsReport
