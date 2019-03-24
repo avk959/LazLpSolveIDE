@@ -274,6 +274,14 @@ type
     ObjectiveSensTable: TVirtualStringTree;
     TabSheet8: TTabSheet;
     RHSSensTable: TVirtualStringTree;
+    acConExpRTF: TAction;
+    acExportRtf: TAction;
+    acExportTex: TAction;
+    acMatExpRtf: TAction;
+    acObjCopRTF: TAction;
+    acObjExpRTF: TAction;
+    acSensDualExpRtf: TAction;
+    acSensObjExpRtf: TAction;
     acSensObjExpHtml: TAction;
     acSensObjExpCsv: TAction;
     acSensDualExpHtml: TAction;
@@ -363,7 +371,6 @@ type
     N5: TMenuItem;
     CheckBox83: TCheckBox;
     acResetOptions: TAction;
-    procedure acObjCopCSVExecute(Sender: TObject);
     procedure ApplPropsQueryEndSession(var Cancel: Boolean);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
@@ -430,6 +437,7 @@ type
     procedure acObjExpCSVExecute(Sender: TObject);
     procedure acObjCopHTMLExecute(Sender: TObject);
     procedure acObjCopRTFExecute(Sender: TObject);
+    procedure acObjCopCSVExecute(Sender: TObject);
     procedure CopyasRTF1Click(Sender: TObject);
     procedure CopyasCSV1Click(Sender: TObject);
     procedure acLoadScriptExecute(Sender: TObject);
