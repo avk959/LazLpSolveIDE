@@ -24,7 +24,6 @@ type
     btnCancel: TButton;
     cbRegularExpression: TCheckBox;
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
-    procedure FormCreate(Sender: TObject);
   private
     function GetSearchBackwards: boolean;
     function GetSearchCaseSensitive: boolean;
@@ -194,11 +193,6 @@ begin
         cbSearchText.Items.Insert(0, s);
     end;
   end;
-end;
-
-procedure TTextSearchDialog.FormCreate(Sender: TObject);
-begin
-  //TMainMenu.Create(self);
 end;
 
 end.
