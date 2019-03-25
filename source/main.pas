@@ -968,7 +968,9 @@ var
   i, j: integer;
   objbound: TFloat;
 begin
+{$IFDEF MSWINDOWS}
   std_system('cls');
+{$ENDIF}
   MemoLog.Clear;
   if LPSolver.IgnoreInteger then
     begin
@@ -1311,10 +1313,11 @@ end;
 procedure TMainForm.acAboutExecute(Sender: TObject);
 begin
   with TAboutForm.Create(nil) do
-  begin
-    ShowModal;
-    Free;
-  end;
+    try
+      ShowModal;
+    finally
+      Free;
+    end;
 end;
 
 // *****************************************************************************

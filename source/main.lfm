@@ -1,13 +1,13 @@
 object MainForm: TMainForm
   Left = 231
-  Height = 616
+  Height = 637
   Top = 251
-  Width = 1139
+  Width = 1173
   ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 569
-  ClientWidth = 1139
+  ClientHeight = 637
+  ClientWidth = 1173
   Color = clBtnFace
   DesignTimePPI = 115
   Menu = MainMenu
@@ -16,21 +16,20 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poScreenCenter
-  LCLVersion = '2.0.1.0'
   object Splitter1: TSplitter
     Cursor = crVSplit
     Left = 0
     Height = 6
-    Top = 285
-    Width = 1139
+    Top = 370
+    Width = 1173
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object PageControl: TPageControl
     Left = 0
-    Height = 250
+    Height = 335
     Top = 35
-    Width = 1139
+    Width = 1173
     ActivePage = TabSheetEditor
     Align = alClient
     Images = ImageList
@@ -38,14 +37,14 @@ object MainForm: TMainForm
     TabOrder = 0
     object TabSheetEditor: TTabSheet
       Caption = 'Source'
-      ClientHeight = 218
-      ClientWidth = 1131
+      ClientHeight = 303
+      ClientWidth = 1165
       ImageIndex = 26
       inline Editor: TLPSynEdit
         Left = 0
-        Height = 218
+        Height = 303
         Top = 0
-        Width = 1131
+        Width = 1165
         Align = alClient
         Font.Color = clWindowText
         Font.Height = -13
@@ -2123,8 +2122,8 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 0
     Height = 28
-    Top = 588
-    Width = 1139
+    Top = 609
+    Width = 1173
     Panels = <    
       item
         Width = 120
@@ -2148,22 +2147,22 @@ object MainForm: TMainForm
   end
   object PageControl2: TPageControl
     Left = 0
-    Height = 297
-    Top = 291
-    Width = 1139
+    Height = 233
+    Top = 376
+    Width = 1173
     ActivePage = TabSheet5
     Align = alBottom
     TabIndex = 0
     TabOrder = 1
     object TabSheet5: TTabSheet
       Caption = 'Log'
-      ClientHeight = 265
-      ClientWidth = 1131
+      ClientHeight = 201
+      ClientWidth = 1165
       inline MemoLog: TSynEdit
         Left = 0
-        Height = 265
+        Height = 201
         Top = 0
-        Width = 1131
+        Width = 1165
         Align = alClient
         Font.Color = clWindowText
         Font.Height = -13
@@ -2333,7 +2332,7 @@ object MainForm: TMainForm
     Left = 0
     Height = 35
     Top = 0
-    Width = 1139
+    Width = 1173
     Caption = 'ToolBar1'
     Color = clBtnFace
     Images = ImageList
@@ -2388,7 +2387,7 @@ object MainForm: TMainForm
     end
     object ToolButton4: TToolButton
       Left = 183
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton4'
       ImageIndex = 17
@@ -2410,7 +2409,7 @@ object MainForm: TMainForm
     end
     object ToolButton12: TToolButton
       Left = 244
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton12'
       ImageIndex = 22
@@ -2446,7 +2445,7 @@ object MainForm: TMainForm
     end
     object ToolButton15: TToolButton
       Left = 361
-      Height = 8
+      Height = 26
       Top = 2
       Caption = 'ToolButton15'
       ImageIndex = 21
@@ -2462,6 +2461,7 @@ object MainForm: TMainForm
       Min = -3
       OnChange = PriorityChange
       Position = 0
+      ScalePos = trRight
       Font.Color = clWindowText
       Font.Height = -20
       Font.Name = 'MS Sans Serif'
