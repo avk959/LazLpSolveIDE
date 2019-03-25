@@ -28,21 +28,18 @@
         <UnitName Value="LpSolve"/>
       </Item2>
       <Item3>
-        <Filename Value="LPSynedit.pas"/>
+        <Filename Value="lpsynedit.pas"/>
         <HasRegisterProc Value="True"/>
         <UnitName Value="LPSynEdit"/>
       </Item3>
     </Files>
-    <RequiredPkgs Count="3">
+    <RequiredPkgs Count="2">
       <Item1>
         <PackageName Value="SynEdit"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCLBase"/>
-      </Item2>
-      <Item3>
         <PackageName Value="FCL"/>
-      </Item3>
+      </Item2>
     </RequiredPkgs>
     <UsageOptions>
       <UnitPath Value="$(PkgOutDir)"/>
