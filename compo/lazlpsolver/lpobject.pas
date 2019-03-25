@@ -459,6 +459,7 @@ type
     constructor Create(AOwner: TComponent); overload; override;
     destructor Destroy; override;
     property XLI: string read FXLI write SetXLIName;
+    property SaveFolder: string read FSaveFolder write FSaveFolder;
   published
     // sense
     property LagTrace: boolean read GetLagTrace write SetLagTrace;
@@ -510,7 +511,6 @@ type
     property XLIDataName: string read FXLIDataName write FXLIDataName;
     property XLIOptions: string read FXLIOptions write FXLIOptions;
     property OnLoad: TNotifyEvent read FOnLoad write FOnLoad;
-    property SaveFolder: string read FSaveFolder write FSaveFolder;
   end;
 
 procedure Register;
