@@ -1,12 +1,12 @@
 object MainForm: TMainForm
   Left = 231
-  Height = 637
+  Height = 727
   Top = 251
   Width = 1173
   ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 637
+  ClientHeight = 727
   ClientWidth = 1173
   Color = clBtnFace
   DesignTimePPI = 115
@@ -20,14 +20,14 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 6
-    Top = 370
+    Top = 452
     Width = 1173
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object PageControl: TPageControl
     Left = 0
-    Height = 335
+    Height = 417
     Top = 35
     Width = 1173
     ActivePage = TabSheetEditor
@@ -37,12 +37,12 @@ object MainForm: TMainForm
     TabOrder = 0
     object TabSheetEditor: TTabSheet
       Caption = 'Source'
-      ClientHeight = 303
+      ClientHeight = 385
       ClientWidth = 1165
       ImageIndex = 26
       inline Editor: TLPSynEdit
         Left = 0
-        Height = 303
+        Height = 385
         Top = 0
         Width = 1165
         Align = alClient
@@ -131,8 +131,8 @@ object MainForm: TMainForm
     end
     object Matrix: TTabSheet
       Caption = 'Matrix'
-      ClientHeight = 218
-      ClientWidth = 1131
+      ClientHeight = 295
+      ClientWidth = 1165
       ImageIndex = 27
       object MatrixTable: TVirtualStringTree
         Left = 0
@@ -169,22 +169,22 @@ object MainForm: TMainForm
     end
     object TabSheetOptions: TTabSheet
       Caption = 'Options'
-      ClientHeight = 255
-      ClientWidth = 1131
+      ClientHeight = 295
+      ClientWidth = 1165
       ImageIndex = 25
       object pcOptions: TPageControl
         Left = 0
-        Height = 255
+        Height = 347
         Top = 0
-        Width = 1131
+        Width = 1165
         ActivePage = tsOptions
         Align = alClient
         TabIndex = 0
         TabOrder = 0
         object tsOptions: TTabSheet
           Caption = 'Options'
-          ClientHeight = 223
-          ClientWidth = 1123
+          ClientHeight = 315
+          ClientWidth = 1157
           ImageIndex = 1
           object BBRuleModeOptions: TGroupBox
             Left = 620
@@ -421,7 +421,7 @@ object MainForm: TMainForm
               Left = 240
               Height = 27
               Hint = 'Set initial "at least better than" guess for objective function.'
-              Top = 216
+              Top = 208
               Width = 179
               OnExit = OptionCheckBoxClick
               OnKeyPress = EditOptionChange
@@ -1938,8 +1938,8 @@ object MainForm: TMainForm
     end
     object TabSheet2: TTabSheet
       Caption = 'Result'
-      ClientHeight = 218
-      ClientWidth = 1131
+      ClientHeight = 295
+      ClientWidth = 1165
       ImageIndex = 28
       object PageControl1: TPageControl
         Left = 0
@@ -2122,7 +2122,7 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 0
     Height = 28
-    Top = 609
+    Top = 699
     Width = 1173
     Panels = <    
       item
@@ -2147,8 +2147,8 @@ object MainForm: TMainForm
   end
   object PageControl2: TPageControl
     Left = 0
-    Height = 233
-    Top = 376
+    Height = 241
+    Top = 458
     Width = 1173
     ActivePage = TabSheet5
     Align = alBottom
@@ -2156,11 +2156,11 @@ object MainForm: TMainForm
     TabOrder = 1
     object TabSheet5: TTabSheet
       Caption = 'Log'
-      ClientHeight = 201
+      ClientHeight = 209
       ClientWidth = 1165
       inline MemoLog: TSynEdit
         Left = 0
-        Height = 201
+        Height = 209
         Top = 0
         Width = 1165
         Align = alClient
@@ -2242,14 +2242,14 @@ object MainForm: TMainForm
     end
     object TabSheet6: TTabSheet
       Caption = 'Messages'
-      ClientHeight = 347
-      ClientWidth = 1131
+      ClientHeight = 201
+      ClientWidth = 1165
       ImageIndex = 1
       inline MemoMessages: TSynEdit
         Left = 0
-        Height = 347
+        Height = 201
         Top = 0
-        Width = 1131
+        Width = 1165
         Align = alClient
         Font.Color = clWindowText
         Font.Height = -13
@@ -2716,6 +2716,12 @@ object MainForm: TMainForm
         Caption = 'Solver params ...'
         OnClick = SolParams1Click
       end
+      object N8: TMenuItem
+        Caption = '-'
+      end
+      object EditorFont: TMenuItem
+        Action = acEditorFont
+      end
     end
     object Help1: TMenuItem
       Caption = 'Help'
@@ -3053,12 +3059,17 @@ object MainForm: TMainForm
       Caption = 'Reset to solver defaults'
       OnExecute = acResetOptionsExecute
     end
+    object acEditorFont: TAction
+      Caption = 'Editor font...'
+      ImageIndex = 33
+      OnExecute = acEditorFontExecute
+    end
   end
   object ImageList: TImageList
     Left = 972
     Top = 8
     Bitmap = {
-      4C69210000001000000010000000000000000000000000000000000000000000
+      4C69220000001000000010000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       000000000000A5A5A5FF00000000000000000000000000000000949494FF0000
@@ -4114,6 +4125,38 @@ object MainForm: TMainForm
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000001000000B9000000930000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000034000000FF000000FA0000001700000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000097000000FF000000FF0000007D00000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000A000000F1000000FF000000FF000000E600000006000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000005D000000D6000000BB000000FF000000FF00000058000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000C0000000750000004A000000FF000000FF000000C3000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0025000000FB0000001900000002000000E0000000FF000000FF0000002E0000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0087000000B4000000000000000000000081000000FF000000FF000000960000
+      0000000000000000000000000000000000000000000000000000000000040000
+      00E6000000FF000000FF000000FB000000FC000000FF000000FF000000F30000
+      000D0000000000000000000000000000000000000000000000000000004C0000
+      00E90000001C000000190000001A0000001B000000BA000000FF000000FF0000
+      006B000000000000000000000000000000000000000000000000000000AF0000
+      008B000000000000000000000000000000000000004C000000FF000000FF0000
+      00D1000000010000000000000000000000000000000000000017000000FB0000
+      00300000000000000000000000000000000000000003000000E4000000FF0000
+      00FF00000038000000000000000000000000000000100000009A000000FE0000
+      00300000000100000000000000000000000000000012000000B9000000FF0000
+      00FF000000BC0000001D0000000000000053000000CD000000B0000000B10000
+      00C4000000A100000000000000000000005D000000CB000000C0000000B70000
+      00B7000000C4000000D100000051000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000
     }
   end
@@ -4201,6 +4244,12 @@ object MainForm: TMainForm
   object ApplProps: TApplicationProperties
     OnQueryEndSession = ApplPropsQueryEndSession
     Left = 920
+    Top = 80
+  end
+  object FontDialog: TFontDialog
+    MinFontSize = 0
+    MaxFontSize = 0
+    Left = 996
     Top = 84
   end
 end

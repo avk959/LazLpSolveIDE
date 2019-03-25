@@ -22,10 +22,14 @@ type
   { TMainForm }
 
   TMainForm = class(TForm)
+    acEditorFont: TAction;
     ApplProps: TApplicationProperties;
+    FontDialog: TFontDialog;
     LPSolver: TLPSolver;
     MainMenu: TMainMenu;
     MenuItem1: TMenuItem;
+    EditorFont: TMenuItem;
+    N8: TMenuItem;
     mFile: TMenuItem;
     MPSOptions: TGroupBox;
     Open1: TMenuItem;
@@ -370,6 +374,7 @@ type
     N5: TMenuItem;
     CheckBox83: TCheckBox;
     acResetOptions: TAction;
+    procedure acEditorFontExecute(Sender: TObject);
     procedure ApplPropsQueryEndSession(var Cancel: Boolean);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
@@ -733,6 +738,29 @@ procedure TMainForm.ApplPropsQueryEndSession(var Cancel: Boolean);
 begin
   FormCloseQuery(Application, Cancel);
   Cancel := not Cancel;
+end;
+
+procedure TMainForm.acEditorFontExecute(Sender: TObject);
+var
+  ini: TIniFile;
+  ms: TMemoryStream;
+begin
+  FontDialog.Font := Editor.Font;
+  if not FontDialog.Execute then
+    exit;
+  Editor.Font := FontDialog.Font;
+  ini := TIniFile.Create(FSaveFolder + 'Options.ini');
+  try
+    ms := TMemoryStream.Create;
+    try
+      ms.WriteBuffer(Editor.Font.FontData, SizeOf(TFontData));
+      ini.WriteBinaryStream('Editor options', 'font', ms);
+    finally
+      ms.Free;
+    end;
+  finally
+    ini.Free;
+  end;
 end;
 
 procedure TMainForm.LPSolverMessage(sender: TComponent; mesg: TMessage);
@@ -2365,8 +2393,10 @@ var
   lang: TLPLanguage;
   filter: string;
   filterall: string;
+  FntData: TFontData;
+  ms: TMemoryStream;
 begin
-  ini := TIniFile.Create(FSaveFolder + 'LpSolveIDE.ini');
+  ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'LpSolveIDE.ini');
   str := TStringList.Create;
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
@@ -2398,6 +2428,27 @@ begin
     ini.Free;
     str.Free;
   end;
+  ini := TIniFile.Create(FSaveFolder + 'Options.ini');
+  try
+    try
+      FntData := Editor.Font.FontData;
+      ms := TMemoryStream.Create;
+      try
+        I := ini.ReadBinaryStream('Editor options', 'font', ms);
+        if I = SizeOf(FntData) then
+          begin
+            ms.Position := 0;
+            ms.ReadBuffer(FntData, SizeOf(FntData));
+            Editor.Font.FontData := FntData;
+          end;
+      finally
+        ms.Free;
+      end;
+    except
+    end;
+  finally
+    ini.Free;
+  end;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
@@ -2406,6 +2457,7 @@ begin
   FConstraints.Free;
   FObjectivesSens.Free;
   FRHSSens.Free;
+  SynEditRegexSearch.Free;
   SynEditSearch.Free;
 end;
 
