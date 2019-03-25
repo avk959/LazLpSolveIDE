@@ -6,7 +6,6 @@ unit main;
 interface
 
 uses
-  {$IFDEF MSWINDOWS}Windows,{$ELSE}Libc,{$ENDIF}
   Classes, SysUtils, Variants, Graphics, Controls, Forms, Dialogs, ExtCtrls, StdCtrls,
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
   ResultArray, lpobject,  lpsolve, VirtualTrees,
@@ -1167,54 +1166,54 @@ begin
 end;
 
 procedure TMainForm.acLoadOptionsExecute(Sender: TObject);
-var FileStream: TFileStream;
+var
+  FileStream: TFileStream;
 begin
   if OpenDialogOptions.Execute then
-  begin
-    FileStream := TFileStream.Create(OpenDialogOptions.FileName, fmOpenRead);
-    try
-      LPSolver.LoadProfile(FileStream);
-      FLockEvents := true;
+    begin
+      FileStream := TFileStream.Create(OpenDialogOptions.FileName, fmOpenRead);
       try
-        ReadOptions;
+        LPSolver.LoadProfile(FileStream);
+        FLockEvents := true;
+        try
+          ReadOptions;
+        finally
+          FLockEvents := false;
+        end;
       finally
-        FLockEvents := false;
+        FileStream.Free;
       end;
-    finally
-      FileStream.Free;
     end;
-  end;
 end;
 procedure TMainForm.SolParams1Click(Sender: TObject);
 begin
-     acSolParams(Sender);
+  acSolParams(Sender);
 end;
 procedure TMainForm.acSolParams(Sender: TObject);
-var f: TParamForm;
+var
+  f: TParamForm;
 begin
-
   f := TParamForm.Create(nil);
 //  with f do   //TParamForm.FormCreate
   try
-    begin
-     f.ShowModal;
-    end;
+    f.ShowModal;
   finally
     f.Free;
   end;
 end;
 procedure TMainForm.acGotoLineExecute(Sender: TObject);
-var f: TGotoLineForm;
+var
+  f: TGotoLineForm;
 begin
   PageControl.ActivePage := TabSheetEditor;
   f := TGotoLineForm.Create(nil);
   try
     f.LineNumer.Text := IntToStr(Editor.CaretY);
     if f.ShowModal = mrOK then
-    begin
-      Editor.CaretY := StrToInt(f.LineNumer.Text);  //GotoLineAndCenter(StrToInt(f.LineNumer.Text));
-      Editor.SetFocus;
-    end;
+      begin
+        Editor.CaretY := StrToInt(f.LineNumer.Text);  //GotoLineAndCenter(StrToInt(f.LineNumer.Text));
+        Editor.SetFocus;
+      end;
   finally
     f.Free;
   end;
@@ -1223,11 +1222,11 @@ end;
 procedure TMainForm.acStatisticsExecute(Sender: TObject);
 begin
   with TStatisticsForm.Create(nil) do
-  try
-    ShowModal;
-  finally
-    free;
-  end;
+    try
+      ShowModal;
+    finally
+      free;
+    end;
 end;
 
 procedure TMainForm.acNewXLIExecute(Sender: TObject);
@@ -3248,9 +3247,12 @@ begin
 end;
 
 procedure TMainForm.PriorityChange(Sender: TObject);
-const pr: array[-3..2] of Integer = (-15,-2,-1,0,1,2);
+//const pr: array[-3..2] of Integer = (-15,-2,-1,0,1,2);
+const pr: array[-3..2] of TThreadPriority = (
+  tpIdle, tpLowest, tpLower, tpNormal, tpHigher, tpHighest);
 begin
-  SetThreadPriority(GetCurrentThread, pr[Priority.Position]);
+  //SetThreadPriority(GetCurrentThread, pr[Priority.Position]);
+  TThread.CurrentThread.Priority := pr[Priority.Position];
 end;
 
 procedure TMainForm.acSaveParamsExecute(Sender: TObject);
