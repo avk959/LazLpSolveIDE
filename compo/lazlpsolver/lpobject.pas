@@ -116,11 +116,11 @@ type
     FIBMMPS: boolean;
     FNegateObjConstMPS: boolean;
     FIgnoreInteger: boolean;
-    FBFP: string;
-    FXLI: string;
-    FXLIDataName: string;
-    FXLIOptions: string;
-    FSaveFolder: string;
+    FBFP,
+    FXLI,
+    FXLIDataName,
+    FXLIOptions,
+    FConfigFolder: string;
     function GetHasBFP: boolean;
     function GetIsNativeBFP: boolean;
     function GetHasXLI: boolean;
@@ -459,7 +459,7 @@ type
     constructor Create(AOwner: TComponent); overload; override;
     destructor Destroy; override;
     property XLI: string read FXLI write SetXLIName;
-    property SaveFolder: string read FSaveFolder write FSaveFolder;
+    property ConfigFolder: string read FConfigFolder write FConfigFolder;
   published
     // sense
     property LagTrace: boolean read GetLagTrace write SetLagTrace;
@@ -1279,8 +1279,8 @@ begin
   result := false;
   if (not result {mode = sfXLI}) then  // whp 2009 always via _tmpfile for VC& and hiher lpsolve55.dll
     begin
-      strings.SaveToFile(SaveFolder + tmpfile);
-      result := LoadFromFile(SaveFolder + tmpfile, verbose, mode);
+      strings.SaveToFile(ConfigFolder + tmpfile);
+      result := LoadFromFile(ConfigFolder + tmpfile, verbose, mode);
     end
 ;
 { else
@@ -1498,7 +1498,7 @@ function TLPSolver.SaveToStrings(strings: TStrings; mode: TScriptFormat): boolea
 var
   TmpFileName: string;
 begin
-  TmpFileName := SaveFolder + tmpfile;
+  TmpFileName := ConfigFolder + tmpfile;
   Result := SaveToFile(TmpFileName, mode);
   if Result then
     strings.LoadFromFile(TmpFileName);

@@ -2023,7 +2023,7 @@ begin
   FlpParamsFile:= '';
   FConfigFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
   ForceDirectoriesUTF8(FConfigFolder);
-  LpSolver.SaveFolder := FConfigFolder;
+  LpSolver.ConfigFolder := FConfigFolder;
   ReadIniFile;
   acNewLP.Execute;
 end;
