@@ -376,6 +376,7 @@ type
     acResetOptions: TAction;
     procedure acEditorFontExecute(Sender: TObject);
     procedure ApplPropsQueryEndSession(var Cancel: Boolean);
+    procedure ApplPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
     procedure ScaleTypeOptionChange(Sender: TObject);
@@ -763,16 +764,25 @@ begin
   end;
 end;
 
+procedure TMainForm.ApplPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
+const
+  hFmt = '%s(%d)';
+begin
+  if HintInfo.HintControl = Priority then
+    HintStr := Format(hFmt, [HintStr, Priority.Position]);
+end;
+
 procedure TMainForm.LPSolverMessage(sender: TComponent; mesg: TMessage);
 var elapsed: cardinal;
 const Messages: array[TMessage] of string = ('Presolve', 'Iteration', 'Invert',
   'LP Feasible', 'LP Optimal', 'LP Equal', 'LP Better', 'MILP Feasible', 'MILP Equal',
   'MILP Better', 'MILP Strategy', 'MILP Optimal', 'Performance', 'InitPseudoCost');
 
-procedure AddCurrentMessage;
-begin
-  MemoMessages.Lines.Add(TimeToStr(Time) + ': ' + Messages[mesg]);
-end;
+  procedure AddCurrentMessage;
+  begin
+    MemoMessages.Lines.Add(TimeToStr(Time) + ': ' + Messages[mesg]);
+  end;
+
 begin
   if DoAbort then exit;
   case mesg of
