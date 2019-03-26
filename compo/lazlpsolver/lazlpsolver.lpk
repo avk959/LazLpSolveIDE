@@ -17,7 +17,7 @@
         </Debugging>
       </Linking>
     </CompilerOptions>
-    <Files Count="3">
+    <Files Count="4">
       <Item1>
         <Filename Value="lpobject.pas"/>
         <HasRegisterProc Value="True"/>
@@ -32,6 +32,10 @@
         <HasRegisterProc Value="True"/>
         <UnitName Value="LPSynEdit"/>
       </Item3>
+      <Item4>
+        <Filename Value="lphighlighter.pas"/>
+        <UnitName Value="LPHighlighter"/>
+      </Item4>
     </Files>
     <RequiredPkgs Count="2">
       <Item1>

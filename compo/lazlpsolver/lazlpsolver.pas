@@ -8,7 +8,7 @@ unit lazlpsolver;
 interface
 
 uses
-  LpObject, LpSolve, LPSynEdit, LazarusPackageIntf;
+  LpObject, LpSolve, LPSynEdit, LPHighlighter, LazarusPackageIntf;
 
 implementation
 
