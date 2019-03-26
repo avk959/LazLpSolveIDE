@@ -883,16 +883,16 @@ var
   end;
 
 var
-  l: TLPLanguage;
+  lang: TLPLanguage;
 begin
   begin
     FScriptFormat := Value;
-    l := FindLanguage(Value);
-    if (l = lXML) then
+    lang := FindLanguage(Value);
+    if (lang = lXML) then
       Editor.Highlighter := SynXMLSyn
     else
       begin
-        FHighlighter.Language := l;
+        FHighlighter.Language := lang;
         Editor.Highlighter := FHighlighter;
       end;
     acViewAsLP.Checked := false;
