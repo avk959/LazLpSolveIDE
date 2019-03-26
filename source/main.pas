@@ -8,11 +8,11 @@ interface
 uses
   Classes, SysUtils, Variants, Graphics, Controls, Forms, Dialogs, ExtCtrls, StdCtrls,
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
-  ResultArray, lpobject,  lpsolve, VirtualTrees,
+  ResultArray, LpObject,  LpSolve, VirtualTrees,
 
-  SynEdit, SynEditTypes, LPHighlighter, SynEditSearch, SynEditRegexSearch, SynEditHighlighter,
-  SynHighlighterXML, SynEditMiscClasses, SynEditExport, SynExportHTML, SynMacroRecorder, LPSynEdit,
-  LclType, LCLIntf, LazFileUtils;
+  SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditSearch, SynEditRegexSearch,
+  SynEditHighlighter, SynHighlighterXML, SynEditMiscClasses, SynEditExport, SynExportHTML,
+  SynMacroRecorder, LclType, LCLIntf, LazFileUtils;
 
 type
 

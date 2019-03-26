@@ -48,6 +48,8 @@ const
   cols: array[0..11] of Integer = (1,3,4,12,14,22,24,36,39,47,49,61);
 begin
   inherited;
+  if csDesigning in ComponentState then
+    exit;
   AClip := ACanvas.ClipRect;
   if FEnableMPS then
     begin
