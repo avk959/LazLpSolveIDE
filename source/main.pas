@@ -534,7 +534,7 @@ type
     FCurrentFile: TFileName;
     fSearchFromCaret: boolean;
     FLastOpenFile,
-    FSaveFolder: string;
+    FConfigFolder: string;
     FlpParamsFile: TFileName;
     FLastLineCount: integer;
     FSolving: boolean;
@@ -749,7 +749,7 @@ begin
   if not FontDialog.Execute then
     exit;
   Editor.Font := FontDialog.Font;
-  ini := TIniFile.Create(FSaveFolder + 'Options.ini');
+  ini := TIniFile.Create(FConfigFolder + 'Options.ini');
   try
     ms := TMemoryStream.Create;
     try
@@ -1173,7 +1173,7 @@ end;
 procedure TMainForm.acSaveDefaultOptionsExecute(Sender: TObject);
 var stream: TFileStream;
 begin
-  Stream := TFileStream.Create(FSaveFolder + 'default.lpo', fmCreate);
+  Stream := TFileStream.Create(FConfigFolder + 'default.lpo', fmCreate);
   try
     LPSolver.SaveProfile(stream);
   finally
@@ -1960,9 +1960,9 @@ var
 begin
   inherited;
   DefaultCheckColor := BreackAtFirstOption.Color;
-  Path := FSaveFolder + 'default.lpo';
+  Path := FConfigFolder + 'default.lpo';
   //if FileExists(ExtractFilePath(ParamStr(0)) + 'default.lpo') then
-  if FileExists(Path) then
+  if FileExistsUtf8(Path) then
     begin
       //stream := TFileStream.Create(ExtractFilePath(ParamStr(0)) + 'default.lpo', fmOpenRead);
       stream := TFileStream.Create(Path, fmOpenRead);
@@ -2017,12 +2017,13 @@ begin
   FHighlighter.CommentAttri.Foreground := clGreen;
   FHighlighter.NumberAttri.Foreground := clNavy;
   Editor.Highlighter := FHighlighter;
+  Editor.SetDefaultKeystrokes;//////////
   SetCurrentFile('');
   FLastOpenFile := '';
   FlpParamsFile:= '';
-  FSaveFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
-  ForceDirectoriesUTF8(FSaveFolder);
-  LpSolver.SaveFolder := FSaveFolder;
+  FConfigFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
+  ForceDirectoriesUTF8(FConfigFolder);
+  LpSolver.SaveFolder := FConfigFolder;
   ReadIniFile;
   acNewLP.Execute;
 end;
@@ -2388,15 +2389,13 @@ var
   ini: TIniFile;
   str: TStringList;
   i: integer;
-  lib: string;
-  ext: string;
   lang: TLPLanguage;
-  filter: string;
-  filterall: string;
+  lib, ext, filter, filterall, IniName: string;
   FntData: TFontData;
   ms: TMemoryStream;
 begin
-  ini := TIniFile.Create(ExtractFilePath(ParamStr(0)) + 'LpSolveIDE.ini');
+  IniName := ExtractFilePath(ParamStr(0)) + 'LpSolveIDE.ini';
+  ini := TIniFile.Create(IniName);
   str := TStringList.Create;
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
@@ -2428,27 +2427,28 @@ begin
     ini.Free;
     str.Free;
   end;
-  ini := TIniFile.Create(FSaveFolder + 'Options.ini');
-  try
-    try
-      FntData := Editor.Font.FontData;
-      ms := TMemoryStream.Create;
+  IniName := FConfigFolder + 'Options.ini';
+  if FileExistsUtf8(IniName) then
+    begin
+      ini := TIniFile.Create(IniName);
       try
-        I := ini.ReadBinaryStream('Editor options', 'font', ms);
-        if I = SizeOf(FntData) then
-          begin
-            ms.Position := 0;
-            ms.ReadBuffer(FntData, SizeOf(FntData));
-            Editor.Font.FontData := FntData;
-          end;
+        FntData := Editor.Font.FontData;
+        ms := TMemoryStream.Create;
+        try
+          I := ini.ReadBinaryStream('Editor options', 'font', ms);
+          if I = SizeOf(FntData) then
+            begin
+              ms.Position := 0;
+              ms.ReadBuffer(FntData, SizeOf(FntData));
+              Editor.Font.FontData := FntData;
+            end;
+        finally
+          ms.Free;
+        end;
       finally
-        ms.Free;
+        ini.Free;
       end;
-    except
     end;
-  finally
-    ini.Free;
-  end;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);

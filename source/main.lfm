@@ -1,12 +1,12 @@
 object MainForm: TMainForm
   Left = 231
-  Height = 727
+  Height = 637
   Top = 251
   Width = 1173
   ActiveControl = Editor
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 727
+  ClientHeight = 637
   ClientWidth = 1173
   Color = clBtnFace
   DesignTimePPI = 115
@@ -20,14 +20,14 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 6
-    Top = 452
+    Top = 362
     Width = 1173
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object PageControl: TPageControl
     Left = 0
-    Height = 417
+    Height = 327
     Top = 35
     Width = 1173
     ActivePage = TabSheetEditor
@@ -37,37 +37,38 @@ object MainForm: TMainForm
     TabOrder = 0
     object TabSheetEditor: TTabSheet
       Caption = 'Source'
-      ClientHeight = 385
+      ClientHeight = 295
       ClientWidth = 1165
       ImageIndex = 26
       inline Editor: TLPSynEdit
         Left = 0
-        Height = 385
+        Height = 295
         Top = 0
         Width = 1165
         Align = alClient
         Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Courier New'
+        Font.Height = -14
+        Font.Name = 'Consolas'
         Font.Pitch = fpFixed
         Font.Quality = fqCleartype
         ParentColor = False
         ParentFont = False
         PopupMenu = PopupMenu
         TabOrder = 0
-        Gutter.LeftOffset = 6
-        Gutter.RightOffset = 5
-        Gutter.Width = 76
+        Gutter.RightOffset = 3
+        Gutter.Width = 68
         Gutter.MouseActions = <>
+        RightGutter.Visible = False
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
         Keystrokes = <>
         MouseActions = <>
         MouseTextActions = <>
         MouseSelActions = <>
-        Options = [eoAutoIndent, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor]
-        MouseOptions = [emDragDropEditing, emRightMouseMovesCursor]
-        VisibleSpecialChars = [vscSpace, vscTabAtLast]
+        Options = [eoAutoIndent, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor, eoDoubleClickSelectsLine]
+        Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
+        MouseOptions = [emDragDropEditing, emRightMouseMovesCursor, emDoubleClickSelectsLine]
+        VisibleSpecialChars = []
         RightEdge = 255
         SelectedColor.BackPriority = 50
         SelectedColor.ForePriority = 50
@@ -87,6 +88,7 @@ object MainForm: TMainForm
         MouseLinkColor.Foreground = clBlue
         LineHighlightColor.Background = clNone
         LineHighlightColor.Foreground = clNone
+        SelectionMode = smCurrent
         OnDropFiles = EditorDropFiles
         OnReplaceText = EditorReplaceText
         OnStatusChange = EditorStatusChange
@@ -174,7 +176,7 @@ object MainForm: TMainForm
       ImageIndex = 25
       object pcOptions: TPageControl
         Left = 0
-        Height = 347
+        Height = 295
         Top = 0
         Width = 1165
         ActivePage = tsOptions
@@ -183,20 +185,20 @@ object MainForm: TMainForm
         TabOrder = 0
         object tsOptions: TTabSheet
           Caption = 'Options'
-          ClientHeight = 315
+          ClientHeight = 263
           ClientWidth = 1157
           ImageIndex = 1
           object BBRuleModeOptions: TGroupBox
             Left = 620
             Height = 563
             Top = 14
-            Width = 445
+            Width = 476
             Caption = 'Branch Bound'
             ClientHeight = 539
-            ClientWidth = 441
+            ClientWidth = 472
             TabOrder = 0
             object Label1: TLabel
-              Left = 220
+              Left = 228
               Height = 19
               Top = 68
               Width = 85
@@ -361,7 +363,7 @@ object MainForm: TMainForm
               Height = 27
               Hint = 'Select lowest indexed non-integer column'
               Top = 92
-              Width = 180
+              Width = 184
               ItemHeight = 19
               ItemIndex = 0
               Items.Strings = (
@@ -383,11 +385,11 @@ object MainForm: TMainForm
               Text = 'First'
             end
             object BBFloorFirstOption: TComboBox
-              Left = 48
+              Left = 40
               Height = 27
               Hint = 'Take floor branch first'
               Top = 32
-              Width = 196
+              Width = 184
               ItemHeight = 19
               ItemIndex = 1
               Items.Strings = (
@@ -409,7 +411,7 @@ object MainForm: TMainForm
               Height = 27
               Hint = 'Sets the maximum branch-and-bound depth.'
               Top = 147
-              Width = 179
+              Width = 184
               OnExit = OptionCheckBoxClick
               OnKeyPress = EditOptionChange
               ParentShowHint = False
@@ -422,7 +424,7 @@ object MainForm: TMainForm
               Height = 27
               Hint = 'Set initial "at least better than" guess for objective function.'
               Top = 208
-              Width = 179
+              Width = 184
               OnExit = OptionCheckBoxClick
               OnKeyPress = EditOptionChange
               ParentShowHint = False
@@ -534,7 +536,7 @@ object MainForm: TMainForm
               Height = 27
               Hint = 'Linear scaling'
               Top = 32
-              Width = 187
+              Width = 184
               HelpContext = 3
               ItemHeight = 19
               ItemIndex = 0
@@ -792,7 +794,7 @@ object MainForm: TMainForm
               Height = 27
               Hint = 'Devex pricing from Paula Harris'
               Top = 32
-              Width = 212
+              Width = 184
               ItemHeight = 19
               ItemIndex = 2
               Items.Strings = (
@@ -825,8 +827,8 @@ object MainForm: TMainForm
         end
         object tsGeneral: TTabSheet
           Caption = 'Advanced'
-          ClientHeight = 125
-          ClientWidth = 1123
+          ClientHeight = 263
+          ClientWidth = 1157
           object Label3: TLabel
             Left = 232
             Height = 19
@@ -1628,8 +1630,8 @@ object MainForm: TMainForm
         end
         object tsMessages: TTabSheet
           Caption = 'Messages'
-          ClientHeight = 125
-          ClientWidth = 1123
+          ClientHeight = 263
+          ClientWidth = 1157
           ImageIndex = 3
           object Label8: TLabel
             Left = 236
@@ -1943,22 +1945,22 @@ object MainForm: TMainForm
       ImageIndex = 28
       object PageControl1: TPageControl
         Left = 0
-        Height = 218
+        Height = 295
         Top = 0
-        Width = 1131
+        Width = 1165
         ActivePage = TabSheet3
         Align = alClient
         TabIndex = 0
         TabOrder = 0
         object TabSheet3: TTabSheet
           Caption = 'Objective'
-          ClientHeight = 186
-          ClientWidth = 1123
+          ClientHeight = 263
+          ClientWidth = 1157
           object ObjectiveTable: TVirtualStringTree
             Left = 0
-            Height = 186
+            Height = 263
             Top = 0
-            Width = 1123
+            Width = 1157
             Align = alClient
             Header.AutoSizeIndex = 0
             Header.Columns = <            
@@ -2122,7 +2124,7 @@ object MainForm: TMainForm
   object StatusBar: TStatusBar
     Left = 0
     Height = 28
-    Top = 699
+    Top = 609
     Width = 1173
     Panels = <    
       item
@@ -2148,7 +2150,7 @@ object MainForm: TMainForm
   object PageControl2: TPageControl
     Left = 0
     Height = 241
-    Top = 458
+    Top = 368
     Width = 1173
     ActivePage = TabSheet5
     Align = alBottom
@@ -2165,8 +2167,8 @@ object MainForm: TMainForm
         Width = 1165
         Align = alClient
         Font.Color = clWindowText
-        Font.Height = -13
-        Font.Name = 'Courier New'
+        Font.Height = -14
+        Font.Name = 'Consolas'
         Font.Pitch = fpFixed
         Font.Quality = fqCleartype
         ParentColor = False
