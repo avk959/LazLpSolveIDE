@@ -644,7 +644,9 @@ var
   DefaultCheckColor: TColor;
 
 resourcestring
-  STextNotFound = 'Text not found';
+  STextNotFound    = 'Text not found';
+  SFileNotFound    = 'File not found';
+  SFileNotFoundFmt = 'Could not find file' + sLineBreak + '%s';
 
 implementation
 uses
@@ -2418,7 +2420,7 @@ var
   FntData: TFontData;
   ms: TMemoryStream;
 begin
-  IniName := ExtractFilePath(ParamStr(0)) + SAppIniName;
+  IniName := ExtractFilePath(Application.ExeName) + SAppIniName;
   ini := TIniFile.Create(IniName);
   str := TStringList.Create;
   try
@@ -3203,10 +3205,18 @@ begin
   URLshow('http://lpsolve.sourceforge.net/5.5/')
 end;
 procedure TMainForm.acHelpExecute(Sender: TObject);
+var
+  LocalHelpFile: string;
 begin
 {  HtmlHelp(Application.Handle, PChar(ExtractFilePath(ParamStr(0))+'lp_solve55.chm'),
   HH_DISPLAY_TOC, 0);}
-  URLshow(ExtractFilePath(ParamStr(0))+'lp_solve55.chm');
+  LocalHelpFile := ExtractFilePath(Application.ExeName)+'lp_solve55.chm';
+  if FileExistsUtf8(LocalHelpFile) then
+    URLshow(LocalHelpFile)
+  else
+    Application.MessageBox(PChar(Format(SFileNotFoundFmt, [LocalHelpFile])),
+                           PChar(SFileNotFound),  MB_ICONEXCLAMATION);
+
 end;
 
 procedure TMainForm.UpdateVirtualTrees;
