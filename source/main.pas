@@ -586,7 +586,7 @@ type
   { TXliExtension }
 
   TXliExtension = class(TAction)
-  strict private
+  private
   const
   {$IF DEFINED(MSWINDOWS)}
     LIB_PREFIX = '';
@@ -600,8 +600,6 @@ type
   {$ENDIF}
   var
     FLibName: string;
-  protected
-    procedure SetLibName(const aValue: string);
   public
     property LibName: string read FLibName;
   end;
@@ -690,13 +688,6 @@ begin
   end;
 end;
 
-{ TXliExtension }
-
-procedure TXliExtension.SetLibName(const aValue: string);
-begin
-  FLibName := LIB_PREFIX + aValue + LIB_SUFFIX;
-end;
-
 { TNewXliExtension }
 
 constructor TNewXliExtension.Create(AOwner: TComponent; const aLibName, aExtension: string;
@@ -706,11 +697,11 @@ var
   m: TMenuItem;
 begin
   inherited Create(AOwner);
-  SetLibName(aLibName);
+  FLibName := aLibName;
   FExtension := aExtension;
   FLanguage := aLang;
   Tag := Mainform.XLINewActionList.ComponentCount - 1;
-  h := LoadLibrary(PChar(LibName));
+  h := LoadLibrary(PChar(LIB_PREFIX + LibName + LIB_SUFFIX));
   assert(h <> 0);
   caption := xli_name(GetProcAddress(h, 'xli_name'));
   FreeLibrary(h);
@@ -731,11 +722,11 @@ var
   m: TMenuItem;
 begin
   inherited Create(AOwner);
-  SetLibName(aLibName);
+  FLibName := aLibName;
   FExtension := aExtension;
   FLanguage := aLang;
   Tag := Mainform.XLIViewActionList.ComponentCount - 1;
-  h := LoadLibrary(PChar(LibName));
+  h := LoadLibrary(PChar(LIB_PREFIX + LibName + LIB_SUFFIX));
   assert(h <> 0);
   caption := xli_name(GetProcAddress(h, 'xli_name'));
   FreeLibrary(h);
