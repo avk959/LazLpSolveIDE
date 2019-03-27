@@ -10,9 +10,9 @@ uses
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
   ResultArray, LpObject,  LpSolve, VirtualTrees,
 
-  SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditSearch, SynEditRegexSearch,
-  SynEditHighlighter, SynHighlighterXML, SynEditMiscClasses, SynEditExport, SynExportHTML,
-  SynMacroRecorder, LclType, LCLIntf, LazFileUtils;
+  SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
+  SynEditMiscClasses, SynEditExport, SynExportHTML, SynMacroRecorder, LclType, LCLIntf,
+  LazFileUtils;
 
 type
 
@@ -600,27 +600,19 @@ type
   {$ENDIF}
   var
     FLibName: string;
-  public
-    property LibName: string read FLibName;
-  end;
-
-  TViewXliExtension = class(TXliExtension)
-  private
     FExtension: string;
     FLanguage: TLPLanguage;
   public
+    property LibName: string read FLibName;
     property Extension: string read FExtension;
     property Language: TLPLanguage read FLanguage;
+  end;
+
+  TViewXliExtension = class(TXliExtension)
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
   end;
 
   TNewXliExtension = class(TXliExtension)
-  private
-    FExtension: string;
-    FLanguage: TLPLanguage;
-  public
-    property Extension: string read FExtension;
-    property Language: TLPLanguage read FLanguage;
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
   end;
 
