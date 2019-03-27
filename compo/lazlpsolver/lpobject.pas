@@ -367,11 +367,9 @@ type
     procedure ResetBasis;
 
     function LoadFromFile(const aFileName: string; verbose: TVerbose; mode: TScriptFormat): boolean;
-    //function LoadFromStream(stream: TStream; verbose: TVerbose; mode: TScriptFormat): boolean;
     function LoadFromStrings(strings: TStrings; verbose: TVerbose; mode: TScriptFormat): boolean;
 
     function SaveToFile(const filename: string; mode: TScriptFormat): boolean;
-    //function SaveToStream(stream: TStream; mode: TScriptFormat): boolean;
     function SaveToStrings(strings: TStrings; mode: TScriptFormat): boolean;
 
     procedure Print;
@@ -1195,8 +1193,8 @@ begin
       end;
     sfXLI:
       begin
-        result := ChangeLPHandle(read_XLI(PChar(FXLI), PChar(aFileName), Pointer(FXLIDataName),
-                                 Pointer(FXLIOptions), ord(verbose)));
+        result := ChangeLPHandle(read_XLI(PChar(FXLI), PChar(aFileName), PChar(FXLIDataName),
+                                 PChar(FXLIOptions), ord(verbose)));
         if LpName = tmpfile then
           LpName := '';
       end;
@@ -1206,74 +1204,6 @@ begin
   DoOnload;
 end;
 
-//function TLPSolver.LoadFromStream(stream: TStream; verbose: TVerbose; mode: TScriptFormat): boolean;
-//type
-//  PStreamDesc = ^TStreamDesc;
-//  TStreamDesc = record
-//    hndl: integer;
-//    str: TStream;
-//  end;
-//
-//  function ThreadFunc(p: PStreamDesc): Integer;
-//  var
-//    i: integer;
-//    strm: Pointer;
-//  begin
-//    strm := std_fdopen(p.hndl, 'w');
-//    p.str.Seek(0, soFromBeginning);
-//    while p.str.Read(i, 1) > 0 do
-//      std_fputc(i, strm);
-//    std_fclose(strm);
-//    std_close(p.hndl);
-//    result := 1;
-//  end;
-//var
-//  pout: PInteger;
-//  Handles: array[0..1] of integer;
-//  tid: SizeUInt;
-//  th: thandle;
-//  desc: PStreamDesc;
-//  options: integer;
-//begin
-//  assert(mode <> sfXLI, 'not implemented');
-//  result := false;
-//  if std_pipe(@Handles, 256, $8000) <> -1 then
-//    begin
-//      pout := std_fdopen(Handles[0], 'r');
-//      // allocate shared memory
-//      new(desc);
-//      desc.hndl := Handles[1];
-//      desc.str := stream;
-//      th := BeginThread(nil, 0, @ThreadFunc, desc, 0, tid);
-//
-//      case mode of
-//        sfLP : result := ChangeLPHandle(read_lp(pout, ord(verbose), ''));
-//        sfMPS:
-//          begin
-//            options := ord(verbose);
-//            if IBMMPS then
-//              options := options + 16;
-//            if NegateObjConstMPS then
-//              options := options + 32;
-//            if FFreeMPS then
-//              result := ChangeLPHandle(read_freeMPS(pout, options))
-//            else
-//              result := ChangeLPHandle(read_MPS(pout, options));
-//          end;
-//      end;
-//    if not result then
-//      TerminateThread(th, 0)
-//    else
-//      WaitForSingleObject(th, Windows.INFINITE);
-//
-//    // cleanup
-//    CloseHandle(th);
-//    dispose(desc);
-//    std_fclose(pout);
-//    std_close(Handles[0]);
-//  end;
-//end;
-
 function TLPSolver.LoadFromStrings(strings: TStrings; verbose: TVerbose; mode: TScriptFormat): boolean;
 begin
   result := false;
@@ -1281,44 +1211,7 @@ begin
     begin
       strings.SaveToFile(ConfigFolder + tmpfile);
       result := LoadFromFile(ConfigFolder + tmpfile, verbose, mode);
-    end
-;
-{ else
-  if std_pipe(@Handles, 256, $8000) <> -1 then
-  begin
-    pout := std_fdopen(Handles[0], 'r');
-    // allocate shared memory
-    new(desc);
-    desc.hndl := Handles[1];
-    desc.str := strings;
-    th := BeginThread(nil, 0, @ThreadFunc, desc, 0, tid);
-
-    case mode of
-      sfLP : result := ChangeLPHandle(read_lp(pout, ord(verbose), ''));
-      sfMPS:
-        begin
-          options := ord(verbose);
-          if IBMMPS then
-            options := options + 16;
-          if NegateObjConstMPS then
-            options := options + 32;
-          if FFreeMPS then
-            result := ChangeLPHandle(read_freemps(pout, options)) else
-            result := ChangeLPHandle(read_MPS(pout, options));
-        end;
     end;
-    if not result then
-      TerminateThread(th, 0) else
-      WaitForSingleObject(th, Windows.INFINITE);
-
-    // cleanup
-    CloseHandle(th);
-    dispose(desc);
-    std_fclose(pout);
-    std_close(Handles[0]);
-    DoOnload;
-  end;
-}
 end;
 
 function TLPSolver.SaveToFile(const filename: string; mode: TScriptFormat): boolean;
@@ -1332,169 +1225,13 @@ begin
         else
           result := write_mps(FLP, PChar(filename));
       end;
-    sfXLI:
-      begin
-
-        result := write_XLI(FLP, PChar(filename), Pointer(FXLIOptions), false);
-      end;
+    sfXLI: result := write_XLI(FLP, PChar(filename), PChar(FXLIOptions), false);
   else
     result := false;
   end;
 end;
 
-//function TLPSolver.SaveToStream(stream: TStream; mode: TScriptFormat): boolean;
-//type
-//  PStreamDesc = ^TStreamDesc;
-//  TStreamDesc = record
-//    pout: Pointer;
-//    stream: TStream;
-//  end;
-//  function ThreadFunc(p: PStreamDesc): Integer;
-//  var
-//    i: integer;
-//  begin
-//    i := std_fgetc(p.pout);
-//    while i >= 0 do
-//    begin
-//      p.stream.Write(i, 1);
-//      i := std_fgetc(p.pout);
-//    end;
-//    // free shared memory
-//    dispose(p);
-//    result := 1;
-//  end;
-//var
-//  pin, pout: PInteger;
-//  Handles: array[0..1] of integer;
-//  tid: SizeUInt;
-//  th: thandle;
-//  desc: PStreamDesc;
-//begin
-//  assert(mode <> sfXLI, 'not implemented');
-//  result := false;
-//  if std_pipe(@Handles, 256, $8000) <> -1 then
-//  begin
-//    pin := std_fdopen(Handles[1], 'w');
-//    pout := std_fdopen(Handles[0], 'r');
-////    set_outputstream(FLP, pin);
-//    // allocate shared memory
-//    new(desc);
-//    desc.pout := pout;
-//    desc.stream := stream;
-//    th := BeginThread(nil, 0, @ThreadFunc, desc, 0, tid);
-//    case mode of
-//      sfLP : result := write_lp(FLP, pin);
-//      sfMPS:
-//        begin
-//          if FFreeMPS then
-//            result := write_freemps(FLP, pin) else
-//            result := write_mps(FLP, pin);
-//        end;
-//    end;
-//    // close pin because the thread still waiting
-//    std_fclose(pin);
-//    // wait for the end of the thread
-//    WaitForSingleObject(th, Windows.INFINITE);
-//    // cleanup
-//    CloseHandle(th);
-//    std_fclose(pout);
-//    std_close(Handles[0]);
-//    std_close(Handles[1]);
-//  end;
-//end;
-
-
 function TLPSolver.SaveToStrings(strings: TStrings; mode: TScriptFormat): boolean;
-//type
-//  PStringDesc = ^TStringDesc;
-//  TStringDesc = record
-//    pout: Pointer;
-//    str: TStrings;
-//  end;
-//
-//  function ThreadFunc(p: PStringDesc): Integer;
-//  var
-//    buffer: string = '';
-//    i, pos, size: integer;
-//  begin
-//    size := 254;
-//    pos := 1;
-//    setlength(buffer, size);
-//    i := std_fgetc(p.pout);
-//    p.str.BeginUpdate;
-//    try
-//      while i > 0 do
-//      begin
-//        if pos = size then
-//        begin
-//          inc(size, size);
-//          setlength(buffer, size);
-//        end;
-//
-//        if char(i) in [#13, #10] then
-//        begin
-//          buffer[pos] := #0;
-//          p.str.Add(PChar(buffer));
-//          pos := 1;
-//        end else
-//        begin
-//          buffer[pos] := char(i);
-//          inc(pos);
-//        end;
-//        i := std_fgetc(p.pout);
-//      end;
-//    finally
-//      p.str.EndUpdate;
-//      // free shared memory
-//      dispose(p);
-//      result := 1;
-//    end;
-//  end;
-//var
-//  pin, pout: PInteger;
-//  Handles: array[0..1] of integer;
-//  tid: SizeUInt;
-//  th: thandle;
-//  desc: PStringDesc;
-//begin
-//  //assert(mode <> sfXLI, 'not implemented');
-//  result := false;
-//
-//  if (mode = sfXLI) then
-//    begin
-//      result := SaveToFile(SaveFolder + tmpfile, mode);
-//      if result then
-//        strings.LoadFromFile(SaveFolder + tmpfile);
-//    end
-//  else
-//    if std_pipe(@Handles, 256, $8000) <> -1 then
-//      begin
-//        pin := std_fdopen(Handles[1], 'w');
-//        pout := std_fdopen(Handles[0], 'r');
-//        // allocate shared memory
-//        new(desc);
-//        desc.pout := pout;
-//        desc.str := strings;
-//        th := BeginThread(nil, 0, @ThreadFunc, desc, 0, tid);
-//        case mode of
-//          sfLP : result := write_lp(FLP, pin);
-//          sfMPS:
-//            begin
-//              if FFreeMPS then
-//                result := write_freemps(FLP, pin) else
-//                result := write_mps(FLP, pin);
-//            end;
-//        end;
-//        // close pin because the thread still waiting
-//        std_fclose(pin);
-//        // wait for the end of the thread
-//        WaitForSingleObject(th, Windows.INFINITE);
-//        // cleanup
-//        CloseHandle(th);
-//        std_fclose(pout);
-//        std_close(Handles[0]);
-//        std_close(Handles[1]);
-//      end;
 var
   TmpFileName: string;
 begin

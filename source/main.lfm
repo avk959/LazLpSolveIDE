@@ -170,12 +170,12 @@ object MainForm: TMainForm
     end
     object TabSheetOptions: TTabSheet
       Caption = 'Options'
-      ClientHeight = 295
+      ClientHeight = 359
       ClientWidth = 1165
       ImageIndex = 25
       object pcOptions: TPageControl
         Left = 0
-        Height = 295
+        Height = 359
         Top = 0
         Width = 1165
         ActivePage = tsOptions
@@ -184,7 +184,7 @@ object MainForm: TMainForm
         TabOrder = 0
         object tsOptions: TTabSheet
           Caption = 'Options'
-          ClientHeight = 263
+          ClientHeight = 327
           ClientWidth = 1157
           ImageIndex = 1
           object BBRuleModeOptions: TGroupBox
@@ -1874,8 +1874,8 @@ object MainForm: TMainForm
         end
         object tsPlugin: TTabSheet
           Caption = 'Plugins'
-          ClientHeight = 223
-          ClientWidth = 1123
+          ClientHeight = 327
+          ClientWidth = 1157
           ImageIndex = 4
           object Label25: TLabel
             Left = 14
