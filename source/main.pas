@@ -583,25 +583,44 @@ type
     property lpParamsFile: TFileName  read GetlpParamsFile write SetlpParamsFile;
   end;
 
-  TViewXliExtension = class(TAction)
-  private
+  { TXliExtension }
+
+  TXliExtension = class(TAction)
+  strict private
+  const
+  {$IF DEFINED(MSWINDOWS)}
+    LIB_PREFIX = '';
+    LIB_SUFFIX = '.dll';
+  {$ELSEIF DEFINED(DARWIN)}
+    LIB_PREFIX = 'lib';
+    LIB_SUFFIX = '.dylib';
+  {$ELSEIF DEFINED(UNIX)}
+    LIB_PREFIX = 'lib';
+    LIB_SUFFIX = '.so';
+  {$ENDIF}
+  var
     FLibName: string;
+  protected
+    procedure SetLibName(const aValue: string);
+  public
+    property LibName: string read FLibName;
+  end;
+
+  TViewXliExtension = class(TXliExtension)
+  private
     FExtension: string;
     FLanguage: TLPLanguage;
   public
-    property LibName: string read FLibName;
     property Extension: string read FExtension;
     property Language: TLPLanguage read FLanguage;
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
   end;
 
-  TNewXliExtension = class(TAction)
+  TNewXliExtension = class(TXliExtension)
   private
-    FLibName: string;
     FExtension: string;
     FLanguage: TLPLanguage;
   public
-    property LibName: string read FLibName;
     property Extension: string read FExtension;
     property Language: TLPLanguage read FLanguage;
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
@@ -671,6 +690,13 @@ begin
   end;
 end;
 
+{ TXliExtension }
+
+procedure TXliExtension.SetLibName(const aValue: string);
+begin
+  FLibName := LIB_PREFIX + aValue + LIB_SUFFIX;
+end;
+
 { TNewXliExtension }
 
 constructor TNewXliExtension.Create(AOwner: TComponent; const aLibName, aExtension: string;
@@ -680,11 +706,11 @@ var
   m: TMenuItem;
 begin
   inherited Create(AOwner);
-  FLibName := aLibName;
+  SetLibName(aLibName);
   FExtension := aExtension;
   FLanguage := aLang;
   Tag := Mainform.XLINewActionList.ComponentCount - 1;
-  h := LoadLibrary(PChar(FLibName));
+  h := LoadLibrary(PChar(LibName));
   assert(h <> 0);
   caption := xli_name(GetProcAddress(h, 'xli_name'));
   FreeLibrary(h);
@@ -705,11 +731,11 @@ var
   m: TMenuItem;
 begin
   inherited Create(AOwner);
-  FLibName := aLibName;
+  SetLibName(aLibName);
   FExtension := aExtension;
   FLanguage := aLang;
   Tag := Mainform.XLIViewActionList.ComponentCount - 1;
-  h := LoadLibrary(PChar(FLibName));
+  h := LoadLibrary(PChar(LibName));
   assert(h <> 0);
   caption := xli_name(GetProcAddress(h, 'xli_name'));
   FreeLibrary(h);
@@ -962,7 +988,7 @@ begin
           begin
             if SaveDialogScript.FilterIndex >= 3 then
               LPSolver.XLI :=
-                TNewXliExtension(XLINewActionList.Components[SaveDialogScript.FilterIndex - 3]).FLibName;
+                TNewXliExtension(XLINewActionList.Components[SaveDialogScript.FilterIndex - 3]).LibName;
             if not LPSolver.SaveToFile(SaveDialogScript.FileName, destcript) then
               begin
                 MessageDlg('Can''t save script', mtWarning, [mbOK], 0);
@@ -1479,7 +1505,7 @@ begin
   LPSolver.IBMMPS := IBMMPSOption.Checked;
   LPSolver.NegateObjConstMPS := NegateObjConstMPSOption.Checked;
   LPSolver.BFP := BFPOption.Text;
-  Editor.EnableMPS := (Mode = sfMPS) and (not LPSolver.FreeMPS);
+  Editor.EnableMPS := (Mode = sfMPS) and not LPSolver.FreeMPS;
 
   LPSolver.XLIDataName := XLIDataNameOption.Text;
   LPSolver.XLIOptions := XLIOption.Text;
@@ -1608,9 +1634,6 @@ begin
       begin
         TCheckBox(Controls[i]).Checked :=
           TMessage(TCheckBox(Controls[i]).Tag) in LPSolver.Messages;
-//        if (TMessage(TCheckBox(Controls[i]).Tag) in def.Messages) <> TCheckBox(Controls[i]).Checked then
-//          TCheckBox(Controls[i]).Color := clRed else
-//          TCheckBox(Controls[i]).Color := DefaultCheckColor;
       end;
 
   PrintSolOption.ItemIndex := ord(LPSolver.PrintSol);
