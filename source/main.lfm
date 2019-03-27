@@ -20,14 +20,14 @@ object MainForm: TMainForm
     Cursor = crVSplit
     Left = 0
     Height = 6
-    Top = 362
+    Top = 426
     Width = 1173
     Align = alBottom
     ResizeAnchor = akBottom
   end
   object PageControl: TPageControl
     Left = 0
-    Height = 327
+    Height = 391
     Top = 35
     Width = 1173
     ActivePage = TabSheetEditor
@@ -37,16 +37,15 @@ object MainForm: TMainForm
     TabOrder = 0
     object TabSheetEditor: TTabSheet
       Caption = 'Source'
-      ClientHeight = 295
+      ClientHeight = 359
       ClientWidth = 1165
       ImageIndex = 26
       inline Editor: TLPSynEdit
         Left = 0
-        Height = 295
+        Height = 359
         Top = 0
         Width = 1165
         Align = alClient
-        Font.Color = clWindowText
         Font.Height = -14
         Font.Name = 'Consolas'
         Font.Pitch = fpFixed
@@ -2149,8 +2148,8 @@ object MainForm: TMainForm
   end
   object PageControl2: TPageControl
     Left = 0
-    Height = 241
-    Top = 368
+    Height = 177
+    Top = 432
     Width = 1173
     ActivePage = TabSheet5
     Align = alBottom
@@ -2158,24 +2157,23 @@ object MainForm: TMainForm
     TabOrder = 1
     object TabSheet5: TTabSheet
       Caption = 'Log'
-      ClientHeight = 209
+      ClientHeight = 145
       ClientWidth = 1165
       inline MemoLog: TSynEdit
         Left = 0
-        Height = 209
+        Height = 145
         Top = 0
         Width = 1165
         Align = alClient
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Consolas'
+        Font.Height = -13
+        Font.Name = 'Courier New'
         Font.Pitch = fpFixed
         Font.Quality = fqCleartype
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         Gutter.Visible = False
-        Gutter.Width = 67
+        Gutter.Width = 65
         Gutter.MouseActions = <>
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
@@ -2210,7 +2208,7 @@ object MainForm: TMainForm
             MouseActions = <>
           end
           object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 19
+            Width = 17
             MouseActions = <>
             MarkupInfo.Background = clBtnFace
             MarkupInfo.Foreground = clNone
@@ -2244,25 +2242,24 @@ object MainForm: TMainForm
     end
     object TabSheet6: TTabSheet
       Caption = 'Messages'
-      ClientHeight = 209
+      ClientHeight = 145
       ClientWidth = 1165
       ImageIndex = 1
       inline MemoMessages: TSynEdit
         Left = 0
-        Height = 209
+        Height = 145
         Top = 0
         Width = 1165
         Align = alClient
-        Font.Color = clWindowText
-        Font.Height = -16
-        Font.Name = 'Consolas'
+        Font.Height = -13
+        Font.Name = 'Courier New'
         Font.Pitch = fpFixed
         Font.Quality = fqCleartype
         ParentColor = False
         ParentFont = False
         TabOrder = 0
         Gutter.Visible = False
-        Gutter.Width = 67
+        Gutter.Width = 65
         Gutter.MouseActions = <>
         RightGutter.Width = 0
         RightGutter.MouseActions = <>
@@ -2297,7 +2294,7 @@ object MainForm: TMainForm
             MouseActions = <>
           end
           object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 19
+            Width = 17
             MouseActions = <>
             MarkupInfo.Background = clBtnFace
             MarkupInfo.Foreground = clNone

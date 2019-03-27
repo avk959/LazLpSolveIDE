@@ -565,8 +565,6 @@ type
   protected
     procedure Loaded; override;
   public
-    SynEditRegexSearch: TSynEditRegexSearch;
-    SynEditSearch: TSynEditSearch;
     procedure UpdateVirtualTrees;
     procedure ClearVirtualTrees;
     procedure acNewXLIExecute(Sender: TObject);
@@ -628,14 +626,20 @@ var
   DoAbort: boolean = False;
   DefaultCheckColor: TColor;
 
+resourcestring
+  STextNotFound = 'Text not found';
+
 implementation
 uses
   dlgSearchText, dlgReplaceText, dlgConfirmReplace, dlgGotoLine, dlgStatistics, dlgAbout, Params;
 
-resourcestring
-  STextNotFound = 'Text not found';
-
 {$R *.lfm}
+
+const
+  SAppIniName     = 'LpSolveIDE.ini';
+  SAppConfigName  = 'Options.ini';
+  SEdiOptsSection = 'Editor options';
+  SDefaultOptName = 'default.lpo';
 
 function FileFormat(const filename: string; var XliIndex: integer): TScriptFormat;
 var
@@ -750,12 +754,12 @@ begin
   if not FontDialog.Execute then
     exit;
   Editor.Font := FontDialog.Font;
-  ini := TIniFile.Create(FConfigFolder + 'Options.ini');
+  ini := TIniFile.Create(FConfigFolder + SAppConfigName);
   try
     ms := TMemoryStream.Create;
     try
       ms.WriteBuffer(Editor.Font.FontData, SizeOf(TFontData));
-      ini.WriteBinaryStream('Editor options', 'font', ms);
+      ini.WriteBinaryStream(SEdiOptsSection, 'font', ms);
     finally
       ms.Free;
     end;
@@ -1183,7 +1187,7 @@ end;
 procedure TMainForm.acSaveDefaultOptionsExecute(Sender: TObject);
 var stream: TFileStream;
 begin
-  Stream := TFileStream.Create(FConfigFolder + 'default.lpo', fmCreate);
+  Stream := TFileStream.Create(FConfigFolder + SDefaultOptName, fmCreate);
   try
     LPSolver.SaveProfile(stream);
   finally
@@ -1195,14 +1199,14 @@ procedure TMainForm.acSaveOptionsExecute(Sender: TObject);
 var FileStream: TFileStream;
 begin
   if SaveDialogOptions.Execute then
-  begin
-    FileStream := TFileStream.Create(SaveDialogOptions.FileName, fmCreate);
-    try
-      LPSolver.SaveProfile(FileStream);
-    finally
-      FileStream.Free;
+    begin
+      FileStream := TFileStream.Create(SaveDialogOptions.FileName, fmCreate);
+      try
+        LPSolver.SaveProfile(FileStream);
+      finally
+        FileStream.Free;
+      end;
     end;
-  end;
 end;
 
 procedure TMainForm.acLoadOptionsExecute(Sender: TObject);
@@ -1970,7 +1974,7 @@ var
 begin
   inherited;
   DefaultCheckColor := BreackAtFirstOption.Color;
-  Path := FConfigFolder + 'default.lpo';
+  Path := FConfigFolder + SDefaultOptName;
   //if FileExists(ExtractFilePath(ParamStr(0)) + 'default.lpo') then
   if FileExistsUtf8(Path) then
     begin
@@ -2009,8 +2013,6 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-  SynEditRegexSearch := TSynEditRegexSearch.Create(Self);
-  SynEditSearch := TSynEditSearch.Create;
   FHaveBasis := false;
   Application.OnMinimize := OnMinimize;
   FObjectives := TResultArray.Create;
@@ -2129,9 +2131,7 @@ begin
   if gbSearchWholeWords then
     Include(Options, ssoWholeWord);
   if gbSearchRegex then
-    //Editor.SearchEngine := SynEditRegexSearch
-  else
-    {Editor.SearchEngine := SynEditSearch};
+    Include(Options, ssoRegExpr);
   if Editor.SearchReplace(gsSearchText, gsReplaceText, Options) = 0 then
     begin
       //MessageBeep(MB_ICONASTERISK);
@@ -2404,7 +2404,7 @@ var
   FntData: TFontData;
   ms: TMemoryStream;
 begin
-  IniName := ExtractFilePath(ParamStr(0)) + 'LpSolveIDE.ini';
+  IniName := ExtractFilePath(ParamStr(0)) + SAppIniName;
   ini := TIniFile.Create(IniName);
   str := TStringList.Create;
   try
@@ -2437,7 +2437,7 @@ begin
     ini.Free;
     str.Free;
   end;
-  IniName := FConfigFolder + 'Options.ini';
+  IniName := FConfigFolder + SAppConfigName;
   if FileExistsUtf8(IniName) then
     begin
       ini := TIniFile.Create(IniName);
@@ -2445,7 +2445,7 @@ begin
         FntData := Editor.Font.FontData;
         ms := TMemoryStream.Create;
         try
-          I := ini.ReadBinaryStream('Editor options', 'font', ms);
+          I := ini.ReadBinaryStream(SEdiOptsSection, 'font', ms);
           if I = SizeOf(FntData) then
             begin
               ms.Position := 0;
@@ -2467,8 +2467,6 @@ begin
   FConstraints.Free;
   FObjectivesSens.Free;
   FRHSSens.Free;
-  SynEditRegexSearch.Free;
-  SynEditSearch.Free;
 end;
 
 procedure TMainForm.ExportTo(format: TSourceExportFormat; extension,
