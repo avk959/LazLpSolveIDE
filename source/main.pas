@@ -10,9 +10,9 @@ uses
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
   ResultArray, LpObject,  LpSolve, VirtualTrees,
 
-  SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditSearch, SynEditRegexSearch,
-  SynEditHighlighter, SynHighlighterXML, SynEditMiscClasses, SynEditExport, SynExportHTML,
-  SynMacroRecorder, LclType, LCLIntf, LazFileUtils;
+  SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
+  SynEditMiscClasses, SynEditExport, SynExportHTML, SynMacroRecorder, LclType, LCLIntf,
+  LazFileUtils;
 
 type
 
@@ -23,12 +23,17 @@ type
 
   TMainForm = class(TForm)
     acEditorFont: TAction;
-    ApplProps: TApplicationProperties;
+    acSelectAll: TAction;
+    AppProps: TApplicationProperties;
     FontDialog: TFontDialog;
     LPSolver: TLPSolver;
     MainMenu: TMainMenu;
     MenuItem1: TMenuItem;
     EditorFont: TMenuItem;
+    MenuItem2: TMenuItem;
+    MenuItem3: TMenuItem;
+    N10: TMenuItem;
+    N9: TMenuItem;
     N8: TMenuItem;
     mFile: TMenuItem;
     MPSOptions: TGroupBox;
@@ -375,8 +380,8 @@ type
     CheckBox83: TCheckBox;
     acResetOptions: TAction;
     procedure acEditorFontExecute(Sender: TObject);
-    procedure ApplPropsQueryEndSession(var Cancel: Boolean);
-    procedure ApplPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
+    procedure AppPropsQueryEndSession(var Cancel: Boolean);
+    procedure AppPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
     procedure ScaleTypeOptionChange(Sender: TObject);
@@ -395,14 +400,21 @@ type
       AFiles: TStrings);
     procedure LPSolverAbort(sender: TComponent; var return: Boolean);
     procedure acSaveExecute(Sender: TObject);
+    procedure acSaveUpdate(Sender: TObject);
     procedure acSaveAsExecute(Sender: TObject);
     procedure acCutExecute(Sender: TObject);
+    procedure acCutUpdate(Sender: TObject);
     procedure acCopyExecute(Sender: TObject);
+    procedure acCopyUpdate(Sender: TObject);
     procedure acPasteExecute(Sender: TObject);
+    procedure acPasteUpdate(Sender: TObject);
     procedure acOpenExecute(Sender: TObject);
     procedure acSolveExecute(Sender: TObject);
     procedure acUndoExecute(Sender: TObject);
+    procedure acUndoUpdate(Sender: TObject);
     procedure acRedoExecute(Sender: TObject);
+    procedure acRedoUpdate(Sender: TObject);
+    procedure acSelectAllExecute(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: Boolean);
     procedure acNewExecute(Sender: TObject);
     procedure acFindExecute(Sender: TObject);
@@ -600,27 +612,19 @@ type
   {$ENDIF}
   var
     FLibName: string;
-  public
-    property LibName: string read FLibName;
-  end;
-
-  TViewXliExtension = class(TXliExtension)
-  private
     FExtension: string;
     FLanguage: TLPLanguage;
   public
+    property LibName: string read FLibName;
     property Extension: string read FExtension;
     property Language: TLPLanguage read FLanguage;
+  end;
+
+  TViewXliExtension = class(TXliExtension)
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
   end;
 
   TNewXliExtension = class(TXliExtension)
-  private
-    FExtension: string;
-    FLanguage: TLPLanguage;
-  public
-    property Extension: string read FExtension;
-    property Language: TLPLanguage read FLanguage;
     constructor Create(AOwner: TComponent; const aLibName, aExtension: string; aLang: TLPLanguage); reintroduce;
   end;
 
@@ -758,7 +762,7 @@ begin
   MemoLog.CaretY := MemoLog.Lines.Count;
 end;
 
-procedure TMainForm.ApplPropsQueryEndSession(var Cancel: Boolean);
+procedure TMainForm.AppPropsQueryEndSession(var Cancel: Boolean);
 begin
   FormCloseQuery(Application, Cancel);
   Cancel := not Cancel;
@@ -787,7 +791,7 @@ begin
   end;
 end;
 
-procedure TMainForm.ApplPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
+procedure TMainForm.AppPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
 const
   hFmt = '%s(%d)';
 begin
@@ -951,6 +955,11 @@ begin
     acSaveAs.Execute;
 end;
 
+procedure TMainForm.acSaveUpdate(Sender: TObject);
+begin
+  acSave.Enabled := Editor.Modified;
+end;
+
 procedure TMainForm.acSaveAsExecute(Sender: TObject);
 var
   destcript: TScriptFormat;
@@ -1000,15 +1009,30 @@ begin
   Editor.CutToClipboard;
 end;
 
+procedure TMainForm.acCutUpdate(Sender: TObject);
+begin
+  acCut.Enabled := Editor.SelText <> '';
+end;
+
 procedure TMainForm.acCopyExecute(Sender: TObject);
 begin
   if (ActiveControl is TCustomSynEdit) then
     TCustomSynEdit(ActiveControl).CopyToClipboard;
 end;
 
+procedure TMainForm.acCopyUpdate(Sender: TObject);
+begin
+  acCopy.Enabled := Editor.SelText <> '';
+end;
+
 procedure TMainForm.acPasteExecute(Sender: TObject);
 begin
   Editor.PasteFromClipboard;
+end;
+
+procedure TMainForm.acPasteUpdate(Sender: TObject);
+begin
+  acPaste.Enabled := Editor.CanPaste;
 end;
 
 procedure TMainForm.acOpenExecute(Sender: TObject);
@@ -1092,10 +1116,25 @@ begin
   Editor.Undo;
 end;
 
+procedure TMainForm.acUndoUpdate(Sender: TObject);
+begin
+  acUndo.Enabled := Editor.CanUndo;
+end;
+
 procedure TMainForm.acRedoExecute(Sender: TObject);
 begin
   PageControl.ActivePage := TabSheetEditor;
   Editor.Redo;
+end;
+
+procedure TMainForm.acRedoUpdate(Sender: TObject);
+begin
+  acRedo.Enabled := Editor.CanRedo;
+end;
+
+procedure TMainForm.acSelectAllExecute(Sender: TObject);
+begin
+  Editor.SelectAll;
 end;
 
 procedure TMainForm.acNewExecute(Sender: TObject);
@@ -2029,6 +2068,7 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
+  Editor.SetDefaultKeystrokes;//////////
   FHaveBasis := false;
   Application.OnMinimize := OnMinimize;
   FObjectives := TResultArray.Create;
@@ -2045,7 +2085,6 @@ begin
   FHighlighter.CommentAttri.Foreground := clGreen;
   FHighlighter.NumberAttri.Foreground := clNavy;
   Editor.Highlighter := FHighlighter;
-  Editor.SetDefaultKeystrokes;//////////
   SetCurrentFile('');
   FLastOpenFile := '';
   FlpParamsFile:= '';
