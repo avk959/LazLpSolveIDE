@@ -33,7 +33,7 @@ unit LpSolve;
 {$IFDEF LINUX}
   {$DEFINE UNIX}
 {$ENDIF}
-//comment define if solver is compiled at Visual Studio
+//comment out this define if LpSolve is compiled in Visual Studio
 {$DEFINE GCC_BUILD}
 {$POINTERMATH ON}
 
@@ -803,12 +803,7 @@ const
     LPSOLVELIB = 'lpsolve51.dll';
   {$ENDIF}
   {$IFDEF LPS55}
-    {$IFDEF CPU64}
-    LPSOLVELIB = 'lpsolve55_64.dll';
-        {$ENDIF CPU64}
-        {$IFDEF CPU32}
-    LPSOLVELIB = 'lpsolve55_32.dll';
-         {$ENDIF CPU32}
+    LPSOLVELIB = 'lpsolve55.dll';
   {$ENDIF}
 {$ENDIF}
 
