@@ -38,7 +38,7 @@ implementation
 
 procedure TAboutForm.URLClick(Sender: TObject);
 begin
-  OpenDocument(PChar(TLabel(Sender).Caption));
+  OpenUrl(PChar(TLabel(Sender).Caption));
 end;
 
 end.
