@@ -334,8 +334,8 @@ type
     property VarPriority[const column: integer]: integer read GetVarPriority;
 
     // Add SOS constraints
-    function AddSOS(const name: string; sostype: integer; priority: integer;
-      count: integer; sosvars: PIntArray; weights: PFloatArray): integer;
+    function AddSOS(const name: string; sostype, priority, count: integer; sosvars: PIntArray;
+                    weights: PFloatArray): integer;
     property IsSOSVar[const column: integer]: boolean read GetIsSOSVar;
 
     property RowName[const row: integer]: string read GetRowName write SetRowName;
@@ -985,8 +985,8 @@ begin
   result := set_var_weights(FLP, weights);
 end;
 
-function TLPSolver.AddSOS(const name: string; sostype, priority,
-  count: integer; sosvars: PIntArray; weights: PFloatArray): integer;
+function TLPSolver.AddSOS(const name: string; sostype, priority, count: integer;
+  sosvars: PIntArray; weights: PFloatArray): integer;
 begin
   result := add_SOS(FLP, PChar(name), sostype, priority, count, sosvars, weights);
 end;
