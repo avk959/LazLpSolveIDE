@@ -11,6 +11,7 @@ object GotoLineForm: TGotoLineForm
   Color = clBtnFace
   DesignTimePPI = 115
   Font.Color = clWindowText
+  Position = poMainFormCenter
   object Label1: TLabel
     Left = 44
     Height = 19

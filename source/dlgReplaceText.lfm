@@ -2,6 +2,7 @@ inherited TextReplaceDialog: TTextReplaceDialog
   Height = 351
   Caption = 'Replace text'
   ClientHeight = 351
+  Position = poMainFormCenter
   inherited gbSearchOptions: TGroupBox
     Height = 180
     Top = 108
@@ -19,7 +20,6 @@ inherited TextReplaceDialog: TTextReplaceDialog
   inherited btnOK: TButton
     Left = 196
     Top = 308
-    Default = True
     TabOrder = 4
   end
   inherited btnCancel: TButton

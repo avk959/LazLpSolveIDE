@@ -9,7 +9,7 @@ object XLIParametersForm: TXLIParametersForm
   Color = clBtnFace
   DesignTimePPI = 115
   Font.Color = clWindowText
-  LCLVersion = '2.0.1.0'
+  Position = poMainFormCenter
   object Button1: TButton
     Left = 29
     Height = 30
@@ -26,7 +26,6 @@ object XLIParametersForm: TXLIParametersForm
     Height = 30
     Top = 182
     Width = 90
-    Cancel = True
     Caption = '&Cancel'
     Font.Color = clWindowText
     ModalResult = 2
