@@ -90,8 +90,10 @@ const
     '  /* Objective function */'            + SLineBreak +
     'minimize: +1.5 x1 + x2 + 1.5 x3 + x4;' + SLineBreak +
     '  /* Constraints */'                   + SLineBreak +
-    'c1: x1 + x2 + 2 x3 = 40;' + SLineBreak +
-    'c2: 3.2 x2 + x3 + 1.7 x4 >= 50;';
+    'c1: x1 + x2 + 2 x3 = 40;'              + SLineBreak +
+    'c2: 3.2 x2 + x3 + 1.7 x4 >= 50;'       + SLineBreak +
+    'int x2;'                               + SLineBreak +
+    'binary x3;';
   IDX_ITALIC = 0;
   IDX_BOLD   = 1;
 { TfrmEditorOptsDlg }

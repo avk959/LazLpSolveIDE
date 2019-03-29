@@ -2,16 +2,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
   Left = 369
   Height = 613
   Top = 250
-  Width = 447
+  Width = 466
   Caption = 'Editor options'
   ClientHeight = 613
-  ClientWidth = 447
+  ClientWidth = 466
   DesignTimePPI = 115
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
   object btOk: TButton
-    Left = 291
+    Left = 310
     Height = 30
     Top = 570
     Width = 90
@@ -36,16 +36,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     Left = 0
     Height = 559
     Top = 0
-    Width = 447
+    Width = 466
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 559
-    ClientWidth = 447
+    ClientWidth = 466
     TabOrder = 2
     object PageControl1: TPageControl
       Left = 1
       Height = 401
       Top = 0
-      Width = 445
+      Width = 464
       ActivePage = TabSheet1
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabIndex = 0
@@ -53,16 +53,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       object TabSheet1: TTabSheet
         Caption = 'Display'
         ClientHeight = 369
-        ClientWidth = 437
+        ClientWidth = 456
         object GroupBox1: TGroupBox
           Left = 4
           Height = 234
           Top = 12
-          Width = 427
+          Width = 446
           Anchors = [akTop, akLeft, akRight, akBottom]
           Caption = 'Editor font'
           ClientHeight = 210
-          ClientWidth = 423
+          ClientWidth = 442
           TabOrder = 0
           object Label1: TLabel
             Left = 8
@@ -73,7 +73,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object edFontName: TEdit
-            Left = 151
+            Left = 170
             Height = 27
             Top = 7
             Width = 228
@@ -87,7 +87,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             AnchorSideTop.Control = edFontName
             AnchorSideBottom.Control = edFontName
             AnchorSideBottom.Side = asrBottom
-            Left = 387
+            Left = 406
             Height = 27
             Top = 7
             Width = 30
@@ -104,7 +104,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object spedFontSize: TSpinEdit
-            Left = 152
+            Left = 171
             Height = 27
             Top = 44
             Width = 228
@@ -124,7 +124,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedLineSpace: TSpinEdit
-            Left = 151
+            Left = 170
             Height = 27
             Top = 80
             Width = 228
@@ -144,7 +144,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedCharSpace: TSpinEdit
-            Left = 151
+            Left = 170
             Height = 27
             Top = 116
             Width = 228
@@ -160,11 +160,11 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           Left = 4
           Height = 106
           Top = 257
-          Width = 427
+          Width = 446
           Anchors = [akLeft, akRight, akBottom]
           Caption = 'Line number'
           ClientHeight = 82
-          ClientWidth = 423
+          ClientWidth = 442
           TabOrder = 1
           object Label5: TLabel
             Left = 8
@@ -175,7 +175,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedNthNumber: TSpinEdit
-            Left = 151
+            Left = 170
             Height = 27
             Top = 6
             Width = 228
@@ -196,7 +196,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object clbLineNumberColor: TColorBox
-            Left = 152
+            Left = 171
             Height = 26
             Top = 48
             Width = 228
@@ -405,7 +405,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       Left = 0
       Height = 155
       Top = 404
-      Width = 447
+      Width = 466
       Anchors = [akLeft, akRight, akBottom]
       Font.Height = -13
       Font.Name = 'Courier New'
