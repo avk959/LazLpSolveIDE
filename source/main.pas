@@ -1238,6 +1238,7 @@ var lp: TLPSolver;
 begin
   lp := TLPSolver.Create(nil);
   lp.XLI := LPSolver.XLI;
+  lp.ConfigFolder := FConfigFolder;
   Screen.Cursor := crHourGlass;
   try
     if lp.LoadFromStrings(Editor.Lines, LPSolver.Verbose, Mode) then

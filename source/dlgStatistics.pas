@@ -53,6 +53,7 @@ begin
 end;
 var
   a,b,c,d,y, i, j: integer;
+  tmpFile: string;
 begin
   Screen.Cursor := crHourGlass;
   try
@@ -63,8 +64,9 @@ begin
       begin
         if (Mode = sfXLI) then
         begin
-          Editor.Lines.SaveToFile('_tmpfile.txt');
-          isLoaded := LoadFromFile('_tmpfile.txt',LPSolver.Verbose, Mode);
+          tmpFile := ConfigFolder + '_tmpfile.txt';
+          Editor.Lines.SaveToFile(tmpFile);
+          isLoaded := LoadFromFile(tmpFile, LPSolver.Verbose, Mode);
         end else
           isLoaded := LoadFromStrings(Editor.lines, Verbose, Mode);
       end;
