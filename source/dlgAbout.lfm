@@ -83,13 +83,11 @@ object AboutForm: TAboutForm
       Top = 40
       Width = 314
       Caption = 'http://sourceforge.net/projects/lpsolve/files/lpsolve/'
-      Color = clBtnFace
       Font.Color = clBlue
       Font.Height = -14
       Font.Style = [fsUnderline]
       ParentColor = False
       ParentFont = False
-      Transparent = False
       OnClick = URLClick
     end
     object Label12: TLabel
@@ -99,12 +97,10 @@ object AboutForm: TAboutForm
       Top = 12
       Width = 247
       Caption = 'http://groups.yahoo.com/group/lp_solve'
-      Color = clBtnFace
       Font.Color = clBlue
       Font.Style = [fsUnderline]
       ParentColor = False
       ParentFont = False
-      Transparent = False
       OnClick = URLClick
     end
   end

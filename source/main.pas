@@ -12,7 +12,7 @@ uses
 
   SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
   SynEditMiscClasses, SynEditTextTrimmer, SynEditExport, SynExportHTML, SynMacroRecorder,
-  SynGutterLineNumber, LclType, LCLIntf, IniPropStorage, LazFileUtils;
+  SynGutterLineNumber, LclType, LCLIntf, LazFileUtils;
 
 type
 
@@ -2495,7 +2495,6 @@ var
   i: integer;
   lang: TLPLanguage;
   lib, ext, filter, filterall, IniName: string;
-  FntData: TFontData;
 begin
   IniName := ExtractFilePath(Application.ExeName) + SAppConfigIni;
   ini := TIniFile.Create(IniName, [ifoStripComments]);
