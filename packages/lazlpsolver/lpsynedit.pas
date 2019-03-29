@@ -34,7 +34,7 @@ end;
 
 constructor TLPSynEdit.Create(AOwner: TComponent);
 begin
-  inherited;
+  inherited Create(AOwner);
   FEnableMPS := False;
   OnPaint := PaintTextLines;
 end;

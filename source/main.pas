@@ -11,25 +11,23 @@ uses
   ResultArray, LpObject,  LpSolve, VirtualTrees,
 
   SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
-  SynEditMiscClasses, SynEditExport, SynExportHTML, SynMacroRecorder, LclType, LCLIntf,
-  LazFileUtils;
+  SynEditMiscClasses, SynEditTextTrimmer, SynEditExport, SynExportHTML, SynMacroRecorder,
+  SynGutterLineNumber, LclType, LCLIntf, IniPropStorage, LazFileUtils;
 
 type
 
   TSourceExportFormat = (efHTML{, efRTF, efTEX});
   TResultExportFormat = (efrHTML, efrRTF, efrCSV);
-
   { TMainForm }
 
   TMainForm = class(TForm)
-    acEditorFont: TAction;
+    acEditorOptions: TAction;
     acSelectAll: TAction;
     AppProps: TApplicationProperties;
-    FontDialog: TFontDialog;
     LPSolver: TLPSolver;
     MainMenu: TMainMenu;
     MenuItem1: TMenuItem;
-    EditorFont: TMenuItem;
+    mmiEditorOpts: TMenuItem;
     MenuItem2: TMenuItem;
     MenuItem3: TMenuItem;
     N10: TMenuItem;
@@ -38,15 +36,18 @@ type
     mFile: TMenuItem;
     MPSOptions: TGroupBox;
     Open1: TMenuItem;
+    pnLog: TPanel;
+    pnMain: TPanel;
     Quit1: TMenuItem;
     PageControl: TPageControl;
     SolParams1: TMenuItem;
     StatusBar: TStatusBar;
     TabSheetEditor: TTabSheet;
-    Splitter1: TSplitter;
+    MainSplitter: TSplitter;
     OpenDialogScript: TOpenDialog;
     Problem1: TMenuItem;
     Solve1: TMenuItem;
+    ToolButton16: TToolButton;
     View: TMenuItem;
     LP1: TMenuItem;
     MPS1: TMenuItem;
@@ -122,7 +123,7 @@ type
     Label24: TLabel;
     Save1: TMenuItem;
     SaveDialogScript: TSaveDialog;
-    PageControl2: TPageControl;
+    PageControlLog: TPageControl;
     TabSheet5: TTabSheet;
     TabSheet6: TTabSheet;
     //MemoLog: TSynMemo;
@@ -379,9 +380,10 @@ type
     N5: TMenuItem;
     CheckBox83: TCheckBox;
     acResetOptions: TAction;
-    procedure acEditorFontExecute(Sender: TObject);
+    procedure acEditorOptionsExecute(Sender: TObject);
     procedure AppPropsQueryEndSession(var Cancel: Boolean);
     procedure AppPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
+    procedure FormDropFiles(Sender: TObject; const FileNames: array of string);
     procedure LPSolverLog(sender: TComponent; log: PAnsiChar);
     procedure OptionCheckBoxClick(Sender: TObject);
     procedure ScaleTypeOptionChange(Sender: TObject);
@@ -572,6 +574,8 @@ type
     procedure CheckGutter;
     function EditorSaveToStrings: boolean;
     procedure ReadIniFile;
+    procedure ReadSettings;
+    procedure WriteSettings;
     procedure AddCurrentResult(header: string);
     procedure OnMinimize(sender: TObject);
   protected
@@ -654,15 +658,40 @@ resourcestring
 
 implementation
 uses
-  dlgSearchText, dlgReplaceText, dlgConfirmReplace, dlgGotoLine, dlgStatistics, dlgAbout, Params;
+  dlgSearchText, dlgReplaceText, dlgConfirmReplace, dlgGotoLine, dlgStatistics, dlgAbout, Params,
+  dlgEditorOpts;
 
 {$R *.lfm}
 
 const
-  SAppIniName     = 'LpSolveIDE.ini';
-  SAppConfigName  = 'Options.ini';
-  SEdiOptsSection = 'Editor options';
-  SDefaultOptName = 'default.lpo';
+  SAppConfigIni   = 'LpSolveIDE.ini';
+  SSettingsIni    = 'Settings.ini';
+  SMainForm       = 'MainForm';
+  SEditor         = 'Editor';
+  SDefaultLpo     = 'default.lpo';
+  SWindowState    = 'WindowState';
+  STop            = 'Top';
+  SLeft           = 'Left';
+  SWidth          = 'Width';
+  SHeight         = 'Height';
+  SLogHeight      = 'LogHeight';
+  SFontName       = 'FontName';
+  SFontSize       = 'FontSize';
+  SExtraLineSpace = 'ExtraLineSpace';
+  SExtraCharSpace = 'ExtraCharSpace';
+  SEveryNthNumber = 'EveryNthNumber';
+  SLineNumColor   = 'LineNumberColor';
+  SCurrLineColor  = 'CurrLineColor';
+  SKeywordColor   = 'KeywordColor';
+  SKeywordItalic  = 'KeywordItalic';
+  SKeywordBold    = 'KeywordBold';
+  SNumberColor    = 'NumberColor';
+  SNumberItalic   = 'NumberItalic';
+  SNumberBold     = 'NumberBold';
+  SCommentColor   = 'CommentColor';
+  SCommentItalic  = 'CommentItalic';
+  SCommentBold    = 'CommentBold';
+
 
 function FileFormat(const filename: string; var XliIndex: integer): TScriptFormat;
 var
@@ -768,27 +797,16 @@ begin
   Cancel := not Cancel;
 end;
 
-procedure TMainForm.acEditorFontExecute(Sender: TObject);
-var
-  ini: TIniFile;
-  ms: TMemoryStream;
+procedure TMainForm.acEditorOptionsExecute(Sender: TObject);
 begin
-  FontDialog.Font := Editor.Font;
-  if not FontDialog.Execute then
-    exit;
-  Editor.Font := FontDialog.Font;
-  ini := TIniFile.Create(FConfigFolder + SAppConfigName);
-  try
-    ms := TMemoryStream.Create;
+  with TfrmEditorOptsDlg.Create(nil) do
     try
-      ms.WriteBuffer(Editor.Font.FontData, SizeOf(TFontData));
-      ini.WriteBinaryStream(SEdiOptsSection, 'font', ms);
+      Editor := Self.Editor;
+      ShowModal;
     finally
-      ms.Free;
+      Free;
     end;
-  finally
-    ini.Free;
-  end;
+  Editor.SetFocus;
 end;
 
 procedure TMainForm.AppPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);
@@ -797,6 +815,23 @@ const
 begin
   if HintInfo.HintControl = Priority then
     HintStr := Format(hFmt, [HintStr, Priority.Position]);
+end;
+
+procedure TMainForm.FormDropFiles(Sender: TObject; const FileNames: array of string);
+var
+  sl: TStringList;
+  s: string;
+begin
+  if Length(FileNames) < 1 then
+    exit;
+  sl := TStringList.Create;
+  try
+    for s in FileNames do
+      sl.Add(s);
+    EditorDropFiles(Sender, -1, -1, sl);
+  finally
+    sl.Free;
+  end;
 end;
 
 procedure TMainForm.LPSolverMessage(sender: TComponent; mesg: TMessage);
@@ -1245,7 +1280,7 @@ end;
 procedure TMainForm.acSaveDefaultOptionsExecute(Sender: TObject);
 var stream: TFileStream;
 begin
-  Stream := TFileStream.Create(FConfigFolder + SDefaultOptName, fmCreate);
+  Stream := TFileStream.Create(FConfigFolder + SDefaultLpo, fmCreate);
   try
     LPSolver.SaveProfile(stream);
   finally
@@ -1314,6 +1349,7 @@ begin
     if f.ShowModal = mrOK then
       begin
         Editor.CaretY := StrToInt(f.LineNumer.Text);  //GotoLineAndCenter(StrToInt(f.LineNumer.Text));
+        Editor.CaretX := 0;
         Editor.SetFocus;
       end;
   finally
@@ -2025,16 +2061,16 @@ procedure TMainForm.Loaded;
 var
   stream: TFileStream;
   lps: TLPSolver;
-  Path: string;
+  OptFileName: string;
 begin
   inherited;
   DefaultCheckColor := BreackAtFirstOption.Color;
-  Path := FConfigFolder + SDefaultOptName;
+  OptFileName := FConfigFolder + SDefaultLpo;
   //if FileExists(ExtractFilePath(ParamStr(0)) + 'default.lpo') then
-  if FileExistsUtf8(Path) then
+  if FileExistsUtf8(OptFileName) then
     begin
       //stream := TFileStream.Create(ExtractFilePath(ParamStr(0)) + 'default.lpo', fmOpenRead);
-      stream := TFileStream.Create(Path, fmOpenRead);
+      stream := TFileStream.Create(OptFileName, fmOpenRead);
       try
         lps := TLPSolver.Create(nil);
         try
@@ -2049,7 +2085,7 @@ begin
         stream.Free;
         stream := nil;
         //DeleteFile(ExtractFilePath(ParamStr(0)) + 'default.lpo');
-        DeleteFile(Path);
+        DeleteFile(OptFileName);
       end;
       if stream <> nil then
         stream.Free;
@@ -2068,7 +2104,6 @@ end;
 
 procedure TMainForm.FormCreate(Sender: TObject);
 begin
-  Editor.SetDefaultKeystrokes;//////////
   FHaveBasis := false;
   Application.OnMinimize := OnMinimize;
   FObjectives := TResultArray.Create;
@@ -2082,8 +2117,11 @@ begin
   FSolving := false;
   FLockEvents := False;
   Mode := sfLP;
+  Editor.SetDefaultKeystrokes;//////////
+  Editor.TrimSpaceType := settIgnoreAll;//////////
   FHighlighter.CommentAttri.Foreground := clGreen;
   FHighlighter.NumberAttri.Foreground := clNavy;
+  FHighlighter.KeyAttri.Foreground := $00D90000;
   Editor.Highlighter := FHighlighter;
   SetCurrentFile('');
   FLastOpenFile := '';
@@ -2092,6 +2130,7 @@ begin
   ForceDirectoriesUTF8(FConfigFolder);
   LpSolver.ConfigFolder := FConfigFolder;
   ReadIniFile;
+  ReadSettings;
   acNewLP.Execute;
 end;
 
@@ -2406,7 +2445,7 @@ begin
   if FLastLineCount <> Editor.Lines.Count then
     begin
       FLastLineCount := Editor.Lines.Count;
-      Editor.Gutter.LeftOffset := Editor.Canvas.TextWidth(inttostr(Editor.Lines.Count));
+      //Editor.Gutter.LeftOffset := Editor.Canvas.TextWidth(inttostr(Editor.Lines.Count));
     end;
 end;
 
@@ -2457,10 +2496,9 @@ var
   lang: TLPLanguage;
   lib, ext, filter, filterall, IniName: string;
   FntData: TFontData;
-  ms: TMemoryStream;
 begin
-  IniName := ExtractFilePath(Application.ExeName) + SAppIniName;
-  ini := TIniFile.Create(IniName);
+  IniName := ExtractFilePath(Application.ExeName) + SAppConfigIni;
+  ini := TIniFile.Create(IniName, [ifoStripComments]);
   str := TStringList.Create;
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
@@ -2492,32 +2530,115 @@ begin
     ini.Free;
     str.Free;
   end;
-  IniName := FConfigFolder + SAppConfigName;
-  if FileExistsUtf8(IniName) then
-    begin
-      ini := TIniFile.Create(IniName);
-      try
-        FntData := Editor.Font.FontData;
-        ms := TMemoryStream.Create;
-        try
-          I := ini.ReadBinaryStream(SEdiOptsSection, 'font', ms);
-          if I = SizeOf(FntData) then
-            begin
-              ms.Position := 0;
-              ms.ReadBuffer(FntData, SizeOf(FntData));
-              Editor.Font.FontData := FntData;
-            end;
-        finally
-          ms.Free;
-        end;
-      finally
-        ini.Free;
-      end;
+end;
+
+procedure TMainForm.ReadSettings;
+var
+  Ini: TIniFile;
+  I: Integer;
+begin
+  Ini := TIniFile.Create(FConfigFolder + SSettingsIni, [ifoStripComments]);
+  try
+    //MainForm position:
+    Left := Ini.ReadInteger(SMainForm, SLeft, Left);
+    Top := Ini.ReadInteger(SMainForm, STop, Top);
+    Width := Ini.ReadInteger(SMainForm, SWidth, Width);
+    Height := Ini.ReadInteger(SMainForm, SHeight, Height);
+    I := Ini.ReadInteger(SMainForm, SWindowState, Integer(WindowState));
+    WindowState := TWindowState(I);
+    //Splitter position:
+    pnLog.Height := Ini.ReadInteger(SMainForm, SLogHeight, pnLog.Height);
+    //editor settings:
+    Editor.Lines.BeginUpdate;
+    try
+      Editor.Font.Name := Ini.ReadString(SEditor, SFontName, Editor.Font.Name);
+      Editor.Font.Size := Ini.ReadInteger(SEditor, SFontSize, Editor.Font.Size);
+      Editor.ExtraLineSpacing := Ini.ReadInteger(SEditor, SExtraLineSpace, Editor.ExtraLineSpacing);
+      Editor.ExtraCharSpacing := Ini.ReadInteger(SEditor, SExtraCharSpace, Editor.ExtraCharSpacing);
+      I := TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf;
+      TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf :=
+         Ini.ReadInteger(SEditor, SEveryNthNumber, I);
+      I := Integer(TSynGutterLineNumber(Editor.Gutter.Parts[1]).MarkupInfo.Foreground);
+      I := Ini.ReadInteger(SEditor, SLineNumColor, I);
+      TSynGutterLineNumber(Editor.Gutter.Parts[1]).MarkupInfo.Foreground := TColor(I);
+      I := Ini.ReadInteger(SEditor, SCurrLineColor, Integer(Editor.LineHighlightColor.Background));
+      Editor.LineHighlightColor.Background := TColor(I);
+
+      I := Ini.ReadInteger(SEditor, SKeywordColor, Integer(FHighlighter.KeyAttri.Foreground));
+      FHighlighter.KeyAttri.Foreground := TColor(I);
+      if Ini.ReadBool(SEditor, SKeywordItalic, fsItalic in FHighlighter.KeyAttri.Style) then
+        FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style + [fsItalic];
+      if Ini.ReadBool(SEditor, SKeywordBold, fsBold in FHighlighter.KeyAttri.Style) then
+        FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style + [fsBold];
+
+      I := Ini.ReadInteger(SEditor, SNumberColor, Integer(FHighlighter.NumberAttri.Foreground));
+      FHighlighter.NumberAttri.Foreground := TColor(I);
+      if Ini.ReadBool(SEditor, SNumberItalic, fsItalic in FHighlighter.NumberAttri.Style) then
+        FHighlighter.NumberAttri.Style := FHighlighter.NumberAttri.Style + [fsItalic];
+      if Ini.ReadBool(SEditor, SNumberBold, fsBold in FHighlighter.NumberAttri.Style) then
+        FHighlighter.NumberAttri.Style := FHighlighter.NumberAttri.Style + [fsBold];
+
+      I := Ini.ReadInteger(SEditor, SCommentColor, Integer(FHighlighter.CommentAttri.Foreground));
+      FHighlighter.CommentAttri.Foreground := TColor(I);
+      if Ini.ReadBool(SEditor, SCommentItalic, fsItalic in FHighlighter.CommentAttri.Style) then
+        FHighlighter.CommentAttri.Style := FHighlighter.CommentAttri.Style + [fsItalic];
+      if Ini.ReadBool(SEditor, SCommentBold, fsBold in FHighlighter.CommentAttri.Style) then
+        FHighlighter.CommentAttri.Style := FHighlighter.CommentAttri.Style + [fsBold];
+    finally
+      Editor.Lines.EndUpdate;
     end;
+  finally
+    Ini.Free;
+  end;
+end;
+
+procedure TMainForm.WriteSettings;
+var
+  Ini: TIniFile;
+begin
+  Ini := TIniFile.Create(FConfigFolder + SSettingsIni);
+  try
+    //MainForm position
+    Ini.WriteInteger(SMainForm, SWindowState, Integer(WindowState));
+    if WindowState <> wsMaximized then
+      begin
+        Ini.WriteInteger(SMainForm, SLeft, Left);
+        Ini.WriteInteger(SMainForm, STop, Top);
+        Ini.WriteInteger(SMainForm, SWidth, Width);
+        Ini.WriteInteger(SMainForm, SHeight, Height);
+      end;
+    //Splitter position:
+    Ini.WriteInteger(SMainForm, SLogHeight, pnLog.Height);
+    //editor settings:
+    Ini.WriteString(SEditor, SFontName, Editor.Font.Name);
+    Ini.WriteInteger(SEditor, SFontSize, Editor.Font.Size);
+    Ini.WriteInteger(SEditor, SExtraLineSpace, Editor.ExtraLineSpacing);
+    Ini.WriteInteger(SEditor, SExtraCharSpace, Editor.ExtraCharSpacing);
+    Ini.WriteInteger(SEditor, SEveryNthNumber,
+        TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf);
+    Ini.WriteInteger(SEditor, SLineNumColor,
+        Integer(TSynGutterLineNumber(Editor.Gutter.Parts[1]).MarkupInfo.Foreground));
+    Ini.WriteInteger(SEditor, SCurrLineColor, Integer(Editor.LineHighlightColor.Background));
+
+    Ini.WriteInteger(SEditor, SKeywordColor, Integer(FHighlighter.KeyAttri.Foreground));
+    Ini.WriteBool(SEditor, SKeywordItalic, fsItalic in FHighlighter.KeyAttri.Style);
+    Ini.WriteBool(SEditor, SKeywordBold, fsBold in FHighlighter.KeyAttri.Style);
+
+    Ini.WriteInteger(SEditor, SNumberColor, Integer(FHighlighter.NumberAttri.Foreground));
+    Ini.WriteBool(SEditor, SNumberItalic, fsItalic in FHighlighter.NumberAttri.Style);
+    Ini.WriteBool(SEditor, SNumberBold, fsBold in FHighlighter.NumberAttri.Style);
+
+    Ini.WriteInteger(SEditor, SCommentColor, Integer(FHighlighter.CommentAttri.Foreground));
+    Ini.WriteBool(SEditor, SCommentItalic, fsItalic in FHighlighter.CommentAttri.Style);
+    Ini.WriteBool(SEditor, SCommentBold, fsBold in FHighlighter.CommentAttri.Style);
+  finally
+    Ini.Free;
+  end;
 end;
 
 procedure TMainForm.FormDestroy(Sender: TObject);
 begin
+  WriteSettings;
   FObjectives.Free;
   FConstraints.Free;
   FObjectivesSens.Free;

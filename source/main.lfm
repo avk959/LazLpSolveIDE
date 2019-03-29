@@ -3,7 +3,7 @@ object MainForm: TMainForm
   Height = 637
   Top = 251
   Width = 1173
-  ActiveControl = Editor
+  AllowDropFiles = True
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
   ClientHeight = 637
@@ -15,2318 +15,7 @@ object MainForm: TMainForm
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnDestroy = FormDestroy
-  Position = poScreenCenter
-  object Splitter1: TSplitter
-    Cursor = crVSplit
-    Left = 0
-    Height = 6
-    Top = 340
-    Width = 1173
-    Align = alBottom
-    ResizeAnchor = akBottom
-  end
-  object PageControl: TPageControl
-    Left = 0
-    Height = 305
-    Top = 35
-    Width = 1173
-    ActivePage = TabSheetEditor
-    Align = alClient
-    Images = ImageList
-    TabIndex = 0
-    TabOrder = 0
-    object TabSheetEditor: TTabSheet
-      Caption = 'Source'
-      ClientHeight = 273
-      ClientWidth = 1165
-      ImageIndex = 26
-      inline Editor: TLPSynEdit
-        Left = 0
-        Height = 273
-        Top = 0
-        Width = 1165
-        Align = alClient
-        Font.Height = -14
-        Font.Name = 'Consolas'
-        Font.Pitch = fpFixed
-        Font.Quality = fqCleartype
-        ParentColor = False
-        ParentFont = False
-        PopupMenu = PopupMenu
-        TabOrder = 0
-        Gutter.Width = 77
-        Gutter.MouseActions = <>
-        RightGutter.Visible = False
-        RightGutter.Width = 0
-        RightGutter.MouseActions = <>
-        Keystrokes = <>
-        MouseActions = <>
-        MouseTextActions = <>
-        MouseSelActions = <>
-        Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoShowScrollHint, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor, eoDoubleClickSelectsLine]
-        Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
-        MouseOptions = [emDragDropEditing, emRightMouseMovesCursor, emDoubleClickSelectsLine]
-        VisibleSpecialChars = []
-        RightEdge = 255
-        SelectedColor.BackPriority = 50
-        SelectedColor.ForePriority = 50
-        SelectedColor.FramePriority = 50
-        SelectedColor.BoldPriority = 50
-        SelectedColor.ItalicPriority = 50
-        SelectedColor.UnderlinePriority = 50
-        SelectedColor.StrikeOutPriority = 50
-        BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
-        BracketMatchColor.Foreground = clNone
-        BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
-        FoldedCodeColor.Foreground = clGray
-        FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
-        MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
-        LineHighlightColor.Foreground = clNone
-        SelectionMode = smCurrent
-        OnDropFiles = EditorDropFiles
-        OnReplaceText = EditorReplaceText
-        OnStatusChange = EditorStatusChange
-        EnableMPS = True
-        inline SynLeftGutterPartList1: TSynGutterPartList
-          object SynGutterMarks1: TSynGutterMarks
-            Width = 29
-            MouseActions = <>
-          end
-          object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 41
-            MouseActions = <>
-            MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
-            DigitCount = 2
-            ShowOnlyLineNumbersMultiplesOf = 1
-            ZeroStart = False
-            LeadingZeros = False
-          end
-          object SynGutterChanges1: TSynGutterChanges
-            Width = 5
-            MouseActions = <>
-            ModifiedColor = 7667448
-            SavedColor = 63744
-          end
-          object SynGutterSeparator1: TSynGutterSeparator
-            Width = 2
-            MouseActions = <>
-            MarkupInfo.Background = clNone
-            MarkupInfo.Foreground = clNone
-          end
-          object SynGutterCodeFolding1: TSynGutterCodeFolding
-            AutoSize = False
-            Width = 0
-            MouseActions = <>
-            MarkupInfo.Background = clNone
-            MarkupInfo.Foreground = clGray
-            MouseActionsExpanded = <>
-            MouseActionsCollapsed = <>
-          end
-        end
-      end
-    end
-    object Matrix: TTabSheet
-      Caption = 'Matrix'
-      ClientHeight = 516
-      ClientWidth = 1165
-      ImageIndex = 27
-      object MatrixTable: TVirtualStringTree
-        Left = 0
-        Height = 516
-        Top = 0
-        Width = 1165
-        Align = alClient
-        Header.AutoSizeIndex = 0
-        Header.Columns = <        
-          item
-            Position = 0
-            Text = '                   '
-            Width = 120
-          end>
-        Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
-        Header.ParentFont = True
-        Header.SortDirection = sdDescending
-        Header.Style = hsPlates
-        NodeDataSize = 4
-        ParentShowHint = False
-        ShowHint = True
-        TabOrder = 0
-        TreeOptions.AnimationOptions = [toAnimatedToggle]
-        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
-        TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
-        TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
-        TreeOptions.SelectionOptions = [toExtendedFocus]
-        OnBeforeCellPaint = MatrixTableBeforeCellPaint
-        OnCompareNodes = MatrixTableCompareNodes
-        OnGetText = MatrixTableGetText
-        OnHeaderClick = MatrixTableHeaderClick
-        OnInitNode = MatrixTableInitNode
-      end
-    end
-    object TabSheetOptions: TTabSheet
-      Caption = 'Options'
-      ClientHeight = 516
-      ClientWidth = 1165
-      ImageIndex = 25
-      object pcOptions: TPageControl
-        Left = 0
-        Height = 516
-        Top = 0
-        Width = 1165
-        ActivePage = tsOptions
-        Align = alClient
-        TabIndex = 0
-        TabOrder = 0
-        object tsOptions: TTabSheet
-          Caption = 'Options'
-          ClientHeight = 484
-          ClientWidth = 1157
-          ImageIndex = 1
-          object BBRuleModeOptions: TGroupBox
-            Left = 620
-            Height = 563
-            Top = 14
-            Width = 476
-            Caption = 'Branch Bound'
-            ClientHeight = 539
-            ClientWidth = 472
-            TabOrder = 0
-            object Label1: TLabel
-              Left = 228
-              Height = 19
-              Top = 68
-              Width = 85
-              Caption = 'BB Rule Select'
-              ParentColor = False
-            end
-            object Label2: TLabel
-              Left = 12
-              Height = 19
-              Top = 8
-              Width = 81
-              Caption = 'BB Floor First'
-              ParentColor = False
-            end
-            object Label4: TLabel
-              Left = 228
-              Height = 19
-              Top = 124
-              Width = 72
-              Caption = 'Depth Limit'
-              ParentColor = False
-            end
-            object Label15: TLabel
-              Left = 232
-              Height = 19
-              Top = 184
-              Width = 66
-              Caption = 'Obj Bound'
-              ParentColor = False
-            end
-            object CheckBox9: TCheckBox
-              Left = 17
-              Height = 23
-              Top = 72
-              Width = 119
-              Caption = 'Weight Reverse'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 0
-            end
-            object CheckBox10: TCheckBox
-              Tag = 1
-              Left = 17
-              Height = 23
-              Top = 100
-              Width = 117
-              Caption = 'Branch Reverse'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 1
-            end
-            object CheckBox11: TCheckBox
-              Tag = 2
-              Left = 17
-              Height = 23
-              Top = 128
-              Width = 68
-              Caption = 'Greedy'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 2
-            end
-            object CheckBox12: TCheckBox
-              Tag = 3
-              Left = 17
-              Height = 23
-              Top = 156
-              Width = 101
-              Caption = 'Pseudo Cost'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 3
-            end
-            object CheckBox13: TCheckBox
-              Tag = 4
-              Left = 16
-              Height = 23
-              Top = 184
-              Width = 92
-              Caption = 'Depth First'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 4
-            end
-            object CheckBox14: TCheckBox
-              Tag = 5
-              Left = 17
-              Height = 23
-              Top = 212
-              Width = 91
-              Caption = 'Randomize'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 5
-            end
-            object CheckBox15: TCheckBox
-              Tag = 6
-              Left = 17
-              Height = 23
-              Top = 240
-              Width = 50
-              Caption = 'Gub'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 6
-            end
-            object CheckBox16: TCheckBox
-              Tag = 7
-              Left = 16
-              Height = 23
-              Top = 268
-              Width = 77
-              Caption = 'Dynamic'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 7
-            end
-            object CheckBox17: TCheckBox
-              Tag = 8
-              Left = 17
-              Height = 23
-              Top = 296
-              Width = 67
-              Caption = 'Restart'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 8
-            end
-            object CheckBox58: TCheckBox
-              Tag = 9
-              Left = 16
-              Height = 23
-              Top = 328
-              Width = 102
-              Caption = 'Breadth First'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 9
-            end
-            object CheckBox60: TCheckBox
-              Tag = 10
-              Left = 18
-              Height = 23
-              Top = 356
-              Width = 90
-              Caption = 'AutoOrder'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 10
-            end
-            object CheckBox68: TCheckBox
-              Tag = 11
-              Left = 17
-              Height = 23
-              Top = 384
-              Width = 95
-              Caption = 'RCostFixing'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 11
-            end
-            object CheckBox69: TCheckBox
-              Tag = 12
-              Left = 17
-              Height = 23
-              Top = 412
-              Width = 85
-              Caption = 'StrongInit'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 12
-            end
-            object BBRuleSelectOption: TComboBox
-              Left = 240
-              Height = 27
-              Hint = 'Select lowest indexed non-integer column'
-              Top = 92
-              Width = 184
-              ItemHeight = 19
-              ItemIndex = 0
-              Items.Strings = (
-                'First'
-                'Gap'
-                'Range'
-                'Fraction'
-                'Pseudo Cost'
-                'Pseudo Non Int'
-                'Pseudo Ratio'
-                'User'
-              )
-              OnChange = BBRuleSelectOptionChange
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              Style = csDropDownList
-              TabOrder = 13
-              Text = 'First'
-            end
-            object BBFloorFirstOption: TComboBox
-              Left = 40
-              Height = 27
-              Hint = 'Take floor branch first'
-              Top = 32
-              Width = 184
-              ItemHeight = 19
-              ItemIndex = 1
-              Items.Strings = (
-                'Ceiling'
-                'Floor'
-                'Automatic'
-                'Default'
-              )
-              OnChange = BBFloorFirstOptionChange
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              Style = csDropDownList
-              TabOrder = 14
-              Text = 'Floor'
-            end
-            object DepthLimitOption: TEdit
-              Left = 240
-              Height = 27
-              Hint = 'Sets the maximum branch-and-bound depth.'
-              Top = 147
-              Width = 184
-              OnExit = OptionCheckBoxClick
-              OnKeyPress = EditOptionChange
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 15
-              Text = '-50'
-            end
-            object ObjBoundOption: TEdit
-              Left = 240
-              Height = 27
-              Hint = 'Set initial "at least better than" guess for objective function.'
-              Top = 208
-              Width = 184
-              OnExit = OptionCheckBoxClick
-              OnKeyPress = EditOptionChange
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 16
-            end
-          end
-          object ScaleOptions: TGroupBox
-            Left = 14
-            Height = 563
-            Top = 14
-            Width = 297
-            Caption = 'Scale'
-            ClientHeight = 539
-            ClientWidth = 293
-            TabOrder = 1
-            object Label9: TLabel
-              Left = 12
-              Height = 19
-              Top = 8
-              Width = 63
-              Caption = 'Scale Type'
-              ParentColor = False
-            end
-            object Label5: TLabel
-              Left = 12
-              Height = 19
-              Top = 64
-              Width = 70
-              Caption = 'Scale Mode'
-              ParentColor = False
-            end
-            object Label22: TLabel
-              Left = 12
-              Height = 19
-              Top = 312
-              Width = 64
-              Caption = 'Scale Limit'
-              ParentColor = False
-            end
-            object CheckBox51: TCheckBox
-              Tag = 4
-              Left = 44
-              Height = 23
-              Hint = 'also scaling integer variables'
-              Top = 200
-              Width = 74
-              HelpContext = 3
-              Caption = 'Integers'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 4
-            end
-            object CheckBox50: TCheckBox
-              Tag = 3
-              Left = 44
-              Height = 23
-              Hint = 'Make sure that no scaled number is above 1'
-              Top = 172
-              Width = 88
-              HelpContext = 3
-              Caption = 'Equilibrate'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 3
-            end
-            object CheckBox49: TCheckBox
-              Tag = 2
-              Left = 45
-              Height = 23
-              Hint = 'also do Power scaling'
-              Top = 144
-              Width = 70
-              HelpContext = 3
-              Caption = 'Power2'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-            end
-            object CheckBox48: TCheckBox
-              Tag = 1
-              Left = 45
-              Height = 23
-              Hint = 'Scale to convergence using logarithmic mean of all values'
-              Top = 116
-              Width = 96
-              HelpContext = 3
-              Caption = 'Logarithmic'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-            end
-            object CheckBox47: TCheckBox
-              Left = 45
-              Height = 23
-              Top = 88
-              Width = 84
-              HelpContext = 3
-              Caption = 'Quadratic'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 0
-            end
-            object ScaleTypeOption: TComboBox
-              Left = 44
-              Height = 27
-              Hint = 'Linear scaling'
-              Top = 32
-              Width = 184
-              HelpContext = 3
-              ItemHeight = 19
-              ItemIndex = 0
-              Items.Strings = (
-                'None (Linear)'
-                'Extreme'
-                'Range'
-                'Mean'
-                'Geometric'
-                'Future1'
-                'Future2'
-                'CurtisreId'
-              )
-              OnChange = ScaleTypeOptionChange
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              Style = csDropDownList
-              TabOrder = 8
-              Text = 'None (Linear)'
-            end
-            object CheckBox59: TCheckBox
-              Tag = 5
-              Left = 44
-              Height = 23
-              Hint = 'also scaling integer variables'
-              Top = 228
-              Width = 94
-              HelpContext = 3
-              Caption = 'DynUpdate'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 5
-            end
-            object CheckBox70: TCheckBox
-              Tag = 6
-              Left = 45
-              Height = 23
-              Top = 256
-              Width = 85
-              HelpContext = 3
-              Caption = 'RowsOnly'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 6
-            end
-            object CheckBox71: TCheckBox
-              Tag = 7
-              Left = 45
-              Height = 23
-              Top = 284
-              Width = 79
-              HelpContext = 3
-              Caption = 'ColsOnly'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 7
-            end
-            object ScaleLimitOption: TEdit
-              Left = 44
-              Height = 27
-              Hint = 'Sets the relative scaling convergence criterion for the active scaling mode; the integer part specifies the maximum number of iterations.'
-              Top = 336
-              Width = 172
-              OnExit = OptionCheckBoxClick
-              OnKeyPress = EditOptionChange
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 9
-            end
-          end
-          object PivotModeOption: TGroupBox
-            Left = 324
-            Height = 563
-            Top = 14
-            Width = 288
-            Caption = 'Pivot'
-            ClientHeight = 539
-            ClientWidth = 284
-            TabOrder = 2
-            object Label6: TLabel
-              Left = 16
-              Height = 19
-              Top = 396
-              Width = 61
-              Caption = 'Max Pivot'
-              ParentColor = False
-            end
-            object Label7: TLabel
-              Left = 16
-              Height = 19
-              Top = 8
-              Width = 61
-              Caption = 'Pivot Rule'
-              ParentColor = False
-            end
-            object CheckBox32: TCheckBox
-              Left = 40
-              Height = 23
-              Hint = 'In case of Steepest Edge, fall back to DEVEX in primal'
-              Top = 64
-              Width = 118
-              Caption = 'Primal Fall Back'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-            end
-            object CheckBox33: TCheckBox
-              Tag = 1
-              Left = 40
-              Height = 23
-              Hint = 'Enable multiple pricing'
-              Top = 88
-              Width = 74
-              Caption = 'Multiple'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-            end
-            object CheckBox34: TCheckBox
-              Tag = 2
-              Left = 40
-              Height = 23
-              Hint = 'Enable partial pricing'
-              Top = 116
-              Width = 62
-              Caption = 'Partial'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-            end
-            object CheckBox35: TCheckBox
-              Tag = 3
-              Left = 40
-              Height = 23
-              Hint = 'Temporarily use First Index if cycling is detected '
-              Top = 144
-              Width = 78
-              Caption = 'Adaptive'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 3
-            end
-            object CheckBox36: TCheckBox
-              Tag = 4
-              Left = 40
-              Height = 23
-              Top = 172
-              Width = 65
-              Caption = 'Hybrid'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 4
-            end
-            object CheckBox37: TCheckBox
-              Tag = 5
-              Left = 40
-              Height = 23
-              Hint = 'Adds a small randomization effect to the selected pricer'
-              Top = 200
-              Width = 91
-              Caption = 'Randomize'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 5
-            end
-            object CheckBox52: TCheckBox
-              Tag = 6
-              Left = 40
-              Height = 23
-              Hint = 'Detect and use data on the block structure of the model'
-              Top = 228
-              Width = 118
-              Caption = 'AutoPartialCols'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 6
-            end
-            object CheckBox53: TCheckBox
-              Tag = 7
-              Left = 40
-              Height = 23
-              Hint = 'Detect and use data on the block structure of the model'
-              Top = 256
-              Width = 124
-              Caption = 'AutoPartialRows'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 7
-            end
-            object CheckBox54: TCheckBox
-              Tag = 8
-              Left = 40
-              Height = 23
-              Hint = 'Scan entering/leaving columns left rather than right'
-              Top = 284
-              Width = 78
-              Caption = 'LoopLeft'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 8
-            end
-            object CheckBox55: TCheckBox
-              Tag = 9
-              Left = 40
-              Height = 23
-              Hint = 'Scan entering/leaving columns alternatingly left/right'
-              Top = 312
-              Width = 111
-              Caption = 'LoopAlternate'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 9
-            end
-            object CheckBox56: TCheckBox
-              Tag = 10
-              Left = 40
-              Height = 23
-              Top = 340
-              Width = 112
-              Caption = 'HarrisTwoPass'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 10
-            end
-            object MaxPivotOption: TEdit
-              Left = 40
-              Height = 27
-              Hint = 'Sets the maximum number of pivots between a re-inversion of the matrix'
-              Top = 420
-              Width = 203
-              OnExit = OptionCheckBoxClick
-              OnKeyPress = EditOptionChange
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 11
-              Text = '42'
-            end
-            object PivotRuleOption: TComboBox
-              Left = 40
-              Height = 27
-              Hint = 'Devex pricing from Paula Harris'
-              Top = 32
-              Width = 184
-              ItemHeight = 19
-              ItemIndex = 2
-              Items.Strings = (
-                'First Index'
-                'Dantzig'
-                'Devex'
-                'Steepest Edge'
-              )
-              OnChange = PivotRuleOptionChange
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              Style = csDropDownList
-              TabOrder = 12
-              Text = 'Devex'
-            end
-            object CheckBox83: TCheckBox
-              Tag = 12
-              Left = 40
-              Height = 23
-              Top = 368
-              Width = 114
-              Caption = 'True Norm Init'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 13
-            end
-          end
-        end
-        object tsGeneral: TTabSheet
-          Caption = 'Advanced'
-          ClientHeight = 263
-          ClientWidth = 1157
-          object Label3: TLabel
-            Left = 232
-            Height = 19
-            Top = 368
-            Width = 69
-            Caption = 'Basis Crash'
-            ParentColor = False
-          end
-          object Label10: TLabel
-            Left = 232
-            Height = 19
-            Top = 404
-            Width = 79
-            Caption = 'Simplex Type'
-            ParentColor = False
-          end
-          object Label11: TLabel
-            Left = 564
-            Height = 19
-            Top = 52
-            Width = 84
-            Caption = 'Solution Limit'
-            ParentColor = False
-          end
-          object Label13: TLabel
-            Left = 564
-            Height = 19
-            Top = 84
-            Width = 50
-            Caption = 'Timeout'
-            ParentColor = False
-          end
-          object Label16: TLabel
-            Left = 564
-            Height = 19
-            Top = 116
-            Width = 42
-            Caption = 'Infinite'
-            ParentColor = False
-          end
-          object Label17: TLabel
-            Left = 564
-            Height = 19
-            Top = 148
-            Width = 30
-            Caption = 'EPSB'
-            ParentColor = False
-          end
-          object Label18: TLabel
-            Left = 564
-            Height = 19
-            Top = 180
-            Width = 32
-            Caption = 'EPSD'
-            ParentColor = False
-          end
-          object Label19: TLabel
-            Left = 564
-            Height = 19
-            Top = 212
-            Width = 36
-            Caption = 'EPSEL'
-            ParentColor = False
-          end
-          object Label20: TLabel
-            Left = 564
-            Height = 19
-            Top = 276
-            Width = 72
-            Caption = 'EPS Perturb'
-            ParentColor = False
-          end
-          object Label21: TLabel
-            Left = 564
-            Height = 19
-            Top = 308
-            Width = 57
-            Caption = 'EPS Pivot'
-            ParentColor = False
-          end
-          object Label23: TLabel
-            Left = 808
-            Height = 19
-            Top = 240
-            Width = 88
-            Caption = 'Break at Value'
-            ParentColor = False
-          end
-          object Label24: TLabel
-            Left = 564
-            Height = 19
-            Top = 340
-            Width = 67
-            Caption = 'Neg Range'
-            ParentColor = False
-          end
-          object Label12: TLabel
-            Left = 564
-            Height = 19
-            Top = 244
-            Width = 43
-            Caption = 'EPS Int'
-            ParentColor = False
-          end
-          object AntiDegenOptions: TGroupBox
-            Left = 340
-            Height = 343
-            Top = 14
-            Width = 207
-            Caption = 'Anti Degen'
-            ClientHeight = 319
-            ClientWidth = 203
-            TabOrder = 1
-            object CheckBox1: TCheckBox
-              Left = 11
-              Height = 23
-              Hint = 'Check if there are equality slacks in the basis and try to drive them out in order to reduce chance of degeneracy in Phase 1'
-              Top = 8
-              Width = 84
-              HelpContext = 1
-              Caption = 'Fixed vars'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-            end
-            object CheckBox2: TCheckBox
-              Tag = 1
-              Left = 11
-              Height = 23
-              Top = 36
-              Width = 113
-              HelpContext = 1
-              Caption = 'Column Check'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 1
-            end
-            object CheckBox3: TCheckBox
-              Tag = 2
-              Left = 11
-              Height = 23
-              Top = 64
-              Width = 68
-              HelpContext = 1
-              Caption = 'Stalling'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 2
-            end
-            object CheckBox4: TCheckBox
-              Tag = 3
-              Left = 11
-              Height = 23
-              Top = 92
-              Width = 98
-              HelpContext = 1
-              Caption = 'Num Failure'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 3
-            end
-            object CheckBox5: TCheckBox
-              Tag = 4
-              Left = 11
-              Height = 23
-              Top = 120
-              Width = 81
-              HelpContext = 1
-              Caption = 'Lost Feas'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 4
-            end
-            object CheckBox6: TCheckBox
-              Tag = 5
-              Left = 11
-              Height = 23
-              Top = 148
-              Width = 81
-              HelpContext = 1
-              Caption = 'Infeasible'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 5
-            end
-            object CheckBox7: TCheckBox
-              Tag = 6
-              Left = 11
-              Height = 23
-              Top = 176
-              Width = 77
-              HelpContext = 1
-              Caption = 'Dynamic'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 6
-            end
-            object CheckBox8: TCheckBox
-              Tag = 7
-              Left = 11
-              Height = 23
-              Top = 204
-              Width = 82
-              HelpContext = 1
-              Caption = 'DuringBB'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 7
-            end
-            object CheckBox57: TCheckBox
-              Tag = 8
-              Left = 11
-              Height = 23
-              Top = 232
-              Width = 92
-              HelpContext = 1
-              Caption = 'RhsPerturb'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 8
-            end
-            object CheckBox61: TCheckBox
-              Tag = 9
-              Left = 11
-              Height = 23
-              Top = 260
-              Width = 85
-              HelpContext = 1
-              Caption = 'BoundFlip'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 9
-            end
-          end
-          object PresolveOptions: TGroupBox
-            Left = 0
-            Height = 343
-            Top = 14
-            Width = 328
-            Caption = 'Presolve'
-            ClientHeight = 319
-            ClientWidth = 324
-            TabOrder = 0
-            object CheckBox38: TCheckBox
-              Left = 12
-              Height = 23
-              Hint = 'Presolve rows'
-              Top = 8
-              Width = 56
-              HelpContext = 2
-              Caption = 'Rows'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-            end
-            object CheckBox39: TCheckBox
-              Tag = 1
-              Left = 12
-              Height = 23
-              Hint = 'Presolve columns'
-              Top = 36
-              Width = 50
-              HelpContext = 2
-              Caption = 'Cols'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-            end
-            object CheckBox40: TCheckBox
-              Tag = 2
-              Left = 12
-              Height = 23
-              Hint = 'Eliminate linearly dependent rows'
-              Top = 64
-              Width = 65
-              HelpContext = 2
-              Caption = 'Lindep'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-            end
-            object CheckBox41: TCheckBox
-              Tag = 3
-              Left = 12
-              Height = 23
-              Top = 92
-              Width = 88
-              HelpContext = 2
-              Caption = 'Aggregate'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 3
-            end
-            object CheckBox42: TCheckBox
-              Tag = 4
-              Left = 12
-              Height = 23
-              Top = 120
-              Width = 69
-              HelpContext = 2
-              Caption = 'Sparser'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 4
-            end
-            object CheckBox43: TCheckBox
-              Tag = 5
-              Left = 12
-              Height = 23
-              Hint = 'Convert constraints to SOSes (only SOS1 handled)'
-              Top = 148
-              Width = 49
-              HelpContext = 2
-              Caption = 'SOS'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 5
-            end
-            object CheckBox44: TCheckBox
-              Tag = 6
-              Left = 12
-              Height = 23
-              Hint = 'If the phase 1 solution process finds that a constraint is redundant then this constraint is deleted'
-              Top = 176
-              Width = 97
-              HelpContext = 2
-              Caption = 'Reduce MIP'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 6
-            end
-            object CheckBox45: TCheckBox
-              Tag = 19
-              Left = 172
-              Height = 23
-              Top = 232
-              Width = 58
-              HelpContext = 2
-              Caption = 'Duals'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 19
-            end
-            object CheckBox46: TCheckBox
-              Tag = 20
-              Left = 172
-              Height = 23
-              Top = 260
-              Width = 90
-              HelpContext = 2
-              Caption = 'Sens Duals'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 20
-            end
-            object CheckBox62: TCheckBox
-              Tag = 7
-              Left = 12
-              Height = 23
-              Top = 204
-              Width = 82
-              HelpContext = 2
-              Caption = 'KnapSack'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 7
-            end
-            object CheckBox63: TCheckBox
-              Tag = 8
-              Left = 12
-              Height = 23
-              Top = 232
-              Width = 72
-              HelpContext = 2
-              Caption = 'Elimeq2'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 8
-            end
-            object CheckBox64: TCheckBox
-              Tag = 9
-              Left = 12
-              Height = 23
-              Top = 260
-              Width = 95
-              HelpContext = 2
-              Caption = 'ImpliedFree'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 9
-            end
-            object CheckBox65: TCheckBox
-              Tag = 10
-              Left = 12
-              Height = 23
-              Top = 288
-              Width = 101
-              HelpContext = 2
-              Caption = 'Reduce GCD'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 10
-            end
-            object CheckBox66: TCheckBox
-              Tag = 11
-              Left = 172
-              Height = 23
-              Top = 8
-              Width = 76
-              HelpContext = 2
-              Caption = 'ProbeFix'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 11
-            end
-            object CheckBox67: TCheckBox
-              Tag = 12
-              Left = 172
-              Height = 23
-              Top = 36
-              Width = 104
-              HelpContext = 2
-              Caption = 'ProbeReduce'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 12
-            end
-            object CheckBox72: TCheckBox
-              Tag = 13
-              Left = 172
-              Height = 23
-              Top = 64
-              Width = 110
-              HelpContext = 2
-              Caption = 'RowDominate'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 13
-            end
-            object CheckBox73: TCheckBox
-              Tag = 14
-              Left = 172
-              Height = 23
-              Top = 92
-              Width = 104
-              HelpContext = 2
-              Caption = 'ColDominate'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 14
-            end
-            object CheckBox74: TCheckBox
-              Tag = 15
-              Left = 172
-              Height = 23
-              Top = 120
-              Width = 96
-              Caption = 'MergeRows'
-              TabOrder = 15
-            end
-            object CheckBox79: TCheckBox
-              Tag = 16
-              Left = 172
-              Height = 23
-              Top = 148
-              Width = 95
-              Caption = 'Implied SLK'
-              TabOrder = 16
-            end
-            object CheckBox80: TCheckBox
-              Tag = 17
-              Left = 172
-              Height = 23
-              Top = 176
-              Width = 88
-              Caption = 'ColFixDual'
-              TabOrder = 17
-            end
-            object CheckBox81: TCheckBox
-              Tag = 18
-              Left = 172
-              Height = 23
-              Top = 204
-              Width = 70
-              Caption = 'Bounds'
-              TabOrder = 18
-            end
-          end
-          object BasisCrashOption: TComboBox
-            Left = 328
-            Height = 27
-            Top = 364
-            Width = 219
-            ItemHeight = 19
-            ItemIndex = 0
-            Items.Strings = (
-              'Nothing'
-              'Non Basic Bounds'
-              'Most Feasible'
-              'Least Degenerate'
-            )
-            OnClick = OptionCheckBoxClick
-            Style = csDropDownList
-            TabOrder = 2
-            Text = 'Nothing'
-          end
-          object IgnoreIntegerOption: TCheckBox
-            Left = 808
-            Height = 23
-            Hint = 'Specifies if Integer restrictions must be ignored.'
-            Top = 148
-            Width = 183
-            Caption = 'Ignore Integer restrictions'
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 19
-          end
-          object BoundsTighterOption: TCheckBox
-            Left = 808
-            Height = 23
-            Hint = 'Specifies if set bounds may only be tighter or also less restrictive.'
-            Top = 176
-            Width = 117
-            Caption = 'Bounds Tighter'
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 15
-          end
-          object BreackAtFirstOption: TCheckBox
-            Left = 808
-            Height = 23
-            Hint = 'Specifies if the branch-and-bound algorithm stops at first found solution'
-            Top = 208
-            Width = 101
-            Caption = 'Break at first'
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 16
-          end
-          object SimplexTypeOption: TComboBox
-            Left = 328
-            Height = 27
-            Hint = 'Phase1 Primal, Phase2 Primal'
-            Top = 400
-            Width = 219
-            ItemHeight = 19
-            ItemIndex = 1
-            Items.Strings = (
-              'Primal Primal'
-              'Dual Primal'
-              'Primal Dual'
-              'Dual Dual'
-            )
-            OnChange = SimplexTypeOptionChange
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            Style = csDropDownList
-            TabOrder = 3
-            Text = 'Dual Primal'
-          end
-          object SolutionLimitOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'The solution number that must be returned.'
-            Top = 48
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 4
-            Text = '1'
-          end
-          object TimeoutOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'The number of seconds after which a timeout occurs'
-            Top = 80
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 5
-            Text = '0'
-          end
-          object InfiniteOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the practical value for "infinite".'
-            Top = 112
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 6
-          end
-          object EpsbOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the value that is used as a tolerance for the Right Hand Side (RHS) to determine whether a value should be considered as 0.'
-            Top = 144
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 7
-          end
-          object EpsdOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the value that is used as a tolerance for reduced costs to determine whether a value should be considered as 0.'
-            Top = 176
-            Width = 113
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 8
-          end
-          object EpselOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the value that is used as a tolerance for rounding values to zero.'
-            Top = 208
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 9
-          end
-          object EpsPerturbOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the value that is used as perturbation scalar for degenerative problems.'
-            Top = 272
-            Width = 113
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 11
-          end
-          object EpsPivotOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Specifies the value that is used as a tolerance pivot element to determine whether a value should be considered as 0.'
-            Top = 304
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 12
-          end
-          object BreakAtValueOption: TEdit
-            Left = 852
-            Height = 27
-            Hint = 'Specifies if the branch-and-bound algorithm stops when the object value is better than a given value.'
-            Top = 272
-            Width = 124
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 17
-          end
-          object NegRangeOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'Set negative value below which variables are split into a negative and a positive part.'
-            Top = 336
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 13
-          end
-          object MPSOptions: TGroupBox
-            Left = 788
-            Height = 120
-            Top = 14
-            Width = 220
-            Caption = 'MPS'
-            ClientHeight = 96
-            ClientWidth = 216
-            TabOrder = 14
-            object freeMPSOption: TCheckBox
-              Left = 16
-              Height = 23
-              Hint = 'Read/write in Free MPS format.'
-              Top = 8
-              Width = 127
-              Caption = 'Free MPS format'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-            end
-            object IBMMPSOption: TCheckBox
-              Left = 16
-              Height = 23
-              Hint = 'Interprete integer variables without bounds as binary variables. That is the original IBM standard.'
-              Top = 36
-              Width = 185
-              Caption = 'IBM Integer interpretation'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 1
-            end
-            object NegateObjConstMPSOption: TCheckBox
-              Left = 16
-              Height = 23
-              Hint = 'Interprete the objective constant with an oposite sign.'
-              Top = 64
-              Width = 183
-              Caption = 'Negate objective constant'
-              OnClick = OptionCheckBoxClick
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 2
-            end
-          end
-          object EpsIntOption: TEdit
-            Left = 660
-            Height = 27
-            Hint = 'tolerance that is used to determine whether a floating-point number is in fact an integer.'
-            Top = 240
-            Width = 112
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 10
-          end
-          object ImproveOptions: TGroupBox
-            Left = 4
-            Height = 140
-            Top = 360
-            Width = 208
-            Caption = 'Improve'
-            ClientHeight = 116
-            ClientWidth = 204
-            TabOrder = 18
-            object CheckBox75: TCheckBox
-              Left = 8
-              Height = 23
-              Top = 8
-              Width = 74
-              Caption = 'Solution'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 0
-            end
-            object CheckBox76: TCheckBox
-              Tag = 1
-              Left = 8
-              Height = 23
-              Top = 36
-              Width = 79
-              Caption = 'DualFeas'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 1
-            end
-            object CheckBox77: TCheckBox
-              Tag = 2
-              Left = 8
-              Height = 23
-              Top = 64
-              Width = 83
-              Caption = 'ThetaGap'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 2
-            end
-            object CheckBox78: TCheckBox
-              Tag = 3
-              Left = 8
-              Height = 23
-              Top = 92
-              Width = 86
-              Caption = 'BBSimplex'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 3
-            end
-          end
-        end
-        object tsMessages: TTabSheet
-          Caption = 'Messages'
-          ClientHeight = 440
-          ClientWidth = 1157
-          ImageIndex = 3
-          object Label8: TLabel
-            Left = 236
-            Height = 19
-            Top = 16
-            Width = 51
-            Caption = 'Print Sol'
-            ParentColor = False
-          end
-          object Label14: TLabel
-            Left = 236
-            Height = 19
-            Top = 59
-            Width = 50
-            Caption = 'Verbose'
-            ParentColor = False
-          end
-          object DebugOption: TCheckBox
-            Left = 339
-            Height = 23
-            Top = 103
-            Width = 65
-            Caption = 'Debug'
-            OnClick = OptionCheckBoxClick
-            TabOrder = 3
-          end
-          object LagTraceOption: TCheckBox
-            Left = 339
-            Height = 23
-            Top = 133
-            Width = 82
-            Caption = 'Lag Trace'
-            OnClick = OptionCheckBoxClick
-            TabOrder = 4
-          end
-          object PrintSolOption: TComboBox
-            Left = 339
-            Height = 27
-            Hint = 'Prints the solution (variables) of the lp.'
-            Top = 14
-            Width = 267
-            ItemHeight = 19
-            ItemIndex = 0
-            Items.Strings = (
-              'False'
-              'True'
-              'Automatic'
-              'Dynamic'
-            )
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            Style = csDropDownList
-            TabOrder = 1
-            Text = 'False'
-          end
-          object TraceOption: TCheckBox
-            Left = 339
-            Height = 23
-            Top = 162
-            Width = 56
-            Caption = 'Trace'
-            OnClick = OptionCheckBoxClick
-            TabOrder = 5
-          end
-          object VerboseOption: TComboBox
-            Left = 339
-            Height = 27
-            Hint = 'Normal messages are reported. This is the default.'
-            Top = 59
-            Width = 267
-            ItemHeight = 19
-            ItemIndex = 4
-            Items.Strings = (
-              'Neutral'
-              'Critical'
-              'Severe'
-              'Important'
-              'Normal'
-              'Detailed'
-              'Full'
-            )
-            OnChange = VerboseOptionChange
-            OnClick = OptionCheckBoxClick
-            ParentShowHint = False
-            ShowHint = True
-            Style = csDropDownList
-            TabOrder = 2
-            Text = 'Normal'
-          end
-          object MessagesOptions: TGroupBox
-            Left = 14
-            Height = 459
-            Top = 14
-            Width = 208
-            Caption = 'Messages'
-            ClientHeight = 435
-            ClientWidth = 204
-            TabOrder = 0
-            object CheckBox18: TCheckBox
-              Left = 14
-              Height = 23
-              Top = 30
-              Width = 75
-              Caption = 'Presolve'
-              Enabled = False
-              OnClick = OptionCheckBoxClick
-              TabOrder = 0
-            end
-            object CheckBox19: TCheckBox
-              Tag = 1
-              Left = 14
-              Height = 23
-              Top = 59
-              Width = 76
-              Caption = 'Iteration'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 1
-            end
-            object CheckBox20: TCheckBox
-              Tag = 2
-              Left = 14
-              Height = 23
-              Top = 89
-              Width = 60
-              Caption = 'Invert'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 2
-            end
-            object CheckBox21: TCheckBox
-              Tag = 3
-              Left = 14
-              Height = 23
-              Top = 117
-              Width = 91
-              Caption = 'Lp Feasible'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 3
-            end
-            object CheckBox22: TCheckBox
-              Tag = 4
-              Left = 14
-              Height = 23
-              Top = 147
-              Width = 92
-              Caption = 'Lp Optimal'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 4
-            end
-            object CheckBox23: TCheckBox
-              Tag = 5
-              Left = 14
-              Height = 23
-              Top = 177
-              Width = 76
-              Caption = 'Lp Equal'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 5
-            end
-            object CheckBox24: TCheckBox
-              Tag = 6
-              Left = 14
-              Height = 23
-              Top = 206
-              Width = 80
-              Caption = 'Lp Better'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 6
-            end
-            object CheckBox25: TCheckBox
-              Tag = 7
-              Left = 14
-              Height = 23
-              Top = 236
-              Width = 103
-              Caption = 'Mipl Feasible'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 7
-            end
-            object CheckBox26: TCheckBox
-              Tag = 8
-              Left = 14
-              Height = 23
-              Top = 266
-              Width = 88
-              Caption = 'Mipl Equal'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 8
-            end
-            object CheckBox27: TCheckBox
-              Tag = 9
-              Left = 14
-              Height = 23
-              Top = 295
-              Width = 92
-              Caption = 'Mipl Better'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 9
-            end
-            object CheckBox28: TCheckBox
-              Tag = 10
-              Left = 14
-              Height = 23
-              Top = 325
-              Width = 106
-              Caption = 'Mipl Strategy'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 10
-            end
-            object CheckBox29: TCheckBox
-              Tag = 11
-              Left = 14
-              Height = 23
-              Top = 353
-              Width = 104
-              Caption = 'Mipl Optimal'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 11
-            end
-            object CheckBox30: TCheckBox
-              Tag = 12
-              Left = 14
-              Height = 23
-              Top = 383
-              Width = 101
-              Caption = 'Performance'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 12
-            end
-            object CheckBox31: TCheckBox
-              Tag = 13
-              Left = 14
-              Height = 23
-              Top = 413
-              Width = 125
-              Caption = 'Init Pseudo Cost'
-              OnClick = OptionCheckBoxClick
-              TabOrder = 13
-            end
-          end
-        end
-        object tsPlugin: TTabSheet
-          Caption = 'Plugins'
-          ClientHeight = 327
-          ClientWidth = 1157
-          ImageIndex = 4
-          object Label25: TLabel
-            Left = 14
-            Height = 19
-            Top = 14
-            Width = 23
-            Caption = 'BFP'
-            ParentColor = False
-          end
-          object Label26: TLabel
-            Left = 14
-            Height = 19
-            Top = 56
-            Width = 90
-            Caption = 'XLI Data name'
-            ParentColor = False
-          end
-          object Label27: TLabel
-            Left = 12
-            Height = 19
-            Top = 96
-            Width = 72
-            Caption = 'XLI Options'
-            ParentColor = False
-          end
-          object BFPOption: TComboBox
-            Left = 56
-            Height = 27
-            Top = 12
-            Width = 267
-            ItemHeight = 19
-            Items.Strings = (
-              'bfp_etaPFI'
-              'bfp_LUSOL'
-              'bfp_GLPK'
-            )
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            TabOrder = 0
-          end
-          object XLIDataNameOption: TEdit
-            Left = 136
-            Height = 27
-            Top = 52
-            Width = 577
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            TabOrder = 1
-          end
-          object XLIOption: TEdit
-            Left = 136
-            Height = 27
-            Top = 92
-            Width = 577
-            OnExit = OptionCheckBoxClick
-            OnKeyPress = EditOptionChange
-            TabOrder = 2
-          end
-        end
-      end
-    end
-    object TabSheet2: TTabSheet
-      Caption = 'Result'
-      ClientHeight = 516
-      ClientWidth = 1165
-      ImageIndex = 28
-      object PageControl1: TPageControl
-        Left = 0
-        Height = 516
-        Top = 0
-        Width = 1165
-        ActivePage = TabSheet3
-        Align = alClient
-        TabIndex = 0
-        TabOrder = 0
-        object TabSheet3: TTabSheet
-          Caption = 'Objective'
-          ClientHeight = 484
-          ClientWidth = 1157
-          object ObjectiveTable: TVirtualStringTree
-            Left = 0
-            Height = 484
-            Top = 0
-            Width = 1157
-            Align = alClient
-            Header.AutoSizeIndex = 0
-            Header.Columns = <            
-              item
-                Position = 0
-                Text = 'Variables'
-                Width = 150
-              end>
-            Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
-            Header.ParentFont = True
-            Header.SortDirection = sdDescending
-            Header.Style = hsPlates
-            NodeDataSize = 4
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 0
-            TreeOptions.AnimationOptions = [toAnimatedToggle]
-            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
-            TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
-            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
-            TreeOptions.SelectionOptions = [toExtendedFocus]
-            OnBeforeCellPaint = ObjectiveTableBeforeCellPaint
-            OnCompareNodes = ObjectiveTableCompareNodes
-            OnGetText = ObjectiveTableGetText
-            OnHeaderClick = ObjectiveTableHeaderClick
-            OnInitNode = ObjectiveTableInitNode
-          end
-        end
-        object TabSheet4: TTabSheet
-          Caption = 'Constraints'
-          ClientHeight = 223
-          ClientWidth = 1123
-          ImageIndex = 1
-          object ConstraintTable: TVirtualStringTree
-            Left = 0
-            Height = 223
-            Top = 0
-            Width = 1123
-            Align = alClient
-            Header.AutoSizeIndex = 0
-            Header.Columns = <            
-              item
-                Position = 0
-                Text = 'Constraints'
-                Width = 150
-              end>
-            Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
-            Header.ParentFont = True
-            Header.SortDirection = sdDescending
-            Header.Style = hsPlates
-            NodeDataSize = 4
-            ParentShowHint = False
-            ShowHint = True
-            TabOrder = 0
-            TreeOptions.AnimationOptions = [toAnimatedToggle]
-            TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
-            TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
-            TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
-            TreeOptions.SelectionOptions = [toExtendedFocus]
-            OnBeforeCellPaint = ConstraintTableBeforeCellPaint
-            OnCompareNodes = ConstraintTableCompareNodes
-            OnGetText = ConstraintTableGetText
-            OnHeaderClick = ConstraintTableHeaderClick
-            OnInitNode = ConstraintTableInitNode
-          end
-        end
-        object TabSheet1: TTabSheet
-          Caption = 'Sensitivity'
-          ClientHeight = 223
-          ClientWidth = 1123
-          ImageIndex = 2
-          object PageControl3: TPageControl
-            Left = 0
-            Height = 223
-            Top = 0
-            Width = 1123
-            ActivePage = TabSheet7
-            Align = alClient
-            TabIndex = 0
-            TabOrder = 0
-            object TabSheet7: TTabSheet
-              Caption = 'Objective'
-              ClientHeight = 191
-              ClientWidth = 1115
-              object ObjectiveSensTable: TVirtualStringTree
-                Left = 0
-                Height = 191
-                Top = 0
-                Width = 1115
-                Align = alClient
-                Header.AutoSizeIndex = 0
-                Header.Columns = <                
-                  item
-                    Position = 0
-                    Text = 'Variables'
-                    Width = 150
-                  end>
-                Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
-                Header.ParentFont = True
-                Header.SortDirection = sdDescending
-                Header.Style = hsPlates
-                NodeDataSize = 4
-                ParentShowHint = False
-                ShowHint = True
-                TabOrder = 0
-                TreeOptions.AnimationOptions = [toAnimatedToggle]
-                TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
-                TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
-                TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
-                TreeOptions.SelectionOptions = [toExtendedFocus]
-                OnBeforeCellPaint = ObjectiveSensTableBeforeCellPaint
-                OnCompareNodes = ObjectiveSensTableCompareNodes
-                OnGetText = ObjectiveSensTableGetText
-                OnHeaderClick = ObjectiveSensTableHeaderClick
-                OnInitNode = ObjectiveSensTableInitNode
-              end
-            end
-            object TabSheet8: TTabSheet
-              Caption = 'Duals'
-              ClientHeight = 191
-              ClientWidth = 1115
-              ImageIndex = 1
-              object RHSSensTable: TVirtualStringTree
-                Left = 0
-                Height = 191
-                Top = 0
-                Width = 1115
-                Align = alClient
-                Header.AutoSizeIndex = 0
-                Header.Columns = <                
-                  item
-                    Position = 0
-                    Text = 'Variables'
-                    Width = 150
-                  end>
-                Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
-                Header.ParentFont = True
-                Header.SortDirection = sdDescending
-                Header.Style = hsPlates
-                NodeDataSize = 4
-                ParentShowHint = False
-                ShowHint = True
-                TabOrder = 0
-                TreeOptions.AnimationOptions = [toAnimatedToggle]
-                TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
-                TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
-                TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
-                TreeOptions.SelectionOptions = [toExtendedFocus]
-                OnBeforeCellPaint = RHSSensTableBeforeCellPaint
-                OnCompareNodes = RHSSensTableCompareNodes
-                OnGetText = RHSSensTableGetText
-                OnHeaderClick = RHSSensTableHeaderClick
-                OnInitNode = RHSSensTableInitNode
-              end
-            end
-          end
-        end
-      end
-    end
-  end
-  object StatusBar: TStatusBar
-    Left = 0
-    Height = 28
-    Top = 609
-    Width = 1173
-    Panels = <    
-      item
-        Width = 120
-      end    
-      item
-        Width = 120
-      end    
-      item
-        Width = 120
-      end    
-      item
-        Width = 120
-      end    
-      item
-        Width = 120
-      end    
-      item
-        Width = 264
-      end>
-    SimplePanel = False
-  end
-  object PageControl2: TPageControl
-    Left = 0
-    Height = 263
-    Top = 346
-    Width = 1173
-    ActivePage = TabSheet5
-    Align = alBottom
-    TabIndex = 0
-    TabOrder = 1
-    object TabSheet5: TTabSheet
-      Caption = 'Log'
-      ClientHeight = 231
-      ClientWidth = 1165
-      inline MemoLog: TSynEdit
-        Left = 0
-        Height = 231
-        Top = 0
-        Width = 1165
-        Align = alClient
-        Font.Height = -13
-        Font.Name = 'Courier New'
-        Font.Pitch = fpFixed
-        Font.Quality = fqCleartype
-        ParentColor = False
-        ParentFont = False
-        TabOrder = 0
-        Gutter.Visible = False
-        Gutter.Width = 65
-        Gutter.MouseActions = <>
-        RightGutter.Width = 0
-        RightGutter.MouseActions = <>
-        Keystrokes = <>
-        MouseActions = <>
-        MouseTextActions = <>
-        MouseSelActions = <>
-        VisibleSpecialChars = [vscSpace, vscTabAtLast]
-        ReadOnly = True
-        RightEdge = 0
-        SelectedColor.BackPriority = 50
-        SelectedColor.ForePriority = 50
-        SelectedColor.FramePriority = 50
-        SelectedColor.BoldPriority = 50
-        SelectedColor.ItalicPriority = 50
-        SelectedColor.UnderlinePriority = 50
-        SelectedColor.StrikeOutPriority = 50
-        BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
-        BracketMatchColor.Foreground = clNone
-        BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
-        FoldedCodeColor.Foreground = clGray
-        FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
-        MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
-        LineHighlightColor.Foreground = clNone
-        inline SynLeftGutterPartList1: TSynGutterPartList
-          object SynGutterMarks1: TSynGutterMarks
-            Width = 29
-            MouseActions = <>
-          end
-          object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 17
-            MouseActions = <>
-            MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
-            DigitCount = 2
-            ShowOnlyLineNumbersMultiplesOf = 1
-            ZeroStart = False
-            LeadingZeros = False
-          end
-          object SynGutterChanges1: TSynGutterChanges
-            Width = 5
-            MouseActions = <>
-            ModifiedColor = 59900
-            SavedColor = clGreen
-          end
-          object SynGutterSeparator1: TSynGutterSeparator
-            Width = 2
-            MouseActions = <>
-            MarkupInfo.Background = clWhite
-            MarkupInfo.Foreground = clGray
-          end
-          object SynGutterCodeFolding1: TSynGutterCodeFolding
-            Width = 12
-            MouseActions = <>
-            MarkupInfo.Background = clNone
-            MarkupInfo.Foreground = clGray
-            MouseActionsExpanded = <>
-            MouseActionsCollapsed = <>
-          end
-        end
-      end
-    end
-    object TabSheet6: TTabSheet
-      Caption = 'Messages'
-      ClientHeight = 145
-      ClientWidth = 1165
-      ImageIndex = 1
-      inline MemoMessages: TSynEdit
-        Left = 0
-        Height = 145
-        Top = 0
-        Width = 1165
-        Align = alClient
-        Font.Height = -13
-        Font.Name = 'Courier New'
-        Font.Pitch = fpFixed
-        Font.Quality = fqCleartype
-        ParentColor = False
-        ParentFont = False
-        TabOrder = 0
-        Gutter.Visible = False
-        Gutter.Width = 65
-        Gutter.MouseActions = <>
-        RightGutter.Width = 0
-        RightGutter.MouseActions = <>
-        Keystrokes = <>
-        MouseActions = <>
-        MouseTextActions = <>
-        MouseSelActions = <>
-        VisibleSpecialChars = [vscSpace, vscTabAtLast]
-        ReadOnly = True
-        RightEdge = 0
-        SelectedColor.BackPriority = 50
-        SelectedColor.ForePriority = 50
-        SelectedColor.FramePriority = 50
-        SelectedColor.BoldPriority = 50
-        SelectedColor.ItalicPriority = 50
-        SelectedColor.UnderlinePriority = 50
-        SelectedColor.StrikeOutPriority = 50
-        BracketHighlightStyle = sbhsBoth
-        BracketMatchColor.Background = clNone
-        BracketMatchColor.Foreground = clNone
-        BracketMatchColor.Style = [fsBold]
-        FoldedCodeColor.Background = clNone
-        FoldedCodeColor.Foreground = clGray
-        FoldedCodeColor.FrameColor = clGray
-        MouseLinkColor.Background = clNone
-        MouseLinkColor.Foreground = clBlue
-        LineHighlightColor.Background = clNone
-        LineHighlightColor.Foreground = clNone
-        inline SynLeftGutterPartList1: TSynGutterPartList
-          object SynGutterMarks1: TSynGutterMarks
-            Width = 29
-            MouseActions = <>
-          end
-          object SynGutterLineNumber1: TSynGutterLineNumber
-            Width = 17
-            MouseActions = <>
-            MarkupInfo.Background = clBtnFace
-            MarkupInfo.Foreground = clNone
-            DigitCount = 2
-            ShowOnlyLineNumbersMultiplesOf = 1
-            ZeroStart = False
-            LeadingZeros = False
-          end
-          object SynGutterChanges1: TSynGutterChanges
-            Width = 5
-            MouseActions = <>
-            ModifiedColor = 59900
-            SavedColor = clGreen
-          end
-          object SynGutterSeparator1: TSynGutterSeparator
-            Width = 2
-            MouseActions = <>
-            MarkupInfo.Background = clWhite
-            MarkupInfo.Foreground = clGray
-          end
-          object SynGutterCodeFolding1: TSynGutterCodeFolding
-            Width = 12
-            MouseActions = <>
-            MarkupInfo.Background = clNone
-            MarkupInfo.Foreground = clGray
-            MouseActionsExpanded = <>
-            MouseActionsCollapsed = <>
-          end
-        end
-      end
-    end
-  end
+  OnDropFiles = FormDropFiles
   object ToolBar1: TToolBar
     Left = 0
     Height = 35
@@ -2336,7 +25,7 @@ object MainForm: TMainForm
     Color = clBtnFace
     Images = ImageList
     ParentColor = False
-    TabOrder = 3
+    TabOrder = 0
     object ToolButton11: TToolButton
       Left = 1
       Hint = 'New'
@@ -2443,7 +132,7 @@ object MainForm: TMainForm
       ShowHint = True
     end
     object ToolButton15: TToolButton
-      Left = 361
+      Left = 389
       Height = 26
       Top = 2
       Caption = 'ToolButton15'
@@ -2451,7 +140,7 @@ object MainForm: TMainForm
       Style = tbsSeparator
     end
     object Priority: TTrackBar
-      Left = 369
+      Left = 397
       Height = 26
       Hint = 'Thread priority'
       Top = 2
@@ -2468,6 +157,2348 @@ object MainForm: TMainForm
       ParentShowHint = False
       ShowHint = True
       TabOrder = 0
+    end
+    object ToolButton16: TToolButton
+      Left = 361
+      Top = 2
+      Action = acGotoLine
+      ParentShowHint = False
+      ShowHint = True
+    end
+  end
+  object StatusBar: TStatusBar
+    Left = 0
+    Height = 28
+    Top = 609
+    Width = 1173
+    Panels = <    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 120
+      end    
+      item
+        Width = 264
+      end>
+    SimplePanel = False
+  end
+  object pnMain: TPanel
+    Left = 0
+    Height = 574
+    Top = 35
+    Width = 1173
+    Align = alClient
+    BevelOuter = bvNone
+    ClientHeight = 574
+    ClientWidth = 1173
+    TabOrder = 2
+    object PageControl: TPageControl
+      Left = 0
+      Height = 397
+      Top = 0
+      Width = 1173
+      ActivePage = TabSheetEditor
+      Align = alClient
+      Images = ImageList
+      TabIndex = 0
+      TabOrder = 0
+      object TabSheetEditor: TTabSheet
+        Caption = 'Source'
+        ClientHeight = 365
+        ClientWidth = 1165
+        ImageIndex = 26
+        inline Editor: TLPSynEdit
+          Left = 0
+          Height = 365
+          Top = 0
+          Width = 1165
+          Align = alClient
+          Font.Height = -14
+          Font.Name = 'Consolas'
+          Font.Pitch = fpFixed
+          Font.Quality = fqCleartype
+          ParentColor = False
+          ParentFont = False
+          PopupMenu = PopupMenu
+          TabOrder = 0
+          Gutter.Color = clNone
+          Gutter.RightOffset = 10
+          Gutter.Width = 63
+          Gutter.MouseActions = <>
+          RightGutter.Visible = False
+          RightGutter.Width = 0
+          RightGutter.MouseActions = <>
+          Keystrokes = <>
+          MouseActions = <>
+          MouseTextActions = <>
+          MouseSelActions = <>
+          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor, eoDoubleClickSelectsLine]
+          Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
+          MouseOptions = [emDragDropEditing, emRightMouseMovesCursor, emDoubleClickSelectsLine]
+          VisibleSpecialChars = []
+          RightEdge = 255
+          SelectedColor.BackPriority = 50
+          SelectedColor.ForePriority = 50
+          SelectedColor.FramePriority = 50
+          SelectedColor.BoldPriority = 50
+          SelectedColor.ItalicPriority = 50
+          SelectedColor.UnderlinePriority = 50
+          SelectedColor.StrikeOutPriority = 50
+          BracketHighlightStyle = sbhsBoth
+          BracketMatchColor.Background = clNone
+          BracketMatchColor.Foreground = clNone
+          BracketMatchColor.Style = [fsBold]
+          FoldedCodeColor.Background = clNone
+          FoldedCodeColor.Foreground = clGray
+          FoldedCodeColor.FrameColor = clGray
+          MouseLinkColor.Background = clNone
+          MouseLinkColor.Foreground = clBlue
+          LineHighlightColor.Background = 14875388
+          LineHighlightColor.Foreground = clNone
+          SelectionMode = smCurrent
+          OnDropFiles = EditorDropFiles
+          OnReplaceText = EditorReplaceText
+          OnStatusChange = EditorStatusChange
+          EnableMPS = True
+          inline SynLeftGutterPartList1: TSynGutterPartList
+            object SynGutterMarks1: TSynGutterMarks
+              Width = 29
+              MouseActions = <>
+            end
+            object SynGutterLineNumber1: TSynGutterLineNumber
+              Width = 17
+              MouseActions = <>
+              MarkupInfo.Background = clNone
+              MarkupInfo.Foreground = 16679002
+              DigitCount = 2
+              ShowOnlyLineNumbersMultiplesOf = 1
+              ZeroStart = False
+              LeadingZeros = False
+            end
+            object SynGutterChanges1: TSynGutterChanges
+              Width = 5
+              MouseActions = <>
+              ModifiedColor = 11468795
+              SavedColor = 63744
+            end
+            object SynGutterSeparator1: TSynGutterSeparator
+              Width = 2
+              MouseActions = <>
+              MarkupInfo.Background = clNone
+              MarkupInfo.Foreground = clNone
+            end
+            object SynGutterCodeFolding1: TSynGutterCodeFolding
+              AutoSize = False
+              Width = 0
+              MouseActions = <>
+              MarkupInfo.Background = clNone
+              MarkupInfo.Foreground = clGray
+              MouseActionsExpanded = <>
+              MouseActionsCollapsed = <>
+            end
+          end
+        end
+      end
+      object Matrix: TTabSheet
+        Caption = 'Matrix'
+        ClientHeight = 368
+        ClientWidth = 1165
+        ImageIndex = 27
+        object MatrixTable: TVirtualStringTree
+          Left = 0
+          Height = 368
+          Top = 0
+          Width = 1165
+          Align = alClient
+          Header.AutoSizeIndex = 0
+          Header.Columns = <          
+            item
+              Position = 0
+              Text = '                   '
+              Width = 120
+            end>
+          Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+          Header.ParentFont = True
+          Header.SortDirection = sdDescending
+          Header.Style = hsPlates
+          NodeDataSize = 4
+          ParentShowHint = False
+          ShowHint = True
+          TabOrder = 0
+          TreeOptions.AnimationOptions = [toAnimatedToggle]
+          TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+          TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+          TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+          TreeOptions.SelectionOptions = [toExtendedFocus]
+          OnBeforeCellPaint = MatrixTableBeforeCellPaint
+          OnCompareNodes = MatrixTableCompareNodes
+          OnGetText = MatrixTableGetText
+          OnHeaderClick = MatrixTableHeaderClick
+          OnInitNode = MatrixTableInitNode
+        end
+      end
+      object TabSheet2: TTabSheet
+        Caption = 'Result'
+        ClientHeight = 368
+        ClientWidth = 1165
+        ImageIndex = 28
+        object PageControl1: TPageControl
+          Left = 0
+          Height = 368
+          Top = 0
+          Width = 1165
+          ActivePage = TabSheet3
+          Align = alClient
+          TabIndex = 0
+          TabOrder = 0
+          object TabSheet3: TTabSheet
+            Caption = 'Objective'
+            ClientHeight = 336
+            ClientWidth = 1157
+            object ObjectiveTable: TVirtualStringTree
+              Left = 0
+              Height = 336
+              Top = 0
+              Width = 1157
+              Align = alClient
+              Header.AutoSizeIndex = 0
+              Header.Columns = <              
+                item
+                  Position = 0
+                  Text = 'Variables'
+                  Width = 150
+                end>
+              Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+              Header.ParentFont = True
+              Header.SortDirection = sdDescending
+              Header.Style = hsPlates
+              NodeDataSize = 4
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              TreeOptions.AnimationOptions = [toAnimatedToggle]
+              TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+              TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+              TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+              TreeOptions.SelectionOptions = [toExtendedFocus]
+              OnBeforeCellPaint = ObjectiveTableBeforeCellPaint
+              OnCompareNodes = ObjectiveTableCompareNodes
+              OnGetText = ObjectiveTableGetText
+              OnHeaderClick = ObjectiveTableHeaderClick
+              OnInitNode = ObjectiveTableInitNode
+            end
+          end
+          object TabSheet4: TTabSheet
+            Caption = 'Constraints'
+            ClientHeight = 336
+            ClientWidth = 1157
+            ImageIndex = 1
+            object ConstraintTable: TVirtualStringTree
+              Left = 0
+              Height = 336
+              Top = 0
+              Width = 1157
+              Align = alClient
+              Header.AutoSizeIndex = 0
+              Header.Columns = <              
+                item
+                  Position = 0
+                  Text = 'Constraints'
+                  Width = 150
+                end>
+              Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+              Header.ParentFont = True
+              Header.SortDirection = sdDescending
+              Header.Style = hsPlates
+              NodeDataSize = 4
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              TreeOptions.AnimationOptions = [toAnimatedToggle]
+              TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+              TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+              TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+              TreeOptions.SelectionOptions = [toExtendedFocus]
+              OnBeforeCellPaint = ConstraintTableBeforeCellPaint
+              OnCompareNodes = ConstraintTableCompareNodes
+              OnGetText = ConstraintTableGetText
+              OnHeaderClick = ConstraintTableHeaderClick
+              OnInitNode = ConstraintTableInitNode
+            end
+          end
+          object TabSheet1: TTabSheet
+            Caption = 'Sensitivity'
+            ClientHeight = 336
+            ClientWidth = 1157
+            ImageIndex = 2
+            object PageControl3: TPageControl
+              Left = 0
+              Height = 336
+              Top = 0
+              Width = 1157
+              ActivePage = TabSheet7
+              Align = alClient
+              TabIndex = 0
+              TabOrder = 0
+              object TabSheet7: TTabSheet
+                Caption = 'Objective'
+                ClientHeight = 304
+                ClientWidth = 1149
+                object ObjectiveSensTable: TVirtualStringTree
+                  Left = 0
+                  Height = 304
+                  Top = 0
+                  Width = 1149
+                  Align = alClient
+                  Header.AutoSizeIndex = 0
+                  Header.Columns = <                  
+                    item
+                      Position = 0
+                      Text = 'Variables'
+                      Width = 150
+                    end>
+                  Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+                  Header.ParentFont = True
+                  Header.SortDirection = sdDescending
+                  Header.Style = hsPlates
+                  NodeDataSize = 4
+                  ParentShowHint = False
+                  ShowHint = True
+                  TabOrder = 0
+                  TreeOptions.AnimationOptions = [toAnimatedToggle]
+                  TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+                  TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+                  TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+                  TreeOptions.SelectionOptions = [toExtendedFocus]
+                  OnBeforeCellPaint = ObjectiveSensTableBeforeCellPaint
+                  OnCompareNodes = ObjectiveSensTableCompareNodes
+                  OnGetText = ObjectiveSensTableGetText
+                  OnHeaderClick = ObjectiveSensTableHeaderClick
+                  OnInitNode = ObjectiveSensTableInitNode
+                end
+              end
+              object TabSheet8: TTabSheet
+                Caption = 'Duals'
+                ClientHeight = 304
+                ClientWidth = 1149
+                ImageIndex = 1
+                object RHSSensTable: TVirtualStringTree
+                  Left = 0
+                  Height = 304
+                  Top = 0
+                  Width = 1149
+                  Align = alClient
+                  Header.AutoSizeIndex = 0
+                  Header.Columns = <                  
+                    item
+                      Position = 0
+                      Text = 'Variables'
+                      Width = 150
+                    end>
+                  Header.Options = [hoColumnResize, hoDblClickResize, hoDrag, hoHotTrack, hoShowHint, hoShowSortGlyphs, hoVisible]
+                  Header.ParentFont = True
+                  Header.SortDirection = sdDescending
+                  Header.Style = hsPlates
+                  NodeDataSize = 4
+                  ParentShowHint = False
+                  ShowHint = True
+                  TabOrder = 0
+                  TreeOptions.AnimationOptions = [toAnimatedToggle]
+                  TreeOptions.AutoOptions = [toAutoDropExpand, toAutoScroll, toAutoScrollOnExpand, toAutoTristateTracking]
+                  TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toGridExtensions, toInitOnSave, toReportMode, toToggleOnDblClick, toWheelPanning]
+                  TreeOptions.PaintOptions = [toShowButtons, toShowDropmark, toShowHorzGridLines, toShowRoot, toShowVertGridLines, toThemeAware, toUseBlendedSelection]
+                  TreeOptions.SelectionOptions = [toExtendedFocus]
+                  OnBeforeCellPaint = RHSSensTableBeforeCellPaint
+                  OnCompareNodes = RHSSensTableCompareNodes
+                  OnGetText = RHSSensTableGetText
+                  OnHeaderClick = RHSSensTableHeaderClick
+                  OnInitNode = RHSSensTableInitNode
+                end
+              end
+            end
+          end
+        end
+      end
+      object TabSheetOptions: TTabSheet
+        Caption = 'Solver Options'
+        ClientHeight = 368
+        ClientWidth = 1165
+        ImageIndex = 25
+        object pcOptions: TPageControl
+          Left = 0
+          Height = 368
+          Top = 0
+          Width = 1165
+          ActivePage = tsOptions
+          Align = alClient
+          TabIndex = 0
+          TabOrder = 0
+          object tsOptions: TTabSheet
+            Caption = 'Options'
+            ClientHeight = 336
+            ClientWidth = 1157
+            ImageIndex = 1
+            object BBRuleModeOptions: TGroupBox
+              Left = 620
+              Height = 563
+              Top = 14
+              Width = 476
+              Caption = 'Branch Bound'
+              ClientHeight = 539
+              ClientWidth = 472
+              TabOrder = 0
+              object Label1: TLabel
+                Left = 228
+                Height = 19
+                Top = 68
+                Width = 85
+                Caption = 'BB Rule Select'
+                ParentColor = False
+              end
+              object Label2: TLabel
+                Left = 12
+                Height = 19
+                Top = 8
+                Width = 81
+                Caption = 'BB Floor First'
+                ParentColor = False
+              end
+              object Label4: TLabel
+                Left = 228
+                Height = 19
+                Top = 124
+                Width = 72
+                Caption = 'Depth Limit'
+                ParentColor = False
+              end
+              object Label15: TLabel
+                Left = 232
+                Height = 19
+                Top = 184
+                Width = 66
+                Caption = 'Obj Bound'
+                ParentColor = False
+              end
+              object CheckBox9: TCheckBox
+                Left = 17
+                Height = 23
+                Top = 72
+                Width = 119
+                Caption = 'Weight Reverse'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 0
+              end
+              object CheckBox10: TCheckBox
+                Tag = 1
+                Left = 17
+                Height = 23
+                Top = 100
+                Width = 117
+                Caption = 'Branch Reverse'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 1
+              end
+              object CheckBox11: TCheckBox
+                Tag = 2
+                Left = 17
+                Height = 23
+                Top = 128
+                Width = 68
+                Caption = 'Greedy'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 2
+              end
+              object CheckBox12: TCheckBox
+                Tag = 3
+                Left = 17
+                Height = 23
+                Top = 156
+                Width = 101
+                Caption = 'Pseudo Cost'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 3
+              end
+              object CheckBox13: TCheckBox
+                Tag = 4
+                Left = 16
+                Height = 23
+                Top = 184
+                Width = 92
+                Caption = 'Depth First'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 4
+              end
+              object CheckBox14: TCheckBox
+                Tag = 5
+                Left = 17
+                Height = 23
+                Top = 212
+                Width = 91
+                Caption = 'Randomize'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 5
+              end
+              object CheckBox15: TCheckBox
+                Tag = 6
+                Left = 17
+                Height = 23
+                Top = 240
+                Width = 50
+                Caption = 'Gub'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 6
+              end
+              object CheckBox16: TCheckBox
+                Tag = 7
+                Left = 16
+                Height = 23
+                Top = 268
+                Width = 77
+                Caption = 'Dynamic'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 7
+              end
+              object CheckBox17: TCheckBox
+                Tag = 8
+                Left = 17
+                Height = 23
+                Top = 296
+                Width = 67
+                Caption = 'Restart'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 8
+              end
+              object CheckBox58: TCheckBox
+                Tag = 9
+                Left = 16
+                Height = 23
+                Top = 328
+                Width = 102
+                Caption = 'Breadth First'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 9
+              end
+              object CheckBox60: TCheckBox
+                Tag = 10
+                Left = 18
+                Height = 23
+                Top = 356
+                Width = 90
+                Caption = 'AutoOrder'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 10
+              end
+              object CheckBox68: TCheckBox
+                Tag = 11
+                Left = 17
+                Height = 23
+                Top = 384
+                Width = 95
+                Caption = 'RCostFixing'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 11
+              end
+              object CheckBox69: TCheckBox
+                Tag = 12
+                Left = 17
+                Height = 23
+                Top = 412
+                Width = 85
+                Caption = 'StrongInit'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 12
+              end
+              object BBRuleSelectOption: TComboBox
+                Left = 240
+                Height = 27
+                Hint = 'Select lowest indexed non-integer column'
+                Top = 92
+                Width = 184
+                ItemHeight = 19
+                ItemIndex = 0
+                Items.Strings = (
+                  'First'
+                  'Gap'
+                  'Range'
+                  'Fraction'
+                  'Pseudo Cost'
+                  'Pseudo Non Int'
+                  'Pseudo Ratio'
+                  'User'
+                )
+                OnChange = BBRuleSelectOptionChange
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                Style = csDropDownList
+                TabOrder = 13
+                Text = 'First'
+              end
+              object BBFloorFirstOption: TComboBox
+                Left = 40
+                Height = 27
+                Hint = 'Take floor branch first'
+                Top = 32
+                Width = 184
+                ItemHeight = 19
+                ItemIndex = 1
+                Items.Strings = (
+                  'Ceiling'
+                  'Floor'
+                  'Automatic'
+                  'Default'
+                )
+                OnChange = BBFloorFirstOptionChange
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                Style = csDropDownList
+                TabOrder = 14
+                Text = 'Floor'
+              end
+              object DepthLimitOption: TEdit
+                Left = 240
+                Height = 27
+                Hint = 'Sets the maximum branch-and-bound depth.'
+                Top = 147
+                Width = 184
+                OnExit = OptionCheckBoxClick
+                OnKeyPress = EditOptionChange
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 15
+                Text = '-50'
+              end
+              object ObjBoundOption: TEdit
+                Left = 240
+                Height = 27
+                Hint = 'Set initial "at least better than" guess for objective function.'
+                Top = 208
+                Width = 184
+                OnExit = OptionCheckBoxClick
+                OnKeyPress = EditOptionChange
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 16
+              end
+            end
+            object ScaleOptions: TGroupBox
+              Left = 14
+              Height = 563
+              Top = 14
+              Width = 297
+              Caption = 'Scale'
+              ClientHeight = 539
+              ClientWidth = 293
+              TabOrder = 1
+              object Label9: TLabel
+                Left = 12
+                Height = 19
+                Top = 8
+                Width = 63
+                Caption = 'Scale Type'
+                ParentColor = False
+              end
+              object Label5: TLabel
+                Left = 12
+                Height = 19
+                Top = 64
+                Width = 70
+                Caption = 'Scale Mode'
+                ParentColor = False
+              end
+              object Label22: TLabel
+                Left = 12
+                Height = 19
+                Top = 312
+                Width = 64
+                Caption = 'Scale Limit'
+                ParentColor = False
+              end
+              object CheckBox51: TCheckBox
+                Tag = 4
+                Left = 44
+                Height = 23
+                Hint = 'also scaling integer variables'
+                Top = 200
+                Width = 74
+                HelpContext = 3
+                Caption = 'Integers'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 4
+              end
+              object CheckBox50: TCheckBox
+                Tag = 3
+                Left = 44
+                Height = 23
+                Hint = 'Make sure that no scaled number is above 1'
+                Top = 172
+                Width = 88
+                HelpContext = 3
+                Caption = 'Equilibrate'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 3
+              end
+              object CheckBox49: TCheckBox
+                Tag = 2
+                Left = 45
+                Height = 23
+                Hint = 'also do Power scaling'
+                Top = 144
+                Width = 70
+                HelpContext = 3
+                Caption = 'Power2'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+              end
+              object CheckBox48: TCheckBox
+                Tag = 1
+                Left = 45
+                Height = 23
+                Hint = 'Scale to convergence using logarithmic mean of all values'
+                Top = 116
+                Width = 96
+                HelpContext = 3
+                Caption = 'Logarithmic'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+              end
+              object CheckBox47: TCheckBox
+                Left = 45
+                Height = 23
+                Top = 88
+                Width = 84
+                HelpContext = 3
+                Caption = 'Quadratic'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 0
+              end
+              object ScaleTypeOption: TComboBox
+                Left = 44
+                Height = 27
+                Hint = 'Linear scaling'
+                Top = 32
+                Width = 184
+                HelpContext = 3
+                ItemHeight = 19
+                ItemIndex = 0
+                Items.Strings = (
+                  'None (Linear)'
+                  'Extreme'
+                  'Range'
+                  'Mean'
+                  'Geometric'
+                  'Future1'
+                  'Future2'
+                  'CurtisreId'
+                )
+                OnChange = ScaleTypeOptionChange
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                Style = csDropDownList
+                TabOrder = 8
+                Text = 'None (Linear)'
+              end
+              object CheckBox59: TCheckBox
+                Tag = 5
+                Left = 44
+                Height = 23
+                Hint = 'also scaling integer variables'
+                Top = 228
+                Width = 94
+                HelpContext = 3
+                Caption = 'DynUpdate'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 5
+              end
+              object CheckBox70: TCheckBox
+                Tag = 6
+                Left = 45
+                Height = 23
+                Top = 256
+                Width = 85
+                HelpContext = 3
+                Caption = 'RowsOnly'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 6
+              end
+              object CheckBox71: TCheckBox
+                Tag = 7
+                Left = 45
+                Height = 23
+                Top = 284
+                Width = 79
+                HelpContext = 3
+                Caption = 'ColsOnly'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 7
+              end
+              object ScaleLimitOption: TEdit
+                Left = 44
+                Height = 27
+                Hint = 'Sets the relative scaling convergence criterion for the active scaling mode; the integer part specifies the maximum number of iterations.'
+                Top = 336
+                Width = 172
+                OnExit = OptionCheckBoxClick
+                OnKeyPress = EditOptionChange
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 9
+              end
+            end
+            object PivotModeOption: TGroupBox
+              Left = 324
+              Height = 563
+              Top = 14
+              Width = 288
+              Caption = 'Pivot'
+              ClientHeight = 539
+              ClientWidth = 284
+              TabOrder = 2
+              object Label6: TLabel
+                Left = 16
+                Height = 19
+                Top = 396
+                Width = 61
+                Caption = 'Max Pivot'
+                ParentColor = False
+              end
+              object Label7: TLabel
+                Left = 16
+                Height = 19
+                Top = 8
+                Width = 61
+                Caption = 'Pivot Rule'
+                ParentColor = False
+              end
+              object CheckBox32: TCheckBox
+                Left = 40
+                Height = 23
+                Hint = 'In case of Steepest Edge, fall back to DEVEX in primal'
+                Top = 64
+                Width = 118
+                Caption = 'Primal Fall Back'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+              end
+              object CheckBox33: TCheckBox
+                Tag = 1
+                Left = 40
+                Height = 23
+                Hint = 'Enable multiple pricing'
+                Top = 88
+                Width = 74
+                Caption = 'Multiple'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+              end
+              object CheckBox34: TCheckBox
+                Tag = 2
+                Left = 40
+                Height = 23
+                Hint = 'Enable partial pricing'
+                Top = 116
+                Width = 62
+                Caption = 'Partial'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+              end
+              object CheckBox35: TCheckBox
+                Tag = 3
+                Left = 40
+                Height = 23
+                Hint = 'Temporarily use First Index if cycling is detected '
+                Top = 144
+                Width = 78
+                Caption = 'Adaptive'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 3
+              end
+              object CheckBox36: TCheckBox
+                Tag = 4
+                Left = 40
+                Height = 23
+                Top = 172
+                Width = 65
+                Caption = 'Hybrid'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 4
+              end
+              object CheckBox37: TCheckBox
+                Tag = 5
+                Left = 40
+                Height = 23
+                Hint = 'Adds a small randomization effect to the selected pricer'
+                Top = 200
+                Width = 91
+                Caption = 'Randomize'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 5
+              end
+              object CheckBox52: TCheckBox
+                Tag = 6
+                Left = 40
+                Height = 23
+                Hint = 'Detect and use data on the block structure of the model'
+                Top = 228
+                Width = 118
+                Caption = 'AutoPartialCols'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 6
+              end
+              object CheckBox53: TCheckBox
+                Tag = 7
+                Left = 40
+                Height = 23
+                Hint = 'Detect and use data on the block structure of the model'
+                Top = 256
+                Width = 124
+                Caption = 'AutoPartialRows'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 7
+              end
+              object CheckBox54: TCheckBox
+                Tag = 8
+                Left = 40
+                Height = 23
+                Hint = 'Scan entering/leaving columns left rather than right'
+                Top = 284
+                Width = 78
+                Caption = 'LoopLeft'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 8
+              end
+              object CheckBox55: TCheckBox
+                Tag = 9
+                Left = 40
+                Height = 23
+                Hint = 'Scan entering/leaving columns alternatingly left/right'
+                Top = 312
+                Width = 111
+                Caption = 'LoopAlternate'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 9
+              end
+              object CheckBox56: TCheckBox
+                Tag = 10
+                Left = 40
+                Height = 23
+                Top = 340
+                Width = 112
+                Caption = 'HarrisTwoPass'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 10
+              end
+              object MaxPivotOption: TEdit
+                Left = 40
+                Height = 27
+                Hint = 'Sets the maximum number of pivots between a re-inversion of the matrix'
+                Top = 420
+                Width = 203
+                OnExit = OptionCheckBoxClick
+                OnKeyPress = EditOptionChange
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 11
+                Text = '42'
+              end
+              object PivotRuleOption: TComboBox
+                Left = 40
+                Height = 27
+                Hint = 'Devex pricing from Paula Harris'
+                Top = 32
+                Width = 184
+                ItemHeight = 19
+                ItemIndex = 2
+                Items.Strings = (
+                  'First Index'
+                  'Dantzig'
+                  'Devex'
+                  'Steepest Edge'
+                )
+                OnChange = PivotRuleOptionChange
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                Style = csDropDownList
+                TabOrder = 12
+                Text = 'Devex'
+              end
+              object CheckBox83: TCheckBox
+                Tag = 12
+                Left = 40
+                Height = 23
+                Top = 368
+                Width = 114
+                Caption = 'True Norm Init'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 13
+              end
+            end
+          end
+          object tsGeneral: TTabSheet
+            Caption = 'Advanced'
+            ClientHeight = 595
+            ClientWidth = 1157
+            object Label3: TLabel
+              Left = 232
+              Height = 19
+              Top = 368
+              Width = 69
+              Caption = 'Basis Crash'
+              ParentColor = False
+            end
+            object Label10: TLabel
+              Left = 232
+              Height = 19
+              Top = 404
+              Width = 79
+              Caption = 'Simplex Type'
+              ParentColor = False
+            end
+            object Label11: TLabel
+              Left = 564
+              Height = 19
+              Top = 52
+              Width = 84
+              Caption = 'Solution Limit'
+              ParentColor = False
+            end
+            object Label13: TLabel
+              Left = 564
+              Height = 19
+              Top = 84
+              Width = 50
+              Caption = 'Timeout'
+              ParentColor = False
+            end
+            object Label16: TLabel
+              Left = 564
+              Height = 19
+              Top = 116
+              Width = 42
+              Caption = 'Infinite'
+              ParentColor = False
+            end
+            object Label17: TLabel
+              Left = 564
+              Height = 19
+              Top = 148
+              Width = 30
+              Caption = 'EPSB'
+              ParentColor = False
+            end
+            object Label18: TLabel
+              Left = 564
+              Height = 19
+              Top = 180
+              Width = 32
+              Caption = 'EPSD'
+              ParentColor = False
+            end
+            object Label19: TLabel
+              Left = 564
+              Height = 19
+              Top = 212
+              Width = 36
+              Caption = 'EPSEL'
+              ParentColor = False
+            end
+            object Label20: TLabel
+              Left = 564
+              Height = 19
+              Top = 276
+              Width = 72
+              Caption = 'EPS Perturb'
+              ParentColor = False
+            end
+            object Label21: TLabel
+              Left = 564
+              Height = 19
+              Top = 308
+              Width = 57
+              Caption = 'EPS Pivot'
+              ParentColor = False
+            end
+            object Label23: TLabel
+              Left = 808
+              Height = 19
+              Top = 244
+              Width = 88
+              Caption = 'Break at Value'
+              ParentColor = False
+            end
+            object Label24: TLabel
+              Left = 564
+              Height = 19
+              Top = 340
+              Width = 67
+              Caption = 'Neg Range'
+              ParentColor = False
+            end
+            object Label12: TLabel
+              Left = 564
+              Height = 19
+              Top = 244
+              Width = 43
+              Caption = 'EPS Int'
+              ParentColor = False
+            end
+            object AntiDegenOptions: TGroupBox
+              Left = 340
+              Height = 343
+              Top = 14
+              Width = 207
+              Caption = 'Anti Degen'
+              ClientHeight = 319
+              ClientWidth = 203
+              TabOrder = 1
+              object CheckBox1: TCheckBox
+                Left = 11
+                Height = 23
+                Hint = 'Check if there are equality slacks in the basis and try to drive them out in order to reduce chance of degeneracy in Phase 1'
+                Top = 8
+                Width = 84
+                HelpContext = 1
+                Caption = 'Fixed vars'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+              end
+              object CheckBox2: TCheckBox
+                Tag = 1
+                Left = 11
+                Height = 23
+                Top = 36
+                Width = 113
+                HelpContext = 1
+                Caption = 'Column Check'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 1
+              end
+              object CheckBox3: TCheckBox
+                Tag = 2
+                Left = 11
+                Height = 23
+                Top = 64
+                Width = 68
+                HelpContext = 1
+                Caption = 'Stalling'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 2
+              end
+              object CheckBox4: TCheckBox
+                Tag = 3
+                Left = 11
+                Height = 23
+                Top = 92
+                Width = 98
+                HelpContext = 1
+                Caption = 'Num Failure'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 3
+              end
+              object CheckBox5: TCheckBox
+                Tag = 4
+                Left = 11
+                Height = 23
+                Top = 120
+                Width = 81
+                HelpContext = 1
+                Caption = 'Lost Feas'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 4
+              end
+              object CheckBox6: TCheckBox
+                Tag = 5
+                Left = 11
+                Height = 23
+                Top = 148
+                Width = 81
+                HelpContext = 1
+                Caption = 'Infeasible'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 5
+              end
+              object CheckBox7: TCheckBox
+                Tag = 6
+                Left = 11
+                Height = 23
+                Top = 176
+                Width = 77
+                HelpContext = 1
+                Caption = 'Dynamic'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 6
+              end
+              object CheckBox8: TCheckBox
+                Tag = 7
+                Left = 11
+                Height = 23
+                Top = 204
+                Width = 82
+                HelpContext = 1
+                Caption = 'DuringBB'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 7
+              end
+              object CheckBox57: TCheckBox
+                Tag = 8
+                Left = 11
+                Height = 23
+                Top = 232
+                Width = 92
+                HelpContext = 1
+                Caption = 'RhsPerturb'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 8
+              end
+              object CheckBox61: TCheckBox
+                Tag = 9
+                Left = 11
+                Height = 23
+                Top = 260
+                Width = 85
+                HelpContext = 1
+                Caption = 'BoundFlip'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 9
+              end
+            end
+            object PresolveOptions: TGroupBox
+              Left = 0
+              Height = 343
+              Top = 14
+              Width = 328
+              Caption = 'Presolve'
+              ClientHeight = 319
+              ClientWidth = 324
+              TabOrder = 0
+              object CheckBox38: TCheckBox
+                Left = 12
+                Height = 23
+                Hint = 'Presolve rows'
+                Top = 8
+                Width = 56
+                HelpContext = 2
+                Caption = 'Rows'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+              end
+              object CheckBox39: TCheckBox
+                Tag = 1
+                Left = 12
+                Height = 23
+                Hint = 'Presolve columns'
+                Top = 36
+                Width = 50
+                HelpContext = 2
+                Caption = 'Cols'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+              end
+              object CheckBox40: TCheckBox
+                Tag = 2
+                Left = 12
+                Height = 23
+                Hint = 'Eliminate linearly dependent rows'
+                Top = 64
+                Width = 65
+                HelpContext = 2
+                Caption = 'Lindep'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+              end
+              object CheckBox41: TCheckBox
+                Tag = 3
+                Left = 12
+                Height = 23
+                Top = 92
+                Width = 88
+                HelpContext = 2
+                Caption = 'Aggregate'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 3
+              end
+              object CheckBox42: TCheckBox
+                Tag = 4
+                Left = 12
+                Height = 23
+                Top = 120
+                Width = 69
+                HelpContext = 2
+                Caption = 'Sparser'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 4
+              end
+              object CheckBox43: TCheckBox
+                Tag = 5
+                Left = 12
+                Height = 23
+                Hint = 'Convert constraints to SOSes (only SOS1 handled)'
+                Top = 148
+                Width = 49
+                HelpContext = 2
+                Caption = 'SOS'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 5
+              end
+              object CheckBox44: TCheckBox
+                Tag = 6
+                Left = 12
+                Height = 23
+                Hint = 'If the phase 1 solution process finds that a constraint is redundant then this constraint is deleted'
+                Top = 176
+                Width = 97
+                HelpContext = 2
+                Caption = 'Reduce MIP'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 6
+              end
+              object CheckBox45: TCheckBox
+                Tag = 19
+                Left = 172
+                Height = 23
+                Top = 232
+                Width = 58
+                HelpContext = 2
+                Caption = 'Duals'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 19
+              end
+              object CheckBox46: TCheckBox
+                Tag = 20
+                Left = 172
+                Height = 23
+                Top = 260
+                Width = 90
+                HelpContext = 2
+                Caption = 'Sens Duals'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 20
+              end
+              object CheckBox62: TCheckBox
+                Tag = 7
+                Left = 12
+                Height = 23
+                Top = 204
+                Width = 82
+                HelpContext = 2
+                Caption = 'KnapSack'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 7
+              end
+              object CheckBox63: TCheckBox
+                Tag = 8
+                Left = 12
+                Height = 23
+                Top = 232
+                Width = 72
+                HelpContext = 2
+                Caption = 'Elimeq2'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 8
+              end
+              object CheckBox64: TCheckBox
+                Tag = 9
+                Left = 12
+                Height = 23
+                Top = 260
+                Width = 95
+                HelpContext = 2
+                Caption = 'ImpliedFree'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 9
+              end
+              object CheckBox65: TCheckBox
+                Tag = 10
+                Left = 12
+                Height = 23
+                Top = 288
+                Width = 101
+                HelpContext = 2
+                Caption = 'Reduce GCD'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 10
+              end
+              object CheckBox66: TCheckBox
+                Tag = 11
+                Left = 172
+                Height = 23
+                Top = 8
+                Width = 76
+                HelpContext = 2
+                Caption = 'ProbeFix'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 11
+              end
+              object CheckBox67: TCheckBox
+                Tag = 12
+                Left = 172
+                Height = 23
+                Top = 36
+                Width = 104
+                HelpContext = 2
+                Caption = 'ProbeReduce'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 12
+              end
+              object CheckBox72: TCheckBox
+                Tag = 13
+                Left = 172
+                Height = 23
+                Top = 64
+                Width = 110
+                HelpContext = 2
+                Caption = 'RowDominate'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 13
+              end
+              object CheckBox73: TCheckBox
+                Tag = 14
+                Left = 172
+                Height = 23
+                Top = 92
+                Width = 104
+                HelpContext = 2
+                Caption = 'ColDominate'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 14
+              end
+              object CheckBox74: TCheckBox
+                Tag = 15
+                Left = 172
+                Height = 23
+                Top = 120
+                Width = 96
+                Caption = 'MergeRows'
+                TabOrder = 15
+              end
+              object CheckBox79: TCheckBox
+                Tag = 16
+                Left = 172
+                Height = 23
+                Top = 148
+                Width = 95
+                Caption = 'Implied SLK'
+                TabOrder = 16
+              end
+              object CheckBox80: TCheckBox
+                Tag = 17
+                Left = 172
+                Height = 23
+                Top = 176
+                Width = 88
+                Caption = 'ColFixDual'
+                TabOrder = 17
+              end
+              object CheckBox81: TCheckBox
+                Tag = 18
+                Left = 172
+                Height = 23
+                Top = 204
+                Width = 70
+                Caption = 'Bounds'
+                TabOrder = 18
+              end
+            end
+            object BasisCrashOption: TComboBox
+              Left = 328
+              Height = 27
+              Top = 364
+              Width = 219
+              ItemHeight = 19
+              ItemIndex = 0
+              Items.Strings = (
+                'Nothing'
+                'Non Basic Bounds'
+                'Most Feasible'
+                'Least Degenerate'
+              )
+              OnClick = OptionCheckBoxClick
+              Style = csDropDownList
+              TabOrder = 2
+              Text = 'Nothing'
+            end
+            object IgnoreIntegerOption: TCheckBox
+              Left = 808
+              Height = 23
+              Hint = 'Specifies if Integer restrictions must be ignored.'
+              Top = 144
+              Width = 183
+              Caption = 'Ignore Integer restrictions'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 19
+            end
+            object BoundsTighterOption: TCheckBox
+              Left = 808
+              Height = 23
+              Hint = 'Specifies if set bounds may only be tighter or also less restrictive.'
+              Top = 176
+              Width = 117
+              Caption = 'Bounds Tighter'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 15
+            end
+            object BreackAtFirstOption: TCheckBox
+              Left = 808
+              Height = 23
+              Hint = 'Specifies if the branch-and-bound algorithm stops at first found solution'
+              Top = 208
+              Width = 101
+              Caption = 'Break at first'
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 16
+            end
+            object SimplexTypeOption: TComboBox
+              Left = 328
+              Height = 27
+              Hint = 'Phase1 Primal, Phase2 Primal'
+              Top = 400
+              Width = 219
+              ItemHeight = 19
+              ItemIndex = 1
+              Items.Strings = (
+                'Primal Primal'
+                'Dual Primal'
+                'Primal Dual'
+                'Dual Dual'
+              )
+              OnChange = SimplexTypeOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 3
+              Text = 'Dual Primal'
+            end
+            object SolutionLimitOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'The solution number that must be returned.'
+              Top = 48
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 4
+              Text = '1'
+            end
+            object TimeoutOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'The number of seconds after which a timeout occurs'
+              Top = 80
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 5
+              Text = '0'
+            end
+            object InfiniteOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the practical value for "infinite".'
+              Top = 112
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 6
+            end
+            object EpsbOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the value that is used as a tolerance for the Right Hand Side (RHS) to determine whether a value should be considered as 0.'
+              Top = 144
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 7
+            end
+            object EpsdOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the value that is used as a tolerance for reduced costs to determine whether a value should be considered as 0.'
+              Top = 176
+              Width = 113
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 8
+            end
+            object EpselOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the value that is used as a tolerance for rounding values to zero.'
+              Top = 208
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 9
+            end
+            object EpsPerturbOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the value that is used as perturbation scalar for degenerative problems.'
+              Top = 272
+              Width = 113
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 11
+            end
+            object EpsPivotOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Specifies the value that is used as a tolerance pivot element to determine whether a value should be considered as 0.'
+              Top = 304
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 12
+            end
+            object BreakAtValueOption: TEdit
+              Left = 848
+              Height = 27
+              Hint = 'Specifies if the branch-and-bound algorithm stops when the object value is better than a given value.'
+              Top = 272
+              Width = 124
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 17
+            end
+            object NegRangeOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'Set negative value below which variables are split into a negative and a positive part.'
+              Top = 336
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 13
+            end
+            object MPSOptions: TGroupBox
+              Left = 788
+              Height = 120
+              Top = 14
+              Width = 220
+              Caption = 'MPS'
+              ClientHeight = 96
+              ClientWidth = 216
+              TabOrder = 14
+              object freeMPSOption: TCheckBox
+                Left = 16
+                Height = 23
+                Hint = 'Read/write in Free MPS format.'
+                Top = 8
+                Width = 127
+                Caption = 'Free MPS format'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+              end
+              object IBMMPSOption: TCheckBox
+                Left = 16
+                Height = 23
+                Hint = 'Interprete integer variables without bounds as binary variables. That is the original IBM standard.'
+                Top = 36
+                Width = 185
+                Caption = 'IBM Integer interpretation'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
+              end
+              object NegateObjConstMPSOption: TCheckBox
+                Left = 16
+                Height = 23
+                Hint = 'Interprete the objective constant with an oposite sign.'
+                Top = 64
+                Width = 183
+                Caption = 'Negate objective constant'
+                OnClick = OptionCheckBoxClick
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+              end
+            end
+            object EpsIntOption: TEdit
+              Left = 660
+              Height = 27
+              Hint = 'tolerance that is used to determine whether a floating-point number is in fact an integer.'
+              Top = 240
+              Width = 112
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 10
+            end
+            object ImproveOptions: TGroupBox
+              Left = 4
+              Height = 148
+              Top = 360
+              Width = 208
+              Caption = 'Improve'
+              ClientHeight = 124
+              ClientWidth = 204
+              TabOrder = 18
+              object CheckBox75: TCheckBox
+                Left = 8
+                Height = 23
+                Top = 8
+                Width = 74
+                Caption = 'Solution'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 0
+              end
+              object CheckBox76: TCheckBox
+                Tag = 1
+                Left = 8
+                Height = 23
+                Top = 36
+                Width = 79
+                Caption = 'DualFeas'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 1
+              end
+              object CheckBox77: TCheckBox
+                Tag = 2
+                Left = 8
+                Height = 23
+                Top = 64
+                Width = 83
+                Caption = 'ThetaGap'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 2
+              end
+              object CheckBox78: TCheckBox
+                Tag = 3
+                Left = 8
+                Height = 23
+                Top = 92
+                Width = 86
+                Caption = 'BBSimplex'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 3
+              end
+            end
+          end
+          object tsMessages: TTabSheet
+            Caption = 'Messages'
+            ClientHeight = 595
+            ClientWidth = 1157
+            ImageIndex = 3
+            object Label8: TLabel
+              Left = 237
+              Height = 19
+              Top = 48
+              Width = 51
+              Caption = 'Print Sol'
+              ParentColor = False
+            end
+            object Label14: TLabel
+              Left = 237
+              Height = 19
+              Top = 80
+              Width = 50
+              Caption = 'Verbose'
+              ParentColor = False
+            end
+            object DebugOption: TCheckBox
+              Left = 332
+              Height = 23
+              Top = 112
+              Width = 65
+              Caption = 'Debug'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 3
+            end
+            object LagTraceOption: TCheckBox
+              Left = 332
+              Height = 23
+              Top = 140
+              Width = 82
+              Caption = 'Lag Trace'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 4
+            end
+            object PrintSolOption: TComboBox
+              Left = 332
+              Height = 27
+              Hint = 'Prints the solution (variables) of the lp.'
+              Top = 40
+              Width = 267
+              ItemHeight = 19
+              ItemIndex = 0
+              Items.Strings = (
+                'False'
+                'True'
+                'Automatic'
+                'Dynamic'
+              )
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 1
+              Text = 'False'
+            end
+            object TraceOption: TCheckBox
+              Left = 332
+              Height = 23
+              Top = 168
+              Width = 56
+              Caption = 'Trace'
+              OnClick = OptionCheckBoxClick
+              TabOrder = 5
+            end
+            object VerboseOption: TComboBox
+              Left = 332
+              Height = 27
+              Hint = 'Normal messages are reported. This is the default.'
+              Top = 76
+              Width = 267
+              ItemHeight = 19
+              ItemIndex = 4
+              Items.Strings = (
+                'Neutral'
+                'Critical'
+                'Severe'
+                'Important'
+                'Normal'
+                'Detailed'
+                'Full'
+              )
+              OnChange = VerboseOptionChange
+              OnClick = OptionCheckBoxClick
+              ParentShowHint = False
+              ShowHint = True
+              Style = csDropDownList
+              TabOrder = 2
+              Text = 'Normal'
+            end
+            object MessagesOptions: TGroupBox
+              Left = 14
+              Height = 494
+              Top = 16
+              Width = 208
+              Caption = 'Messages'
+              ClientHeight = 470
+              ClientWidth = 204
+              TabOrder = 0
+              object CheckBox18: TCheckBox
+                Left = 19
+                Height = 23
+                Top = 10
+                Width = 75
+                Caption = 'Presolve'
+                Enabled = False
+                OnClick = OptionCheckBoxClick
+                TabOrder = 0
+              end
+              object CheckBox19: TCheckBox
+                Tag = 1
+                Left = 19
+                Height = 23
+                Top = 44
+                Width = 76
+                Caption = 'Iteration'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 1
+              end
+              object CheckBox20: TCheckBox
+                Tag = 2
+                Left = 19
+                Height = 23
+                Top = 76
+                Width = 60
+                Caption = 'Invert'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 2
+              end
+              object CheckBox21: TCheckBox
+                Tag = 3
+                Left = 19
+                Height = 23
+                Top = 108
+                Width = 91
+                Caption = 'Lp Feasible'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 3
+              end
+              object CheckBox22: TCheckBox
+                Tag = 4
+                Left = 19
+                Height = 23
+                Top = 144
+                Width = 92
+                Caption = 'Lp Optimal'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 4
+              end
+              object CheckBox23: TCheckBox
+                Tag = 5
+                Left = 19
+                Height = 23
+                Top = 176
+                Width = 76
+                Caption = 'Lp Equal'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 5
+              end
+              object CheckBox24: TCheckBox
+                Tag = 6
+                Left = 19
+                Height = 23
+                Top = 208
+                Width = 80
+                Caption = 'Lp Better'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 6
+              end
+              object CheckBox25: TCheckBox
+                Tag = 7
+                Left = 19
+                Height = 23
+                Top = 240
+                Width = 103
+                Caption = 'Mipl Feasible'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 7
+              end
+              object CheckBox26: TCheckBox
+                Tag = 8
+                Left = 19
+                Height = 23
+                Top = 272
+                Width = 88
+                Caption = 'Mipl Equal'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 8
+              end
+              object CheckBox27: TCheckBox
+                Tag = 9
+                Left = 19
+                Height = 23
+                Top = 304
+                Width = 92
+                Caption = 'Mipl Better'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 9
+              end
+              object CheckBox28: TCheckBox
+                Tag = 10
+                Left = 19
+                Height = 23
+                Top = 336
+                Width = 106
+                Caption = 'Mipl Strategy'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 10
+              end
+              object CheckBox29: TCheckBox
+                Tag = 11
+                Left = 19
+                Height = 23
+                Top = 368
+                Width = 104
+                Caption = 'Mipl Optimal'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 11
+              end
+              object CheckBox30: TCheckBox
+                Tag = 12
+                Left = 19
+                Height = 23
+                Top = 400
+                Width = 101
+                Caption = 'Performance'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 12
+              end
+              object CheckBox31: TCheckBox
+                Tag = 13
+                Left = 19
+                Height = 23
+                Top = 432
+                Width = 125
+                Caption = 'Init Pseudo Cost'
+                OnClick = OptionCheckBoxClick
+                TabOrder = 13
+              end
+            end
+          end
+          object tsPlugin: TTabSheet
+            Caption = 'Plugins'
+            ClientHeight = 595
+            ClientWidth = 1157
+            ImageIndex = 4
+            object Label25: TLabel
+              Left = 14
+              Height = 19
+              Top = 14
+              Width = 23
+              Caption = 'BFP'
+              ParentColor = False
+            end
+            object Label26: TLabel
+              Left = 14
+              Height = 19
+              Top = 56
+              Width = 90
+              Caption = 'XLI Data name'
+              ParentColor = False
+            end
+            object Label27: TLabel
+              Left = 12
+              Height = 19
+              Top = 96
+              Width = 72
+              Caption = 'XLI Options'
+              ParentColor = False
+            end
+            object BFPOption: TComboBox
+              Left = 56
+              Height = 27
+              Top = 12
+              Width = 267
+              ItemHeight = 19
+              Items.Strings = (
+                'bfp_etaPFI'
+                'bfp_LUSOL'
+                'bfp_GLPK'
+              )
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              TabOrder = 0
+            end
+            object XLIDataNameOption: TEdit
+              Left = 136
+              Height = 27
+              Top = 52
+              Width = 577
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              TabOrder = 1
+            end
+            object XLIOption: TEdit
+              Left = 136
+              Height = 27
+              Top = 92
+              Width = 577
+              OnExit = OptionCheckBoxClick
+              OnKeyPress = EditOptionChange
+              TabOrder = 2
+            end
+          end
+        end
+      end
+    end
+    object pnLog: TPanel
+      Left = 0
+      Height = 172
+      Top = 402
+      Width = 1173
+      Align = alBottom
+      BevelOuter = bvNone
+      ClientHeight = 172
+      ClientWidth = 1173
+      TabOrder = 1
+      object PageControlLog: TPageControl
+        Left = 0
+        Height = 172
+        Top = 0
+        Width = 1173
+        ActivePage = TabSheet5
+        Align = alClient
+        TabIndex = 0
+        TabOrder = 0
+        object TabSheet5: TTabSheet
+          Caption = 'Log'
+          ClientHeight = 140
+          ClientWidth = 1165
+          inline MemoLog: TSynEdit
+            Left = 0
+            Height = 140
+            Top = 0
+            Width = 1165
+            Align = alClient
+            Font.Height = -13
+            Font.Name = 'Courier New'
+            Font.Pitch = fpFixed
+            Font.Quality = fqCleartype
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 0
+            Gutter.Visible = False
+            Gutter.Width = 65
+            Gutter.MouseActions = <>
+            RightGutter.Width = 0
+            RightGutter.MouseActions = <>
+            Keystrokes = <>
+            MouseActions = <>
+            MouseTextActions = <>
+            MouseSelActions = <>
+            VisibleSpecialChars = [vscSpace, vscTabAtLast]
+            ReadOnly = True
+            RightEdge = 0
+            SelectedColor.BackPriority = 50
+            SelectedColor.ForePriority = 50
+            SelectedColor.FramePriority = 50
+            SelectedColor.BoldPriority = 50
+            SelectedColor.ItalicPriority = 50
+            SelectedColor.UnderlinePriority = 50
+            SelectedColor.StrikeOutPriority = 50
+            BracketHighlightStyle = sbhsBoth
+            BracketMatchColor.Background = clNone
+            BracketMatchColor.Foreground = clNone
+            BracketMatchColor.Style = [fsBold]
+            FoldedCodeColor.Background = clNone
+            FoldedCodeColor.Foreground = clGray
+            FoldedCodeColor.FrameColor = clGray
+            MouseLinkColor.Background = clNone
+            MouseLinkColor.Foreground = clBlue
+            LineHighlightColor.Background = clNone
+            LineHighlightColor.Foreground = clNone
+            inline SynLeftGutterPartList1: TSynGutterPartList
+              object SynGutterMarks1: TSynGutterMarks
+                Width = 29
+                MouseActions = <>
+              end
+              object SynGutterLineNumber1: TSynGutterLineNumber
+                Width = 17
+                MouseActions = <>
+                MarkupInfo.Background = clBtnFace
+                MarkupInfo.Foreground = clNone
+                DigitCount = 2
+                ShowOnlyLineNumbersMultiplesOf = 1
+                ZeroStart = False
+                LeadingZeros = False
+              end
+              object SynGutterChanges1: TSynGutterChanges
+                Width = 5
+                MouseActions = <>
+                ModifiedColor = 59900
+                SavedColor = clGreen
+              end
+              object SynGutterSeparator1: TSynGutterSeparator
+                Width = 2
+                MouseActions = <>
+                MarkupInfo.Background = clWhite
+                MarkupInfo.Foreground = clGray
+              end
+              object SynGutterCodeFolding1: TSynGutterCodeFolding
+                Width = 12
+                MouseActions = <>
+                MarkupInfo.Background = clNone
+                MarkupInfo.Foreground = clGray
+                MouseActionsExpanded = <>
+                MouseActionsCollapsed = <>
+              end
+            end
+          end
+        end
+        object TabSheet6: TTabSheet
+          Caption = 'Messages'
+          ClientHeight = 145
+          ClientWidth = 1165
+          ImageIndex = 1
+          inline MemoMessages: TSynEdit
+            Left = 0
+            Height = 145
+            Top = 0
+            Width = 1165
+            Align = alClient
+            Font.Height = -13
+            Font.Name = 'Courier New'
+            Font.Pitch = fpFixed
+            Font.Quality = fqCleartype
+            ParentColor = False
+            ParentFont = False
+            TabOrder = 0
+            Gutter.Visible = False
+            Gutter.Width = 65
+            Gutter.MouseActions = <>
+            RightGutter.Width = 0
+            RightGutter.MouseActions = <>
+            Keystrokes = <>
+            MouseActions = <>
+            MouseTextActions = <>
+            MouseSelActions = <>
+            VisibleSpecialChars = [vscSpace, vscTabAtLast]
+            ReadOnly = True
+            RightEdge = 0
+            SelectedColor.BackPriority = 50
+            SelectedColor.ForePriority = 50
+            SelectedColor.FramePriority = 50
+            SelectedColor.BoldPriority = 50
+            SelectedColor.ItalicPriority = 50
+            SelectedColor.UnderlinePriority = 50
+            SelectedColor.StrikeOutPriority = 50
+            BracketHighlightStyle = sbhsBoth
+            BracketMatchColor.Background = clNone
+            BracketMatchColor.Foreground = clNone
+            BracketMatchColor.Style = [fsBold]
+            FoldedCodeColor.Background = clNone
+            FoldedCodeColor.Foreground = clGray
+            FoldedCodeColor.FrameColor = clGray
+            MouseLinkColor.Background = clNone
+            MouseLinkColor.Foreground = clBlue
+            LineHighlightColor.Background = clNone
+            LineHighlightColor.Foreground = clNone
+            inline SynLeftGutterPartList1: TSynGutterPartList
+              object SynGutterMarks1: TSynGutterMarks
+                Width = 29
+                MouseActions = <>
+              end
+              object SynGutterLineNumber1: TSynGutterLineNumber
+                Width = 17
+                MouseActions = <>
+                MarkupInfo.Background = clBtnFace
+                MarkupInfo.Foreground = clNone
+                DigitCount = 2
+                ShowOnlyLineNumbersMultiplesOf = 1
+                ZeroStart = False
+                LeadingZeros = False
+              end
+              object SynGutterChanges1: TSynGutterChanges
+                Width = 5
+                MouseActions = <>
+                ModifiedColor = 59900
+                SavedColor = clGreen
+              end
+              object SynGutterSeparator1: TSynGutterSeparator
+                Width = 2
+                MouseActions = <>
+                MarkupInfo.Background = clWhite
+                MarkupInfo.Foreground = clGray
+              end
+              object SynGutterCodeFolding1: TSynGutterCodeFolding
+                Width = 12
+                MouseActions = <>
+                MarkupInfo.Background = clNone
+                MarkupInfo.Foreground = clGray
+                MouseActionsExpanded = <>
+                MouseActionsCollapsed = <>
+              end
+            end
+          end
+        end
+      end
+    end
+    object MainSplitter: TSplitter
+      Cursor = crVSplit
+      Left = 0
+      Height = 5
+      Top = 397
+      Width = 1173
+      Align = alBottom
+      ResizeAnchor = akBottom
     end
   end
   object LPSolver: TLPSolver
@@ -2514,12 +2545,12 @@ object MainForm: TMainForm
     NegateObjConstMPS = False
     IgnoreInteger = False
     OnLoad = LPSolverLoad
-    Left = 732
+    Left = 740
     Top = 8
   end
   object MainMenu: TMainMenu
     Images = ImageList
-    Left = 556
+    Left = 588
     Top = 8
     object mFile: TMenuItem
       Caption = '&File'
@@ -2724,8 +2755,8 @@ object MainForm: TMainForm
       object N8: TMenuItem
         Caption = '-'
       end
-      object EditorFont: TMenuItem
-        Action = acEditorFont
+      object mmiEditorOpts: TMenuItem
+        Action = acEditorOptions
       end
     end
     object Help1: TMenuItem
@@ -2926,6 +2957,7 @@ object MainForm: TMainForm
     end
     object acGotoLine: TAction
       Caption = 'Goto line number ...'
+      Hint = 'Goto line number'
       ImageIndex = 24
       OnExecute = acGotoLineExecute
       ShortCut = 32839
@@ -2994,8 +3026,10 @@ object MainForm: TMainForm
     end
     object acQuit: TAction
       Caption = 'Quit'
+      Hint = 'Exit application'
       ImageIndex = 35
       OnExecute = acQuitExecute
+      ShortCut = 8219
     end
     object acMatExpHtml: TAction
       Caption = 'to HTML ...'
@@ -3072,10 +3106,10 @@ object MainForm: TMainForm
       Caption = 'Reset to solver defaults'
       OnExecute = acResetOptionsExecute
     end
-    object acEditorFont: TAction
-      Caption = 'Editor font...'
-      ImageIndex = 33
-      OnExecute = acEditorFontExecute
+    object acEditorOptions: TAction
+      Caption = 'Editor options...'
+      ImageIndex = 37
+      OnExecute = acEditorOptionsExecute
     end
     object acSelectAll: TAction
       Caption = 'Select all'
@@ -3087,7 +3121,7 @@ object MainForm: TMainForm
     Left = 972
     Top = 8
     Bitmap = {
-      4C69250000001000000010000000000000000000000000000000000000000000
+      4C69260000001000000010000000000000000000000000000000000000000000
       0000000000000000000000000000D1BDA920DBC9B7EF00000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000BDA690C7E3D3C1FF00000000000000000000
@@ -3887,39 +3921,39 @@ object MainForm: TMainForm
       00005B5E5CFFEEEEEEFFEEEEEEFFEDEDEDFFEDEDEDFFECECECFFEBEBEBFFEBEB
       EBFFEAEAEAFFE9E9E9FF4F5351FF000000000000000000000000000000000000
       00005A5D5CFF585C5AFF575A59FF555957FF535755FF525554FF505452FF5053
-      51FF4F5351FF4F5351FF505351FF00000000999999FF999999FF999999FF9999
-      99FF999999FF999999FF999999FF999999FF999999FF999999FF999999FF9999
-      99FF999999FF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFF9999
-      99FF999999FF999999FF999999FF999999FF999999FF999999FF999999FFFFFF
-      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFF9999
-      99FF999999FF999999FF999999FF999897FF9B9895FFBD7C49FFBD7C49FFFBF8
-      F5FFFDFCFBFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFDAB292FFC58656FFE0C0A7FFCA8D5CFFCA8D5CFFE0C0
-      A7FFC58656FFB1896AFF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFEFCFBFFC58655FFD79A6DFFCE9062FFE9B189FFE9B189FFCE90
-      62FFD79A6DFFBD7F4DFFCC66330500000000999999FFFFFFFFFFFFFFFFFF9999
-      99FF999999FF9B9794FFAA8A71FFC88A5CFFEBB38DFFC1814FFFC1814FFFECB4
-      8DFFCD9061FFAA8A71FFBB77440F00000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFC17F4CFFCA8D5CFFEAB28AFFC58553FFF0E0D4FFF0E0D3FFC585
-      54FFEAB28AFFC48756FFBF7C46F700000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFC17F4CFFCA8D5CFFEAB28AFFC58553FFF0E0D3FFEFDFD3FFC585
-      54FFEAB28AFFC48756FFBF7C46F700000000999999FFFFFFFFFFFFFFFFFF9999
-      99FF999999FF9B9794FFAA8A71FFC88A5CFFECB48DFFC18150FFC18150FFECB5
-      8DFFCD9061FFAA8A71FFBB77440F00000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFEFCFBFFC48554FFD79A6DFFCE9062FFE9B189FFE9B189FFCE90
-      62FFD79A6DFFBD7F4EFFCC66330500000000999999FFFFFFFFFFFFFFFFFFFFFF
-      FFFFFFFFFFFFFFFFFFFFDAB292FFC58655FFE0C0A7FFCA8D5CFFCA8D5CFFE0C0
-      A7FFC58655FFB18969FF0000000000000000999999FF999999FF999999FF9999
-      99FF999999FF999999FF999999FF9A9897FF9B9895FFBE7C49FFBE7C49FF9B98
-      95FF9A9897FF999999FF000000000000000000000000D3A675FCD4A676FDD4A6
+      51FF4F5351FF4F5351FF505351FF000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      000000000000C17E4BBEBE7A45FFC17E4BBE0000000000000000000000000000
+      00000000000000000000000000000000000000000000CC663305C1804A9CBE7D
+      475A00000000C17D4BECEEB790FFC17D4BEC00000000BE7D475AC17F499DCC66
+      33050000000000000000000000000000000000000000C2804A9ECC8C5CF6C483
+      50F4C17E4ACAC17D49FAFDC9A6FFC17D49FAC17E4ACAC48350F4CC8C5CF6C280
+      4A9E0000000000000000000000000000000000000000BF7B465BC48350F4F7C2
+      9EFFE6AC83FFFAC6A2FFFFCCAAFFFAC6A2FFE6AC83FFF7C29EFFC58350F5BF7A
+      455C000000000000000000000000000000000000000000000000C17E4ACAE6AC
+      83FFF7C19EFFCC8C5CF2C07C47FACC8C5DF2F7C29DFFE6AC83FFC17E4ACA0000
+      000000000000000000000000000000000000C1804ABEC17D4BECC27E4BF8FAC6
+      A2FFCC8B5BF2BE7B477AB974460BC07A477DCC8C5DF2FAC6A2FFC27E4BF8C17D
+      4BECC1804ABE000000000000000000000000BE7A45FFEEB790FFFDC9A6FFFFCC
+      AAFFC07B47FABF80400C00000000C4764E0DC07D48F9FFCCAAFFFDC9A6FFEEB7
+      90FFBE7A45FF000000000000000000000000C1804ABEC17D4BECC27E4BF8FAC6
+      A2FFCC8C5DF2C07A477DBF80400CBF7A487FCD8D5DF2FAC6A2FFC27E4BF8C17D
+      4BECC1804ABE0000000000000000000000000000000000000000C17E4ACAE6AC
+      83FFF7C29DFFCD8D5CF2C07B47FACD8E5DF2F7C29EFFE6AC83FFC17E4ACA0000
+      00000000000000000000000000000000000000000000BF7B465BC48350F4F7C2
+      9EFFE6AC83FFFAC6A2FFFFCCAAFFFAC6A2FFE6AC83FFF7C29EFFC58350F5BF7A
+      455C0000000000000000000000000000000000000000C2804A9ECC8C5CF6C483
+      50F4C17E4ACAC17D49FAFDC9A6FFC17D49FAC17E4ACAC48350F4CC8C5CF7C27F
+      4A9F0000000000000000000000000000000000000000CC663305C1804A9CBE7D
+      475A00000000C17D4BECEEB790FFC17D4BEC00000000BE7D475AC17F499DCC66
+      3305000000000000000000000000000000000000000000000000000000000000
+      000000000000C27F4BBFBE7A45FFC27F4BBF0000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      0000000000000000000000000000000000000000000000000000000000000000
+      00000000000000000000000000000000000000000000D3A675FCD4A676FDD4A6
       76FDD4A676FDD4A676FDD4A676FDD4A676FDD4A676FDD4A676FDD4A676FDD5A8
       77F6D2A6753F00000000000000000000000000000000D4A676FDFFFEFEFFFEFD
       FCFFFEFCFBFFFDFBFAFFFDFBF8FFFCFAF7FFFCF9F6FFFBF8F4FFFBF7F3FFF1E3
@@ -4271,7 +4305,39 @@ object MainForm: TMainForm
       DEFFF6EADEFFF6EADCFFF6EADCFFFAF3EBFFFAF3EBFF158C3AFF43A15FFF3294
       4AFFF8FBF8F0B7602AD5FFFFFF00FFFFFF00BB6A346BBA6530BCBB6631EDBA66
       30F7BA6630F7BA6630F7BA6530F7BA652FF7B9652EF70E7B22FE037B1EFFB664
-      2EEFB7622CBDB7622E63FFFFFF00
+      2EEFB7622CBDB7622E63FFFFFF0000000000999999FF999999FF999999FF9999
+      99FF999999FF999999FF999999FF999999FF999999FF999999FF999999FF9999
+      99FF999999FF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFF9999
+      99FF999999FF999999FF999999FF999999FF999999FF999999FF999999FFFFFF
+      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFF9999
+      99FF999999FF999999FF999999FF999897FF9B9895FFBD7C49FFBD7C49FFFBF8
+      F5FFFDFCFBFF999999FF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFDAB292FFC58656FFE0C0A7FFCA8D5CFFCA8D5CFFE0C0
+      A7FFC58656FFB1896AFF0000000000000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFEFCFBFFC58655FFD79A6DFFCE9062FFE9B189FFE9B189FFCE90
+      62FFD79A6DFFBD7F4DFFCC66330500000000999999FFFFFFFFFFFFFFFFFF9999
+      99FF999999FF9B9794FFAA8A71FFC88A5CFFEBB38DFFC1814FFFC1814FFFECB4
+      8DFFCD9061FFAA8A71FFBB77440F00000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFC17F4CFFCA8D5CFFEAB28AFFC58553FFF0E0D4FFF0E0D3FFC585
+      54FFEAB28AFFC48756FFBF7C46F700000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFC17F4CFFCA8D5CFFEAB28AFFC58553FFF0E0D3FFEFDFD3FFC585
+      54FFEAB28AFFC48756FFBF7C46F700000000999999FFFFFFFFFFFFFFFFFF9999
+      99FF999999FF9B9794FFAA8A71FFC88A5CFFECB48DFFC18150FFC18150FFECB5
+      8DFFCD9061FFAA8A71FFBB77440F00000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFEFCFBFFC48554FFD79A6DFFCE9062FFE9B189FFE9B189FFCE90
+      62FFD79A6DFFBD7F4EFFCC66330500000000999999FFFFFFFFFFFFFFFFFFFFFF
+      FFFFFFFFFFFFFFFFFFFFDAB292FFC58655FFE0C0A7FFCA8D5CFFCA8D5CFFE0C0
+      A7FFC58655FFB18969FF0000000000000000999999FF999999FF999999FF9999
+      99FF999999FF999999FF999999FF9A9897FF9B9895FFBE7C49FFBE7C49FF9B98
+      95FF9A9897FF999999FF00000000
     }
   end
   object PopupMenu: TPopupMenu
@@ -4336,8 +4402,8 @@ object MainForm: TMainForm
     CommentAttri.Background = clNone
     CommentAttri.Style = [fsItalic]
     WantBracesParsed = False
-    Left = 1024
-    Top = 8
+    Left = 1020
+    Top = 4
   end
   object ExportDialog: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
@@ -4348,17 +4414,17 @@ object MainForm: TMainForm
     RecordShortCut = 24658
     PlaybackShortCut = 24656
     Editor = Editor
-    Left = 648
+    Left = 668
     Top = 8
   end
   object OpenDialogBasis: TOpenDialog
     Filter = 'Basis file (*.bas)|*.bas'
-    Left = 600
+    Left = 628
     Top = 8
   end
   object SaveDialogBasis: TSaveDialog
     Filter = 'Basis file (*.bas)|*.bas'
-    Left = 688
+    Left = 700
     Top = 8
   end
   object AppProps: TApplicationProperties
@@ -4366,11 +4432,5 @@ object MainForm: TMainForm
     OnShowHint = AppPropsShowHint
     Left = 920
     Top = 80
-  end
-  object FontDialog: TFontDialog
-    MinFontSize = 0
-    MaxFontSize = 0
-    Left = 996
-    Top = 84
   end
 end
