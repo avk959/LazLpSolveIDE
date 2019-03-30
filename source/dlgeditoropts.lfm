@@ -27,6 +27,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     Top = 571
     Width = 90
     Anchors = [akLeft]
+    Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
     TabOrder = 1

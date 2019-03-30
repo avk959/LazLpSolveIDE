@@ -199,6 +199,7 @@ end;
 
 procedure TfrmEditorOptsDlg.sbShowFontDialogClick(Sender: TObject);
 begin
+  FontDlg.Font.Name := edFontName.Text;
   if not FontDlg.Execute then
     exit;
   edFontName.Text := FontDlg.Font.Name;
