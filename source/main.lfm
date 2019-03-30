@@ -246,7 +246,7 @@ object MainForm: TMainForm
           Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
           MouseOptions = [emDragDropEditing, emRightMouseMovesCursor, emDoubleClickSelectsLine]
           VisibleSpecialChars = []
-          RightEdge = 255
+          RightEdge = 128
           SelectedColor.BackPriority = 50
           SelectedColor.ForePriority = 50
           SelectedColor.FramePriority = 50

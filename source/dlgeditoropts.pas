@@ -24,7 +24,7 @@ type
     clbKeyword: TColorBox;
     clbNumber: TColorBox;
     clbComment: TColorBox;
-    edFontName: TEdit;
+    edbFontName: TEditButton;
     FontDlg: TFontDialog;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
@@ -33,6 +33,7 @@ type
     GroupBox5: TGroupBox;
     Label1: TLabel;
     Label10: TLabel;
+    Label11: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -44,11 +45,11 @@ type
     sePreveiw: TLPSynEdit;
     PageControl1: TPageControl;
     pnMain: TPanel;
-    sbShowFontDialog: TSpeedButton;
     spedFontSize: TSpinEdit;
     sedLineSpace: TSpinEdit;
     sedCharSpace: TSpinEdit;
     sedNthNumber: TSpinEdit;
+    sedRightEdge: TSpinEdit;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
     procedure chgCommentStyleItemClick(Sender: TObject; Index: integer);
@@ -59,13 +60,14 @@ type
     procedure clbKeywordChange(Sender: TObject);
     procedure clbLineNumberColorChange(Sender: TObject);
     procedure clbNumberChange(Sender: TObject);
-    procedure edFontNameChange(Sender: TObject);
+    procedure edbFontNameChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure sbShowFontDialogClick(Sender: TObject);
+    procedure edbFontNameButtonClick(Sender: TObject);
     procedure sedCharSpaceChange(Sender: TObject);
     procedure sedLineSpaceChange(Sender: TObject);
     procedure sedNthNumberChange(Sender: TObject);
+    procedure sedRightEdgeChange(Sender: TObject);
     procedure spedFontSizeChange(Sender: TObject);
   private
     FEditor: TSynEdit;
@@ -103,13 +105,13 @@ begin
   FHighlighter := TLPHighlighter.Create(self);
   FHighlighter.Language := lLP;
   sePreveiw.Text := SDisplayText;
-  sePreveiw.CaretY := 3;
+  sePreveiw.CaretY := 5;
   sePreveiw.Highlighter := FHighlighter;
 end;
 
-procedure TfrmEditorOptsDlg.edFontNameChange(Sender: TObject);
+procedure TfrmEditorOptsDlg.edbFontNameChange(Sender: TObject);
 begin
-  sePreveiw.Font.Name := edFontName.Text;
+  sePreveiw.Font.Name := edbFontName.Text;
 end;
 
 procedure TfrmEditorOptsDlg.clbLineNumberColorChange(Sender: TObject);
@@ -197,12 +199,11 @@ begin
     SaveOptions;
 end;
 
-procedure TfrmEditorOptsDlg.sbShowFontDialogClick(Sender: TObject);
+procedure TfrmEditorOptsDlg.edbFontNameButtonClick(Sender: TObject);
 begin
-  FontDlg.Font.Name := edFontName.Text;
-  if not FontDlg.Execute then
-    exit;
-  edFontName.Text := FontDlg.Font.Name;
+  FontDlg.Font.Name := edbFontName.Text;
+  if FontDlg.Execute then
+    edbFontName.Text := FontDlg.Font.Name;
 end;
 
 procedure TfrmEditorOptsDlg.sedCharSpaceChange(Sender: TObject);
@@ -220,6 +221,11 @@ begin
   TSynGutterLineNumber(sePreveiw.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf := sedNthNumber.Value;
 end;
 
+procedure TfrmEditorOptsDlg.sedRightEdgeChange(Sender: TObject);
+begin
+  sePreveiw.RightEdge := sedRightEdge.Value;
+end;
+
 procedure TfrmEditorOptsDlg.spedFontSizeChange(Sender: TObject);
 begin
   sePreveiw.Font.Size := spedFontSize.Value;
@@ -235,11 +241,12 @@ end;
 
 procedure TfrmEditorOptsDlg.ReadOptions;
 begin
-  edFontName.Text := Editor.Font.Name;
+  edbFontName.Text := Editor.Font.Name;
   spedFontSize.Value := Editor.Font.Size;
   sedLineSpace.Value := Editor.ExtraLineSpacing;
   sedCharSpace.Value := Editor.ExtraCharSpacing;
   sedNthNumber.Value := TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf;
+  sedRightEdge.Value := Editor.RightEdge;
   clbLineNumberColor.Selected := TSynGutterLineNumber(Editor.Gutter.Parts[1]).MarkupInfo.Foreground;
   clbCurrLine.Selected := Editor.LineHighlightColor.Background;
 
@@ -266,10 +273,11 @@ procedure TfrmEditorOptsDlg.SaveOptions;
 begin
   Editor.Lines.BeginUpdate;
   try
-    Editor.Font.Name := edFontName.Text;
+    Editor.Font.Name := edbFontName.Text;
     Editor.Font.Size := spedFontSize.Value;
     Editor.ExtraLineSpacing := sedLineSpace.Value;
     Editor.ExtraCharSpacing := sedCharSpace.Value;
+    Editor.RightEdge := sedRightEdge.Value;
     TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf := sedNthNumber.Value;
     TSynGutterLineNumber(Editor.Gutter.Parts[1]).MarkupInfo.Foreground := clbLineNumberColor.Selected;
     Editor.LineHighlightColor.Background := clbCurrLine.Selected;

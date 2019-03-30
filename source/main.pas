@@ -679,6 +679,7 @@ const
   SFontSize       = 'FontSize';
   SExtraLineSpace = 'ExtraLineSpace';
   SExtraCharSpace = 'ExtraCharSpace';
+  SRightEdge      = 'RightEdge';
   SEveryNthNumber = 'EveryNthNumber';
   SLineNumColor   = 'LineNumberColor';
   SCurrLineColor  = 'CurrLineColor';
@@ -2555,6 +2556,7 @@ begin
       Editor.Font.Size := Ini.ReadInteger(SEditor, SFontSize, Editor.Font.Size);
       Editor.ExtraLineSpacing := Ini.ReadInteger(SEditor, SExtraLineSpace, Editor.ExtraLineSpacing);
       Editor.ExtraCharSpacing := Ini.ReadInteger(SEditor, SExtraCharSpace, Editor.ExtraCharSpacing);
+      Editor.RightEdge := Ini.ReadInteger(SEditor, SRightEdge, Editor.RightEdge);
       I := TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf;
       TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf :=
          Ini.ReadInteger(SEditor, SEveryNthNumber, I);
@@ -2614,6 +2616,7 @@ begin
     Ini.WriteInteger(SEditor, SFontSize, Editor.Font.Size);
     Ini.WriteInteger(SEditor, SExtraLineSpace, Editor.ExtraLineSpacing);
     Ini.WriteInteger(SEditor, SExtraCharSpace, Editor.ExtraCharSpacing);
+    Ini.WriteInteger(SEditor, SRightEdge, Editor.RightEdge);
     Ini.WriteInteger(SEditor, SEveryNthNumber,
         TSynGutterLineNumber(Editor.Gutter.Parts[1]).ShowOnlyLineNumbersMultiplesOf);
     Ini.WriteInteger(SEditor, SLineNumColor,

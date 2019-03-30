@@ -2,16 +2,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
   Left = 369
   Height = 613
   Top = 250
-  Width = 466
+  Width = 453
   Caption = 'Editor options'
   ClientHeight = 613
-  ClientWidth = 466
+  ClientWidth = 453
   DesignTimePPI = 115
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
   object btOk: TButton
-    Left = 310
+    Left = 297
     Height = 30
     Top = 570
     Width = 90
@@ -36,16 +36,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     Left = 0
     Height = 559
     Top = 0
-    Width = 466
+    Width = 453
     Anchors = [akTop, akLeft, akRight, akBottom]
     ClientHeight = 559
-    ClientWidth = 466
+    ClientWidth = 453
     TabOrder = 2
     object PageControl1: TPageControl
       Left = 1
       Height = 401
       Top = 0
-      Width = 464
+      Width = 451
       ActivePage = TabSheet1
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabIndex = 0
@@ -53,16 +53,16 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       object TabSheet1: TTabSheet
         Caption = 'Display'
         ClientHeight = 369
-        ClientWidth = 456
+        ClientWidth = 443
         object GroupBox1: TGroupBox
           Left = 4
           Height = 234
           Top = 12
-          Width = 446
+          Width = 433
           Anchors = [akTop, akLeft, akRight, akBottom]
           Caption = 'Editor font'
           ClientHeight = 210
-          ClientWidth = 442
+          ClientWidth = 429
           TabOrder = 0
           object Label1: TLabel
             Left = 8
@@ -71,29 +71,6 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             Width = 66
             Caption = 'Font name'
             ParentColor = False
-          end
-          object edFontName: TEdit
-            Left = 170
-            Height = 27
-            Top = 7
-            Width = 228
-            Alignment = taRightJustify
-            Anchors = [akTop, akRight]
-            OnChange = edFontNameChange
-            ReadOnly = True
-            TabOrder = 0
-          end
-          object sbShowFontDialog: TSpeedButton
-            AnchorSideTop.Control = edFontName
-            AnchorSideBottom.Control = edFontName
-            AnchorSideBottom.Side = asrBottom
-            Left = 406
-            Height = 27
-            Top = 7
-            Width = 30
-            Anchors = [akTop, akRight, akBottom]
-            Caption = '...'
-            OnClick = sbShowFontDialogClick
           end
           object Label2: TLabel
             Left = 8
@@ -104,10 +81,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object spedFontSize: TSpinEdit
-            Left = 171
+            Left = 178
             Height = 27
             Top = 44
-            Width = 228
+            Width = 238
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             AutoSize = False
@@ -124,10 +101,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedLineSpace: TSpinEdit
-            Left = 170
+            Left = 178
             Height = 27
             Top = 80
-            Width = 228
+            Width = 238
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             AutoSize = False
@@ -144,10 +121,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedCharSpace: TSpinEdit
-            Left = 170
+            Left = 178
             Height = 27
             Top = 116
-            Width = 228
+            Width = 238
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             AutoSize = False
@@ -155,16 +132,54 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             OnChange = sedCharSpaceChange
             TabOrder = 3
           end
+          object edbFontName: TEditButton
+            Left = 178
+            Height = 27
+            Top = 6
+            Width = 238
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            ButtonCaption = '...'
+            ButtonWidth = 28
+            DirectInput = False
+            MaxLength = 0
+            NumGlyphs = 1
+            OnButtonClick = edbFontNameButtonClick
+            OnChange = edbFontNameChange
+            PasswordChar = #0
+            TabOrder = 0
+          end
+          object Label11: TLabel
+            Left = 8
+            Height = 19
+            Top = 156
+            Width = 66
+            Caption = 'Right edge'
+            ParentColor = False
+          end
+          object sedRightEdge: TSpinEdit
+            Left = 178
+            Height = 27
+            Top = 154
+            Width = 238
+            Alignment = taRightJustify
+            Anchors = [akTop, akRight]
+            MaxValue = 256
+            MinValue = 40
+            OnChange = sedRightEdgeChange
+            TabOrder = 4
+            Value = 128
+          end
         end
         object GroupBox2: TGroupBox
           Left = 4
           Height = 106
           Top = 257
-          Width = 446
+          Width = 433
           Anchors = [akLeft, akRight, akBottom]
           Caption = 'Line number'
           ClientHeight = 82
-          ClientWidth = 442
+          ClientWidth = 429
           TabOrder = 1
           object Label5: TLabel
             Left = 8
@@ -175,10 +190,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedNthNumber: TSpinEdit
-            Left = 170
+            Left = 178
             Height = 27
             Top = 6
-            Width = 228
+            Width = 238
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             AutoSize = False
@@ -196,10 +211,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object clbLineNumberColor: TColorBox
-            Left = 171
+            Left = 178
             Height = 26
             Top = 48
-            Width = 228
+            Width = 238
             NoneColorColor = clNone
             Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbCustomColor, cbPrettyNames, cbCustomColors]
             Anchors = [akTop, akRight]
@@ -213,7 +228,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       object TabSheet2: TTabSheet
         Caption = 'Highlight'
         ClientHeight = 369
-        ClientWidth = 456
+        ClientWidth = 443
         object Label7: TLabel
           Left = 12
           Height = 19
@@ -223,10 +238,10 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           ParentColor = False
         end
         object clbCurrLine: TColorBox
-          Left = 164
+          Left = 200
           Height = 26
           Top = 6
-          Width = 278
+          Width = 229
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbIncludeDefault, cbCustomColor, cbPrettyNames, cbCustomColors]
           Anchors = [akTop, akLeft, akRight]
           ItemHeight = 20
@@ -238,7 +253,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           Height = 160
           Top = 44
           Width = 192
-          Caption = 'Key word highlight'
+          Caption = 'Keywords'
           ClientHeight = 136
           ClientWidth = 188
           TabOrder = 1
@@ -289,12 +304,11 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           end
         end
         object GroupBox4: TGroupBox
-          Left = 250
+          Left = 237
           Height = 160
           Top = 44
           Width = 192
-          Anchors = [akTop, akRight]
-          Caption = 'Number highlight'
+          Caption = 'Numbers'
           ClientHeight = 136
           ClientWidth = 188
           TabOrder = 2
@@ -349,7 +363,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           Height = 160
           Top = 212
           Width = 192
-          Caption = 'Comment highlight'
+          Caption = 'Comments'
           ClientHeight = 136
           ClientWidth = 188
           TabOrder = 3
@@ -405,7 +419,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       Left = 0
       Height = 155
       Top = 404
-      Width = 466
+      Width = 453
       Anchors = [akLeft, akRight, akBottom]
       Font.Height = -13
       Font.Name = 'Courier New'
@@ -446,7 +460,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       MouseLinkColor.Foreground = clBlue
       LineHighlightColor.Background = clNone
       LineHighlightColor.Foreground = clNone
-      EnableMPS = True
+      EnableMPS = False
       inline SynLeftGutterPartList1: TSynGutterPartList
         object SynGutterMarks1: TSynGutterMarks
           Width = 29
@@ -489,7 +503,6 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     MinFontSize = 0
     MaxFontSize = 0
     Options = [fdEffects, fdFixedPitchOnly]
-    Left = 152
-    Top = 8
+    Left = 36
   end
 end
