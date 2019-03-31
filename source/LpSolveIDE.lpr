@@ -11,9 +11,9 @@ program LpSolveIDE;
 {$ENDIF}
 
 uses
-  {$IFDEF UNIX}
+  {$IFDEF UNIX}{$IFDEF UseCThreads}
   cthreads,
-  {$ENDIF}
+  {$ENDIF}{$ENDIF}
   Interfaces, SysUtils, Forms, LazFileUtils, main, LPHighlighter, dlgSearchText, dlgReplaceText,
   dlgConfirmReplace, dlgGotoLine, dlgAbout, ResultArray, Params, dlgStatistics;
 
