@@ -8,7 +8,12 @@ uses
   Classes, SysUtils, Controls, Forms, StdCtrls, LCLIntf;
 
 type
+
+  { TAboutForm }
+
   TAboutForm = class(TForm)
+    GroupBox1: TGroupBox;
+    Label1: TLabel;
     Label10: TLabel;
     Button1: TButton;
     GroupBox2: TGroupBox;
@@ -22,6 +27,7 @@ type
     Label17: TLabel;
     Label18: TLabel;
     Label12: TLabel;
+    Label6: TLabel;
     procedure URLClick(Sender: TObject);
   private
     { Private declarations }
