@@ -6,6 +6,8 @@
  *  homepage: http://www.progdigy.com
  *  date: 07/21/2004
  *
+ *  modified by avk
+ *  date: 03/31/2019
  *)
 
 unit LpObject;

@@ -19,6 +19,8 @@
  *  Visual Studio $9001F     ->   639
  *  GCC           $8001F     ->   895
  *
+ *  modified by avk
+ *  date: 03/31/2019
  *)
 unit LpSolve;
 
