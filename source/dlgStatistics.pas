@@ -56,6 +56,7 @@ var
   tmpFile: string;
 begin
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     with MainForm, LPSolver do
     begin

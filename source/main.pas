@@ -990,6 +990,7 @@ end;
 
 procedure TMainForm.acSaveExecute(Sender: TObject);
 begin
+  Application.ProcessMessages;
   if (FCurrentFile <> '') and (FCurrentFile = FLastOpenFile) then
   begin
     Editor.Lines.SaveToFile(FCurrentFile);
@@ -1018,6 +1019,7 @@ begin
 
   if SaveDialogScript.Execute then
     begin
+      Application.ProcessMessages;
       isLoaded := LPSolver.LoadFromStrings(Editor.Lines, LPSolver.Verbose, Mode);
       destcript := FileFormat(SaveDialogScript.FileName, xliindex);
 
@@ -1248,6 +1250,7 @@ begin
   lp.XLI := LPSolver.XLI;
   lp.ConfigFolder := FConfigFolder;
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     if lp.LoadFromStrings(Editor.Lines, LPSolver.Verbose, Mode) then
       MessageDlg('The script is correct.', mtInformation, [mbOK], 0)
@@ -1441,6 +1444,7 @@ end;
 procedure TMainForm.acLoadScriptExecute(Sender: TObject);
 begin
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     MemoLog.Clear;
     if LPSolver.IgnoreInteger then
@@ -2433,6 +2437,7 @@ begin
     [mbYes, mbNo], 0) = mrNo then
       exit;
   Screen.Cursor := crHourGlass;
+  Application.ProcessMessages;
   try
     if isLoaded then
       result := ChangeFormat(false) else
