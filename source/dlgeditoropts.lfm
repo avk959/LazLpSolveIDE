@@ -306,12 +306,12 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
         object GroupBox4: TGroupBox
           Left = 237
           Height = 160
-          Top = 44
+          Top = 212
           Width = 192
           Caption = 'Numbers'
           ClientHeight = 136
           ClientWidth = 188
-          TabOrder = 2
+          TabOrder = 4
           object clbNumber: TColorBox
             Left = 64
             Height = 26
@@ -407,6 +407,61 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
               'Bold'
             )
             OnItemClick = chgCommentStyleItemClick
+            TabOrder = 1
+            Data = {
+              020000000202
+            }
+          end
+        end
+        object GroupBox6: TGroupBox
+          Left = 237
+          Height = 160
+          Top = 44
+          Width = 192
+          Caption = 'Identifiers'
+          ClientHeight = 136
+          ClientWidth = 188
+          TabOrder = 2
+          object clbIdentifier: TColorBox
+            Left = 64
+            Height = 26
+            Top = 6
+            Width = 116
+            Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbIncludeDefault, cbCustomColor, cbPrettyNames, cbCustomColors]
+            ItemHeight = 20
+            OnChange = clbIdentifierChange
+            TabOrder = 0
+          end
+          object Label12: TLabel
+            Left = 9
+            Height = 19
+            Top = 8
+            Width = 33
+            Caption = 'Color'
+            ParentColor = False
+          end
+          object chgIdentifierStyle: TCheckGroup
+            Left = 4
+            Height = 84
+            Top = 44
+            Width = 174
+            AutoFill = True
+            Caption = 'Style'
+            ChildSizing.LeftRightSpacing = 6
+            ChildSizing.TopBottomSpacing = 6
+            ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+            ChildSizing.EnlargeVertical = crsHomogenousChildResize
+            ChildSizing.ShrinkHorizontal = crsScaleChilds
+            ChildSizing.ShrinkVertical = crsScaleChilds
+            ChildSizing.Layout = cclLeftToRightThenTopToBottom
+            ChildSizing.ControlsPerLine = 1
+            ClientHeight = 60
+            ClientWidth = 170
+            Items.Strings = (
+              'Italic'
+              'Bold'
+            )
+            OnItemClick = chgIdentifierStyleItemClick
             TabOrder = 1
             Data = {
               020000000202

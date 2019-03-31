@@ -689,6 +689,9 @@ const
   SKeywordColor   = 'KeywordColor';
   SKeywordItalic  = 'KeywordItalic';
   SKeywordBold    = 'KeywordBold';
+  SIdentifyColor  = 'IdentifierColor';
+  SIdentifyItalic = 'IdentifierItalic';
+  SIdentifyBold   = 'IdentifierBold';
   SNumberColor    = 'NumberColor';
   SNumberItalic   = 'NumberItalic';
   SNumberBold     = 'NumberBold';
@@ -2585,6 +2588,13 @@ begin
       if Ini.ReadBool(SEditor, SKeywordBold, fsBold in FHighlighter.KeyAttri.Style) then
         FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style + [fsBold];
 
+      I := Ini.ReadInteger(SEditor, SIdentifyColor, Integer(FHighlighter.IdentifierAttri.Foreground));
+      FHighlighter.KeyAttri.Foreground := TColor(I);
+      if Ini.ReadBool(SEditor, SIdentifyItalic, fsItalic in FHighlighter.IdentifierAttri.Style) then
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style + [fsItalic];
+      if Ini.ReadBool(SEditor, SIdentifyBold, fsBold in FHighlighter.IdentifierAttri.Style) then
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style + [fsBold];
+
       I := Ini.ReadInteger(SEditor, SNumberColor, Integer(FHighlighter.NumberAttri.Foreground));
       FHighlighter.NumberAttri.Foreground := TColor(I);
       if Ini.ReadBool(SEditor, SNumberItalic, fsItalic in FHighlighter.NumberAttri.Style) then
@@ -2638,6 +2648,10 @@ begin
     Ini.WriteInteger(SEditor, SKeywordColor, Integer(FHighlighter.KeyAttri.Foreground));
     Ini.WriteBool(SEditor, SKeywordItalic, fsItalic in FHighlighter.KeyAttri.Style);
     Ini.WriteBool(SEditor, SKeywordBold, fsBold in FHighlighter.KeyAttri.Style);
+
+    Ini.WriteInteger(SEditor, SIdentifyColor, Integer(FHighlighter.IdentifierAttri.Foreground));
+    Ini.WriteBool(SEditor, SIdentifyItalic, fsItalic in FHighlighter.IdentifierAttri.Style);
+    Ini.WriteBool(SEditor, SIdentifyBold, fsBold in FHighlighter.IdentifierAttri.Style);
 
     Ini.WriteInteger(SEditor, SNumberColor, Integer(FHighlighter.NumberAttri.Foreground));
     Ini.WriteBool(SEditor, SNumberItalic, fsItalic in FHighlighter.NumberAttri.Style);

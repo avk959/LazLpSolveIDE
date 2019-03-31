@@ -19,11 +19,13 @@ type
     chgKeywordStyle: TCheckGroup;
     chgNumberStyle: TCheckGroup;
     chgCommentStyle: TCheckGroup;
+    chgIdentifierStyle: TCheckGroup;
     clbLineNumberColor: TColorBox;
     clbCurrLine: TColorBox;
     clbKeyword: TColorBox;
     clbNumber: TColorBox;
     clbComment: TColorBox;
+    clbIdentifier: TColorBox;
     edbFontName: TEditButton;
     FontDlg: TFontDialog;
     GroupBox1: TGroupBox;
@@ -31,9 +33,11 @@ type
     GroupBox3: TGroupBox;
     GroupBox4: TGroupBox;
     GroupBox5: TGroupBox;
+    GroupBox6: TGroupBox;
     Label1: TLabel;
     Label10: TLabel;
     Label11: TLabel;
+    Label12: TLabel;
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
@@ -54,9 +58,11 @@ type
     TabSheet2: TTabSheet;
     procedure chgCommentStyleItemClick(Sender: TObject; Index: integer);
     procedure chgKeywordStyleItemClick(Sender: TObject; Index: integer);
+    procedure chgIdentifierStyleItemClick(Sender: TObject; Index: integer);
     procedure chgNumberStyleItemClick(Sender: TObject; Index: integer);
     procedure clbCommentChange(Sender: TObject);
     procedure clbCurrLineChange(Sender: TObject);
+    procedure clbIdentifierChange(Sender: TObject);
     procedure clbKeywordChange(Sender: TObject);
     procedure clbLineNumberColorChange(Sender: TObject);
     procedure clbNumberChange(Sender: TObject);
@@ -129,6 +135,11 @@ begin
   sePreveiw.LineHighlightColor.Background := clbCurrLine.Selected;
 end;
 
+procedure TfrmEditorOptsDlg.clbIdentifierChange(Sender: TObject);
+begin
+  FHighlighter.IdentifierAttri.Foreground := clbIdentifier.Selected;
+end;
+
 procedure TfrmEditorOptsDlg.chgKeywordStyleItemClick(Sender: TObject; Index: integer);
 begin
   if Index = IDX_ITALIC then
@@ -144,6 +155,24 @@ begin
         FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style + [fsBold]
       else
         FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style - [fsBold]
+    end;
+end;
+
+procedure TfrmEditorOptsDlg.chgIdentifierStyleItemClick(Sender: TObject; Index: integer);
+begin
+  if Index = IDX_ITALIC then
+    begin
+      if chgIdentifierStyle.Checked[Index] then
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style + [fsItalic]
+      else
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style - [fsItalic];
+    end
+  else
+    begin
+      if chgIdentifierStyle.Checked[Index] then
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style + [fsBold]
+      else
+        FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style - [fsBold]
     end;
 end;
 
@@ -256,6 +285,12 @@ begin
   chgKeywordStyle.Checked[IDX_BOLD] := fsBold in Editor.Highlighter.KeywordAttribute.Style;
   chgKeywordStyleItemClick(chgKeywordStyle, IDX_BOLD);
 
+  clbIdentifier.Selected := Editor.Highlighter.IdentifierAttribute.Foreground;
+  chgIdentifierStyle.Checked[IDX_ITALIC] := fsItalic in Editor.Highlighter.IdentifierAttribute.Style;
+  chgIdentifierStyleItemClick(chgIdentifierStyle, IDX_ITALIC);
+  chgIdentifierStyle.Checked[IDX_BOLD] := fsBold in Editor.Highlighter.IdentifierAttribute.Style;
+  chgIdentifierStyleItemClick(chgIdentifierStyle, IDX_BOLD);
+
   clbNumber.Selected := TLPHighlighter(Editor.Highlighter).NumberAttri.Foreground;
   chgNumberStyle.Checked[IDX_ITALIC] := fsItalic in TLPHighlighter(Editor.Highlighter).NumberAttri.Style;
   chgNumberStyleItemClick(chgNumberStyle, IDX_ITALIC);
@@ -291,6 +326,16 @@ begin
       Editor.Highlighter.KeywordAttribute.Style := Editor.Highlighter.KeywordAttribute.Style + [fsBold]
     else
       Editor.Highlighter.KeywordAttribute.Style := Editor.Highlighter.KeywordAttribute.Style - [fsBold];
+
+    Editor.Highlighter.IdentifierAttribute.Foreground := clbIdentifier.Selected;
+    if chgIdentifierStyle.Checked[IDX_ITALIC] then
+      Editor.Highlighter.IdentifierAttribute.Style := Editor.Highlighter.IdentifierAttribute.Style + [fsItalic]
+    else
+      Editor.Highlighter.IdentifierAttribute.Style := Editor.Highlighter.IdentifierAttribute.Style - [fsItalic];
+    if chgIdentifierStyle.Checked[IDX_BOLD] then
+      Editor.Highlighter.IdentifierAttribute.Style := Editor.Highlighter.IdentifierAttribute.Style + [fsBold]
+    else
+      Editor.Highlighter.IdentifierAttribute.Style := Editor.Highlighter.IdentifierAttribute.Style - [fsBold];
 
     TLPHighlighter(Editor.Highlighter).NumberAttri.Foreground := clbNumber.Selected;
     if chgNumberStyle.Checked[IDX_ITALIC] then
