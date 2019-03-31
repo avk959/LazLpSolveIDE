@@ -11,9 +11,9 @@ object XLIParametersForm: TXLIParametersForm
   Font.Color = clWindowText
   Position = poMainFormCenter
   object Button1: TButton
-    Left = 29
+    Left = 320
     Height = 30
-    Top = 182
+    Top = 212
     Width = 90
     Caption = '&OK'
     Font.Color = clWindowText
@@ -22,9 +22,9 @@ object XLIParametersForm: TXLIParametersForm
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 403
+    Left = 424
     Height = 30
-    Top = 182
+    Top = 212
     Width = 90
     Caption = '&Cancel'
     Font.Color = clWindowText

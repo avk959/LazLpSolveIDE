@@ -5,8 +5,8 @@ unit dlgEditorOpts;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ColorBox, EditBtn, StdCtrls, ExtCtrls, ComCtrls,
-  Buttons, Spin, LPSynEdit, SynEdit, SynEditHighlighter, LPHighlighter, SynGutterBase,
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ColorBox, EditBtn, StdCtrls, ExtCtrls,
+  ComCtrls, Buttons, Spin, LPSynEdit, SynEdit, SynEditHighlighter, LPHighlighter, SynGutterBase,
   SynGutterLineNumber;
 
 type
@@ -26,7 +26,7 @@ type
     clbNumber: TColorBox;
     clbComment: TColorBox;
     clbIdentifier: TColorBox;
-    edbFontName: TEditButton;
+    edFontName: TEdit;
     FontDlg: TFontDialog;
     GroupBox1: TGroupBox;
     GroupBox2: TGroupBox;
@@ -66,10 +66,10 @@ type
     procedure clbKeywordChange(Sender: TObject);
     procedure clbLineNumberColorChange(Sender: TObject);
     procedure clbNumberChange(Sender: TObject);
-    procedure edbFontNameChange(Sender: TObject);
+    procedure edFontNameChange(Sender: TObject);
+    procedure edFontNameClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
-    procedure edbFontNameButtonClick(Sender: TObject);
     procedure sedCharSpaceChange(Sender: TObject);
     procedure sedLineSpaceChange(Sender: TObject);
     procedure sedNthNumberChange(Sender: TObject);
@@ -115,9 +115,11 @@ begin
   sePreveiw.Highlighter := FHighlighter;
 end;
 
-procedure TfrmEditorOptsDlg.edbFontNameChange(Sender: TObject);
+procedure TfrmEditorOptsDlg.edFontNameClick(Sender: TObject);
 begin
-  sePreveiw.Font.Name := edbFontName.Text;
+  FontDlg.Font.Name := edFontName.Text;
+  if FontDlg.Execute then
+    edFontName.Text := FontDlg.Font.Name;
 end;
 
 procedure TfrmEditorOptsDlg.clbLineNumberColorChange(Sender: TObject);
@@ -128,6 +130,11 @@ end;
 procedure TfrmEditorOptsDlg.clbNumberChange(Sender: TObject);
 begin
   FHighlighter.NumberAttri.Foreground := clbNumber.Selected;
+end;
+
+procedure TfrmEditorOptsDlg.edFontNameChange(Sender: TObject);
+begin
+  sePreveiw.Font.Name := edFontName.Text;
 end;
 
 procedure TfrmEditorOptsDlg.clbCurrLineChange(Sender: TObject);
@@ -228,13 +235,6 @@ begin
     SaveOptions;
 end;
 
-procedure TfrmEditorOptsDlg.edbFontNameButtonClick(Sender: TObject);
-begin
-  FontDlg.Font.Name := edbFontName.Text;
-  if FontDlg.Execute then
-    edbFontName.Text := FontDlg.Font.Name;
-end;
-
 procedure TfrmEditorOptsDlg.sedCharSpaceChange(Sender: TObject);
 begin
   sePreveiw.ExtraCharSpacing := sedCharSpace.Value;
@@ -270,7 +270,7 @@ end;
 
 procedure TfrmEditorOptsDlg.ReadOptions;
 begin
-  edbFontName.Text := Editor.Font.Name;
+  edFontName.Text := Editor.Font.Name;
   spedFontSize.Value := Editor.Font.Size;
   sedLineSpace.Value := Editor.ExtraLineSpacing;
   sedCharSpace.Value := Editor.ExtraCharSpacing;
@@ -308,7 +308,7 @@ procedure TfrmEditorOptsDlg.SaveOptions;
 begin
   Editor.Lines.BeginUpdate;
   try
-    Editor.Font.Name := edbFontName.Text;
+    Editor.Font.Name := edFontName.Text;
     Editor.Font.Size := spedFontSize.Value;
     Editor.ExtraLineSpacing := sedLineSpace.Value;
     Editor.ExtraCharSpacing := sedCharSpace.Value;

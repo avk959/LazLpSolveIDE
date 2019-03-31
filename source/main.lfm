@@ -2310,6 +2310,7 @@ object MainForm: TMainForm
       ClientWidth = 1173
       TabOrder = 1
       object PageControlLog: TPageControl
+        Cursor = crIBeam
         Left = 0
         Height = 172
         Top = 0
@@ -2323,6 +2324,7 @@ object MainForm: TMainForm
           ClientHeight = 140
           ClientWidth = 1165
           inline MemoLog: TSynEdit
+            Cursor = crNone
             Left = 0
             Height = 140
             Top = 0
@@ -2348,6 +2350,7 @@ object MainForm: TMainForm
             MouseActions = <>
             MouseTextActions = <>
             MouseSelActions = <>
+            Options = [eoAutoIndent, eoBracketHighlight, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces]
             VisibleSpecialChars = [vscSpace, vscTabAtLast]
             ReadOnly = True
             RightEdge = 0

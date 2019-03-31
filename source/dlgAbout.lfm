@@ -170,6 +170,7 @@ object AboutForm: TAboutForm
       ParentColor = False
     end
     object Label6: TLabel
+      Cursor = crHandPoint
       Left = 16
       Height = 19
       Top = 24

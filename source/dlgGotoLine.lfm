@@ -21,19 +21,18 @@ object GotoLineForm: TGotoLineForm
     ParentColor = False
   end
   object Button1: TButton
-    Left = 212
+    Left = 88
     Height = 29
-    Top = 104
+    Top = 108
     Width = 108
     Caption = 'OK'
-    Default = True
     OnClick = Button1Click
     TabOrder = 0
   end
   object Button2: TButton
-    Left = 84
+    Left = 212
     Height = 29
-    Top = 104
+    Top = 108
     Width = 108
     Cancel = True
     Caption = 'Cancel'

@@ -1,29 +1,35 @@
 inherited TextReplaceDialog: TTextReplaceDialog
-  Height = 351
+  Height = 340
+  BorderIcons = [biSystemMenu]
   Caption = 'Replace text'
-  ClientHeight = 351
+  ClientHeight = 340
+  inherited cbSearchText: TComboBox
+    Top = 8
+    Anchors = [akTop, akLeft, akRight]
+  end
   inherited gbSearchOptions: TGroupBox
+    Left = 10
     Height = 180
     Top = 108
+    Width = 182
     ClientHeight = 156
+    ClientWidth = 178
     TabOrder = 2
-    inherited cbRegularExpression: TCheckBox
-      Width = 138
-      ParentFont = True
-    end
   end
   inherited rgSearchDirection: TRadioGroup
     Top = 108
     TabOrder = 3
   end
   inherited btnOK: TButton
-    Top = 312
+    Left = 188
+    Top = 300
+    Default = False
     TabOrder = 4
   end
   inherited btnCancel: TButton
-    Left = 196
-    Top = 312
-    Cancel = True
+    Left = 296
+    Top = 300
+    Cancel = False
     TabOrder = 5
   end
   object Label2: TLabel[6]
@@ -39,6 +45,7 @@ inherited TextReplaceDialog: TTextReplaceDialog
     Height = 27
     Top = 60
     Width = 273
+    Anchors = [akTop, akLeft, akRight]
     ItemHeight = 19
     TabOrder = 1
   end

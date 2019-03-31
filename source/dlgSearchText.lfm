@@ -1,11 +1,11 @@
 object TextSearchDialog: TTextSearchDialog
   Left = 628
-  Height = 216
+  Height = 282
   Top = 165
   Width = 398
   BorderStyle = bsDialog
   Caption = 'Search Text'
-  ClientHeight = 216
+  ClientHeight = 282
   ClientWidth = 398
   Color = clBtnFace
   DesignTimePPI = 115
@@ -29,56 +29,53 @@ object TextSearchDialog: TTextSearchDialog
     TabOrder = 0
   end
   object gbSearchOptions: TGroupBox
-    Left = 10
-    Height = 152
+    Left = 8
+    Height = 176
     Top = 48
     Width = 184
+    Anchors = [akTop, akLeft, akBottom]
     Caption = 'Options'
-    ClientHeight = 128
+    ClientHeight = 152
     ClientWidth = 180
     TabOrder = 1
     object cbSearchCaseSensitive: TCheckBox
-      Left = 10
+      Left = 4
       Height = 23
-      Top = 20
+      Top = 4
       Width = 117
       Caption = 'C&ase sensitivity'
       TabOrder = 0
     end
     object cbSearchWholeWords: TCheckBox
-      Left = 10
+      Left = 4
       Height = 23
-      Top = 47
+      Top = 32
       Width = 134
       Caption = '&Whole words only'
       TabOrder = 1
     end
     object cbSearchFromCursor: TCheckBox
-      Left = 10
+      Left = 4
       Height = 23
-      Top = 73
+      Top = 60
       Width = 131
       Caption = 'Search from &caret'
       TabOrder = 2
     end
     object cbSearchSelectedOnly: TCheckBox
-      Left = 10
+      Left = 4
       Height = 23
-      Top = 99
+      Top = 88
       Width = 131
       Caption = '&Selected text only'
       TabOrder = 3
     end
     object cbRegularExpression: TCheckBox
-      Left = 10
+      Left = 4
       Height = 23
-      Top = 125
-      Width = 141
+      Top = 116
+      Width = 138
       Caption = '&Regular expression'
-      Font.Color = clWindowText
-      Font.Height = -13
-      Font.Name = 'MS Sans Serif'
-      ParentFont = False
       TabOrder = 4
     end
   end
@@ -87,6 +84,7 @@ object TextSearchDialog: TTextSearchDialog
     Height = 78
     Top = 48
     Width = 184
+    Anchors = [akTop, akRight]
     AutoFill = True
     Caption = 'Direction'
     ChildSizing.LeftRightSpacing = 6
@@ -106,20 +104,22 @@ object TextSearchDialog: TTextSearchDialog
     TabOrder = 2
   end
   object btnOK: TButton
-    Left = 298
+    Left = 188
     Height = 28
-    Top = 180
+    Top = 244
     Width = 90
+    Anchors = [akLeft, akBottom]
     Caption = 'OK'
     Default = True
     ModalResult = 1
     TabOrder = 3
   end
   object btnCancel: TButton
-    Left = 200
+    Left = 296
     Height = 28
-    Top = 180
+    Top = 244
     Width = 90
+    Anchors = [akLeft, akBottom]
     Cancel = True
     Caption = 'Cancel'
     ModalResult = 2
