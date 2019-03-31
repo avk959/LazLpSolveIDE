@@ -106,18 +106,19 @@ object TextSearchDialog: TTextSearchDialog
     TabOrder = 2
   end
   object btnOK: TButton
-    Left = 204
+    Left = 298
     Height = 28
-    Top = 178
+    Top = 180
     Width = 90
     Caption = 'OK'
+    Default = True
     ModalResult = 1
     TabOrder = 3
   end
   object btnCancel: TButton
-    Left = 298
+    Left = 200
     Height = 28
-    Top = 178
+    Top = 180
     Width = 90
     Cancel = True
     Caption = 'Cancel'

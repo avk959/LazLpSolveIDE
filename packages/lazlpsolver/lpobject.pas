@@ -14,6 +14,7 @@ unit LpObject;
 {$IFDEF FPC}
   {$MODE DELPHI}
 {$ENDIF}
+{$POINTERMATH ON}
 
 interface
 uses

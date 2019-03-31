@@ -6,7 +6,7 @@ object MainForm: TMainForm
   AllowDropFiles = True
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 637
+  ClientHeight = 590
   ClientWidth = 1173
   Color = clBtnFace
   DesignTimePPI = 115
@@ -16,6 +16,7 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
+  LCLVersion = '2.0.1.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 35
@@ -75,7 +76,7 @@ object MainForm: TMainForm
     end
     object ToolButton4: TToolButton
       Left = 183
-      Height = 26
+      Height = 5
       Top = 2
       Caption = 'ToolButton4'
       ImageIndex = 17
@@ -97,7 +98,7 @@ object MainForm: TMainForm
     end
     object ToolButton12: TToolButton
       Left = 244
-      Height = 26
+      Height = 5
       Top = 2
       Caption = 'ToolButton12'
       ImageIndex = 22
@@ -133,7 +134,7 @@ object MainForm: TMainForm
     end
     object ToolButton15: TToolButton
       Left = 389
-      Height = 26
+      Height = 8
       Top = 2
       Caption = 'ToolButton15'
       ImageIndex = 21
@@ -349,12 +350,12 @@ object MainForm: TMainForm
       end
       object TabSheet2: TTabSheet
         Caption = 'Result'
-        ClientHeight = 368
+        ClientHeight = 365
         ClientWidth = 1165
         ImageIndex = 28
         object PageControl1: TPageControl
           Left = 0
-          Height = 368
+          Height = 365
           Top = 0
           Width = 1165
           ActivePage = TabSheet3
@@ -363,11 +364,11 @@ object MainForm: TMainForm
           TabOrder = 0
           object TabSheet3: TTabSheet
             Caption = 'Objective'
-            ClientHeight = 336
+            ClientHeight = 333
             ClientWidth = 1157
             object ObjectiveTable: TVirtualStringTree
               Left = 0
-              Height = 336
+              Height = 333
               Top = 0
               Width = 1157
               Align = alClient
@@ -2340,7 +2341,11 @@ object MainForm: TMainForm
             Gutter.MouseActions = <>
             RightGutter.Width = 0
             RightGutter.MouseActions = <>
-            Keystrokes = <>
+            Keystrokes = <            
+              item
+                Command = ecCopy
+                ShortCut = 16451
+              end>
             MouseActions = <>
             MouseTextActions = <>
             MouseSelActions = <>
@@ -2405,12 +2410,12 @@ object MainForm: TMainForm
         end
         object TabSheet6: TTabSheet
           Caption = 'Messages'
-          ClientHeight = 145
+          ClientHeight = 140
           ClientWidth = 1165
           ImageIndex = 1
           inline MemoMessages: TSynEdit
             Left = 0
-            Height = 145
+            Height = 140
             Top = 0
             Width = 1165
             Align = alClient
@@ -2426,7 +2431,11 @@ object MainForm: TMainForm
             Gutter.MouseActions = <>
             RightGutter.Width = 0
             RightGutter.MouseActions = <>
-            Keystrokes = <>
+            Keystrokes = <            
+              item
+                Command = ecCopy
+                ShortCut = 16451
+              end>
             MouseActions = <>
             MouseTextActions = <>
             MouseSelActions = <>

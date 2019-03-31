@@ -12,7 +12,6 @@ object ParamForm: TParamForm
   OnCreate = FormCreate
   ParentFont = True
   Position = poMainFormCenter
-  LCLVersion = '2.0.1.0'
   object Label1: TLabel
     Left = 14
     Height = 19
