@@ -2136,6 +2136,7 @@ begin
   ForceDirectoriesUTF8(FConfigFolder);
   LpSolver.ConfigFolder := FConfigFolder;
   acHelp.Visible := FileExistsUtf8(ExtractFilePath(Application.ExeName) + SLocalHelpFile); /////////
+  acHelp.Enabled := acHelp.Visible; ////////
   ReadIniFile;
   ReadSettings; /////////////
   acNewLP.Execute;

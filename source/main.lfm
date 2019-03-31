@@ -6,7 +6,7 @@ object MainForm: TMainForm
   AllowDropFiles = True
   BorderIcons = [biSystemMenu, biMinimize, biMaximize, biHelp]
   Caption = 'LPSolve 5 IDE'
-  ClientHeight = 590
+  ClientHeight = 637
   ClientWidth = 1173
   Color = clBtnFace
   DesignTimePPI = 115
@@ -16,7 +16,6 @@ object MainForm: TMainForm
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnDropFiles = FormDropFiles
-  LCLVersion = '2.0.1.0'
   object ToolBar1: TToolBar
     Left = 0
     Height = 35
@@ -76,7 +75,7 @@ object MainForm: TMainForm
     end
     object ToolButton4: TToolButton
       Left = 183
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton4'
       ImageIndex = 17
@@ -98,7 +97,7 @@ object MainForm: TMainForm
     end
     object ToolButton12: TToolButton
       Left = 244
-      Height = 5
+      Height = 26
       Top = 2
       Caption = 'ToolButton12'
       ImageIndex = 22
@@ -134,7 +133,7 @@ object MainForm: TMainForm
     end
     object ToolButton15: TToolButton
       Left = 389
-      Height = 8
+      Height = 26
       Top = 2
       Caption = 'ToolButton15'
       ImageIndex = 21
