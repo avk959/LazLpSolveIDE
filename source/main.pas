@@ -2589,7 +2589,7 @@ begin
         FHighlighter.KeyAttri.Style := FHighlighter.KeyAttri.Style + [fsBold];
 
       I := Ini.ReadInteger(SEditor, SIdentifyColor, Integer(FHighlighter.IdentifierAttri.Foreground));
-      FHighlighter.KeyAttri.Foreground := TColor(I);
+      FHighlighter.IdentifierAttri.Foreground := TColor(I);
       if Ini.ReadBool(SEditor, SIdentifyItalic, fsItalic in FHighlighter.IdentifierAttri.Style) then
         FHighlighter.IdentifierAttri.Style := FHighlighter.IdentifierAttri.Style + [fsItalic];
       if Ini.ReadBool(SEditor, SIdentifyBold, fsBold in FHighlighter.IdentifierAttri.Style) then
