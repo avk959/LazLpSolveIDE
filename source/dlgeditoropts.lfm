@@ -1,19 +1,19 @@
 object frmEditorOptsDlg: TfrmEditorOptsDlg
   Left = 369
-  Height = 613
+  Height = 633
   Top = 250
-  Width = 453
+  Width = 446
   Caption = 'Editor options'
-  ClientHeight = 613
-  ClientWidth = 453
+  ClientHeight = 633
+  ClientWidth = 446
   DesignTimePPI = 115
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
   object btOk: TButton
-    Left = 297
+    Left = 272
     Height = 30
-    Top = 570
+    Top = 590
     Width = 90
     Anchors = [akRight, akBottom]
     Caption = 'Ok'
@@ -22,9 +22,9 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     TabOrder = 0
   end
   object btCancel: TButton
-    Left = 64
+    Left = 92
     Height = 30
-    Top = 571
+    Top = 590
     Width = 90
     Anchors = [akLeft]
     Cancel = True
@@ -34,35 +34,35 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
   end
   object pnMain: TPanel
     Left = 0
-    Height = 559
+    Height = 579
     Top = 0
-    Width = 453
+    Width = 446
     Anchors = [akTop, akLeft, akRight, akBottom]
-    ClientHeight = 559
-    ClientWidth = 453
+    ClientHeight = 579
+    ClientWidth = 446
     TabOrder = 2
     object PageControl1: TPageControl
-      Left = 1
-      Height = 401
+      Left = 2
+      Height = 416
       Top = 0
-      Width = 451
+      Width = 444
       ActivePage = TabSheet1
       Anchors = [akTop, akLeft, akRight, akBottom]
       TabIndex = 0
       TabOrder = 0
       object TabSheet1: TTabSheet
         Caption = 'Display'
-        ClientHeight = 369
-        ClientWidth = 443
+        ClientHeight = 384
+        ClientWidth = 436
         object GroupBox1: TGroupBox
           Left = 4
-          Height = 234
+          Height = 249
           Top = 12
-          Width = 433
+          Width = 426
           Anchors = [akTop, akLeft, akRight, akBottom]
           Caption = 'Editor font'
-          ClientHeight = 210
-          ClientWidth = 429
+          ClientHeight = 225
+          ClientWidth = 422
           TabOrder = 0
           object Label1: TLabel
             Left = 8
@@ -81,7 +81,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object spedFontSize: TSpinEdit
-            Left = 178
+            Left = 171
             Height = 27
             Top = 44
             Width = 238
@@ -101,7 +101,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedLineSpace: TSpinEdit
-            Left = 178
+            Left = 171
             Height = 27
             Top = 80
             Width = 238
@@ -121,7 +121,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedCharSpace: TSpinEdit
-            Left = 178
+            Left = 171
             Height = 27
             Top = 116
             Width = 238
@@ -133,7 +133,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             TabOrder = 3
           end
           object edbFontName: TEditButton
-            Left = 178
+            Left = 171
             Height = 27
             Top = 6
             Width = 238
@@ -158,7 +158,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedRightEdge: TSpinEdit
-            Left = 178
+            Left = 171
             Height = 27
             Top = 154
             Width = 238
@@ -174,12 +174,12 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
         object GroupBox2: TGroupBox
           Left = 4
           Height = 106
-          Top = 257
-          Width = 433
+          Top = 272
+          Width = 426
           Anchors = [akLeft, akRight, akBottom]
           Caption = 'Line number'
           ClientHeight = 82
-          ClientWidth = 429
+          ClientWidth = 422
           TabOrder = 1
           object Label5: TLabel
             Left = 8
@@ -190,7 +190,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object sedNthNumber: TSpinEdit
-            Left = 178
+            Left = 171
             Height = 27
             Top = 6
             Width = 238
@@ -211,7 +211,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             ParentColor = False
           end
           object clbLineNumberColor: TColorBox
-            Left = 178
+            Left = 171
             Height = 26
             Top = 48
             Width = 238
@@ -227,8 +227,8 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
       end
       object TabSheet2: TTabSheet
         Caption = 'Highlight'
-        ClientHeight = 369
-        ClientWidth = 443
+        ClientHeight = 384
+        ClientWidth = 436
         object Label7: TLabel
           Left = 12
           Height = 19
@@ -243,7 +243,6 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
           Top = 6
           Width = 229
           Style = [cbStandardColors, cbExtendedColors, cbSystemColors, cbIncludeNone, cbIncludeDefault, cbCustomColor, cbPrettyNames, cbCustomColors]
-          Anchors = [akTop, akLeft, akRight]
           ItemHeight = 20
           OnChange = clbCurrLineChange
           TabOrder = 0
@@ -472,9 +471,9 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
     end
     inline sePreveiw: TLPSynEdit
       Left = 0
-      Height = 155
-      Top = 404
-      Width = 453
+      Height = 163
+      Top = 416
+      Width = 446
       Anchors = [akLeft, akRight, akBottom]
       Font.Height = -13
       Font.Name = 'Courier New'

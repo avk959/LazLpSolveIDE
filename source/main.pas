@@ -1375,7 +1375,7 @@ begin
     try
       ShowModal;
     finally
-      free;
+      Free;
     end;
 end;
 
