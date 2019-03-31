@@ -12,7 +12,7 @@ uses
 
   SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
   SynEditMiscClasses, SynEditTextTrimmer, SynEditExport, SynExportHTML, SynMacroRecorder,
-  SynGutterLineNumber, LclType, LCLIntf, LazFileUtils;
+  SynGutterLineNumber, LclType, LCLIntf, LazFileUtils, UTF8Process;
 
 type
 
@@ -549,7 +549,8 @@ type
     FCurrentFile: TFileName;
     fSearchFromCaret: boolean;
     FLastOpenFile,
-    FConfigFolder: string;
+    FConfigFolder,
+    FChmFileReader: string;
     FlpParamsFile: TFileName;
     FLastLineCount: integer;
     FSolving: boolean;
@@ -666,8 +667,10 @@ uses
 const
   SAppConfigIni   = 'LpSolveIDE.ini';
   SSettingsIni    = 'Settings.ini';
+  SLocalHelpFile  = 'lp_solve55.chm';
   SMainForm       = 'MainForm';
   SEditor         = 'Editor';
+  SHelp           = 'Help';
   SDefaultLpo     = 'default.lpo';
   SWindowState    = 'WindowState';
   STop            = 'Top';
@@ -692,6 +695,7 @@ const
   SCommentColor   = 'CommentColor';
   SCommentItalic  = 'CommentItalic';
   SCommentBold    = 'CommentBold';
+  SChmFileReader  = 'ChmFileReader';
 
 
 function FileFormat(const filename: string; var XliIndex: integer): TScriptFormat;
@@ -2123,7 +2127,7 @@ begin
   Editor.TrimSpaceType := settIgnoreAll;//////////
   FHighlighter.CommentAttri.Foreground := clGreen;
   FHighlighter.NumberAttri.Foreground := clNavy;
-  FHighlighter.KeyAttri.Foreground := $00D90000;
+  FHighlighter.KeyAttri.Foreground := $00D90000;/////////
   Editor.Highlighter := FHighlighter;
   SetCurrentFile('');
   FLastOpenFile := '';
@@ -2131,8 +2135,9 @@ begin
   FConfigFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
   ForceDirectoriesUTF8(FConfigFolder);
   LpSolver.ConfigFolder := FConfigFolder;
+  acHelp.Visible := FileExistsUtf8(ExtractFilePath(Application.ExeName) + SLocalHelpFile); /////////
   ReadIniFile;
-  ReadSettings;
+  ReadSettings; /////////////
   acNewLP.Execute;
 end;
 
@@ -2504,20 +2509,19 @@ begin
   try
     //Set8087CW(ini.ReadInteger('OPTIONS', 'CW', Default8087CW));
     ini.ReadSection('XLI', str);
-    try
-      for i := 0 to str.Count - 1 do
-        begin
-          lib := ini.ReadString('XLI', str.Strings[i], 'unknown');
-          ext := ini.ReadString(lib, 'extension', 'txt');
-          lang := FindLanguage(ini.ReadString(lib, 'language', ''));
-          TViewXliExtension.Create(XLIViewActionList, lib, ext, lang);
-          TNewXliExtension.Create(XLINewActionList, lib, ext, lang);
-        end;
-    except
-      //MessageDlg('Can''t find XLI: ' + lib, mtError, [mbOK], 0);
-      MemoLog.Lines.Add('Can''t find XLI: ' + lib)
-    end;
-    FilterAll := 'All know files|*.lp; *.mps';
+
+    for i := 0 to str.Count - 1 do
+      try
+        lib := ini.ReadString('XLI', str.Strings[i], 'unknown');
+        ext := ini.ReadString(lib, 'extension', 'txt');
+        lang := FindLanguage(ini.ReadString(lib, 'language', ''));
+        TViewXliExtension.Create(XLIViewActionList, lib, ext, lang);
+        TNewXliExtension.Create(XLINewActionList, lib, ext, lang);
+      except
+        //MessageDlg('Can''t find XLI: ' + lib, mtError, [mbOK], 0);
+        MemoLog.Lines.Add('Can''t find XLI: ' + lib)
+      end;
+    FilterAll := 'All known files|*.lp; *.mps';
     Filter := 'LP files (*.lp)|*.lp|MPS files (*.mps)|*.mps';
     for i := 0 to XLIViewActionList.ComponentCount - 1 do
       with TViewXliExtension(XLIViewActionList.Components[i]) do
@@ -2527,6 +2531,13 @@ begin
         end;
     OpenDialogScript.Filter := filterall + '|' + filter;
     SaveDialogScript.Filter := filter;
+    if acHelp.Visible then            ///////////////
+      begin
+        FChmFileReader := ini.ReadString(SHelp, SChmFileReader, '');
+        if FChmFileReader <> '' then
+          if ExtractFilePath(FChmFileReader) = '' then
+            FChmFileReader := ExtractFilePath(Application.ExeName) + FChmFileReader;
+      end;
   finally
     ini.Free;
     str.Free;
@@ -3368,18 +3379,13 @@ begin
   URLshow('http://lpsolve.sourceforge.net/5.5/')
 end;
 procedure TMainForm.acHelpExecute(Sender: TObject);
-var
-  LocalHelpFile: string;
 begin
 {  HtmlHelp(Application.Handle, PChar(ExtractFilePath(ParamStr(0))+'lp_solve55.chm'),
   HH_DISPLAY_TOC, 0);}
-  LocalHelpFile := ExtractFilePath(Application.ExeName)+'lp_solve55.chm';
-  if FileExistsUtf8(LocalHelpFile) then
-    URLshow(LocalHelpFile)
+  if FChmFileReader <> '' then
+    RunCmdFromPath(FChmFileReader, SLocalHelpFile)
   else
-    Application.MessageBox(PChar(Format(SFileNotFoundFmt, [LocalHelpFile])),
-                           PChar(SFileNotFound),  MB_ICONEXCLAMATION);
-
+    OpenDocument(ExtractFilePath(Application.ExeName) + SLocalHelpFile);
 end;
 
 procedure TMainForm.UpdateVirtualTrees;
