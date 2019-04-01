@@ -14,7 +14,7 @@ Port LpSolve IDE v5.5.2.3 under Lazarus([Lpsolve home](https://sourceforge.net/p
  - download from the official website and put into AppFolder all needed extention binaries(BFP and XLI).
  - download from the official website and put into AppFolder CHM help file.  
  - put into AppFolder LpSolveIDE.ini.
- - run the application using a bash script:
+ - run the application using(as variant) a bash script:
 ```
 #!/usr/bin/env bash
 AppFolderPath=path-to-AppFolder
@@ -23,15 +23,14 @@ cd $AppFolderPath
 ./LpSolveIDE 
 ```
 #### A remark about CHM help file:
-Note about the CHM help file:
 If you have a program for reading CHM files on your computer, 
 and the CHM format is known system-wide, then nothing else needs to be done.
 If the CHM format is not known system-wide, 
-you need to add LpSolveIDE.ini in the [Help] section the string 
-"ChmFileReader = chm-help-reader-full-file-name" (without quotes).
+you need to add in the [Help] section of the LpSolveIDE.ini the line 
+"ChmFileReader=chm-help-reader-full-file-name" (without quotes).
 If there is no program for reading CHM files,
 you can use lhelp from the Lazarus installation (in /components/chmhelp/lhelp).
-Compile lhelp, place it in the AppFolder and add the line "ChmFileReader = lhelp"(without quotes) 
-in the [Help] LpSolveIDE.ini section.
+Compile lhelp, place it in the AppFolder and add the line "ChmFileReader=lhelp"(without quotes) 
+in the [Help] section of the LpSolveIDE.ini.
 
  
