@@ -17,7 +17,7 @@ object AboutForm: TAboutForm
     Top = 12
     Width = 231
     Anchors = [akTop]
-    Caption = 'LPSolve IDE v5.5.2.3'
+    Caption = 'LPSolve IDE v5.5.2.5'
     Font.Color = clWindowText
     Font.Height = -24
     Font.Style = [fsBold]
