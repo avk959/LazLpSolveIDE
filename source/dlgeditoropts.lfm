@@ -70,6 +70,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             Width = 66
             Caption = 'Font name'
             Color = clDefault
+            ParentColor = False
             Transparent = False
           end
           object Label2: TLabel
@@ -90,7 +91,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             AutoSize = False
             MaxValue = 30
             OnChange = spedFontSizeChange
-            TabOrder = 1
+            TabOrder = 2
           end
           object Label3: TLabel
             Left = 8
@@ -110,7 +111,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             AutoSize = False
             MaxValue = 2
             OnChange = sedLineSpaceChange
-            TabOrder = 2
+            TabOrder = 3
           end
           object Label4: TLabel
             Left = 8
@@ -130,7 +131,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             AutoSize = False
             MaxValue = 2
             OnChange = sedCharSpaceChange
-            TabOrder = 3
+            TabOrder = 4
           end
           object Label11: TLabel
             Left = 8
@@ -150,19 +151,32 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             MaxValue = 256
             MinValue = 40
             OnChange = sedRightEdgeChange
-            TabOrder = 4
+            TabOrder = 5
             Value = 128
           end
           object edFontName: TEdit
             Left = 171
             Height = 27
             Top = 6
-            Width = 238
+            Width = 201
             Alignment = taRightJustify
             Anchors = [akTop, akRight]
             OnChange = edFontNameChange
-            OnClick = edFontNameClick
             ReadOnly = True
+            TabStop = False
+            TabOrder = 1
+          end
+          object btShowDialog: TButton
+            AnchorSideTop.Control = edFontName
+            AnchorSideBottom.Control = edFontName
+            AnchorSideBottom.Side = asrBottom
+            Left = 379
+            Height = 27
+            Top = 6
+            Width = 30
+            Anchors = [akTop, akRight, akBottom]
+            Caption = '...'
+            OnClick = btShowDialogClick
             TabOrder = 0
           end
         end

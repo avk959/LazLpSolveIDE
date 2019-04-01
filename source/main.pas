@@ -814,7 +814,8 @@ begin
     finally
       Free;
     end;
-  Editor.SetFocus;
+  if Editor.CanFocus then
+    Editor.SetFocus;
 end;
 
 procedure TMainForm.AppPropsShowHint(var HintStr: string; var CanShow: Boolean; var HintInfo: THintInfo);

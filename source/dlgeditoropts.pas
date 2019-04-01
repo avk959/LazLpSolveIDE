@@ -16,6 +16,7 @@ type
   TfrmEditorOptsDlg = class(TForm)
     btOk: TButton;
     btCancel: TButton;
+    btShowDialog: TButton;
     chgKeywordStyle: TCheckGroup;
     chgNumberStyle: TCheckGroup;
     chgCommentStyle: TCheckGroup;
@@ -56,6 +57,7 @@ type
     sedRightEdge: TSpinEdit;
     TabSheet1: TTabSheet;
     TabSheet2: TTabSheet;
+    procedure btShowDialogClick(Sender: TObject);
     procedure chgCommentStyleItemClick(Sender: TObject; Index: integer);
     procedure chgKeywordStyleItemClick(Sender: TObject; Index: integer);
     procedure chgIdentifierStyleItemClick(Sender: TObject; Index: integer);
@@ -67,7 +69,6 @@ type
     procedure clbLineNumberColorChange(Sender: TObject);
     procedure clbNumberChange(Sender: TObject);
     procedure edFontNameChange(Sender: TObject);
-    procedure edFontNameClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure sedCharSpaceChange(Sender: TObject);
@@ -113,13 +114,6 @@ begin
   sePreveiw.Text := SDisplayText;
   sePreveiw.CaretY := 5;
   sePreveiw.Highlighter := FHighlighter;
-end;
-
-procedure TfrmEditorOptsDlg.edFontNameClick(Sender: TObject);
-begin
-  FontDlg.Font.Name := edFontName.Text;
-  if FontDlg.Execute then
-    edFontName.Text := FontDlg.Font.Name;
 end;
 
 procedure TfrmEditorOptsDlg.clbLineNumberColorChange(Sender: TObject);
@@ -199,6 +193,13 @@ begin
       else
         FHighlighter.CommentAttri.Style := FHighlighter.CommentAttri.Style - [fsBold]
     end;
+end;
+
+procedure TfrmEditorOptsDlg.btShowDialogClick(Sender: TObject);
+begin
+  FontDlg.Font.Name := edFontName.Text;
+  if FontDlg.Execute then
+    edFontName.Text := FontDlg.Font.Name;
 end;
 
 procedure TfrmEditorOptsDlg.chgNumberStyleItemClick(Sender: TObject; Index: integer);
