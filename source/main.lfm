@@ -242,9 +242,9 @@ object MainForm: TMainForm
           MouseActions = <>
           MouseTextActions = <>
           MouseSelActions = <>
-          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor, eoDoubleClickSelectsLine]
+          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor]
           Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
-          MouseOptions = [emDragDropEditing, emRightMouseMovesCursor, emDoubleClickSelectsLine]
+          MouseOptions = [emDragDropEditing, emRightMouseMovesCursor]
           VisibleSpecialChars = []
           RightEdge = 128
           SelectedColor.BackPriority = 50
