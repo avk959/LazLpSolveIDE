@@ -3523,12 +3523,10 @@ begin
 end;
 
 procedure TMainForm.PriorityChange(Sender: TObject);
-//const pr: array[-3..2] of Integer = (-15,-2,-1,0,1,2);
-const pr: array[-3..2] of TThreadPriority = (
-  tpIdle, tpLowest, tpLower, tpNormal, tpHigher, tpHighest);
+const pr: array[-3..2] of Integer = (-15,-2,-1,0,1,2);
 begin
   //SetThreadPriority(GetCurrentThread, pr[Priority.Position]);
-  TThread.CurrentThread.Priority := pr[Priority.Position];
+  ThreadSetPriority(GetCurrentThreadId, pr[Priority.Position]);
 end;
 
 procedure TMainForm.acSaveParamsExecute(Sender: TObject);
