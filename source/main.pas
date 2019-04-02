@@ -1249,7 +1249,6 @@ var lp: TLPSolver;
 begin
   lp := TLPSolver.Create(nil);
   lp.XLI := LPSolver.XLI;
-  lp.ConfigFolder := FConfigFolder;
   Screen.Cursor := crHourGlass;
   Application.ProcessMessages;
   try

@@ -7,7 +7,7 @@
  *  date: 07/21/2004
  *
  *  modified by avk
- *  date: 03/31/2019
+ *  date: 04/02/2019
  *)
 
 unit LpObject;
@@ -17,6 +17,7 @@ unit LpObject;
   {$MODE DELPHI}
 {$ENDIF}
 {$POINTERMATH ON}
+{$INLINE ON}
 
 interface
 uses
@@ -122,8 +123,9 @@ type
     FBFP,
     FXLI,
     FXLIDataName,
-    FXLIOptions,
-    FConfigFolder: string;
+    FXLIOptions: string;
+  class var
+    CFConfigFolder: string;
     function GetHasBFP: boolean;
     function GetIsNativeBFP: boolean;
     function GetHasXLI: boolean;
@@ -269,6 +271,7 @@ type
     function GetStatus: TSolverStatus;
     function GetEpsInt: TFloat;
     procedure SetEpsInt(const Value: TFloat);
+    class function GetTempFile: string; static; inline;
   protected
     procedure DoOnload; virtual;
   public
@@ -460,7 +463,8 @@ type
     constructor Create(AOwner: TComponent); overload; override;
     destructor Destroy; override;
     property XLI: string read FXLI write SetXLIName;
-    property ConfigFolder: string read FConfigFolder write FConfigFolder;
+    class property ConfigFolder: string read CFConfigFolder write CFConfigFolder;
+    class property TempFile: string read GetTempFile;
   published
     // sense
     property LagTrace: boolean read GetLagTrace write SetLagTrace;
@@ -536,9 +540,6 @@ begin
 end;
 
 const
-
-  tmpfile = '_tmpfile';
-
   ConstrTypeMap : array[TConstrType] of integer = (LE, GE, EQ);
   SimplexTypeMap: array[TSimplexType] of integer = (SIMPLEX_PRIMAL_PRIMAL,
     SIMPLEX_DUAL_PRIMAL, SIMPLEX_PRIMAL_DUAL, SIMPLEX_DUAL_DUAL);
@@ -719,6 +720,13 @@ end;
 function TLPSolver.GetMinimize: boolean;
 begin
   result := is_maxim(FLP) = false;
+end;
+
+class function TLPSolver.GetTempFile: string; static;
+const
+  tmpfile = '_tmpfile';
+begin
+  Result := ConfigFolder + tmpfile;
 end;
 
 procedure TLPSolver.SetMaximize(const Value: boolean);
@@ -1198,7 +1206,7 @@ begin
       begin
         result := ChangeLPHandle(read_XLI(PChar(FXLI), PChar(aFileName), PChar(FXLIDataName),
                                  PChar(FXLIOptions), ord(verbose)));
-        if LpName = tmpfile then
+        if LpName = TempFile then
           LpName := '';
       end;
   else
@@ -1212,8 +1220,8 @@ begin
   result := false;
   if (not result {mode = sfXLI}) then  // whp 2009 always via _tmpfile for VC& and hiher lpsolve55.dll
     begin
-      strings.SaveToFile(ConfigFolder + tmpfile);
-      result := LoadFromFile(ConfigFolder + tmpfile, verbose, mode);
+      strings.SaveToFile(TempFile);
+      result := LoadFromFile(TempFile, verbose, mode);
     end;
 end;
 
@@ -1235,13 +1243,10 @@ begin
 end;
 
 function TLPSolver.SaveToStrings(strings: TStrings; mode: TScriptFormat): boolean;
-var
-  TmpFileName: string;
 begin
-  TmpFileName := ConfigFolder + tmpfile;
-  Result := SaveToFile(TmpFileName, mode);
+  Result := SaveToFile(TempFile, mode);
   if Result then
-    strings.LoadFromFile(TmpFileName);
+    strings.LoadFromFile(TempFile);
 end;
 
 procedure TLPSolver.Print;
@@ -1982,4 +1987,6 @@ begin
   reset_params(FLP);
 end;
 
+finalization
+  DeleteFile(TLPSolver.TempFile);
 end.
