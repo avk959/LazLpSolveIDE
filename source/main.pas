@@ -660,7 +660,7 @@ resourcestring
 implementation
 uses
   dlgSearchText, dlgReplaceText, dlgConfirmReplace, dlgGotoLine, dlgStatistics, dlgAbout, Params,
-  dlgEditorOpts;
+  dlgEditorOpts{$IF FPC_FULLVERSION < 30200}, dynlibs{$ENDIF};
 
 {$R *.lfm}
 
