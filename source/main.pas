@@ -956,27 +956,25 @@ var
 var
   lang: TLPLanguage;
 begin
-  begin
-    FScriptFormat := Value;
-    lang := FindLanguage(Value);
-    if (lang = lXML) then
-      Editor.Highlighter := SynXMLSyn
-    else
-      begin
-        FHighlighter.Language := lang;
-        Editor.Highlighter := FHighlighter;
-      end;
-    acViewAsLP.Checked := false;
-    acViewAsMPS.Checked := false;
-    for i := 0 to XLIViewActionList.ComponentCount - 1 do
-      TAction(XLIViewActionList.Components[i]).Checked := false;
-    case FScriptFormat of
-      sfLP:  acViewAsLP.Checked := true;
-      sfMPS: acViewAsMPS.Checked := true;
-      sfXLI: TAction(XLIViewActionList.Components[FXliIndex]).Checked := true;
+  FScriptFormat := Value;
+  lang := FindLanguage(Value);
+  if (lang = lXML) then
+    Editor.Highlighter := SynXMLSyn
+  else
+    begin
+      FHighlighter.Language := lang;
+      Editor.Highlighter := FHighlighter;
     end;
-    Editor.EnableMPS := (Value = sfMPS) and (not LPSolver.FreeMPS);
+  acViewAsLP.Checked := false;
+  acViewAsMPS.Checked := false;
+  for i := 0 to XLIViewActionList.ComponentCount - 1 do
+    TAction(XLIViewActionList.Components[i]).Checked := false;
+  case FScriptFormat of
+    sfLP:  acViewAsLP.Checked := true;
+    sfMPS: acViewAsMPS.Checked := true;
+    sfXLI: TAction(XLIViewActionList.Components[FXliIndex]).Checked := true;
   end;
+  Editor.EnableMPS := (Value = sfMPS) and (not LPSolver.FreeMPS);
 end;
 
 
