@@ -5,9 +5,9 @@ unit dlgEditorOpts;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ColorBox, EditBtn, StdCtrls, ExtCtrls,
-  ComCtrls, Buttons, Spin, LPSynEdit, SynEdit, SynEditHighlighter, LPHighlighter, SynGutterBase,
-  SynGutterLineNumber;
+  Classes, SysUtils, Controls, Graphics, Forms, Dialogs, ColorBox, StdCtrls, ExtCtrls,
+  ComCtrls, Buttons, Spin, LPSynEdit, SynEdit, SynEditHighlighter, LPHighlighter,
+  SynGutterBase, SynGutterLineNumber;
 
 type
 
