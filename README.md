@@ -1,5 +1,8 @@
-# LpSolve IDE(Integrated Development Interface)
-Port LpSolve IDE v5.5.2.3 under Lazarus([Lpsolve home](https://sourceforge.net/projects/lpsolve/)).
+## LpSolve IDE(Integrated Development Interface)
+Port LpSolve IDE v5.5.2.5 under Lazarus([Lpsolve home](https://sourceforge.net/projects/lpsolve/)).
+#### New
+ - editing the syntax highlighting scheme(rather primitive).
+ - maintaining the position of the main window between sessions.
 ![LPSolve IDE on Ubuntu-MATE](https://github.com/avk959/LazLpSolveIDE/blob/master/LpSolveIDE-gtk-2.png)
 ### To compile LpSolveIDE under Lazarus IDE:
  - compile and install(optional) /packages/lazlpsolver/lazlpsolver.lpk
