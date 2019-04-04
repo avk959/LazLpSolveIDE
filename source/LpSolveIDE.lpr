@@ -14,8 +14,7 @@ uses
   {$IFDEF UNIX}
   cthreads,
   {$ENDIF}
-  Interfaces, SysUtils, Forms, LazFileUtils, main, LPHighlighter, dlgSearchText, dlgReplaceText,
-  dlgConfirmReplace, dlgGotoLine, dlgAbout, ResultArray, Params, dlgStatistics;
+  Interfaces, SysUtils, Forms, LazFileUtils, main;
 
 {$R *.res}
 
