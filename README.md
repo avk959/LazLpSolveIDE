@@ -8,7 +8,7 @@ Port LpSolve IDE v5.5.2.5 under Lazarus([Lpsolve home](https://sourceforge.net/p
 ### To compile LpSolveIDE under Lazarus IDE:
  - download and install the appropriate liblpsolve55 binary from the official website.
  - compile and install(optional) /packages/lazlpsolver/lazlpsolver.lpk.
-   + note: installing the package is only necessary if you are going to edit MainForm.
+   + note: installing the package is only necessary if you are going to edit forms.
  - open and compile /source/LpSolveIDE.lpi
 ### To make linux stand-alone application:
  - create application folder(denote AppFolder)
