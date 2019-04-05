@@ -31,26 +31,28 @@ uses
 {$R *.lfm}
 
 procedure TStatisticsForm.FormCreate(Sender: TObject);
-procedure AddStat(const name, value: string);
-begin
-  with stats.Items.Add do
-  begin
-    Caption := name;
-    SubItems.Add(Value);
-  end;
-end;
 
-procedure AddStat2(const key, nmin, nmax: string; min, max: double);
-begin
-  with stats2.Items.Add do
+  procedure AddStat(const name, value: string);
   begin
-    Caption := key;
-    SubItems.Add(nmin);
-    SubItems.Add(FloatToStr(min));
-    SubItems.Add(nmax);
-    SubItems.Add(FloatToStr(max));
+    with stats.Items.Add do
+    begin
+      Caption := name;
+      SubItems.Add(Value);
+    end;
   end;
-end;
+
+  procedure AddStat2(const key, nmin, nmax: string; min, max: double);
+  begin
+    with stats2.Items.Add do
+    begin
+      Caption := key;
+      SubItems.Add(nmin);
+      SubItems.Add(FloatToStr(min));
+      SubItems.Add(nmax);
+      SubItems.Add(FloatToStr(max));
+    end;
+  end;
+
 var
   a,b,c,d,y, i, j: integer;
 begin
@@ -62,11 +64,11 @@ begin
       //constraints
       if (Ncolumns = 0) or (not isLoaded) or (Editor.Modified)  then
       begin
-        if (Mode = sfXLI) then
-        begin
-          Editor.Lines.SaveToFile(TempFile);
-          isLoaded := LoadFromFile(TempFile, LPSolver.Verbose, Mode);
-        end else
+        //if (Mode = sfXLI) then
+        //begin
+        //  Editor.Lines.SaveToFile(TempFile);
+        //  isLoaded := LoadFromFile(TempFile, LPSolver.Verbose, Mode);
+        //end else
           isLoaded := LoadFromStrings(Editor.lines, Verbose, Mode);
       end;
       if isLoaded then

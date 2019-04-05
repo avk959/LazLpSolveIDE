@@ -21,7 +21,7 @@ unit LpObject;
 
 interface
 uses
-  Classes, SysUtils, Dialogs, LpSolve;
+  Classes, SysUtils, Dialogs, LpSolve, LazFileUtils;
 
 type
   TVerbose       = (vNeutral, vCritical, vSevere, vImportant, vNormal, vDetailed, vFull);
@@ -125,7 +125,6 @@ type
     FXLIDataName,
     FXLIOptions: string;
   class var
-    CFConfigFolder: string;
     function GetHasBFP: boolean;
     function GetIsNativeBFP: boolean;
     function GetHasXLI: boolean;
@@ -463,7 +462,6 @@ type
     constructor Create(AOwner: TComponent); overload; override;
     destructor Destroy; override;
     property XLI: string read FXLI write SetXLIName;
-    class property ConfigFolder: string read CFConfigFolder write CFConfigFolder;
     class property TempFile: string read GetTempFile;
   published
     // sense
@@ -723,10 +721,9 @@ begin
 end;
 
 class function TLPSolver.GetTempFile: string; static;
-const
-  tmpfile = '_tmpfile';
 begin
-  Result := ConfigFolder + tmpfile;
+  //Result := ConfigFolder + '~lpsol55_file';
+  Result := GetTempFileNameUTF8('', '~lpsol55_file');
 end;
 
 procedure TLPSolver.SetMaximize(const Value: boolean);
@@ -1216,13 +1213,17 @@ begin
 end;
 
 function TLPSolver.LoadFromStrings(strings: TStrings; verbose: TVerbose; mode: TScriptFormat): boolean;
+var
+  TmpFile: string;
 begin
-  result := false;
-  if (not result {mode = sfXLI}) then  // whp 2009 always via _tmpfile for VC& and hiher lpsolve55.dll
-    begin
-      strings.SaveToFile(TempFile);
-      result := LoadFromFile(TempFile, verbose, mode);
-    end;
+  Result := False;
+  TmpFile := TempFile;
+  try
+    strings.SaveToFile(TmpFile);
+    result := LoadFromFile(TmpFile, verbose, mode);
+  finally
+    DeleteFile(TmpFile);
+  end;
 end;
 
 function TLPSolver.SaveToFile(const filename: string; mode: TScriptFormat): boolean;
@@ -1243,10 +1244,17 @@ begin
 end;
 
 function TLPSolver.SaveToStrings(strings: TStrings; mode: TScriptFormat): boolean;
+var
+  TmpFile: string;
 begin
-  Result := SaveToFile(TempFile, mode);
-  if Result then
-    strings.LoadFromFile(TempFile);
+  TmpFile := TempFile;
+  try
+    Result := SaveToFile(TmpFile, mode);
+    if Result then
+      strings.LoadFromFile(TmpFile);
+  finally
+    DeleteFile(TmpFile);
+  end;
 end;
 
 procedure TLPSolver.Print;
@@ -1987,6 +1995,4 @@ begin
   reset_params(FLP);
 end;
 
-finalization
-  DeleteFile(TLPSolver.TempFile);
 end.

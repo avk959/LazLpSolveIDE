@@ -1243,7 +1243,8 @@ begin
 end;
 
 procedure TMainForm.acSyntaxCheckExecute(Sender: TObject);
-var lp: TLPSolver;
+var
+  lp: TLPSolver;
 begin
   lp := TLPSolver.Create(nil);
   lp.XLI := LPSolver.XLI;
@@ -1256,7 +1257,7 @@ begin
       MessageDlg('The scripts has syntax error(s).', mtWarning, [mbOK], 0);
   finally
     Screen.Cursor := crDefault;
-   lp.Free;
+    lp.Free;
   end;
 end;
 
@@ -2139,7 +2140,6 @@ begin
   FlpParamsFile:= '';
   FConfigFolder := IncludeTrailingPathDelimiter(GetAppConfigDirUTF8(False));
   ForceDirectoriesUTF8(FConfigFolder);
-  LpSolver.ConfigFolder := FConfigFolder;
   acHelp.Visible := FileExistsUtf8(ExtractFilePath(Application.ExeName) + SLocalHelpFile); /////////
   acHelp.Enabled := acHelp.Visible; ////////
   ReadIniFile;
