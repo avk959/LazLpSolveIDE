@@ -5,7 +5,7 @@ Port LpSolve IDE v5.5.2.5 under Lazarus([Lpsolve home](https://sourceforge.net/p
 #### New
  - editing the syntax highlighting scheme(rather primitive).
  - maintaining the position of the main window between sessions.
-#### To compile LpSolveIDE under Lazarus IDE:
+#### To compile LpSolve IDE:
  - download and install the appropriate liblpsolve55 binary from the official website.
  - compile and install(optional) /packages/lazlpsolver/lazlpsolver.lpk.
    + note: installing the package is only necessary if you are going to edit forms.
