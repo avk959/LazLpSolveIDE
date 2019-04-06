@@ -1,16 +1,16 @@
 ## LpSolve IDE(Integrated Development Interface)
 Port LpSolve IDE v5.5.2.5 under Lazarus([Lpsolve home](https://sourceforge.net/projects/lpsolve/)).
+##### LpSolve IDE v5.5.2.5 on linux:
+![LPSolve IDE on Ubuntu-MATE](https://github.com/avk959/LazLpSolveIDE/blob/master/LpSolveIDE-gtk-2.png)
 #### New
  - editing the syntax highlighting scheme(rather primitive).
  - maintaining the position of the main window between sessions.
-#### LpSolve IDE on linux:
-![LPSolve IDE on Ubuntu-MATE](https://github.com/avk959/LazLpSolveIDE/blob/master/LpSolveIDE-gtk-2.png)
-### To compile LpSolveIDE under Lazarus IDE:
+#### To compile LpSolveIDE under Lazarus IDE:
  - download and install the appropriate liblpsolve55 binary from the official website.
  - compile and install(optional) /packages/lazlpsolver/lazlpsolver.lpk.
    + note: installing the package is only necessary if you are going to edit forms.
  - open and compile /source/LpSolveIDE.lpi
-### To make linux stand-alone application:
+#### To make linux stand-alone application:
  - create application folder(denote AppFolder)
  - put into AppFolder LpSolveIDE binary
  - put into AppFolder liblpsolve55 binary(if not installed)
