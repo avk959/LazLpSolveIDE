@@ -1222,7 +1222,7 @@ begin
     strings.SaveToFile(TmpFile);
     result := LoadFromFile(TmpFile, verbose, mode);
   finally
-    DeleteFile(TmpFile);
+    DeleteFileUtf8(TmpFile);
   end;
 end;
 
@@ -1253,7 +1253,7 @@ begin
     if Result then
       strings.LoadFromFile(TmpFile);
   finally
-    DeleteFile(TmpFile);
+    DeleteFileUtf8(TmpFile);
   end;
 end;
 
