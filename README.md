@@ -1,6 +1,6 @@
 ## LpSolve IDE(Integrated Development Interface)
-Port LpSolve IDE v5.5.2.5 under Lazarus([Lpsolve home](https://sourceforge.net/projects/lpsolve/)).
-##### LpSolve IDE v5.5.2.5 on linux:
+Port LpSolve IDE under Lazarus([Lpsolve home](https://sourceforge.net/projects/lpsolve/)).
+##### LpSolve IDE on linux:
 ![LPSolve IDE on Ubuntu-MATE](https://github.com/avk959/LazLpSolveIDE/blob/master/LpSolveIDE-gtk-2.png)
 #### New
  - editing the syntax highlighting scheme(rather primitive).
