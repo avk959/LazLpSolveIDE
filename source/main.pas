@@ -1044,7 +1044,7 @@ begin
             OpenFile(SaveDialogScript.FileName);
           end
         else
-            MessageDlg('Parse error.', mtError, [mbOK], 0);
+          MessageDlg('Parse error.', mtError, [mbOK], 0);
     end;
 end;
 
@@ -1152,6 +1152,8 @@ begin
   else
     MemoLog.Lines.Add('Parse error');
   MemoLog.CaretY := MemoLog.Lines.Count;
+  if MemoLog.CanFocus then
+    MemoLog.SetFocus;
 end;
 
 procedure TMainForm.acUndoExecute(Sender: TObject);

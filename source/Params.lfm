@@ -84,6 +84,7 @@ object ParamForm: TParamForm
     Height = 34
     Top = 177
     Width = 138
+    Cancel = True
     Caption = '&Cancel'
     ModalResult = 2
     TabOrder = 5
