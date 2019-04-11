@@ -242,8 +242,8 @@ object MainForm: TMainForm
           MouseActions = <>
           MouseTextActions = <>
           MouseSelActions = <>
-          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor]
-          MouseOptions = [emDragDropEditing, emRightMouseMovesCursor]
+          Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing]
+          MouseOptions = [emDragDropEditing]
           VisibleSpecialChars = []
           RightEdge = 128
           SelectedColor.BackPriority = 50
@@ -2793,7 +2793,7 @@ object MainForm: TMainForm
     DefaultExt = '.lpo'
     Filter = 'Option file (*.lpo)|*.lpo'
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
-    Left = 828
+    Left = 848
     Top = 80
   end
   object SaveDialogScript: TSaveDialog
