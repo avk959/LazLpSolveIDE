@@ -243,7 +243,6 @@ object MainForm: TMainForm
           MouseTextActions = <>
           MouseSelActions = <>
           Options = [eoAutoIndent, eoBracketHighlight, eoGroupUndo, eoScrollPastEol, eoSmartTabs, eoTabsToSpaces, eoTrimTrailingSpaces, eoDragDropEditing, eoRightMouseMovesCursor]
-          Options2 = [eoAlwaysVisibleCaret, eoFoldedCopyPaste, eoOverwriteBlock]
           MouseOptions = [emDragDropEditing, emRightMouseMovesCursor]
           VisibleSpecialChars = []
           RightEdge = 128
