@@ -10,7 +10,6 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   Position = poMainFormCenter
-  LCLVersion = '2.0.1.0'
   object btOk: TButton
     Left = 216
     Height = 30
@@ -70,9 +69,7 @@ object frmEditorOptsDlg: TfrmEditorOptsDlg
             Top = 8
             Width = 66
             Caption = 'Font name'
-            Color = clDefault
             ParentColor = False
-            Transparent = False
           end
           object Label2: TLabel
             Left = 8
