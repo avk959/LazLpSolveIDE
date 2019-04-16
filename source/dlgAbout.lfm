@@ -61,7 +61,7 @@ object AboutForm: TAboutForm
       ParentColor = False
     end
     object Label4: TLabel
-      Left = 148
+      Left = 156
       Height = 19
       Top = 68
       Width = 71
@@ -69,7 +69,7 @@ object AboutForm: TAboutForm
       ParentColor = False
     end
     object Label5: TLabel
-      Left = 148
+      Left = 156
       Height = 19
       Top = 92
       Width = 98
