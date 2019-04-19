@@ -699,7 +699,7 @@ const
   SCommentItalic  = 'CommentItalic';
   SCommentBold    = 'CommentBold';
   SChmFileReader  = 'ChmFileReader';
-
+  SAppSuffix      = {$IFDEF MSWINDOWS}'.exe'{$ELSE}''{$ENDIF};
 
 function FileFormat(const filename: string; var XliIndex: integer): TScriptFormat;
 var
@@ -2545,7 +2545,7 @@ begin
         FChmFileReader := ini.ReadString(SHelp, SChmFileReader, '');
         if FChmFileReader <> '' then
           if ExtractFilePath(FChmFileReader) = '' then
-            FChmFileReader := ExtractFilePath(Application.ExeName) + FChmFileReader;
+            FChmFileReader := ExtractFilePath(Application.ExeName) + FChmFileReader + SAppSuffix;
       end;
   finally
     ini.Free;

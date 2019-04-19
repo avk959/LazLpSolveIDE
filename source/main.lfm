@@ -4473,7 +4473,7 @@ object MainForm: TMainForm
     CommentAttri.Background = clNone
     CommentAttri.Style = [fsItalic]
     WantBracesParsed = False
-    Left = 1020
+    Left = 1028
     Top = 4
   end
   object ExportDialog: TSaveDialog
