@@ -21,13 +21,11 @@ inherited TextReplaceDialog: TTextReplaceDialog
     TabOrder = 3
   end
   inherited btnOK: TButton
-    Left = 188
     Top = 300
     Default = False
     TabOrder = 4
   end
   inherited btnCancel: TButton
-    Left = 296
     Top = 300
     Cancel = False
     TabOrder = 5

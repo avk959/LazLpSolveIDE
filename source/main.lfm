@@ -140,7 +140,7 @@ object MainForm: TMainForm
       Style = tbsSeparator
     end
     object Priority: TTrackBar
-      Left = 397
+      Left = 390
       Height = 26
       Hint = 'Thread priority'
       Top = 2

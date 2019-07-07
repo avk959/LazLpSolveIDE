@@ -948,8 +948,6 @@ var
         begin
           result := TViewXliExtension(XLIViewActionList.Components[FXliIndex]).Language;
         end;
-    else
-      result := lUnknown;
     end;
   end;
 
@@ -1214,6 +1212,7 @@ begin
         Editor.Lines.Add('RHS');
         Editor.Lines.Add('ENDATA');
       end;
+  else
   end;
   SetCurrentFile('');
   Editor.Modified := false;
@@ -2383,6 +2382,7 @@ begin
         Editor.Lines.Add('RHS');
         Editor.Lines.Add('ENDATA');
       end;
+  else
   end;
   ClearVirtualTrees;
   SetCurrentFile('');
@@ -2697,8 +2697,6 @@ begin
           end;
         //efRTF : exporter := TSynExporterRTF.Create(nil);
         //efTEX : exporter := TSynExporterTeX.Create(nil);
-      else
-        raise Exception.Create('unexpected error.');
       end;
       try
         exporter.Highlighter := Editor.Highlighter;
