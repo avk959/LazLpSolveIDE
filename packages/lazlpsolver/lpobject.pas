@@ -124,7 +124,7 @@ type
     FXLI,
     FXLIDataName,
     FXLIOptions: string;
-  class var
+  //class var
     function GetHasBFP: boolean;
     function GetIsNativeBFP: boolean;
     function GetHasXLI: boolean;
