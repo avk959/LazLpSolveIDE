@@ -8,7 +8,7 @@ interface
 uses
   Classes, SysUtils, Variants, Graphics, Controls, Forms, Dialogs, ExtCtrls, StdCtrls,
   ComCtrls, Menus,  StrUtils, ActnList, ImgList, IniFiles, clipbrd,
-  ResultArray, LpObject,  LpSolve, VirtualTrees,
+  ResultArray, LpObject,  LpSolve, Laz.VirtualTrees,
 
   SynEdit, SynEditTypes, LPSynEdit, LPHighlighter, SynEditHighlighter, SynHighlighterXML,
   SynEditMiscClasses, SynEditTextTrimmer, SynEditExport, SynExportHTML, SynMacroRecorder,
