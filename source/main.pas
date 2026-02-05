@@ -242,15 +242,15 @@ type
     PageControl1: TPageControl;
     TabSheet3: TTabSheet;
     TabSheet4: TTabSheet;
-    ObjectiveTable: TVirtualStringTree;
-    ConstraintTable: TVirtualStringTree;
+    ObjectiveTable: TLazVirtualStringTree;
+    ConstraintTable: TLazVirtualStringTree;
     acConExpHTML: TAction;
     acConExpCSV: TAction;
     ExporttoHTML3: TMenuItem;
     ExporttoRTF3: TMenuItem;
     ExporttoCSV2: TMenuItem;
     Matrix: TTabSheet;
-    MatrixTable: TVirtualStringTree;
+    MatrixTable: TLazVirtualStringTree;
     N7: TMenuItem;
     ExportMatrice1: TMenuItem;
     acMatExpHtml: TAction;
@@ -280,9 +280,9 @@ type
     TabSheet1: TTabSheet;
     PageControl3: TPageControl;
     TabSheet7: TTabSheet;
-    ObjectiveSensTable: TVirtualStringTree;
+    ObjectiveSensTable: TLazVirtualStringTree;
     TabSheet8: TTabSheet;
-    RHSSensTable: TVirtualStringTree;
+    RHSSensTable: TLazVirtualStringTree;
     acConExpRTF: TAction;
     acExportRtf: TAction;
     acExportTex: TAction;
@@ -589,7 +589,7 @@ type
     procedure WriteOptions;
     procedure ReadOptions;
     procedure ExportTo(format: TSourceExportFormat; extension, filter: string);
-    procedure ResultExportTo(Table: TVirtualStringTree; format: TResultExportFormat; extension, filter: string);
+    procedure ResultExportTo(Table: TLazVirtualStringTree; format: TResultExportFormat; extension, filter: string);
     procedure OpenFile(filename: string);
 
     function  GetlpParamsFile: TFileName;
@@ -2784,7 +2784,7 @@ begin
    end;
 end;
 
-procedure TMainForm.ResultExportTo(Table: TVirtualStringTree;
+procedure TMainForm.ResultExportTo(Table: TLazVirtualStringTree;
   format: TResultExportFormat; extension, filter: string);
 var
   data: string;
